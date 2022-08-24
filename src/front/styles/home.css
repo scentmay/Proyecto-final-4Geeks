@@ -5,3 +5,80 @@
     one more css for each page that will contain the selected used 
     on that page only (the ones not reused in other pages).
 */
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 90%;
+    min-height: 1280px;
+    margin: auto;
+
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+#navbarMenu {
+    background-image: url('https://images.ecestaticos.com/cD8ADKVW4yRYrKblwQ2YaMQV9f0=/0x110:2117x1301/1600x900/filters:fill(white):format(jpg)/f.elconfidencial.com%2Foriginal%2Fd5b%2Fc94%2F34a%2Fd5bc9434a152ac07185aa6bf6b976c41.jpg');
+    background-repeat: no-repeat;
+    height: 100vh;
+
+}
+
+#navMenu {
+    background-color: black;
+}
+
+#logo {
+    width: 150px;
+    height: 90px;
+
+}
+
+.menu {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.container-fluid ul {
+    display: flex;
+}
+
+.container-fluidul li {
+    margin: 0 20px;
+}
+
+.container-fluid ul li a {
+    color: #fff;
+}
+
+.titular {
+    text-align: center;
+    margin-top: 40vh;
+    color: #fff;
+}
+
+h1 {
+    font-size: 80px;
+    font-style: italic;
+    width: 80%;
+    margin: auto;
+    margin-bottom: 50px;
+}
+
+.titular a {
+    background: #000;
+    color: #dd9933;
+    padding: 20px 40px;
+}

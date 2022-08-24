@@ -1,0 +1,190 @@
+/* From uiverse.io by @sssynk */
+/* .card {
+    width: 340px;
+    height: 250px;
+    background: rgb(45, 45, 45);
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+    transition-duration: 0.5s;
+    margin-right: 20px;
+    
+   }
+   
+   .title {
+    text-align: center;
+    margin-top: 0.5em;
+    font-weight: bold;
+    font-size: x-large;
+    color: rgb(200,200,200);
+   }
+   
+   .pricecontainer {
+    width: 100%;
+    margin-top: 0.7em;
+    background-color: rgb(30,30,30);
+    box-shadow: inset 0px 0px 2em rgba(0, 0, 0, 0.3);
+   }
+   
+   .price {
+    text-align: center;
+    color: rgb(180,180,180);
+    font-size: x-large;
+    font-weight: bold;
+    padding: 0.75em 0 0 0;
+   }
+   
+   .pricedescriptor {
+    text-align: center;
+    color: rgb(118, 118, 118);
+    font-size: medium;
+    padding: 0 0 1em 0;
+   }
+   
+   .includes {
+    text-align: center;
+    color: rgb(110, 110, 110);
+    margin-top: 0.6em;
+    font-size: small;
+    font-weight: bold;
+   }
+   
+   .benefitlist li {
+    color: rgb(150,150,150);
+    font-size: small;
+    text-align: center;
+   }
+   
+   .benefitlist li:nth-child(1) {
+    margin-top: 0.4em;
+   }
+   
+   .btncontainer {
+    text-align: center;
+   }
+   
+   .btncontainer button {
+    margin-top: 1em;
+    padding: 0.5em 0.8em 0.5em 0.8em;
+    border-style: none;
+    border-radius: 1000000px;
+    color: rgb(239, 239, 239);
+    font-weight: bold;
+    background-image: linear-gradient(45deg, #fed24f 0%, #aeaeaefb 100%);
+    transition: box-shadow 0.15s ease-in-out;
+   }
+   
+   .btncontainer button:hover {
+    box-shadow: inset 0px 0px 5px rgb(0,0,0);
+    transition: box-shadow 0.15s ease-in-out;
+   } */
+
+
+   #tabla-precios {
+    display:inline-block;
+    width:100%;
+    margin-top:50px
+   }
+   
+   /*Columnas*/
+   
+   .precio-col {
+    display:inline-block;
+    background-color:#f3f3f3;
+    width:100%;
+    max-width:500px;
+    border-radius:10px;
+    margin-bottom:50px;
+    box-shadow: 0px 2px 5px #ddd
+   }
+   
+   @media screen and (min-width:768px) {
+    .precio-col {
+    width:32%;
+    float:left;
+    margin-right:2%
+    }
+    
+    .precio-col:last-child {
+    margin-right:0
+    }
+   }
+   
+   /*Headers*/
+   
+   .precio-col-header {
+    background-color:#333;
+    padding:20px;
+    border-top-left-radius:10px;
+    border-top-right-radius:10px
+   }
+   
+   .precio-col:nth-child(2) .precio-col-header {
+    background-color:#dd9933
+   }
+
+   .precio-col:nth-child(4) .precio-col-header {
+    background-color:#dd9933
+   }
+   
+   .precio-col-header h3 {
+    color:#f3f3f3;
+    text-align:center;
+    font-size:30px;
+    font-weight:600;
+    margin-bottom:0
+   }
+   
+   .precio-col-header p {
+    text-align:center;
+    color:#f3f3f3;
+    font-size:14px;
+    margin-bottom:0
+   }
+   
+   /*Características*/
+   
+   .precio-col-features {
+    padding: 0 20px 20px 20px
+   }
+   
+   .precio-col-features p {
+    padding:20px 0;
+    margin:0;
+    text-align:center;
+    border-top:1px solid #ddd
+   }
+   
+   .precio-col-features p:first-child,
+   .precio-col-features p:last-child {
+    border-top:none
+   }
+   
+   /*Comprar*/
+   
+   .precio-col-subscripcion {
+    padding:10px;
+    max-width:250px;
+    text-align:center;
+    background-color:#dd9933;
+    margin: 0 auto 20px;
+    border-radius:10px;
+    border: 2px solid #dd9933;
+    transition: all 0.3s
+   }
+   
+   .precio-col-subscripcion a {
+    color:#f3f3f3;
+    padding:10px;
+    font-size:20px;
+    text-transform:uppercase;
+    transition: all 0.3s
+   }
+   
+   .precio-col-subscripcion:hover {
+    background-color:#f3f3f3;
+    transition: all 0.3s
+   }
+   
+   .precio-col-subscripcion:hover a {
+    color:#dd9933;
+    transition: all 0.3s
+   }
