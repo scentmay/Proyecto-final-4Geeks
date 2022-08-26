@@ -34,7 +34,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({logged: false});
 			},
 
-			signUp:  async (email, password) => {
+			signUp:  async (email, password, name, lastName, dni, address, number, floor, phone) => {
 
 				const opts = {
 					method: 'POST',
@@ -43,11 +43,18 @@ const getState = ({ getStore, getActions, setStore }) => {
 					},
 					body: JSON.stringify({
 					  "email": email,
-					  "password": password
+					  "password": password,
+					  "name": name,
+					  "lastName": lastName,
+					  "dni": dni,
+					  "address": address,
+					  "number": number,
+					  "floor": floor,
+					  "phone": phone
 					})
 				  };
 
-				await fetch("https://3001-4geeksacade-reactflaskh-egdm5hczo2f.ws-eu62.gitpod.io/api/signup", opts)
+				await fetch("https://3001-4geeksacade-reactflaskh-egdm5hczo2f.ws-eu63.gitpod.io/api/signup", opts)
 
 				.then ((res) => {
 					if (!res.ok) {
@@ -76,7 +83,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 				  };
 
-				await fetch('https://3001-4geeksacade-reactflaskh-egdm5hczo2f.ws-eu62.gitpod.io/api/login', opts)
+				await fetch('https://3001-4geeksacade-reactflaskh-egdm5hczo2f.ws-eu63.gitpod.io/api/login', opts)
 				.then((res)=> {
 						if (!res.ok) {
 							alert("Credenciales incorrectas, mensaje del frontend");

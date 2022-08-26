@@ -2,9 +2,10 @@
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
 from flask import Flask, request, jsonify, url_for, Blueprint
-from api.models import db, User
+from api.models import db, User, Cliente
 from api.utils import generate_sitemap, APIException
 from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity
+import datetime
 
 api = Blueprint('api', __name__)
 
@@ -25,17 +26,37 @@ def register():
 
     body = request.get_json()
 
+# Validaciones
+# -----------------
     if body is None:
         raise APIException("You need to specify the request body as a json object", status_code=400)
     if 'email' not in body:
-        raise APIException('You need to specify the username', status_code=400)
-    if 'password' not in body:
         raise APIException('You need to specify the email', status_code=400)
+    if 'password' not in body:
+        raise APIException('You need to specify the password', status_code=400)
+    if 'name' not in body:
+        raise APIException('You need to specify the name', status_code=400)
+    if 'lastName' not in body:
+        raise APIException('You need to specify the lastName', status_code=400)
+    if 'dni' not in body:
+        raise APIException('You need to specify the dni', status_code=400)
+    if 'address' not in body:
+        raise APIException('You need to specify the address', status_code=400)
+    if 'number' not in body:
+        raise APIException('You need to specify the number', status_code=400)
+    if 'floor' not in body:
+        raise APIException('You need to specify the floor', status_code=400)
+    if 'phone' not in body:
+        raise APIException('You need to specify the phone', status_code=400)
+    
 
-    # at this point, all data has been validated, we can proceed to inster into the bd
-    newUser = User(email=body['email'], password=body['password'], is_active = True)
-    db.session.add(newUser)
+    # at this point, all data has been validated, we can proceed to inster into the bbdd
+
+    newClient = Cliente(email=body['email'], password=['password'], userName=body['name'], lastName=body['lastName'], dni=body['dni'], direccion=body['address'], telefono=body['phone'], objetivo='Por definir', peso=85.3, corrienteDePago=True, fechaDeAlta=datetime.datetime.now())
+    
+    db.session.add(newClient)
     db.session.commit()
+
     return jsonify("Usuario creado, mensaje del backend"), 200
 
 # login de usuario

@@ -29,10 +29,11 @@ export const Signup = () => {
 	// console.log(phone);
 
 	const handleClick = () => {
-		actions.signUp(email, password);
+		e.preventDefault()
+		actions.signUp(email, password, name, lastName, dni, address, number, floor, phone);
 		//una vez registrado, redirigimos al usuario a la página de login
-		alert("Registrado con éxito con el mail " + email + ", será redirigido a la página de login");
-		navigate("/");
+		alert("Registro en pruebas");
+		// navigate("/");
 	}
 
 	return (
@@ -40,7 +41,7 @@ export const Signup = () => {
 			<div className="form d-flex justify-content-center"> 
 					<div className="card">
 					<h4 className="title">Formulario de registro</h4>
-					<form>
+					<form >
 
 					<div className="field ">
 						<svg className="input-icon" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
@@ -152,7 +153,7 @@ export const Signup = () => {
 						/>
 					</div>
 					
-					<button className="btn" type="submit" onSubmit={handleClick}>Login</button>
+					<button className="btn" onClick={(e)=>{handleClick(e)}}>REGISTRO</button>
 					{/* <a href="#" className="btn-link">Forgot your password?</a> */}
 					</form>
 				</div>
