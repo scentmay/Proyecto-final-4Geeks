@@ -35,7 +35,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 			signUp:  async (email, password, name, lastName, dni, address, number, floor, phone) => {
-
+				console.log("Entrando...")
 				const opts = {
 					method: 'POST',
 					headers: {

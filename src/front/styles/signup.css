@@ -1,8 +1,9 @@
 .mainContainer {
-    /* url imagen: https://ossfitness.com/fotos/2021/07/strong-man-training-in-gym-1024x683.jpg
- */
-    background-image: url('https://ossfitness.com/fotos/2021/07/strong-man-training-in-gym-1024x683.jpg');
-    background-size: cover;
+    /* url imagen: https://ossfitness.com/fotos/2021/07/strong-man-training-in-gym-1024x683.jpg */
+     /* background-image: url('https://ossfitness.com/fotos/2021/07/strong-man-training-in-gym-1024x683.jpg');*/
+   background-size: cover;
+   background-position-x: center;
+   background-position-y: center;
    }
 
 .card {
