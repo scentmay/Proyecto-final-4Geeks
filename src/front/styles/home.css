@@ -82,3 +82,18 @@ h1 {
     color: #dd9933;
     padding: 20px 40px;
 }
+
+     /* Formulario de contacto */
+
+
+h2 {
+  text-align: center;
+  color: #dd9933;
+}
+
+#botonForm {
+  background-color: #dd9933;
+  text-align: center;
+}
+
+ 
