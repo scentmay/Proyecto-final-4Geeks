@@ -18,7 +18,9 @@ export const Navbar = () => {
 			</div>
 			<div className="titular">
 				<h1>Bienvenido a SyF FIT</h1>
-				<a href="https://3000-scentmay-protyectofinal-y7bukb0qw1r.ws-eu63.gitpod.io/login">Ingrese a su perfil</a>
+				<Link to="/login">
+			 		<button className="btn btn-primary">Ingrese a su perfil</button>
+		    	</Link>
 			</div>
 		</div>
 	);
