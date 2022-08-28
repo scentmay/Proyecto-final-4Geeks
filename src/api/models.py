@@ -56,3 +56,9 @@ class Ejercicio(db.Model):
 class Categoria(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     nombre = db.Column(db.String(120), unique=False, nullable=False)
+
+class Survey(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    objective = db.Column(db.String(120), unique=False, nullable=False)    
+    medical = db.Column(db.String(120), unique=False, nullable=False)    
+    message = db.Column(db.String(120), unique=False, nullable=False)    

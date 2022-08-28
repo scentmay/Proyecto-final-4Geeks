@@ -2,7 +2,7 @@
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
 from flask import Flask, request, jsonify, url_for, Blueprint
-from api.models import db, User, Cliente
+from api.models import db, User, Cliente, Survey
 from api.utils import generate_sitemap, APIException
 from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity
 import datetime
@@ -29,21 +29,21 @@ def register():
 # Validaciones
 # -----------------
     if body is None:
-        raise APIException("You need to specify the request body as a json object", status_code=400)
+        raise APIException("You need to specify the request body as a json object (signup info)", status_code=400)
     if 'email' not in body:
-        raise APIException('You need to specify the email', status_code=400)
+        raise APIException('You need to specify the email (signup info)', status_code=400)
     if 'password' not in body:
-        raise APIException('You need to specify the password', status_code=400)
+        raise APIException('You need to specify the password (signup info)', status_code=400)
     if 'name' not in body:
-        raise APIException('You need to specify the name', status_code=400)
+        raise APIException('You need to specify the name (signup info)', status_code=400)
     if 'lastName' not in body:
-        raise APIException('You need to specify the lastName', status_code=400)
+        raise APIException('You need to specify the lastName (signup info)', status_code=400)
     if 'dni' not in body:
-        raise APIException('You need to specify the dni', status_code=400)
+        raise APIException('You need to specify the dni (signup info)', status_code=400)
     if 'address' not in body:
-        raise APIException('You need to specify the address', status_code=400)
+        raise APIException('You need to specify the address (signup info)', status_code=400)
     if 'phone' not in body:
-        raise APIException('You need to specify the phone', status_code=400)
+        raise APIException('You need to specify the phone (signup info)', status_code=400)
     
 
     # at this point, all data has been validated, we can proceed to inster into the bbdd
@@ -54,6 +54,22 @@ def register():
     db.session.commit()
 
     return jsonify("Usuario creado, mensaje del backend"), 200
+
+#registro de encuesta
+@api.route("/survey", methods =["POST"])
+def survey():
+
+    body = request.get_json()
+
+    if body is None:
+        raise APIException("You need to specify the request body as a json object(survey info)", status_code=400)
+
+    newSurvey = Survey(dni = body['dni'], objective = body['objective'], medical = body['medical'], message = body['message'])
+
+    db.session.add(newSurvey)
+    db.session.commit()
+
+    return jsonify("Encuesta creada, mensaje del backend"), 200
 
 # login de usuario
 @api.route("/login", methods =["POST"])

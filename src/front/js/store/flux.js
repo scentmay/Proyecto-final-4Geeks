@@ -7,6 +7,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				"token": ""
 				},
 			logged: false,
+			dni: null,
 			demo: [
 				{
 					title: "FIRST",
@@ -35,7 +36,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 			signUp:  async (email, password, name, lastName, dni, address, phone) => {
-				console.log("Entrando...")
+				
+				setStore({dni: dni})
+				
 				const opts = {
 					method: 'POST',
 					headers: {
@@ -68,6 +71,41 @@ const getState = ({ getStore, getActions, setStore }) => {
 				})
 			},
 
+
+			survey: async (objective, medical, message) => {
+
+				const store = getStore();
+
+				const opts = {
+					method: 'POST',
+					headers: {
+						"Content-Type": "application/json"
+					},
+					body: JSON.stringify({
+						"dni": store.dni,
+						"objective": objective,
+						"medical": medical,
+						"message": message
+					})
+				};
+
+			await fetch('https://3001-4geeksacade-reactflaskh-egdm5hczo2f.ws-eu63.gitpod.io/api/survey', opts)
+			.then((res) => {
+				if(!res.ok) {
+					console.log("Error en el fecth del survey");
+					return false;
+				}
+				return res.json();
+			})
+			.then((data) => {
+				console.log("Encuesta registrada");
+			})
+			.catch((error) => {
+				console.error("Ha ocurrido un error al registrar la encuesta" + error);
+			})
+
+			},
+
 			login: async (email, password) => {
 
 				const opts = {
@@ -82,7 +120,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				  };
 
 				await fetch('https://3001-4geeksacade-reactflaskh-egdm5hczo2f.ws-eu63.gitpod.io/api/login', opts)
-				.then((res)=> {
+				.then((res) => {
 						if (!res.ok) {
 							alert("Credenciales incorrectas, mensaje del frontend");
 							return false;
@@ -91,7 +129,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 				.then((data) => {
 					console.log("this came from the backend", data)
-					const store = getStore();
 					setStore({user: data})
 					setStore({logged: true})
 					// //almacenamos el token en la sesión del navegador
