@@ -34,7 +34,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({logged: false});
 			},
 
-			signUp:  async (email, password, name, lastName, dni, address, number, floor, phone) => {
+			signUp:  async (email, password, name, lastName, dni, address, phone) => {
 				console.log("Entrando...")
 				const opts = {
 					method: 'POST',
@@ -48,8 +48,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 					  "lastName": lastName,
 					  "dni": dni,
 					  "address": address,
-					  "number": number,
-					  "floor": floor,
 					  "phone": phone
 					})
 				  };

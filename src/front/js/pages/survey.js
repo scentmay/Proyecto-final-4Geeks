@@ -13,6 +13,8 @@ export const Signup = () => {
 	const [lastName, setLastName] = useState ("");
 	const [dni, setDni] = useState ("");
 	const [address, setAddress] = useState ("");
+	const [number, setNumber] = useState ("");
+	const [floor, setFloor] = useState ("");
 	const [phone, setPhone] = useState ("");
 	let navigate = useNavigate();
 
@@ -29,13 +31,15 @@ export const Signup = () => {
 	const handleClick = (e) => {
 		e.preventDefault()
 		console.log("Entrando en handleclick...")
-		actions.signUp(email, password, name, lastName, dni, address, phone);
+		actions.signUp(email, password, name, lastName, dni, address, number, floor, phone);
 		setEmail("");
 		setPassword("");
 		setName("");
 		setLastName("");
 		setDni("");
 		setAddress("");
+		setNumber("");
+		setFloor("");
 		setPhone("");
 		alert("Usuario registrado")
 
@@ -115,19 +119,37 @@ export const Signup = () => {
 						</div>
 
 						<div className="field">
-							<svg className="input-icon" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+							<svg className="input-icon2" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
 							<path d="M80 192V144C80 64.47 144.5 0 224 0C303.5 0 368 64.47 368 144V192H384C419.3 192 448 220.7 448 256V448C448 483.3 419.3 512 384 512H64C28.65 512 0 483.3 0 448V256C0 220.7 28.65 192 64 192H80zM144 192H304V144C304 99.82 268.2 64 224 64C179.8 64 144 99.82 144 144V192z"></path></svg>
+
 							<input id="logAddress" 
-							placeholder="Dirección" 
+							placeholder="Direccion" 
 							className="input-field" 
 							name="logAddress" 
 							type="text"
 							value={address}
-							onChange={(e) => {setAddress(e.target.value)}} 
+							onChange={(e) => {setAddress(e.target.value)}}
 							/>
-						</div>
 
-						
+							<input id="logNumber" 
+							placeholder="Número" 
+							className="input-field" 
+							name="logNumber" 
+							type="text"
+							value={number}
+							onChange={(e) => {setNumber(e.target.value)}} 
+							/>
+
+							<input id="logFloor" 
+							placeholder="Piso" 
+							className="input-field" 
+							name="logFloor" 
+							type="text"
+							value={floor}
+							onChange={(e) => {setFloor(e.target.value)}}
+							/>
+
+						</div>
 
 						<div className="field">
 							<svg className="input-icon" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
@@ -141,14 +163,11 @@ export const Signup = () => {
 							onChange={(e) => {setPhone(e.target.value)}}
 							/>
 						</div>
-						
-						<div>
-								<Link to={'/'}><button className="btn ms-3">Volver</button></Link>
-								
-								<input className="btn" type="reset" value="Reset" onClick={() => window.location.reload()} />
-								
-								<button className="btn" onClick={handleClick}>REGISTRO</button>
-								{/* <a href="#" className="btn-link">Forgot your password?</a> */}
+						<div className="d-flex">
+							<Link to={'/'}><button className="btn ms-3">Volver</button></Link>
+							<input className="btn" type="reset" value="Reset" onClick={() => window.location.reload()} />
+							<button className="btn" onClick={handleClick}>REGISTRO</button>
+							{/* <a href="#" className="btn-link">Forgot your password?</a> */}
 						</div>
 					</form>
 				</div>

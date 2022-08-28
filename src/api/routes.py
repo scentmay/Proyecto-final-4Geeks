@@ -42,10 +42,6 @@ def register():
         raise APIException('You need to specify the dni', status_code=400)
     if 'address' not in body:
         raise APIException('You need to specify the address', status_code=400)
-    if 'number' not in body:
-        raise APIException('You need to specify the number', status_code=400)
-    if 'floor' not in body:
-        raise APIException('You need to specify the floor', status_code=400)
     if 'phone' not in body:
         raise APIException('You need to specify the phone', status_code=400)
     
