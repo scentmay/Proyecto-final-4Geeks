@@ -64,7 +64,7 @@ def survey():
     if body is None:
         raise APIException("You need to specify the request body as a json object(survey info)", status_code=400)
 
-    newSurvey = Survey(dni = body['dni'], objective = body['objective'], medical = body['medical'], message = body['message'])
+    newSurvey = Survey(objective = body['objective'], medical = body['medical'], message = body['message'])
 
     db.session.add(newSurvey)
     db.session.commit()

@@ -82,7 +82,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						"Content-Type": "application/json"
 					},
 					body: JSON.stringify({
-						"dni": store.dni,
+						//"dni": store.dni,
 						"objective": objective,
 						"medical": medical,
 						"message": message
