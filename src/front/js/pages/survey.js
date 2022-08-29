@@ -22,13 +22,23 @@ export const Survey = () => {
 		//el siguiente paso es ir al dashboard del usuario registrado
 	}
 	
+	const redirigir = () => {
+		// console.log("Entrando aquí...")
+		setTimeout(()=>{
+		  navigate("/login")
+		}, 5000)
+	}
+
 	return (
 		<div className="mainContainer" style={{backgroundImage: `url(${fondo})`}}>
 			<div className="form d-flex justify-content-center"> 
-					<div className="card">
-					<h4 className="title">Cuéntanos un poco más de tí</h4>
-					<form id="form">
 
+			{
+				(store.user.token && store.user.token != "" && store.user.token != undefined)?
+
+				(	<div className="card">
+						<h4 className="title">Cuéntanos un poco más de tí</h4>
+						<form id="form">
 						<div className="field ">
 							<input className="input-field" 
 							placeholder="¿Cuál es tu objetivo?" 
@@ -82,8 +92,18 @@ export const Survey = () => {
 								<button className="btn" onClick={handleClick}>ENVIAR</button>
 								{/* <a href="#" className="btn-link">Forgot your password?</a> */}
 						</div>
-					</form>
-				</div>
+						</form>
+					</div>
+				)
+				:
+				(<div className="card">
+					<h4 className="title">Usuario no registrado</h4>
+					<p style={{color: "white"}}>Será redirigido a la página de login en 5 segundos</p>
+					<Link to={'/login'}><button className="btn ms-3">Volver</button></Link>
+					{redirigir()} 
+				  </div>
+				)
+			}
 			</div>			
 		</div>
 	);

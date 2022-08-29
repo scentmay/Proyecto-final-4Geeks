@@ -131,7 +131,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				await fetch('https://3001-4geeksacade-reactflaskh-egdm5hczo2f.ws-eu63.gitpod.io/api/login', opts)
 				.then((res) => {
 						if (!res.ok) {
-							alert("Credenciales incorrectas, mensaje del frontend");
+							alert("Credenciales incorrectas");
 							return false;
 						}
 						return res.json();

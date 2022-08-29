@@ -40,7 +40,10 @@ export const Login = () => {
                 <div className="card">
                   <h4 className="title">Login</h4>
                   <p style={{color: "white"}}>Estas logado con el token: {store.user.token}</p>
+                  <p style={{color: "white"}}>Bienvenido a su zona privada, no olvide acceder a la encuesta para rellenar sus datos</p>
+
                   <Link to={'/login'} className="btn btn-primary btn-lg mt-3 ms-3" onClick={logOut}>Log out</Link>
+                  <Link to={'/survey'} className="btn btn-primary btn-lg mt-3 ms-3">Realizar encuesta</Link>
                 </div>
               </div>
             )
@@ -51,44 +54,41 @@ export const Login = () => {
       	    <div className="card">
 			    	<h4 className="title">Login</h4>
 				    	<form id="form">
-				  		<div className="field ">
-							<input className="input-field" 
-							placeholder="email"
-              type="text"
-              value={email}
-              onKeyPress={(e) => {if(e.key === 'Enter') handleClick()}} // detectar pulsación "Enter"
-              onChange={(e) => {
-                setEmail(e.target.value)}}
-						  />
-						</div>
+                  <div className="field ">
+                  <input className="input-field" 
+                  placeholder="email"
+                  type="text"
+                  value={email}
+                  //onKeyPress={(e) => {if(e.key === 'Enter') handleClick()}} // detectar pulsación "Enter"
+                  onChange={(e) => {
+                    setEmail(e.target.value)}}
+                  />
+                  </div>
 
-						<div className="field ">
-							<input className="input-field" 
-							placeholder="password"
-              type="text"
-              value={password}
-              onKeyPress={(e) => {if(e.key === 'Enter') handleClick()}} // detectar pulsación "Enter"
-              onChange={(e) => {
-                setPassword(e.target.value)}}
-							/>
-						</div>
+                <div className="field ">
+                  <input className="input-field" 
+                  placeholder="password"
+                  type="text"
+                  value={password}
+                  //onKeyPress={(e) => {if(e.key === 'Enter') handleClick()}} // detectar pulsación "Enter"
+                  onChange={(e) => {
+                    setPassword(e.target.value)}}
+                  />
+                </div>
 
-						<div className="buttons">
-								<Link to={'/'}><button className="btn ms-3">Volver</button></Link>
-								
-								<input className="btn" type="reset" value="Reset" onClick={() => {setEmail("");setPassword("")}} />
-								
-								<button className="btn" onClick={handleClick}>LOGIN</button>
-                
-								<a href="#" className="btn-link">Forgot your password?</a>
-						</div>
-					</form>
-			
-      	
-              </div>
+                <div className="buttons">
+                    <Link to={'/'}><button className="btn ms-3">Volver</button></Link>
+                    
+                    <input className="btn" type="reset" value="Reset" onClick={() => {setEmail("");setPassword("")}} />
+                    
+                    <button className="btn" onClick={handleClick}>LOGIN</button>
+                    
+                    <a href="#" className="btn-link">Forgot your password?</a>
+                </div>
+					    </form>
+            </div>
            )
         }
-
 			</div>			
 		</div>
 	);

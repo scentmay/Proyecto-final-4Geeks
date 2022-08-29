@@ -28,7 +28,7 @@ export const Signup = () => {
 		setAddress("");
 		setPhone("");
 		alert("Usuario registrado")
-		navigate("/login");
+		//navigate("/login");
 		//navigate("/survey");
 	}
 
