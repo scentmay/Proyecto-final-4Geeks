@@ -16,6 +16,9 @@ export const Survey = () => {
 	const handleClick = (e) => {
 		e.preventDefault()
 		actions.survey(objective, medical, message);
+		setObjective("");
+		setMedical("");
+		setMessage("");
 		//el siguiente paso es ir al dashboard del usuario registrado
 	}
 	
@@ -27,9 +30,15 @@ export const Survey = () => {
 					<form id="form">
 
 						<div className="field ">
-							<input className="input-field" placeholder="¿Cuál es tu objetivo?" list="objective" name="browser" onChange={(e) => {
+							<input className="input-field" 
+							placeholder="¿Cuál es tu objetivo?" 
+							list="objective" 
+							name="browser" 
+							value={objective}
+							onChange={(e) => {
 								setObjective(e.target.value)
 							}} />
+
 							<datalist id="objective">
 								<option value="Perder peso" />
 								<option value="Ganar volumen" />
@@ -39,9 +48,14 @@ export const Survey = () => {
 						</div>
 
 						<div className="field ">
-							<input className="input-field" placeholder="¿Alguna lesión o prescripción médica?" list="medical" name="browser" value={medical} onChange={(e) => {
+							<input className="input-field" 
+							placeholder="¿Alguna lesión o prescripción médica?" list="medical" 
+							name="browser" 
+							value={medical} 
+							onChange={(e) => {
 								setMedical(e.target.value)
 							}} />
+
 							<datalist id="medical">
 								<option value="Espalda" />
 								<option value="Piernas" />
@@ -50,7 +64,13 @@ export const Survey = () => {
 							</datalist>
 						</div>
 
-						<textarea className="input-field mt-3 border border-warning p-3" placeholder="Aquí puedes detallar cualquier aspecto relevante sobre las preguntas" name="message" id="message" rows="8" cols="30" onChange={(e) => {
+						<textarea className="input-field mt-3 border border-warning p-3" placeholder="Aquí puedes detallar cualquier aspecto relevante sobre las preguntas" 
+						name="message" 
+						id="message" 
+						rows="8" 
+						cols="30"
+						value={message}
+						onChange={(e) => {
 								setMessage(e.target.value)
 							}}></textarea>
 

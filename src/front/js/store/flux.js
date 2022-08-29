@@ -7,7 +7,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 				"token": ""
 				},
 			logged: false,
-			dni: null,
 			demo: [
 				{
 					title: "FIRST",
@@ -27,10 +26,18 @@ const getState = ({ getStore, getActions, setStore }) => {
 				getActions().changeColor(0, "green");
 			},
 
+			syncTokenFromSessionStore: () => {
+				const token = sessionStorage.getItem("token");
+				if(token && token !="" && token !=undefined) {
+					setStore({user: token});
+				}
+			},			
+
 			cleanStore: () => {
 				//Eliminamos token de la store y de la sesión del navegador
 				console.log("Limpiando store...");
 				setStore({user: {"email": "","token": ""}});
+				sessionStorage.removeItem("email");
 				sessionStorage.removeItem("token");
 				setStore({logged: false});
 			},
@@ -55,6 +62,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 				  };
 
+				//para usar la variable de entorno que tiene la URL del backend, tenemos que poner:
+				//fetch(process.env.BACKEND_URL + "/api/hello")
 				await fetch("https://3001-4geeksacade-reactflaskh-egdm5hczo2f.ws-eu63.gitpod.io/api/signup", opts)
 
 				.then ((res) => {
@@ -107,7 +116,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 			login: async (email, password) => {
-
+				
 				const opts = {
 					method: 'POST',
 					headers: {
@@ -128,11 +137,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 						return res.json();
 					})
 				.then((data) => {
-					console.log("this came from the backend", data)
+					//console.log("this came from the backend", data)
 					setStore({user: data})
 					setStore({logged: true})
 					// //almacenamos el token en la sesión del navegador
+					sessionStorage.setItem("email", data.email)
 					sessionStorage.setItem("token", data.token)
+					//sessionStorage.setItem(data)
 					return true;
 				})
 				

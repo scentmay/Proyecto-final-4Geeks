@@ -83,10 +83,12 @@ def login():
     if 'password' not in body:
         raise APIException('You need to specify the email', status_code=400)
 
-    email = request.json.get("email")
-    password = request.json.get("password")
+    #email = request.json.get("email")
+    email = body['email']
+    #password = request.json.get("password")
+    password = body['password']
 
-    user = User.query.filter_by(email = email, password = password).first()
+    user = Cliente.query.filter_by(email = email, password = password).first()
     print (user)
     if not user:
         return jsonify("Credenciales incorrectas, mensaje del backend"), 401

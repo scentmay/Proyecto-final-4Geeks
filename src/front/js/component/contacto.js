@@ -11,20 +11,20 @@ export const Contacto = () => {
         <div className="contacto">
 
             <h2>Contactate con nosotros</h2>
-            <form class="form-inline" action="/action_page.php">
-                <div class="form-group">
-                    <label for="email">Your Name</label>
-                    <input type="text" class="form-control" id="email" placeholder="Enter your name" name="name" />
+            <form className="form-inline" action="/action_page.php">
+                <div className="form-group">
+                    <label>Your Name</label>
+                    <input type="text" className="form-control" id="email" placeholder="Enter your name" name="name" />
                 </div>
-                <div class="form-group">
-                    <label for="email">Your E-mail:</label>
-                    <input type="email" class="form-control" id="email" placeholder="Enter your email" name="email" />
+                <div className="form-group">
+                    <label>Your E-mail:</label>
+                    <input type="email" className="form-control" id="email" placeholder="Enter your email" name="email" />
                 </div>
-                <div class="form-group">
-                    <label for="comment">Your Message:</label>
-                    <textarea class="form-control" rows="5" id="comment" placeholder="PLease enter your message here..."></textarea>
+                <div className="form-group">
+                    <label>Your Message:</label>
+                    <textarea className="form-control" rows="5" id="comment" placeholder="PLease enter your message here..."></textarea>
                 </div>
-                <button type="submit" class="btn" id="botonForm">Submit</button>
+                <button type="submit" className="btn" id="botonForm">Submit</button>
             </form>
         </div>
 
