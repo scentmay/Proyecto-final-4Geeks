@@ -64,7 +64,7 @@ def survey():
     if body is None:
         raise APIException("You need to specify the request body as a json object(survey info)", status_code=400)
 
-    newSurvey = Survey(objective = body['objective'], medical = body['medical'], message = body['message'])
+    newSurvey = Survey(id = body['id'], email = body['email'], objective = body['objective'], medical = body['medical'], message = body['message'])
 
     db.session.add(newSurvey)
     db.session.commit()
@@ -83,19 +83,23 @@ def login():
     if 'password' not in body:
         raise APIException('You need to specify the email', status_code=400)
 
-    #email = request.json.get("email")
     email = body['email']
-    #password = request.json.get("password")
     password = body['password']
+    #otra manera de asignar los valores
+    #email = request.json.get("email")
+    #password = request.json.get("password")
 
     user = Cliente.query.filter_by(email = email, password = password).first()
-    print (user)
+
     if not user:
         return jsonify("Credenciales incorrectas, mensaje del backend"), 401
 
     access_token = create_access_token(identity = email)
 
+
     return jsonify({
-        "email": email,
-        "token": access_token
+        "user": user.serialize(), 
+        "token": access_token,
     })
+
+  

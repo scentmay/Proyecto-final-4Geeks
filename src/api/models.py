@@ -28,10 +28,23 @@ class Cliente(db.Model):
     dni = db.Column(db.String(120), unique=True, nullable=False)
     direccion = db.Column(db.String(120), unique=False, nullable=False)
     telefono = db.Column(db.String(120), unique=False, nullable=False)
-    objetivo = db.Column(db.String(120), unique=False, nullable=False)
     peso = db.Column(db.Float(20), unique=False, nullable=False)
     corrienteDePago = db.Column(db.Boolean, unique=False, nullable=False)
     fechaDeAlta = db.Column(db.DateTime, unique=False, nullable=False)
+
+    def serialize(self):
+        return {
+            "id": self.id,
+            "email": self.email,
+            "userName": self.userName,
+            "lastname": self.lastName,
+            "dni": self.dni,
+            "direccion": self.direccion,
+            "telefono": self.telefono,
+            "peso": self.peso,
+            "corrienteDePago": self.corrienteDePago,
+            "fechaDeAlta": self.fechaDeAlta
+        }
 
 class Entreno(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -59,6 +72,7 @@ class Categoria(db.Model):
 
 class Survey(db.Model):
     id = db.Column(db.Integer, primary_key=True)
+    email = db.Column(db.String(120), unique=True, nullable=False)
     objective = db.Column(db.String(120), unique=False, nullable=False)    
     medical = db.Column(db.String(120), unique=False, nullable=False)    
     message = db.Column(db.String(120), unique=False, nullable=False)    

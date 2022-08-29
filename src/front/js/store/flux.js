@@ -3,9 +3,26 @@ const getState = ({ getStore, getActions, setStore }) => {
 		store: {
 			message: null,
 			user: {
+				"id": "",
 				"email": "",
+				"username":"",
+				"lastname":"",
+				"dni":"",
+				"address":"",
+				"phone":"",
+				"objective":"",
+				"peso":"",
+				"payment":"",
+				"date":"",		
 				"token": ""
 				},
+			survey: {
+				"id": "",
+				"email":"",
+				"objetivo":"",
+				"medical":"",
+				"Info":""
+			},
 			logged: false,
 			demo: [
 				{
@@ -91,7 +108,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 						"Content-Type": "application/json"
 					},
 					body: JSON.stringify({
-						//"dni": store.dni,
+						"id": store.user.id,
+						"email":store.user.email,
 						"objective": objective,
 						"medical": medical,
 						"message": message
@@ -137,13 +155,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 						return res.json();
 					})
 				.then((data) => {
-					//console.log("this came from the backend", data)
-					setStore({user: data})
+					//Añadimos la priopiedad token a data.user y después el objeto es seteado en la store
+					//y se compone de todo el serialize + token
+					data.user.token = data.token
+					setStore({
+						user: data.user,
+					})
 					setStore({logged: true})
-					// //almacenamos el token en la sesión del navegador
-					sessionStorage.setItem("email", data.email)
-					sessionStorage.setItem("token", data.token)
-					//sessionStorage.setItem(data)
 					return true;
 				})
 				

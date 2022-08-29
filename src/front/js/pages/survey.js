@@ -38,6 +38,7 @@ export const Survey = () => {
 
 				(	<div className="card">
 						<h4 className="title">Cuéntanos un poco más de tí</h4>
+						<h5 style={{color: "white"}}>Actualiza esta sección cuando sea necesario</h5>
 						<form id="form">
 						<div className="field ">
 							<input className="input-field" 
@@ -85,7 +86,7 @@ export const Survey = () => {
 							}}></textarea>
 
 						<div className="buttons">
-								<Link to={'/'}><button className="btn ms-3">Volver</button></Link>
+								<Link to={'/login'}><button className="btn ms-3">Volver</button></Link>
 								
 								<input className="btn" type="reset" value="Reset" onClick={() => window.location.reload()} />
 								
