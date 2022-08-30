@@ -11,13 +11,9 @@ import { Home } from "./pages/home";
 import { Demo } from "./pages/demo";
 import { Single } from "./pages/single";
 import { Contacto } from "./component/contacto";
-
-
-
-
-
 import { Login } from "./pages/login";
 import { Signup } from "./pages/signup";
+import { Survey } from "./pages/survey";
 
 //create your first component
 const Layout = () => {
@@ -39,6 +35,7 @@ const Layout = () => {
                         <Route element={<h1>Not found!</h1>} />
                         <Route element={<Login />} path="/login" />
                         <Route element={<Signup />} path="/signup" />                   
+                        <Route element={<Survey />} path="/survey" />                   
                     </Routes>                 
                 </ScrollToTop>
             </BrowserRouter>

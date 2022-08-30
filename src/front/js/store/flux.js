@@ -3,9 +3,26 @@ const getState = ({ getStore, getActions, setStore }) => {
 		store: {
 			message: null,
 			user: {
+				"id": "",
 				"email": "",
+				"username":"",
+				"lastname":"",
+				"dni":"",
+				"address":"",
+				"phone":"",
+				"objective":"",
+				"peso":"",
+				"payment":"",
+				"date":"",		
 				"token": ""
 				},
+			survey: {
+				"id": "",
+				"email":"",
+				"objetivo":"",
+				"medical":"",
+				"Info":""
+			},
 			logged: false,
 			demo: [
 				{
@@ -26,16 +43,26 @@ const getState = ({ getStore, getActions, setStore }) => {
 				getActions().changeColor(0, "green");
 			},
 
+			syncTokenFromSessionStore: () => {
+				const token = sessionStorage.getItem("token");
+				if(token && token !="" && token !=undefined) {
+					setStore({user: token});
+				}
+			},			
+
 			cleanStore: () => {
 				//Eliminamos token de la store y de la sesión del navegador
 				console.log("Limpiando store...");
 				setStore({user: {"email": "","token": ""}});
+				sessionStorage.removeItem("email");
 				sessionStorage.removeItem("token");
 				setStore({logged: false});
 			},
 
-			signUp:  async (email, password) => {
-
+			signUp:  async (email, password, name, lastName, dni, address, phone) => {
+				
+				setStore({dni: dni})
+				
 				const opts = {
 					method: 'POST',
 					headers: {
@@ -43,11 +70,18 @@ const getState = ({ getStore, getActions, setStore }) => {
 					},
 					body: JSON.stringify({
 					  "email": email,
-					  "password": password
+					  "password": password,
+					  "name": name,
+					  "lastName": lastName,
+					  "dni": dni,
+					  "address": address,
+					  "phone": phone
 					})
 				  };
 
-				await fetch("https://3001-4geeksacade-reactflaskh-egdm5hczo2f.ws-eu62.gitpod.io/api/signup", opts)
+				//para usar la variable de entorno que tiene la URL del backend, tenemos que poner:
+				//fetch(process.env.BACKEND_URL + "/api/hello")
+				await fetch("https://3001-4geeksacade-reactflaskh-egdm5hczo2f.ws-eu63.gitpod.io/api/signup", opts)
 
 				.then ((res) => {
 					if (!res.ok) {
@@ -63,8 +97,44 @@ const getState = ({ getStore, getActions, setStore }) => {
 				})
 			},
 
-			login: async (email, password) => {
 
+			survey: async (objective, medical, message) => {
+
+				const store = getStore();
+
+				const opts = {
+					method: 'POST',
+					headers: {
+						"Content-Type": "application/json"
+					},
+					body: JSON.stringify({
+						"id": store.user.id,
+						"email":store.user.email,
+						"objective": objective,
+						"medical": medical,
+						"message": message
+					})
+				};
+
+			await fetch('https://3001-4geeksacade-reactflaskh-egdm5hczo2f.ws-eu63.gitpod.io/api/survey', opts)
+			.then((res) => {
+				if(!res.ok) {
+					console.log("Error en el fecth del survey");
+					return false;
+				}
+				return res.json();
+			})
+			.then((data) => {
+				console.log("Encuesta registrada");
+			})
+			.catch((error) => {
+				console.error("Ha ocurrido un error al registrar la encuesta" + error);
+			})
+
+			},
+
+			login: async (email, password) => {
+				
 				const opts = {
 					method: 'POST',
 					headers: {
@@ -76,21 +146,22 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 				  };
 
-				await fetch('https://3001-4geeksacade-reactflaskh-egdm5hczo2f.ws-eu62.gitpod.io/api/login', opts)
-				.then((res)=> {
+				await fetch('https://3001-4geeksacade-reactflaskh-egdm5hczo2f.ws-eu63.gitpod.io/api/login', opts)
+				.then((res) => {
 						if (!res.ok) {
-							alert("Credenciales incorrectas, mensaje del frontend");
+							alert("Credenciales incorrectas");
 							return false;
 						}
 						return res.json();
 					})
 				.then((data) => {
-					console.log("this came from the backend", data)
-					const store = getStore();
-					setStore({user: data})
+					//Añadimos la priopiedad token a data.user y después el objeto es seteado en la store
+					//y se compone de todo el serialize + token
+					data.user.token = data.token
+					setStore({
+						user: data.user,
+					})
 					setStore({logged: true})
-					// //almacenamos el token en la sesión del navegador
-					sessionStorage.setItem("token", data.token)
 					return true;
 				})
 				
