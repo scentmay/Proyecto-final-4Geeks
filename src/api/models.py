@@ -72,7 +72,17 @@ class Categoria(db.Model):
 
 class Survey(db.Model):
     id = db.Column(db.Integer, primary_key=True)
+    cliente_id = db.Column(db.Integer, db.ForeignKey('cliente.id'))
     email = db.Column(db.String(120), unique=True, nullable=False)
     objective = db.Column(db.String(120), unique=False, nullable=False)    
     medical = db.Column(db.String(120), unique=False, nullable=False)    
     message = db.Column(db.String(120), unique=False, nullable=False)    
+
+    def serialize(self):
+        return {
+            "cliente_id": self.cliente_id,
+            "email": self.email,
+            "objective": self.objective,
+            "medical": self.medical,
+            "message": self.message
+        }

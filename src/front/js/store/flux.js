@@ -2,27 +2,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 			message: null,
-			user: {
-				"id": "",
-				"email": "",
-				"username":"",
-				"lastname":"",
-				"dni":"",
-				"address":"",
-				"phone":"",
-				"objective":"",
-				"peso":"",
-				"payment":"",
-				"date":"",		
-				"token": ""
-				},
-			survey: {
-				"id": "",
-				"email":"",
-				"objetivo":"",
-				"medical":"",
-				"Info":""
-			},
+			user: {},
+			survey: {},
 			logged: false,
 			demo: [
 				{
@@ -53,9 +34,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			cleanStore: () => {
 				//Eliminamos token de la store y de la sesión del navegador
 				console.log("Limpiando store...");
-				setStore({user: {"email": "","token": ""}});
-				sessionStorage.removeItem("email");
-				sessionStorage.removeItem("token");
+				setStore({user: {}});
+				setStore({survey: {}});
 				setStore({logged: false});
 			},
 
@@ -130,6 +110,24 @@ const getState = ({ getStore, getActions, setStore }) => {
 			.catch((error) => {
 				console.error("Ha ocurrido un error al registrar la encuesta" + error);
 			})
+
+			},
+
+			surveyData: async () => {
+
+				const store = getStore();
+
+				const opts = {
+					method: 'GET',
+					headers: {
+						"Content-Type": "application/json",
+						"Authorization": "Bearer " + store.user.token		
+					}
+				}
+				fetch (process.env.BACKEND_URL  + "/api/survey", opts)
+				.then(resp => resp.json())
+				.then(data => setStore({survey: data}))
+				.catch(error => console.error ("Ha habido un error " + error))
 
 			},
 

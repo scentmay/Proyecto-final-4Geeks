@@ -56,20 +56,25 @@ def register():
     return jsonify("Usuario creado, mensaje del backend"), 200
 
 #registro de encuesta
-@api.route("/survey", methods =["POST"])
+@api.route("/survey", methods =["POST", "GET"])
 def survey():
 
-    body = request.get_json()
+    if request.method == 'POST':
+        body = request.get_json()
 
-    if body is None:
-        raise APIException("You need to specify the request body as a json object(survey info)", status_code=400)
+        if body is None:
+            raise APIException("You need to specify the request body as a json object(survey info)", status_code=400)
 
-    newSurvey = Survey(id = body['id'], email = body['email'], objective = body['objective'], medical = body['medical'], message = body['message'])
+        newSurvey = Survey(id = body['id'], email = body['email'], objective = body['objective'], medical = body['medical'], message = body['message'])
 
-    db.session.add(newSurvey)
-    db.session.commit()
+        db.session.add(newSurvey)
+        db.session.commit()
 
-    return jsonify("Encuesta creada, mensaje del backend"), 200
+        return jsonify("Encuesta creada, mensaje del backend"), 200
+
+    if request.method == 'GET':
+        pass
+        # montar método get de una fila
 
 # login de usuario
 @api.route("/login", methods =["POST"])
