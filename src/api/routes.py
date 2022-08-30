@@ -6,6 +6,7 @@ from api.models import db, User, Cliente, Survey
 from api.utils import generate_sitemap, APIException
 from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity
 import datetime
+import stripe
 
 api = Blueprint('api', __name__)
 
@@ -102,4 +103,38 @@ def login():
         "token": access_token,
     })
 
-  
+@api.route('/stripe_webhooks', methods=['POST'])
+def webhook():
+    event = None
+    payload = request.data
+    sig_header = request.headers['STRIPE_SIGNATURE']
+    endpoint_secret = "whsec_66ZDul5BYF6TNDfQvK3AVAaHN66ZavUM"
+
+    try:
+        event = stripe.Webhook.construct_event(
+            payload, sig_header, endpoint_secret
+        )
+    except ValueError as e:
+        # Invalid payload
+        raise e
+    except stripe.error.SignatureVerificationError as e:
+        # Invalid signature
+        raise e
+
+    # Handle the event
+    if event['type'] == 'charge.succeeded':
+      charge = event['data']['object']
+      ejemplo = charge.billing_details.email
+      user = Cliente.query.filter_by(email = ejemplo).first()
+      Cliente.corrienteDePago = ejemplo
+      db.session.add(Cliente.corrienteDePago)      
+      db.session.commit()
+      print(Cliente.corrienteDePago)
+
+
+
+    # ... handle other event types
+    else:
+      print('Unhandled event type {}'.format(event['type']))
+
+    return jsonify(success=True)
