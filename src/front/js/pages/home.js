@@ -9,6 +9,7 @@ import { Navbar } from "../component/navbar";
 import { Footer } from "../component/footer";
 import { Contacto } from "../component/contacto";
 
+
 export const Home = () => {
 	const { store, actions } = useContext(Context);
 

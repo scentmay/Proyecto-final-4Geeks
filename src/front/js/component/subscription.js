@@ -19,13 +19,13 @@ export const Suscription = () => {
                     </div>
 
                     <div className="precio-col-subscripcion">
-                        <a>Suscribirme</a>
+                        <a href="https://buy.stripe.com/test_fZe6pJ9hndY8c6s3cc">Suscribirme</a>
                     </div>
                 </div>
 
                 <div className="precio-col">
                     <div className="precio-col-header">
-                        <h3>Contrato por 30€/mes</h3>
+                        <h3>Contrato por 20€/mes</h3>
                         <p>para intermedios</p>
                     </div>
 
@@ -36,7 +36,7 @@ export const Suscription = () => {
                     </div>
 
                     <div className="precio-col-subscripcion">
-                        <a>Suscribirme</a>
+                        <a href="https://buy.stripe.com/test_fZe6pJ9hndY8c6s3cc">Suscribirme</a>
                     </div>
                 </div>
 
@@ -53,7 +53,7 @@ export const Suscription = () => {
                     </div>
 
                     <div className="precio-col-subscripcion">
-                        <a href="https://pro.empresiona.com">Suscribirme</a>
+                        <a href="https://buy.stripe.com/test_fZe6pJ9hndY8c6s3cc">Suscribirme</a>
                     </div>
                 </div>
 
@@ -70,7 +70,7 @@ export const Suscription = () => {
                     </div>
 
                     <div className="precio-col-subscripcion">
-                        <a>Suscribirme</a>
+                        <a href="https://buy.stripe.com/test_fZe6pJ9hndY8c6s3cc">Suscribirme</a>
                     </div>
                 </div>
 
