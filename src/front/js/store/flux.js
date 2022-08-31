@@ -123,10 +123,36 @@ const getState = ({ getStore, getActions, setStore }) => {
 						"Content-Type": "application/json",
 						"Authorization": "Bearer " + store.user.token		
 					}
-				}
+				};
 				fetch (process.env.BACKEND_URL  + "/api/survey/" + store.user.id, opts)
 				.then(resp => resp.json())
 				.then(data => setStore({survey: data.survey}))
+				.catch(error => console.error ("Ha habido un error al recuperar los datos de la encuesta " + error))
+
+			},
+
+			surveyUpdate: async (objective, medical, message) => {
+
+				//console.log("Entrando en surveyUpdate...")
+				const store = getStore();
+
+				const opts = {
+					method: 'PUT',
+					headers: {
+						"Content-Type": "application/json",
+						"Authorization": "Bearer " + store.user.token		
+					},
+					body: JSON.stringify({
+						"id": store.user.id,
+						"email":store.user.email,
+						"objective": objective,
+						"medical": medical,
+						"message": message
+					})
+				}
+				fetch (process.env.BACKEND_URL  + "/api/survey/" + store.user.id, opts)
+				.then(resp => resp.json())
+				.then(data => console.log(data))
 				.catch(error => console.error ("Ha habido un error al recuperar los datos de la encuesta " + error))
 
 			},

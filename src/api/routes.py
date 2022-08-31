@@ -73,16 +73,41 @@ def survey():
 
 
 #Recuperar encuesta
-@api.route("/survey/<int:id>", methods =["GET"])
+@api.route("/survey/<int:id>", methods =["GET", "PUT"])
 def info_survey(id):
-    user_survey = Survey.query.filter_by(cliente_id = id).first()
     
-    if not user_survey:
-        raise APIException("Sin resultados de encuesta para este usuario", status_code=40)
-       
-    return jsonify({
-        "survey": user_survey.serialize(), 
-          })
+    if request.method == 'GET':
+        #Recuperamos el usuario
+        user_survey = Survey.query.filter_by(cliente_id = id).first()
+        
+        if not user_survey:
+            raise APIException("Sin resultados de encuesta para este usuario", status_code=40)
+        #devolvemos el usuario con su metodo serialize
+        return jsonify({
+            "survey": user_survey.serialize(), 
+        })
+    
+    if request.method == 'PUT':
+
+        body = request.get_json()
+
+        #Recuperamos el usuario
+        user_survey = Survey.query.filter_by(cliente_id = id).first()
+
+        #modificamos el campo correspondiente SOLO si viene con datos en el body, si viene vacío se ignora
+        if body["objective"]:
+            user_survey.objective = body["objective"]
+
+        if body["medical"]:
+            user_survey.medical = body["medical"]
+
+        if body["message"]:
+            user_survey.message = body["message"]
+
+        #hacemos commit a la bbdd
+        db.session.commit()
+
+        return jsonify("Registro modificado"), 200
     
 # login de usuario
 @api.route("/login", methods =["POST"])

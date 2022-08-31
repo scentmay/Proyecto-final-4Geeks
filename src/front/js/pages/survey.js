@@ -32,7 +32,12 @@ export const Survey = () => {
 			handleShow();
 			return;
 		}
-		console.log("hay datos, hay que actualizar info")
+		//console.log("hay datos, hay que actualizar info")
+		actions.surveyUpdate(objective, medical, message);
+		setObjective("");
+		setMedical("");
+		setMessage("");
+		handleShow();
 	}
 	
 	const redirigir = () => {
