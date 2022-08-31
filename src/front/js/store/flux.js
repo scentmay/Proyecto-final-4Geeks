@@ -61,7 +61,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				//para usar la variable de entorno que tiene la URL del backend, tenemos que poner:
 				//fetch(process.env.BACKEND_URL + "/api/hello")
-				await fetch("https://3001-4geeksacade-reactflaskh-egdm5hczo2f.ws-eu63.gitpod.io/api/signup", opts)
+				await fetch("process.env.BACKEND_URL"  + "/api/signup/", opts)
 
 				.then ((res) => {
 					if (!res.ok) {

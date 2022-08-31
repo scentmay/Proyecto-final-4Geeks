@@ -28,8 +28,7 @@ export const Signup = () => {
 		setAddress("");
 		setPhone("");
 		alert("Usuario registrado")
-		//navigate("/login");
-		//navigate("/survey");
+		navigate("/login");
 	}
 
 	return (
@@ -47,7 +46,6 @@ export const Signup = () => {
 							name="logEmail" type="email" 
 							value={email} 
 							onChange={(e) => {setEmail(e.target.value)}}
-							// autoFocus
 							/>
 						</div>
 
@@ -130,12 +128,11 @@ export const Signup = () => {
 						</div>
 						
 						<div className="buttons">
-								<Link to={'/'}><button className="btn ms-3">Volver</button></Link>
+								<Link to={'/login'}><button className="btn ms-3">Volver</button></Link>
 								
 								<input className="btn" type="reset" value="Reset" onClick={() => window.location.reload()} />
 								
 								<button className="btn" onClick={handleClick}>REGISTRO</button>
-								{/* <a href="#" className="btn-link">Forgot your password?</a> */}
 						</div>
 					</form>
 				</div>

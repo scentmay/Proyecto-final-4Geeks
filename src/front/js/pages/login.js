@@ -77,9 +77,9 @@ export const Login = () => {
                 <div className="buttons">
                     <Link to={'/'}><button className="btn ms-3">Volver</button></Link>
                     
-                    <input className="btn" type="reset" value="Reset" onClick={() => {setEmail("");setPassword("")}} />
-                    
                     <button className="btn" onClick={handleClick}>LOGIN</button>
+                    
+                    <Link to={'/signup'}><button className="btn ms-3">Registro</button></Link>
                     
                     <a href="#" className="btn-link">Forgot your password?</a>
                 </div>

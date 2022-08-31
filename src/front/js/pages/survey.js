@@ -18,9 +18,8 @@ export const Survey = () => {
 	let navigate = useNavigate();
 	
 	const handleShow = () => setShow(true);
-	const handleClose = () => {
-		setShow(false);
-	}
+	const handleClose = () => {setShow(false);}
+
 	const handleClick = (e) => {
 		e.preventDefault();
 		if (Object.entries(survey_data).length == 0) {
@@ -62,7 +61,7 @@ export const Survey = () => {
 					<Modal.Title>Cambios registrados correctamente</Modal.Title>
 				</Modal.Header>
 
-				<Modal.Body>pulse aceptar para continuar</Modal.Body>
+				<Modal.Body className="d-flex justify-content-center fs-3">pulse aceptar para continuar</Modal.Body>
 
 				<Modal.Footer>
 					<button className="btn" onClick={handleClose}>Aceptar</button>
@@ -71,8 +70,6 @@ export const Survey = () => {
 			{/* Fin modal */}
 			
 			{
-
-			 
 				(store.user.token && store.user.token != "" && store.user.token != undefined)?
 
 				(	<div className="card">
