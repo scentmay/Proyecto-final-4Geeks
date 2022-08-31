@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 
-export const Footer = () => (
-	<footer className="footer mt-auto py-3 text-center">
+export const Footer = () => {
+    return(
+        <>
+        <footer className="footer mt-auto py-3 text-center">
 		<div className="footer-dark">
         <footer>
             <div className="container-fluid">
@@ -33,5 +35,7 @@ export const Footer = () => (
         </footer>
     </div>
 	
-	</footer>
-);
+	    </footer>
+        </>
+    );
+}

@@ -49,7 +49,7 @@ export const Login = () => {
           :
             // Si NO está logado
            (
-      	    <div className="card">
+      	    <div className="card" style={{height: "295px"}}>
 			    	<h4 className="title">Login</h4>
 				    	<form id="form">
                   <div className="field ">
@@ -74,13 +74,14 @@ export const Login = () => {
                   />
                 </div>
 
-                <div className="buttons">
+                <div className="buttons d-flex mt-2">
                     <Link to={'/'}><button className="btn ms-3">Volver</button></Link>
                     
                     <button className="btn" onClick={handleClick}>LOGIN</button>
                     
                     <Link to={'/signup'}><button className="btn ms-3">Registro</button></Link>
-                    
+                </div>
+                <div>    
                     <a href="#" className="btn-link">Forgot your password?</a>
                 </div>
 					    </form>

@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom';
 import { Context } from "../store/appContext";
 import '../../styles/signup.css'
 import fondo from '../../img/signup_img.jpg'
-import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
 export const Survey = () => {
