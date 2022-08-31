@@ -15,21 +15,24 @@ export const Survey = () => {
 	const [show, setShow] = useState(false);
 
 	const survey_data = store.survey
-
+	let navigate = useNavigate();
+	
+	const handleShow = () => setShow(true);
 	const handleClose = () => {
 		setShow(false);
 	}
-	const handleShow = () => setShow(true);
-	
-	let navigate = useNavigate();
-
 	const handleClick = (e) => {
 		e.preventDefault();
-		actions.survey(objective, medical, message);
-		setObjective("");
-		setMedical("");
-		setMessage("");
-		handleShow();
+		if (Object.entries(survey_data).length === 0) {
+			console.log("sin datos, se colocan por primera vez")
+			actions.survey(objective, medical, message);
+			setObjective("");
+			setMedical("");
+			setMessage("");
+			handleShow();
+			return;
+		}
+		console.log("hay datos, hay que actualizar info")
 	}
 	
 	const redirigir = () => {
@@ -41,7 +44,7 @@ export const Survey = () => {
 
 	useEffect (() => {
 		actions.surveyData();
-	},[]);
+	},[objective]);
 
 
 	return (
@@ -92,7 +95,6 @@ export const Survey = () => {
 						<div className="field ">
 							<input className="input-field" 
 							placeholder="¿Alguna lesión o prescripción médica?" list="medical" 
-							name="browser" 
 							value={medical} 
 							onChange={(e) => {
 								setMedical(e.target.value)
@@ -103,6 +105,7 @@ export const Survey = () => {
 								<option value="Piernas" />
 								<option value="Brazos" />
 								<option value="Zona abdominal" />
+								<option value="Ninguna" />
 							</datalist>
 						</div>
 

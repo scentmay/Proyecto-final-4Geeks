@@ -64,7 +64,7 @@ def survey():
     if body is None:
         raise APIException("You need to specify the request body as a json object(survey info)", status_code=400)
 
-    newSurvey = Survey(id = body['id'], email = body['email'], objective = body['objective'], medical = body['medical'], message = body['message'])
+    newSurvey = Survey(cliente_id = body['id'], email = body['email'], objective = body['objective'], medical = body['medical'], message = body['message'])
 
     db.session.add(newSurvey)
     db.session.commit()
@@ -75,16 +75,15 @@ def survey():
 #Recuperar encuesta
 @api.route("/survey/<int:id>", methods =["GET"])
 def info_survey(id):
-    user_survey = Survey.query.filter_by(id = id).first()
+    user_survey = Survey.query.filter_by(cliente_id = id).first()
     
     if not user_survey:
-        return jsonify("Sin resultados de encuesta para este usuario"), 401
-
+        raise APIException("Sin resultados de encuesta para este usuario", status_code=40)
+       
     return jsonify({
         "survey": user_survey.serialize(), 
           })
     
-
 # login de usuario
 @api.route("/login", methods =["POST"])
 def login():
