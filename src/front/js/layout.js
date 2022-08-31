@@ -6,7 +6,7 @@ import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
 import { Suscription } from "./component/subscription";
 import { Ubicacion } from "./component/ubicacion";
-import { Administrador } from "./component/admindashboard";
+import { Usuario } from "./component/userdashboard";
 import { Home } from "./pages/home";
 import { Demo } from "./pages/demo";
 import { Single } from "./pages/single";
@@ -29,7 +29,7 @@ const Layout = () => {
                         <Route element={<Home />} path="/" exact />   
                         <Route element={<Suscription />} path="/suscripcion" />
                         <Route element={<Contacto />} path="/contacto" />
-                        <Route element={<Administrador />} path="/login/admindashboard" />
+                        <Route element={<Usuario />} path="/usuariodashboard" />
                         <Route element={<Demo />} path="/demo" />
                         <Route element={<Single />} path="/single/:theid" />
                         <Route element={<h1>Not found!</h1>} />
