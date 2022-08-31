@@ -18,7 +18,6 @@ export const Survey = () => {
 
 	const handleClose = () => {
 		setShow(false);
-		//el siguiente paso es ir al dashboard del usuario registrado
 	}
 	const handleShow = () => setShow(true);
 	
@@ -52,10 +51,10 @@ export const Survey = () => {
 			{/* Modal */}
 			<Modal show={show} onHide={handleClose}>
 				<Modal.Header closeButton>
-					<Modal.Title>Modal heading</Modal.Title>
+					<Modal.Title>Cambios registrados correctamente</Modal.Title>
 				</Modal.Header>
 
-				<Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
+				<Modal.Body>pulse aceptar para continuar</Modal.Body>
 
 				<Modal.Footer>
 					<button className="btn" onClick={handleClose}>Aceptar</button>
@@ -110,18 +109,18 @@ export const Survey = () => {
 						<textarea className="input-field mt-3 border border-warning p-3" placeholder="Aquí puedes detallar cualquier aspecto relevante sobre las preguntas" 
 						name="message" 
 						id="message" 
-						rows="4" 
+						rows="2" 
 						cols="30"
 						value={message}
 						onChange={(e) => {
 								setMessage(e.target.value)
 							}}></textarea>
 
-						<div className="actualData" style={{color: "white"}}>
-							<h6>Información actual</h6>
-							<p>Objetivos: {survey_data.objetivo}</p>
-							<p>Atención en: {medical}</p>
-							<p>Información adicional: {message}</p>
+						<div className="actualData mt-1" style={{color: "white"}}>
+							<h6><strong><u>Información actual</u></strong></h6>
+							<p><u>Objetivo:</u> <i>{survey_data.objective}</i></p>
+							<p><u>Atención en:</u> <i>{survey_data.medical}</i></p>
+							<p><u>Información adicional:</u> <i>{survey_data.message}</i></p>
 						</div>
 
 						<div className="buttons">

@@ -124,10 +124,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 						"Authorization": "Bearer " + store.user.token		
 					}
 				}
-				fetch (process.env.BACKEND_URL  + "/api/survey", opts)
+				fetch (process.env.BACKEND_URL  + "/api/survey/" + store.user.id, opts)
 				.then(resp => resp.json())
-				.then(data => setStore({survey: data}))
-				.catch(error => console.error ("Ha habido un error " + error))
+				.then(data => setStore({survey: data.survey}))
+				.catch(error => console.error ("Ha habido un error al recuperar los datos de la encuesta " + error))
 
 			},
 
