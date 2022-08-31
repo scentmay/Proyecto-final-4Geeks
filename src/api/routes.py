@@ -2,7 +2,7 @@
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
 from flask import Flask, request, jsonify, url_for, Blueprint
-from api.models import db, User, Cliente, Survey
+from api.models import db, User, Cliente, Survey, Pago
 from api.utils import generate_sitemap, APIException
 from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity
 import datetime
@@ -125,11 +125,12 @@ def webhook():
     if event['type'] == 'charge.succeeded':
       charge = event['data']['object']
       ejemplo = charge.billing_details.email
-      user = Cliente.query.filter_by(email = ejemplo).first()
-      Cliente.corrienteDePago = ejemplo
-      db.session.add(Cliente.corrienteDePago)      
+      cliente = Cliente.query.filter_by(email = ejemplo).first()
+      pago = Pago(cliente_id = cliente.id, monto = charge.amount / 100 )
+      cliente.corrienteDePago = True
+      db.session.add(pago)
       db.session.commit()
-      print(Cliente.corrienteDePago)
+    #   print(nuevo_pago)
 
 
 
