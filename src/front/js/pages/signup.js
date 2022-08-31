@@ -27,7 +27,7 @@ export const Signup = () => {
 		setDni("");
 		setAddress("");
 		setPhone("");
-		alert("Usuario registrado")
+		//alert("Usuario registrado")
 		navigate("/login");
 	}
 

@@ -41,8 +41,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			signUp:  async (email, password, name, lastName, dni, address, phone) => {
 				
-				setStore({dni: dni})
-				
 				const opts = {
 					method: 'POST',
 					headers: {
@@ -61,11 +59,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				//para usar la variable de entorno que tiene la URL del backend, tenemos que poner:
 				//fetch(process.env.BACKEND_URL + "/api/hello")
-				await fetch("process.env.BACKEND_URL"  + "/api/signup/", opts)
+				await fetch(process.env.BACKEND_URL  + "/api/signup", opts)
 
 				.then ((res) => {
 					if (!res.ok) {
-						console.log("Ha ocurrido un error en el primer paso del fetch");
+						console.log("Ha ocurrido un error en el primer paso del fetch ");
 					}
 					return res.json();
 				})
