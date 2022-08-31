@@ -66,7 +66,7 @@ export const Login = () => {
                 <div className="field ">
                   <input className="input-field" 
                   placeholder="password"
-                  type="text"
+                  type="password"
                   value={password}
                   //onKeyPress={(e) => {if(e.key === 'Enter') handleClick()}} // detectar pulsación "Enter"
                   onChange={(e) => {

@@ -23,7 +23,7 @@ export const Survey = () => {
 	}
 	const handleClick = (e) => {
 		e.preventDefault();
-		if (Object.entries(survey_data).length === 0) {
+		if (Object.entries(survey_data).length == 0) {
 			console.log("sin datos, se colocan por primera vez")
 			actions.survey(objective, medical, message);
 			setObjective("");
@@ -49,7 +49,7 @@ export const Survey = () => {
 
 	useEffect (() => {
 		actions.surveyData();
-	},[objective]);
+	},[objective, medical, message]);
 
 
 	return (
@@ -126,9 +126,30 @@ export const Survey = () => {
 
 						<div className="actualData mt-1" style={{color: "white"}}>
 							<h6><strong><u>Información actual</u></strong></h6>
-							<p><u>Objetivo:</u> <i>{survey_data.objective}</i></p>
-							<p><u>Atención en:</u> <i>{survey_data.medical}</i></p>
-							<p><u>Información adicional:</u> <i>{survey_data.message}</i></p>
+							<p><u>Objetivo:</u>  <i>
+							{
+							 (survey_data != "" && survey_data != undefined) ? 
+							 (store.survey.objective)
+							 :
+							 ("Pendiente de información")
+							}
+							</i></p>
+							<p><u>Atención en:</u>  <i>
+							{
+							 (survey_data != "" && survey_data != undefined) ? 
+							 (store.survey.medical)
+							 :
+							 ("Pendiente de información")
+							}	
+							</i></p>
+							<p><u>Información adicional:</u>  <i>
+							{
+							 (survey_data != "" && survey_data != undefined) ? 
+							 (store.survey.message)
+							 :
+							 ("Pendiente de información")
+							}	
+							</i></p>
 						</div>
 
 						<div className="buttons">

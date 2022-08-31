@@ -81,7 +81,7 @@ def info_survey(id):
         user_survey = Survey.query.filter_by(cliente_id = id).first()
         
         if not user_survey:
-            raise APIException("Sin resultados de encuesta para este usuario", status_code=40)
+            raise APIException("Sin resultados de encuesta para este usuario", status_code=400)
         #devolvemos el usuario con su metodo serialize
         return jsonify({
             "survey": user_survey.serialize(), 
