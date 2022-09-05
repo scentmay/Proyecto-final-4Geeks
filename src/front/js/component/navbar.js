@@ -2,6 +2,7 @@ import React, { useContext }from "react";
 import { Link } from "react-router-dom";
 import Navbar from 'react-bootstrap/Navbar';
 import { Context } from "../store/appContext";
+import "../../img/logo.png"
 
 export const Header = () => {
 
@@ -14,7 +15,7 @@ export const Header = () => {
     <>
       <Navbar bg="dark" variant="dark">
           <Navbar.Brand href="/">
-            S&F FIT
+		  <img id="logo" src="logo.png" />
           </Navbar.Brand>
 		  <div className="ms-auto">
                     {

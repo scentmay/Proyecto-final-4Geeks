@@ -25,6 +25,7 @@ export const Login = () => {
     actions.login(email, password);
     setEmail("");
     setPassword("");
+    navigate("/usuario")
   };
 
   return (
