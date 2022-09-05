@@ -53,7 +53,8 @@ class Entreno(db.Model):
 
 class EntrenoContiene(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    id_ejercicio = db.Column(db.Integer, primary_key=True)
+    id_ejercicio = db.Column(db.Integer, db.ForeignKey('ejercicio.id'))
+    id_entreno = db.Column(db.Integer, db.ForeignKey('entreno.id'))
     series = db.Column(db.Integer, unique=False, nullable=False)
     repeticiones = db.Column(db.Integer, unique=False, nullable=False)
     peso = db.Column(db.Integer, unique=False, nullable=False)
@@ -86,3 +87,10 @@ class Survey(db.Model):
             "medical": self.medical,
             "message": self.message
         }
+
+class Objectives(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    cliente_id = db.Column(db.Integer, db.ForeignKey('cliente.id'))
+    objective = db.Column(db.String(120), unique=True, nullable=False)
+
+

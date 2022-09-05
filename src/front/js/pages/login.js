@@ -41,6 +41,7 @@ export const Login = () => {
                   <h4 className="title">Login</h4>
                   <p style={{color: "white"}}>Bienvenido a su zona privada, no olvide acceder a la encuesta para rellenar sus datos</p>
                   <Link to={'/login'} className="btn btn-primary btn-lg mt-3 ms-3" onClick={logOut}>Log out</Link>
+                  <Link to={'/admin'} className="btn btn-primary btn-lg mt-3 ms-3">ADMIN</Link>
                   <Link to={'/survey'} className="btn btn-primary btn-lg mt-3 ms-3">Realizar encuesta</Link>
                 </div>
               </div>
@@ -57,7 +58,7 @@ export const Login = () => {
                   placeholder="email"
                   type="text"
                   value={email}
-                  //onKeyPress={(e) => {if(e.key === 'Enter') handleClick()}} // detectar pulsación "Enter"
+                  //onKeyDown={(e) => {if(e.key == 'Enter') handleClick()}} // detectar pulsación "Enter"
                   onChange={(e) => {
                     setEmail(e.target.value)}}
                   />
@@ -73,18 +74,18 @@ export const Login = () => {
                     setPassword(e.target.value)}}
                   />
                 </div>
+					    </form>
 
                 <div className="buttons d-flex mt-2">
                     <Link to={'/'}><button className="btn ms-3">Volver</button></Link>
-                    
                     <button className="btn" onClick={handleClick}>LOGIN</button>
-                    
                     <Link to={'/signup'}><button className="btn ms-3">Registro</button></Link>
+                    
+
                 </div>
                 <div>    
                     <a href="#" className="btn-link">Forgot your password?</a>
                 </div>
-					    </form>
             </div>
            )
         }

@@ -4,6 +4,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			message: null,
 			user: {},
 			survey: {},
+			query:{},
 			logged: false,
 			demo: [
 				{
@@ -83,7 +84,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const opts = {
 					method: 'POST',
 					headers: {
-						"Content-Type": "application/json"
+						"Content-Type": "application/json",
+						"Authorization": "Bearer " + store.user.token
 					},
 					body: JSON.stringify({
 						"id": store.user.id,
@@ -104,6 +106,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			})
 			.then((data) => {
 				console.log("Encuesta registrada");
+				setStore({survey: data.survey});
 			})
 			.catch((error) => {
 				console.error("Ha ocurrido un error al registrar la encuesta" + error);
@@ -205,6 +208,25 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.log("Error loading message from backend", error)
 				}
 			},
+
+			query: () =>{
+
+				const store = getStore();
+
+				const opts = {
+					method: 'GET',
+					headers: {
+						"Content-Type": "application/json",
+						"Authorization": "Bearer " + store.user.token		
+					},
+				}
+
+				fetch (process.env.BACKEND_URL, opts + "/api/query")
+				.then(resp => resp.json())
+				.then(data => setStore({query: data}))
+				.catch(error => console.error ("Ha habido un error " + error))
+			},
+
 			changeColor: (index, color) => {
 				//get the store
 				const store = getStore();

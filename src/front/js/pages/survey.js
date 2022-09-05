@@ -21,7 +21,7 @@ export const Survey = () => {
 
 	const handleClick = (e) => {
 		e.preventDefault();
-		if (Object.entries(survey_data).length == 0) {
+		if (survey_data == undefined) {
 			console.log("sin datos, se colocan por primera vez")
 			actions.survey(objective, medical, message);
 			setObjective("");

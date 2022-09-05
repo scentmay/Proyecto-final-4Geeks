@@ -9,9 +9,17 @@ import Navbar from 'react-bootstrap/Navbar';
 
 export const Admin = () => {
 
+  const { store, actions } = useContext(Context);
+
+  const handleClick = () =>{
+    actions.query();
+  }
+
     return(
         <div>
-          esta es la pag de admin  
+          esta es la pag de admin 
+
+          <button className="btn" onClick={handleClick}>LOGIN</button>
         </div>
     );
 }

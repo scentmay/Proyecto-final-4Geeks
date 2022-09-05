@@ -2,7 +2,7 @@
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
 from flask import Flask, request, jsonify, url_for, Blueprint
-from api.models import db, User, Cliente, Survey
+from api.models import db, User, Cliente, Survey, Objectives
 from api.utils import generate_sitemap, APIException
 from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity
 import datetime
@@ -23,7 +23,6 @@ def handle_hello():
 # resgistro de usuario
 @api.route("/signup", methods = ["POST"])
 def register():
-    print("HOLAAA")
     body = request.get_json()
 
 # Validaciones
@@ -57,6 +56,7 @@ def register():
 
 #registro de encuesta
 @api.route("/survey", methods =["POST"])
+@jwt_required()
 def survey():
 
     body = request.get_json()
@@ -74,12 +74,14 @@ def survey():
 
 #Recuperar encuesta
 @api.route("/survey/<int:id>", methods =["GET", "PUT"])
+@jwt_required()
 def info_survey(id):
     
     if request.method == 'GET':
         #Recuperamos el usuario
         user_survey = Survey.query.filter_by(cliente_id = id).first()
-        
+
+
         if not user_survey:
             raise APIException("Sin resultados de encuesta para este usuario", status_code=400)
         #devolvemos el usuario con su metodo serialize
@@ -140,4 +142,12 @@ def login():
         "token": access_token,
     })
 
-  
+@api.route('/query', methods=['GET'])
+@jwt_required()
+def queryExample():
+
+    response_body = {
+        "message": "Hello! I'm a message that came from the backend, check the network tab on the google inspector and you will see the GET request"
+    }
+
+    return jsonify(response_body), 200
