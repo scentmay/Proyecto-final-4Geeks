@@ -5,7 +5,7 @@ import "../../styles/subs.css";
 import "../../styles/footer.css";
 import { Suscription } from "../component/subscription";
 import { Ubicacion } from "../component/ubicacion";
-import { Navbar } from "../component/navbar";
+import { Header } from "../component/navbar";
 import { Footer } from "../component/footer";
 import { Contacto } from "../component/contacto";
 
@@ -17,9 +17,6 @@ export const Home = () => {
 		
 	<div className="app">
 
-		<div className="container-fluid p-0">
-			<Navbar />
-		</div>
 		<div className="container-fluid">
 			<Suscription />
 		</div>

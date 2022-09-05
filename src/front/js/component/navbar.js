@@ -1,29 +1,40 @@
-import React from "react";
+import React, { useContext }from "react";
 import { Link } from "react-router-dom";
+import Navbar from 'react-bootstrap/Navbar';
+import { Context } from "../store/appContext";
 
-export const Navbar = () => {
-	return (
-		<div className="container-fluid mx-0" id="navbarMenu">
-			
-			<div className="menu">
-				<img src="https://image.shutterstock.com/image-vector/fitness-gym-logo-design-vector-260nw-1707162607.jpg" id="logo"/>
-				<nav>
-					<ul>
-						<li><a href="">Home</a></li>
-						<li><a href="">Contacto</a></li>
-						<li><a href="">Ubicacion</a></li>
-						<li><a href="">Informacion</a></li>
-					</ul>
-				</nav>
-			</div>
-			<div className="titular">
-				<h1>Bienvenido a SyF FIT</h1>
-				<Link to="/login">
-			 		<button className="btn btn-primary">Ingrese a su perfil</button>
-		    	</Link>
-			</div>
-		</div>
-	);
+export const Header = () => {
+
+	const { store, actions } = useContext(Context);
+	const logOut = () => {
+        actions.cleanStore();
+      }
+
+  return (
+    <>
+      <Navbar bg="dark" variant="dark">
+          <Navbar.Brand href="/">
+            S&F FIT
+          </Navbar.Brand>
+		  <div className="ms-auto">
+                    {
+                        !store.user.token ?
+                            (
+                                <Link to="/login">
+                                    <button className="btn btn-primary">Login</button>
+                                </Link>
+                            )
+                            :
+                            (
+                                <Link to="/">
+                                    <button className="btn btn-primary" onClick={logOut}>Logout</button>
+                                </Link>
+                            )
+                    }
+                </div>
+      </Navbar>
+    </>
+  );
 };
 
 
