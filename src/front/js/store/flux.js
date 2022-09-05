@@ -221,10 +221,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 					},
 				}
 
-				fetch (process.env.BACKEND_URL, opts + "/api/query")
+				fetch (process.env.BACKEND_URL  + "/api/query", opts)
 				.then(resp => resp.json())
-				.then(data => setStore({query: data}))
-				.catch(error => console.error ("Ha habido un error " + error))
+				.then(data => console.log(data))
+				.catch(error => console.error ("Ha habido un error al recuperar los datos de la encuesta " + error))
 			},
 
 			changeColor: (index, color) => {
