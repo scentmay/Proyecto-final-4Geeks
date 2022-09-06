@@ -8,6 +8,7 @@ import Nav from 'react-bootstrap/Nav';
 import { Context } from "../store/appContext";
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import { EditarPerfil } from "../component/editperfil";
 
 
 
@@ -49,6 +50,7 @@ export const Usuario = () => {
                 <Nav justify variant="tabs" defaultActiveKey="/home">
                     <Nav.Item>
                         <Nav.Link href="#">Editar Perfil</Nav.Link>
+                        <EditarPerfil />
                     </Nav.Item>
                     <Nav.Item>
                         <Nav.Link eventKey="link-1">Mis registros</Nav.Link>

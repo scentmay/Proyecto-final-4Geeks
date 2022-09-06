@@ -6,7 +6,7 @@ import { Header } from "./component/navbar";
 import { Footer } from "./component/footer";
 import { Suscription } from "./component/subscription";
 import { Ubicacion } from "./component/ubicacion";
-import { Usuario } from "./component/userdashboard";
+import { Usuario } from "./pages/userdashboard";
 import { Home } from "./pages/home";
 import { Demo } from "./pages/demo";
 import { Single } from "./pages/single";

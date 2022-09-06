@@ -49,7 +49,7 @@ def register():
 
     # at this point, all data has been validated, we can proceed to inster into the bbdd
 
-    newClient = Cliente(email=body['email'], password=body['password'], userName=body['name'], lastName=body['lastName'], dni=body['dni'], direccion=body['address'], telefono=body['phone'], objetivo='Por definir', peso=85.3, corrienteDePago=True, fechaDeAlta=datetime.datetime.now())
+    newClient = Cliente(email=body['email'], password=body['password'], userName=body['name'], lastName=body['lastName'], dni=body['dni'], direccion=body['address'], telefono=body['phone'], peso=85.3, corrienteDePago=True, fechaDeAlta=datetime.datetime.now())
     
     db.session.add(newClient)
     db.session.commit()
@@ -102,6 +102,22 @@ def login():
         "user": user.serialize(), 
         "token": access_token,
     })
+
+
+
+@api.route("/edituser/<int:id>", methods=['PUT'])
+def putuser(id):
+    info_request = request.get_json()
+    user1 = Cliente.query.get(id)
+    if user1 is None:
+        raise APIException('Usuario no encontrado', status_code=404)
+    if "name" in info_request:
+        user1.name = info_request["name"]
+    db.session.commit()
+    return jsonify("User editado")
+
+
+    
 
 @api.route('/stripe_webhooks', methods=['POST'])
 def webhook():
