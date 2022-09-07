@@ -166,7 +166,6 @@ export const Survey = () => {
 								}}
 								/>
 								<button className="btn" onClick={handleClick}>ENVIAR</button>
-								{/* <button className="btn" onClick={handleQuery}>Query</button> */}
 						</div>
 						</form>
 					</div>

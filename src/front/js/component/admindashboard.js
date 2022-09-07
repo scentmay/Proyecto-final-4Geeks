@@ -6,25 +6,29 @@ export const AdminDash = (props) => {
 
   const { store, actions } = useContext(Context);
 
-  const query_data = store.query;
+  let query_data = store.query;
 
   const handleClick = (e) => {
-    // e.preventDefault();
-    var contenido = document.querySelector('#contenido');
-    actions.query();
-    contenido.innerHTML = ''; //importante empezar a pintar la tabla desde cero
-    query_data.map((item) => {
-      contenido.innerHTML += `
-      <tr>
-        <th>${item.id}</th>
-        <td>${item.userName}</td>
-        <td>${item.email}</td>
-        <td>${item.dni}</td>
-      </tr>
-      `
-    })
-  };
+    e.preventDefault();
+     actions.query();
+  }
 
+  const render = () => {
+    return query_data.length > 0  ?
+     (
+      <tbody>
+      {query_data.map((client) => {
+      return (<tr>
+        <th>{client.id}</th>
+        <td>{client.userName}</td>
+        <td>{client.email}</td>
+        <td>{client.dni}</td>
+        </tr>)}
+    )}
+      </tbody>
+    )
+    :""
+  };
 
 
   return (
@@ -41,8 +45,7 @@ export const AdminDash = (props) => {
               <th>{props.col3}</th>
             </tr>
           </thead>
-          <tbody id="contenido">
-          </tbody>
+            {render()}
         </Table>
       </div>
     </div>

@@ -19,13 +19,18 @@ export const Admin = () => {
 
   return (
     <div>
-      <div
-        className="mainContainer"
-        style={{ backgroundImage: `url(${fondo})` }}
-      >
-        <div className="form d-flex justify-content-center">
-
-        <AdminDash type="socios" col1="nombre" col2="correo" col3="dni"/>
+      <div className="mainContainer" style={{ backgroundImage: `url(${fondo})` }}>
+        <h2 style={{ color: "white"}}><u>Panel de control</u></h2>
+        <div className="form d-flex justify-content-center" style={{alignItems:"flex-start" }}>
+        
+          <div className="tarjetas m-2">
+            <AdminDash type="socios" col1="nombre" col2="correo" col3="dni"></AdminDash>
+          </div>
+          <div className="tarjetas m-2">
+            <AdminDash type="pagos a cuenta" col1="dni" col3="Corriente de pago"></AdminDash>
+          </div>
+          
+        
 
 
 
@@ -33,7 +38,7 @@ export const Admin = () => {
           store.user.token != "" &&
           store.user.token != undefined ? (
             <div>
-              <AdminDash />
+              <AdminDash type="socios" col1="nombre" col2="correo" col3="dni"/>
             </div>
           ) : (
             <div className="card">
