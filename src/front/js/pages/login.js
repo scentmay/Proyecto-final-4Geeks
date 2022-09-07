@@ -21,7 +21,7 @@ export const Login = () => {
   }
 
   const handleClick = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     actions.login(email, password);
     setEmail("");
     setPassword("");

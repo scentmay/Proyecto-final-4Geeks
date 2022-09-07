@@ -143,11 +143,12 @@ def login():
     })
 
 @api.route('/query', methods=['GET'])
-@jwt_required()
 def queryExample():
+
+    client_query = Cliente.query.all()
 
     response_body = {
         "message": "Hello! I'm a message that came from the backend, check the network tab on the google inspector and you will see the GET request"
     }
 
-    return jsonify(response_body), 200
+    return jsonify(client_query), 200

@@ -8,9 +8,10 @@ import { AdminDash } from "../component/admindashboard"
 
 export const Admin = () => {
   const { store, actions } = useContext(Context);
+  let navigate = useNavigate();
 
   const redirigir = () => {
-		// console.log("Entrando aquí...")
+		console.log("Entrando aquí...")
 		setTimeout(()=>{
 		  navigate("/login")
 		}, 5000)
@@ -23,7 +24,12 @@ export const Admin = () => {
         style={{ backgroundImage: `url(${fondo})` }}
       >
         <div className="form d-flex justify-content-center">
-          {store.user.token &&
+
+        <AdminDash type="socios" col1="nombre" col2="correo" col3="fecha alta"/>
+
+
+
+          {/* {store.user.token &&
           store.user.token != "" &&
           store.user.token != undefined ? (
             <div>
@@ -40,7 +46,7 @@ export const Admin = () => {
               </Link>
               {redirigir()}
             </div>
-          )}
+          )} */}
         </div>
       </div>
     </div>
