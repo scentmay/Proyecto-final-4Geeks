@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { Context } from "../store/appContext";
 import '../../styles/signup.css'
 import fondo from '../../img/signup_img.jpg'
+import Modal from 'react-bootstrap/Modal';
 
 export const Signup = () => {
 	const { store, actions } = useContext(Context);
@@ -14,11 +15,18 @@ export const Signup = () => {
 	const [dni, setDni] = useState ("");
 	const [address, setAddress] = useState ("");
 	const [phone, setPhone] = useState ("");
+	const [show, setShow] = useState(false);
 	let navigate = useNavigate();
+
+	const handleShow = () => setShow(true);
+	const handleClose = () => {
+		setShow(false);
+		navigate("/login");
+	}
 
 	const handleClick = (e) => {
 		e.preventDefault()
-		console.log("Entrando en handleclick...")
+		//console.log("Entrando en handleclick...")
 		actions.signUp(email, password, name, lastName, dni, address, phone);
 		setEmail("");
 		setPassword("");
@@ -28,12 +36,28 @@ export const Signup = () => {
 		setAddress("");
 		setPhone("");
 		//alert("Usuario registrado")
-		navigate("/login");
+		handleShow();
+		
 	}
 
 	return (
 		<div className="mainContainer" style={{backgroundImage: `url(${fondo})`}}>
 			<div className="form d-flex justify-content-center"> 
+
+			{/* Modal */}
+			<Modal show={show} onHide={handleClose}>
+				<Modal.Header closeButton>
+					<Modal.Title>Usuario registrado correctamente</Modal.Title>
+				</Modal.Header>
+
+				<Modal.Body className="d-flex justify-content-center fs-3">pulse aceptar para continuar</Modal.Body>
+
+				<Modal.Footer>
+					<button className="btn" onClick={handleClose}>Aceptar</button>
+				</Modal.Footer>
+			</Modal>
+			{/* Fin modal */}
+
 					<div className="card">
 					<h4 className="title">Formulario de registro</h4>
 					<form id="form">
