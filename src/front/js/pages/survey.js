@@ -45,11 +45,11 @@ export const Survey = () => {
 		}, 5000)
 	}
 
-	const handleQuery = (e) => {
-		//hay que pasar el (e) en el prevent default, si no no funciona
-		e.preventDefault();
-		actions.query();
-	}
+	// const handleQuery = (e) => {
+	// 	//hay que pasar el (e) en el prevent default, si no no funciona
+	// 	e.preventDefault();
+	// 	actions.query();
+	// }
 
 
 
@@ -166,7 +166,7 @@ export const Survey = () => {
 								}}
 								/>
 								<button className="btn" onClick={handleClick}>ENVIAR</button>
-								<button className="btn" onClick={handleQuery}>Query</button>
+								{/* <button className="btn" onClick={handleQuery}>Query</button> */}
 						</div>
 						</form>
 					</div>
