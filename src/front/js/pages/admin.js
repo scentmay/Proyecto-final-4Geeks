@@ -6,20 +6,32 @@ import '../../styles/admin.css'
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+import fondo from '../../img/signup_img.jpg'
+
 
 export const Admin = () => {
 
   const { store, actions } = useContext(Context);
 
-  const handleClick = () =>{
-    actions.query();
-  }
 
     return(
         <div>
-          esta es la pag de admin 
+         		<div className="mainContainer" style={{backgroundImage: `url(${fondo})`}}>
+		      	  <div className="form d-flex justify-content-center"> 
 
-          <button className="btn" onClick={handleClick}>LOGIN</button>
+                {/* {
+                  
+                  (store.user.token && store.user.token != "" && store.user.token != undefined)?
+                  (
+                    // está logado
+                  )
+                  :
+                  (//NO está logado)
+
+                } */}
+
+              </div>
+            </div>
         </div>
     );
 }
