@@ -1,3 +1,10 @@
+body {
+    background-image: url('https://i.pinimg.com/originals/c4/82/14/c4821433f0bb5ac2650e42a9ed06a382.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+}
+
 
 #navbarUser {
     padding: 1rem 2rem;

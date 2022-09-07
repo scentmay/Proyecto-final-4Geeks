@@ -2,7 +2,7 @@
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
 from flask import Flask, request, jsonify, url_for, Blueprint
-from api.models import db, User, Cliente, Survey, Pago
+from api.models import db, User, Cliente, Survey, Objectives, Pago
 from api.utils import generate_sitemap, APIException
 from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity
 import datetime
@@ -24,7 +24,6 @@ def handle_hello():
 # resgistro de usuario
 @api.route("/signup", methods = ["POST"])
 def register():
-
     body = request.get_json()
 
 # Validaciones
@@ -58,6 +57,7 @@ def register():
 
 #registro de encuesta
 @api.route("/survey", methods =["POST"])
+@jwt_required()
 def survey():
 
     body = request.get_json()
@@ -65,13 +65,53 @@ def survey():
     if body is None:
         raise APIException("You need to specify the request body as a json object(survey info)", status_code=400)
 
-    newSurvey = Survey(id = body['id'], email = body['email'], objective = body['objective'], medical = body['medical'], message = body['message'])
+    newSurvey = Survey(cliente_id = body['id'], email = body['email'], objective = body['objective'], medical = body['medical'], message = body['message'])
 
     db.session.add(newSurvey)
     db.session.commit()
 
     return jsonify("Encuesta creada, mensaje del backend"), 200
 
+
+#Recuperar encuesta
+@api.route("/survey/<int:id>", methods =["GET", "PUT"])
+@jwt_required()
+def info_survey(id):
+    
+    if request.method == 'GET':
+        #Recuperamos el usuario
+        user_survey = Survey.query.filter_by(cliente_id = id).first()
+
+
+        if not user_survey:
+            raise APIException("Sin resultados de encuesta para este usuario", status_code=400)
+        #devolvemos el usuario con su metodo serialize
+        return jsonify({
+            "survey": user_survey.serialize(), 
+        })
+    
+    if request.method == 'PUT':
+
+        body = request.get_json()
+
+        #Recuperamos el usuario
+        user_survey = Survey.query.filter_by(cliente_id = id).first()
+
+        #modificamos el campo correspondiente SOLO si viene con datos en el body, si viene vacío se ignora
+        if body["objective"]:
+            user_survey.objective = body["objective"]
+
+        if body["medical"]:
+            user_survey.medical = body["medical"]
+
+        if body["message"]:
+            user_survey.message = body["message"]
+
+        #hacemos commit a la bbdd
+        db.session.commit()
+
+        return jsonify("Registro modificado"), 200
+    
 # login de usuario
 @api.route("/login", methods =["POST"])
 def login():

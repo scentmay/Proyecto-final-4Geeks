@@ -1,24 +1,24 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-            message: null,
-            user: {},
-            survey: {},
-            query:{},
-            logged: false,
-            demo: [
-                {
-                    title: "FIRST",
-                    background: "white",
-                    initial: "white"
-                },
-                {
-                    title: "SECOND",
-                    background: "white",
-                    initial: "white"
-                }
-            ]
-        },
+			message: null,
+			user: {},
+			survey: {},
+			query:{},
+			logged: false,
+			demo: [
+				{
+					title: "FIRST",
+					background: "white",
+					initial: "white"
+				},
+				{
+					title: "SECOND",
+					background: "white",
+					initial: "white"
+				}
+			]
+		},
 		actions: {
 			// Use getActions to call a function within a fuction
 			exampleFunction: () => {
@@ -35,15 +35,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 			cleanStore: () => {
 				//Eliminamos token de la store y de la sesión del navegador
 				console.log("Limpiando store...");
-				setStore({user: {"email": "","token": ""}});
-				sessionStorage.removeItem("email");
-				sessionStorage.removeItem("token");
+				setStore({user: {}});
+				setStore({survey: {}});
 				setStore({logged: false});
 			},
 
 			signUp:  async (email, password, name, lastName, dni, address, phone) => {
-				
-				setStore({dni: dni})
 				
 				const opts = {
 					method: 'POST',
@@ -67,7 +64,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				.then ((res) => {
 					if (!res.ok) {
-						console.log("Ha ocurrido un error en el primer paso del fetch");
+						console.log("Ha ocurrido un error en el primer paso del fetch ");
 					}
 					return res.json();
 				})
@@ -87,7 +84,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const opts = {
 					method: 'POST',
 					headers: {
-						"Content-Type": "application/json"
+						"Content-Type": "application/json",
+						"Authorization": "Bearer " + store.user.token
 					},
 					body: JSON.stringify({
 						"id": store.user.id,
@@ -108,10 +106,55 @@ const getState = ({ getStore, getActions, setStore }) => {
 			})
 			.then((data) => {
 				console.log("Encuesta registrada");
+				setStore({survey: data.survey});
 			})
 			.catch((error) => {
 				console.error("Ha ocurrido un error al registrar la encuesta" + error);
 			})
+
+			},
+
+			surveyData: async () => {
+
+				const store = getStore();
+
+				const opts = {
+					method: 'GET',
+					headers: {
+						"Content-Type": "application/json",
+						"Authorization": "Bearer " + store.user.token		
+					}
+				};
+				fetch (process.env.BACKEND_URL  + "/api/survey/" + store.user.id, opts)
+				.then(resp => resp.json())
+				.then(data => setStore({survey: data.survey}))
+				.catch(error => console.error ("Ha habido un error al recuperar los datos de la encuesta " + error))
+
+			},
+
+			surveyUpdate: async (objective, medical, message) => {
+
+				//console.log("Entrando en surveyUpdate...")
+				const store = getStore();
+
+				const opts = {
+					method: 'PUT',
+					headers: {
+						"Content-Type": "application/json",
+						"Authorization": "Bearer " + store.user.token		
+					},
+					body: JSON.stringify({
+						"id": store.user.id,
+						"email":store.user.email,
+						"objective": objective,
+						"medical": medical,
+						"message": message
+					})
+				}
+				fetch (process.env.BACKEND_URL  + "/api/survey/" + store.user.id, opts)
+				.then(resp => resp.json())
+				.then(data => console.log(data))
+				.catch(error => console.error ("Ha habido un error al recuperar los datos de la encuesta " + error))
 
 			},
 
@@ -165,6 +208,24 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.log("Error loading message from backend", error)
 				}
 			},
+
+			query: () =>{
+
+				const store = getStore();
+
+				const opts = {
+					method: 'GET',
+					headers: {
+						"Content-Type": "application/json",
+					},
+				}
+
+				fetch (process.env.BACKEND_URL  + "/api/query", opts)
+				.then(resp => resp.json())
+				.then(data => setStore({query: data}))
+				.catch(error => console.error ("Ha habido un error al recuperar los datos de la encuesta " + error))
+			},
+
 			changeColor: (index, color) => {
 				//get the store
 				const store = getStore();

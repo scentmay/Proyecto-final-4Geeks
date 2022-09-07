@@ -8,15 +8,25 @@ import { Ubicacion } from "../component/ubicacion";
 import { Header } from "../component/navbar";
 import { Footer } from "../component/footer";
 import { Contacto } from "../component/contacto";
-
+import fondo from '../../img/signup_img.jpg'
+import { Link } from "react-router-dom";
 
 export const Home = () => {
 	const { store, actions } = useContext(Context);
 
 	return (
-		
-	<div className="app">
+	<div>
+		<div className="container-fluid mx-0" id="navbarMenu">
+				<img src="https://image.shutterstock.com/image-vector/fitness-gym-logo-design-vector-260nw-1707162607.jpg" id="logo"/>
 
+			<div className="titular">
+				<h1>Bienvenido a SyF FIT</h1>
+				<Link to="/login">
+			 		<button className="btn btn-primary">Ingrese a su perfil</button>
+		    	</Link>
+			</div>
+		</div>
+		
 		<div className="container-fluid">
 			<Suscription />
 		</div>
@@ -26,10 +36,6 @@ export const Home = () => {
 		<div className="contacto">
 			<Contacto />
 		</div>
-		<div className="Footer">
-			<Footer />
-		</div>
 	</div>
-		
 	);
 };

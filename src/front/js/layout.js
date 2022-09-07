@@ -14,6 +14,7 @@ import { Contacto } from "./component/contacto";
 import { Login } from "./pages/login";
 import { Signup } from "./pages/signup";
 import { Survey } from "./pages/survey";
+import { Admin } from "./pages/admin";
 
 //create your first component
 const Layout = () => {
@@ -36,9 +37,10 @@ const Layout = () => {
                         <Route element={<h1>Not found!</h1>} />
                         <Route element={<Login />} path="/login" />
                         <Route element={<Signup />} path="/signup" />                   
-                        <Route element={<Survey />} path="/survey" />                                     
+                        <Route element={<Survey />} path="/survey" /> 
+                        <Route element={<Admin />} path="/admin" />                                    
                     </Routes>   
-                    {/* <Footer />               */}
+                    <Footer />
                 </ScrollToTop>
             </BrowserRouter>
         </div>
