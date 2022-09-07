@@ -146,9 +146,7 @@ def login():
 def queryExample():
 
     client_query = Cliente.query.all()
-
-    response_body = {
-        "message": "Hello! I'm a message that came from the backend, check the network tab on the google inspector and you will see the GET request"
-    }
-
-    return jsonify(client_query), 200
+    #mapeamos cada una de las filas de la tabla cliente para devolverlo en formato json
+    all_clients = list(map(lambda x: x.serialize() , client_query))
+    return jsonify(all_clients)
+    

@@ -25,7 +25,7 @@ export const Admin = () => {
       >
         <div className="form d-flex justify-content-center">
 
-        <AdminDash type="socios" col1="nombre" col2="correo" col3="fecha alta"/>
+        <AdminDash type="socios" col1="nombre" col2="correo" col3="dni"/>
 
 
 
