@@ -3,7 +3,7 @@ import React, { Component } from "react";
 export const Footer = () => {
   return (
     <>
-      <footer className="footer mt-auto py-3 text-center">
+      <footer className="footer mt-auto text-center">
         <div className="footer-dark">
           <footer>
             <div className="container-fluid">

@@ -12,7 +12,7 @@ export const ContactForm = () => {
   const {email, name} = useParams();
 
   return (
-    <div className="mainContainer d-flex justify-content-center mt-3" style={{backgroundImage: `url(${fondoWas})`}} >
+    <div className="mainContainer d-flex justify-content-center" style={{backgroundImage: `url(${fondoWas})`}} >
       <div className="card" style={{ width: "500px" }}>
         <h2>
           <u>Formulario de contacto</u>
@@ -42,9 +42,12 @@ export const ContactForm = () => {
           </Button>
 
           {/* indicamos página de retorno tras el envío de correo */}
-          <input type="hidden" name="https://3000-4geeksacade-reactflaskh-egdm5hczo2f.ws-eu63.gitpod.io/emailsent" value="https://3000-4geeksacade-reactflaskh-egdm5hczo2f.ws-eu63.gitpod.io/admin"></input>
+          <input type="hidden" name="_next" value="https://3000-4geeksacade-reactflaskh-egdm5hczo2f.ws-eu63.gitpod.io/emailsent"></input>
           {/* eliminamos el captcha, comentar esta línea para activarlo */}
-          <input type="hidden" name="captcha" value="false"></input>
+          <input type="hidden" name="_captcha" value="false"></input>
+          <input type="hidden" name="_template" value="table"></input>
+
+
         </Form>
       </div>
     </div>
