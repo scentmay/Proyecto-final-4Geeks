@@ -17,8 +17,7 @@ export const Home = () => {
 	return (
 	<div>
 		<div className="container-fluid mx-0" id="navbarMenu">
-				<img src="https://image.shutterstock.com/image-vector/fitness-gym-logo-design-vector-260nw-1707162607.jpg" id="logo"/>
-
+				<img/>
 			<div className="titular">
 				<h1>Bienvenido a SyF FIT</h1>
 				<Link to="/login">
