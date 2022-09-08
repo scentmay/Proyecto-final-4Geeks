@@ -4,7 +4,8 @@ import { useNavigate } from "react-router-dom";
 import { Context } from "../store/appContext";
 import "../../styles/admin.css";
 import fondo from "../../img/signup_img.jpg";
-import { AdminDash } from "../component/admindashboard"
+import { AdminDashSocios } from "../component/adminDashSocios"
+import { AdminDashCuotas } from "../component/adminDashCuotas"
 
 export const Admin = () => {
   const { store, actions } = useContext(Context);
@@ -17,6 +18,10 @@ export const Admin = () => {
 		}, 5000)
 	}
 
+  useEffect(() => {
+    actions.query();
+  },[])
+
   return (
     <div>
       <div className="mainContainer" style={{ backgroundImage: `url(${fondo})` }}>
@@ -24,11 +29,13 @@ export const Admin = () => {
         <div className="form d-flex justify-content-center" style={{alignItems:"flex-start" }}>
         
           <div className="tarjetas m-2">
-            <AdminDash type="socios" col1="nombre" col2="correo" col3="dni"></AdminDash>
+            <AdminDashSocios type="socios" col1="nombre" col2="correo" col3="dni"></AdminDashSocios>
           </div>
+
           <div className="tarjetas m-2">
-            <AdminDash type="pagos a cuenta" col1="dni" col3="Corriente de pago"></AdminDash>
+            <AdminDashCuotas type="cuotas" col1="nombre" col2="teléfono" col3="estado pago"></AdminDashCuotas>
           </div>
+      
           
         
 
