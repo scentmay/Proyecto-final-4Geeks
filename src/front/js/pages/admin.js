@@ -26,7 +26,7 @@ export const Admin = () => {
     <div>
       <div className="mainContainer" style={{ backgroundImage: `url(${fondo})` }}>
         <h2 style={{ color: "white"}}><u>Panel de control</u></h2>
-        <div className="form d-flex justify-content-center" style={{alignItems:"flex-start" }}>
+        <div className="form d-flex justify-content-center" style={{alignItems:"flex-start"}}>
         
           <div className="tarjetas m-2">
             <AdminDashSocios type="socios" col1="nombre" col2="correo" col3="dni"></AdminDashSocios>

@@ -1,12 +1,18 @@
 import Table from "react-bootstrap/Table";
 import React, { useContext } from "react";
 import { Context } from "../store/appContext";
+import { useNavigate } from 'react-router-dom';
 
 export const AdminDashCuotas = (props) => {
 
   const { store, actions } = useContext(Context);
 
   let query_data = store.query;
+  let navigate = useNavigate();
+
+  function handleMail(email, name) {
+    navigate(`/contactform/${email}/${name}`)
+  }
 
   const render = () => {
     //query data tiene datos? entonces devuelve (return) un mapeo de query_data
@@ -23,6 +29,7 @@ export const AdminDashCuotas = (props) => {
         <td>{client.userName}</td>
         <td>{client.telefono}</td>
         <td>{client.corrienteDePago}</td>
+        <td><button className="btn" onClick={() => {handleMail(client.email, client.userName)}}>mail</button></td>
         </tr>)})}
       </tbody>
     )
@@ -33,7 +40,7 @@ export const AdminDashCuotas = (props) => {
   return (
     <div>
       <div className="card" style={{width:"100%"}}>
-        <h4 className="title">{props.type}</h4>
+        <h4 className="title"><u>{props.type}</u></h4>
         <Table striped bordered hover variant="dark" >
           <thead>
             <tr>
