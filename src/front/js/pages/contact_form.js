@@ -5,7 +5,7 @@ import fondoWas from '../../img/fondoWas.jpg'
 import '../../styles/contact_form.css'
 import { Link, useParams } from "react-router-dom";
 
-
+// Cortesía de https://formsubmit.co/
 
 export const ContactForm = () => {
 
