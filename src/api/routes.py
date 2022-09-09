@@ -151,8 +151,18 @@ def putuser(id):
     user1 = Cliente.query.get(id)
     if user1 is None:
         raise APIException('Usuario no encontrado', status_code=404)
-    if "name" in info_request:
-        user1.name = info_request["name"]
+    if "userName" in info_request:
+        user1.userName = info_request["userName"]
+    if "lastName" in info_request:
+        user1.lastName = info_request["lastName"]
+    if "email" in info_request:
+        user1.email = info_request["email"]
+    if "dni" in info_request:
+        user1.dni = info_request["dni"]
+    if "direccion" in info_request:
+        user1.direccion = info_request["direccion"]
+    if "telefono" in info_request:
+        user1.telefono = info_request["telefono"]
     db.session.commit()
     return jsonify("User editado")
 
