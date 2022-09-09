@@ -12,7 +12,7 @@ export const EditarPerfil = () => {
     }, [store.user]);
 
     const handleClick = () => {
-        actions.signUp(email, password, Username, lastName, dni, address, phone);
+        actions.signUp(email, password, userName, lastName, dni, direccion, telefono);
     }
 
     return (
@@ -26,9 +26,9 @@ export const EditarPerfil = () => {
                             type="text"
                             className="form-control"
                             placeholder="Indique su Nombre"
-                            value={useraux.Username}
+                            value={useraux.userName}
                             onChange={(e) => {
-                                setUserAux({ ...useraux, Username: e.target.value });
+                                setUserAux({ ...useraux, userName: e.target.value });
                             }}
                         />
                     </div>
@@ -71,9 +71,9 @@ export const EditarPerfil = () => {
                             className="form-control"
                             type="text"
                             placeholder="Indique su direccion"
-                            value={useraux.address}
+                            value={useraux.direccion}
                             onChange={(e) => {
-                                setUserAux({ ...useraux, address: e.target.value });
+                                setUserAux({ ...useraux, direccion: e.target.value });
                             }}
                         />
                     </div>
@@ -86,9 +86,9 @@ export const EditarPerfil = () => {
                             type="tel"
                             className="form-control"
                             placeholder="Escriba su número telefónico"
-                            value={useraux.phone}
+                            value={useraux.telefono}
                             onChange={(e) => {
-                                setUserAux({ ...useraux, phone: e.target.value });
+                                setUserAux({ ...useraux, telefono: e.target.value });
                             }}
                         />
                     </div>

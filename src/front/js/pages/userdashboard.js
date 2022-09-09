@@ -9,6 +9,7 @@ import { Context } from "../store/appContext";
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { EditarPerfil } from "../component/editperfil";
+import { Registros } from "../component/registros";
 
 
 
@@ -54,6 +55,7 @@ export const Usuario = () => {
                     </Nav.Item>
                     <Nav.Item>
                         <Nav.Link eventKey="link-1">Mis registros</Nav.Link>
+                        <Registros />
                     </Nav.Item>
                 </Nav>
             </div>
