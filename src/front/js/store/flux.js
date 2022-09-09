@@ -96,7 +96,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 				};
 
-			await fetch('https://3001-4geeksacade-reactflaskh-egdm5hczo2f.ws-eu63.gitpod.io/api/survey', opts)
+			await fetch('https://3001-4geeksacade-reactflaskh-egdm5hczo2f.ws-eu64.gitpod.io/api/survey', opts)
 			.then((res) => {
 				if(!res.ok) {
 					console.log("Error en el fecth del survey");
@@ -171,7 +171,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 				  };
 
-				await fetch('https://3001-4geeksacade-reactflaskh-egdm5hczo2f.ws-eu63.gitpod.io/api/login', opts)
+				await fetch('https://3001-4geeksacade-reactflaskh-egdm5hczo2f.ws-eu64.gitpod.io/api/login', opts)
 				.then((res) => {
 						if (!res.ok) {
 							alert("Credenciales incorrectas");
