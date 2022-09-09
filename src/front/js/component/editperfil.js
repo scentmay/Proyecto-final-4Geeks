@@ -110,7 +110,7 @@ export const EditarPerfil = () => {
                 </div>
                 <div className="d-grid gap-2">
                     <button type="submit" className="btn btn-primary" onClick={handleClick}>
-                        Guardar
+                        Actualizar y guardar
                     </button>
                 </div>
             </div>
