@@ -34,7 +34,7 @@ export const AdminDashSocios = (props) => {
     <div>
       <div className="card" style={{width:"100%"}}>
         <h4 className="title"><u>{props.type}</u></h4>
-        <Table striped bordered hover variant="dark" >
+        <Table striped bordered hover variant="dark" size="sm" responsive style={{borderColor:"#ffeba7"}}>
           <thead>
             <tr>
               <th>id socio</th>

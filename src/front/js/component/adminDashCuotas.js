@@ -29,7 +29,7 @@ export const AdminDashCuotas = (props) => {
         <td>{client.userName}</td>
         <td>{client.telefono}</td>
         <td>{client.corrienteDePago}</td>
-        <td><button className="btn" onClick={() => {handleMail(client.email, client.userName)}}>mail</button></td>
+        <td><button className="btn" style={{fontSize:".6em"}} onClick={() => {handleMail(client.email, client.userName)}}>mail</button></td>
         </tr>)})}
       </tbody>
     )
@@ -41,13 +41,14 @@ export const AdminDashCuotas = (props) => {
     <div>
       <div className="card" style={{width:"100%"}}>
         <h4 className="title"><u>{props.type}</u></h4>
-        <Table striped bordered hover variant="dark" >
+        <Table striped bordered hover variant="dark" size="sm" responsive style={{borderColor:"#ffeba7"}}>
           <thead>
             <tr>
               <th>id socio</th>
               <th>{props.col1}</th>
               <th>{props.col2}</th>
               <th>{props.col3}</th>
+              <th>Acción</th>
             </tr>
           </thead>
           {/* sólo cambiamos el body de la tabla llamando a la función render,
