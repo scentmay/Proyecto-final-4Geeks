@@ -10,6 +10,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { EditarPerfil } from "../component/editperfil";
 import { Registros } from "../component/registros";
+import { entrenamiento } from "./entrenamiento";
 
 
 
@@ -17,17 +18,37 @@ import { Registros } from "../component/registros";
 export const Usuario = () => {
 
     const { store, actions } = useContext(Context);
-    const [user, setUser] = useState({});
-    const [oldUser, setOldUser] = useState({});
+    const [useraux, setUserAux] = useState("");
+
+
+    // useEffect(() => {
+    //     actions.signUp(userName);
+    // }, []);
+
+
     useEffect(() => {
-        window.document.dispatchEvent(
-            new Event("DOMContentLoaded", {
-                bubbles: true,
-                cancelable: true,
-            })
-        );
-        setOldUser(store.user);
+        setUserAux({...store.user})
     }, [store.user]);
+
+    const handleClick = () => {
+        actions.signUp(userName, lastName);
+    }
+
+    // const handleClick = () => {
+    //     actions.signUp( userName, lastName);
+    // }
+
+    // const [user, setUser] = useState({});
+    // const [oldUser, setOldUser] = useState({});
+    // useEffect(() => {
+    //     window.document.dispatchEvent(
+    //         new Event("DOMContentLoaded", {
+    //             bubbles: true,
+    //             cancelable: true,
+    //         })
+    //     );
+    //     setOldUser(store.user);
+    // }, [store.user]);
 
     return (
         <div className="container-fluid p-0">
@@ -37,7 +58,7 @@ export const Usuario = () => {
                     <section className="seccion-perfil-usuario mt-5">
                         <div className="perfil-usuario-body">
                             <div className="perfil-usuario-bio">
-                                <h3 className="titulo">Hola, Franco Piedrabuena</h3>
+                                <h3 className="titulo">Hola,{useraux.userName}</h3>
                                 <p className="text">Este es tu Perfil de Usuario, donde podras ver tus datos, progresos y actividades</p>
                             </div>
                         </div>
@@ -56,6 +77,9 @@ export const Usuario = () => {
                     <Nav.Item>
                         <Nav.Link eventKey="link-1">Mis registros</Nav.Link>
                         <Registros />
+                    </Nav.Item>
+                    <Nav.Item>
+                        <Nav.Link eventKey="link-1">Entrenamientos</Nav.Link>
                     </Nav.Item>
                 </Nav>
             </div>

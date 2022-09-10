@@ -145,6 +145,8 @@ def login():
 
 
 
+
+
 @api.route("/edituser/<int:id>", methods=['PUT'])
 def putuser(id):
     info_request = request.get_json()
