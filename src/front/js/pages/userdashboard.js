@@ -10,7 +10,9 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { EditarPerfil } from "../component/editperfil";
 import { Registros } from "../component/registros";
-import { entrenamiento } from "./entrenamiento";
+import { Entrenamiento } from "./entrenamiento";
+import NavDropdown from 'react-bootstrap/NavDropdown';
+
 
 
 
@@ -27,7 +29,7 @@ export const Usuario = () => {
 
 
     useEffect(() => {
-        setUserAux({...store.user})
+        setUserAux({ ...store.user })
     }, [store.user]);
 
     const handleClick = () => {
@@ -52,7 +54,6 @@ export const Usuario = () => {
 
     return (
         <div className="container-fluid p-0">
-
             <div className="Perfil">
                 <div className="Perfil">
                     <section className="seccion-perfil-usuario mt-5">
@@ -63,13 +64,85 @@ export const Usuario = () => {
                             </div>
                         </div>
                     </section>
-
                 </div>
-
             </div>
+            <div className="justify-content-center">
+                <nav>
+                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                        <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">EDITARPERFIL</button>
+                        <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">MISREGISTROS</button>
+                    </div>
+                </nav>
+                <div class="tab-content" id="nav-tabContent">
+                    <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" tabindex="0">
+                        <EditarPerfil />
+                    </div>
+                    <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" tabindex="0">
+                        <Registros />
+                    </div>
+                </div>
+            </div>
+        </div >
+    );
+};
 
-            <div className="body2">
-                <Nav justify variant="tabs" defaultActiveKey="/home">
+
+
+
+// Este funciona bien falta estilo 
+{/* <Nav className="justify-content-center" activeKey="/home"></Nav> */ }
+{/* <div className="nav">
+    <nav>
+        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+            <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">EDITARPERFIL</button>
+            <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">MISREGISTROS</button>
+        </div>
+    </nav>
+    <div class="tab-content" id="nav-tabContent">
+        <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" tabindex="0">
+            <EditarPerfil />
+        </div>
+        <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" tabindex="0">
+            <Registros />
+        </div>
+    </div>
+</div>
+ */}
+
+
+
+
+
+
+
+
+
+// este funciona dentro de todo 
+
+{/* <div className="navs">
+<ul className="nav nav-tabs my-4 justify-content-center border-0" id="myTab" role="tablist">
+    <li className="nav-item" role="presentation">
+        <button className="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">EditarPerfil</button>
+    </li>
+    <li className="nav-item" role="presentation">
+        <button className="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">MisRegistros</button>
+    </li>
+</ul>
+</div>
+<div class="tab-content" id="myTabContent">
+<div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
+<EditarPerfil />
+</div>
+</div>
+<div class="tab-content" id="myTabContent">
+<div class="tab-pane fade show active" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
+<Registros />
+</div>
+</div> */}
+
+
+
+{/* <Nav justify variant="tabs" defaultActiveKey="/home">
                     <Nav.Item>
                         <Nav.Link href="#">Editar Perfil</Nav.Link>
                         <EditarPerfil />
@@ -79,13 +152,16 @@ export const Usuario = () => {
                         <Registros />
                     </Nav.Item>
                     <Nav.Item>
-                        <Nav.Link eventKey="link-1">Entrenamientos</Nav.Link>
+                        <Nav.Link eventKey="link-2">Entrenamientos</Nav.Link>
+                        <Entrenamiento />
                     </Nav.Item>
-                </Nav>
-            </div>
-        </div >
-    );
-};
+                </Nav> */}
+
+
+
+
+
+
 
 {/* Tab de la sección de editar los datos del usuario */ }
 

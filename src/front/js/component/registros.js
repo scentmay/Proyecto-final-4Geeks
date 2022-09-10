@@ -157,12 +157,12 @@ export const Registros = () => {
 						<div className="buttons">
 								{/* <Link to={'/login'}><button className="btn ms-3">Volver</button></Link> */}
 								
-								<input className="btn" type="reset" value="Reset" onClick={() => {
+								{/* <input className="btn" type="reset" value="Reset" onClick={() => {
 									setObjective("");
 									setMedical("");
 									setMessage("");	
 								}}
-								/>
+								/> */}
 								<button className="btn" onClick={handleClick}>Actualizar y Guardar</button>
 						</div>
 						</form>
