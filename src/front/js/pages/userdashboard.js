@@ -12,6 +12,7 @@ import { EditarPerfil } from "../component/editperfil";
 import { Registros } from "../component/registros";
 import { Entrenamiento } from "./entrenamiento";
 import NavDropdown from 'react-bootstrap/NavDropdown';
+import { Suscription } from "../component/subscription";
 
 
 
@@ -73,6 +74,7 @@ export const Usuario = () => {
                         <button className="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">EDITARPERFIL</button>
                         <button className="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">MISREGISTROS</button>
                         <button className="nav-link" id="nav-training-tab" data-bs-toggle="tab" data-bs-target="#nav-training" type="button" role="tab" aria-controls="nav-training" aria-selected="false">Entrenamienos</button>
+                        <button className="nav-link" id="nav-pago-tab" data-bs-toggle="tab" data-bs-target="#nav-pago" type="button" role="tab" aria-controls="nav-pago" aria-selected="false">Mis Suscripciones</button>
                     </div>
                 </nav>
                 <div className="tab-content" id="nav-tabContent">
@@ -84,6 +86,9 @@ export const Usuario = () => {
                     </div>
                     <div className="tab-pane fade" id="nav-training" role="tabpanel" aria-labelledby="nav-training-tab" tabindex="0">
                         <Entrenamiento />
+                    </div>
+                    <div className="tab-pane fade" id="nav-pago" role="tabpanel" aria-labelledby="nav-pago-tab" tabindex="0">
+                        <Suscription />
                     </div>
                 </div>
             </div>

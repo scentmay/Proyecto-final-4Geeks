@@ -171,7 +171,7 @@ def putuser(id):
 
     
 
-@api.route('/stripe_webhooks', methods=['POST'])
+@api.route('/stripe_webhooks/<int:id>', methods=['POST'])
 def webhook():
     event = None
     payload = request.data
