@@ -5,13 +5,15 @@ body {
     
 }
 
-
 #navbarUser {
     padding: 1rem 2rem;
     border-bottom: 2px solid grey;
     background-color: 5e6681;
 }
 
+#nav-tab {
+    color: #5e6681;
+}
 
 
 

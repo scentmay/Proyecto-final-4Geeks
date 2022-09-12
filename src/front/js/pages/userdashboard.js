@@ -17,6 +17,7 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 
 
 
+
 export const Usuario = () => {
 
     const { store, actions } = useContext(Context);
@@ -58,8 +59,8 @@ export const Usuario = () => {
                 <div className="Perfil">
                     <section className="seccion-perfil-usuario mt-5">
                         <div className="perfil-usuario-body">
-                            <div className="perfil-usuario-bio">
-                                <h3 className="titulo">Hola,{useraux.userName}</h3>
+                            <div className="perfil-usuario-bio" style={{backgroundColor: `#ffeba7`}}>
+                                <h3 className="titulo">Hola,{useraux.userName}!</h3>
                                 <p className="text">Este es tu Perfil de Usuario, donde podras ver tus datos, progresos y actividades</p>
                             </div>
                         </div>
@@ -68,17 +69,21 @@ export const Usuario = () => {
             </div>
             <div className="justify-content-center">
                 <nav>
-                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                        <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">EDITARPERFIL</button>
-                        <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">MISREGISTROS</button>
+                    <div className="nav nav-tabs justify-content-center" id="nav-tab" role="tablist">
+                        <button className="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">EDITARPERFIL</button>
+                        <button className="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">MISREGISTROS</button>
+                        <button className="nav-link" id="nav-training-tab" data-bs-toggle="tab" data-bs-target="#nav-training" type="button" role="tab" aria-controls="nav-training" aria-selected="false">Entrenamienos</button>
                     </div>
                 </nav>
-                <div class="tab-content" id="nav-tabContent">
-                    <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" tabindex="0">
+                <div className="tab-content" id="nav-tabContent">
+                    <div className="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" tabindex="0">
                         <EditarPerfil />
                     </div>
-                    <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" tabindex="0">
+                    <div className="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" tabindex="0">
                         <Registros />
+                    </div>
+                    <div className="tab-pane fade" id="nav-training" role="tabpanel" aria-labelledby="nav-training-tab" tabindex="0">
+                        <Entrenamiento />
                     </div>
                 </div>
             </div>
@@ -93,16 +98,16 @@ export const Usuario = () => {
 {/* <Nav className="justify-content-center" activeKey="/home"></Nav> */ }
 {/* <div className="nav">
     <nav>
-        <div class="nav nav-tabs" id="nav-tab" role="tablist">
-            <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">EDITARPERFIL</button>
-            <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">MISREGISTROS</button>
+        <div className="nav nav-tabs" id="nav-tab" role="tablist">
+            <button className="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">EDITARPERFIL</button>
+            <button className="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">MISREGISTROS</button>
         </div>
     </nav>
-    <div class="tab-content" id="nav-tabContent">
-        <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" tabindex="0">
+    <div className="tab-content" id="nav-tabContent">
+        <div className="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" tabindex="0">
             <EditarPerfil />
         </div>
-        <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" tabindex="0">
+        <div className="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" tabindex="0">
             <Registros />
         </div>
     </div>
@@ -129,13 +134,13 @@ export const Usuario = () => {
     </li>
 </ul>
 </div>
-<div class="tab-content" id="myTabContent">
-<div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
+<div className="tab-content" id="myTabContent">
+<div className="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
 <EditarPerfil />
 </div>
 </div>
-<div class="tab-content" id="myTabContent">
-<div class="tab-pane fade show active" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
+<div className="tab-content" id="myTabContent">
+<div className="tab-pane fade show active" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
 <Registros />
 </div>
 </div> */}
