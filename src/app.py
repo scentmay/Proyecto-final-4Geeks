@@ -1,3 +1,4 @@
+
 """
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
@@ -20,9 +21,11 @@ static_file_dir = os.path.join(os.path.dirname(os.path.realpath(__file__)), '../
 app = Flask(__name__)
 app.url_map.strict_slashes = False
 
+
 # Setup the Flask-JWT-Extended extension
-app.config["JWT_SECRET_KEY"] = "super-secret"  # Change this!
+app.config["JWT_SECRET_KEY"] = os.environ.get('JWT_SECRET')  # Change this!
 jwt = JWTManager(app)
+
 
 # database condiguration
 db_url = os.getenv("DATABASE_URL")

@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { Link } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
 import '../../styles/login.css'
+import fondo from '../../img/signup_img.jpg'
 
 
 
@@ -19,41 +20,78 @@ export const Login = () => {
     actions.cleanStore();
   }
 
-  const handleClick = () => {
-   actions.login(email, password);
-   setEmail("");
-   setPassword("");
+  const handleClick = (e) => {
+    e.preventDefault();
+    actions.login(email, password);
+    setEmail("");
+    setPassword("");
+    navigate("/login")
   };
 
-  //Una vez logado, si es correcto el token, nos lleva a nuestra página privada
-  //if(store.user.token && store.user.token != "" && store.user.token != undefined) { navigate("/private") }
-
   return (
-    <div className="text-center mt-5">
-      <h1>Estás en la página de Login</h1>
+		<div className="mainContainer" style={{backgroundImage: `url(${fondo})`}}>
+			<div className="form d-flex justify-content-center"> 
+
         {
-          (store.user.token && store.user.token != "" && store.user.token != undefined) ?
-           ( 
-           <div>
-            <p>Estas logado con el token: {store.user.token}</p>
-            <Link to={'/'} className="btn btn-primary btn-lg mt-3 ms-3" onClick={logOut}>Log out</Link>
-           </div>
-           ) :
-           ( 
+            (store.user.token && store.user.token != "" && store.user.token != undefined) ?
+
+            //Si está logado
+            (
               <div>
-                <input autoFocus type="text" placeholder="email" value={email} onChange={(e) => {
-                  setEmail(e.target.value)
-                }} />
-                <input type="text" placeholder="password" value={password} onChange={(e) => {
-                  setPassword(e.target.value)
-                }} />
-                <div>
-                <button className="button" onClick={handleClick}>Login</button>
-                  <Link to={'/signup'}><button className="button ms-3">Registro</button></Link>
+                <div className="card">
+                  <h4 className="title">Login</h4>
+                  <p style={{color: "white"}}>Bienvenido a su zona privada, no olvide acceder a la encuesta para rellenar sus datos</p>
+                  <Link to={'/login'} className="btn btn-primary btn-lg mt-3 ms-3" onClick={logOut}>Log out</Link>
+                  <Link to={'/usuario'} className="btn btn-primary btn-lg mt-3 ms-3">Usuario</Link>
+                  {/* <Link to={'/admin'} className="btn btn-primary btn-lg mt-3 ms-3">ADMIN</Link> */}
+                  <Link to={'/survey'} className="btn btn-primary btn-lg mt-3 ms-3">Realizar encuesta</Link>
                 </div>
               </div>
-          )
+            )
+
+          :
+            // Si NO está logado
+           (
+      	    <div className="card" style={{height: "295px"}}>
+			    	<h4 className="title">Login</h4>
+				    	<form id="form">
+                  <div className="field ">
+                  <input className="input-field" 
+                  placeholder="email"
+                  type="text"
+                  value={email}
+                  //onKeyDown={(e) => {if(e.key == 'Enter') handleClick()}} // detectar pulsación "Enter"
+                  onChange={(e) => {
+                    setEmail(e.target.value)}}
+                  />
+                  </div>
+
+                <div className="field ">
+                  <input className="input-field" 
+                  placeholder="password"
+                  type="password"
+                  value={password}
+                  //onKeyPress={(e) => {if(e.key === 'Enter') handleClick()}} // detectar pulsación "Enter"
+                  onChange={(e) => {
+                    setPassword(e.target.value)}}
+                  />
+                </div>
+					    </form>
+
+                <div className="buttons d-flex mt-2">
+                    <Link to={'/'}><button className="btn ms-3">Volver</button></Link>
+                    <button className="btn" onClick={handleClick}>LOGIN</button>
+                    <Link to={'/signup'}><button className="btn ms-3">Registro</button></Link>
+                    
+
+                </div>
+                <div>    
+                    <a href="#" className="btn-link">Forgot your password?</a>
+                </div>
+            </div>
+           )
         }
-    </div>
-  );
+			</div>			
+		</div>
+	);
 };

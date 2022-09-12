@@ -2,9 +2,11 @@
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
 from flask import Flask, request, jsonify, url_for, Blueprint
-from api.models import db, User
+from api.models import db, User, Cliente, Survey, Objectives, Pago
 from api.utils import generate_sitemap, APIException
 from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity
+import datetime
+import stripe
 
 api = Blueprint('api', __name__)
 
@@ -22,22 +24,94 @@ def handle_hello():
 # resgistro de usuario
 @api.route("/signup", methods = ["POST"])
 def register():
+    body = request.get_json()
+
+# Validaciones
+# -----------------
+    if body is None:
+        raise APIException("You need to specify the request body as a json object (signup info)", status_code=400)
+    if 'email' not in body:
+        raise APIException('You need to specify the email (signup info)', status_code=400)
+    if 'password' not in body:
+        raise APIException('You need to specify the password (signup info)', status_code=400)
+    if 'name' not in body:
+        raise APIException('You need to specify the name (signup info)', status_code=400)
+    if 'lastName' not in body:
+        raise APIException('You need to specify the lastName (signup info)', status_code=400)
+    if 'dni' not in body:
+        raise APIException('You need to specify the dni (signup info)', status_code=400)
+    if 'address' not in body:
+        raise APIException('You need to specify the address (signup info)', status_code=400)
+    if 'phone' not in body:
+        raise APIException('You need to specify the phone (signup info)', status_code=400)
+    
+
+    # at this point, all data has been validated, we can proceed to inster into the bbdd
+
+    newClient = Cliente(email=body['email'], password=body['password'], userName=body['name'], lastName=body['lastName'], dni=body['dni'], direccion=body['address'], telefono=body['phone'], peso=85.3, corrienteDePago=True, fechaDeAlta=datetime.datetime.now())
+    
+    db.session.add(newClient)
+    db.session.commit()
+
+    return jsonify("Usuario creado, mensaje del backend"), 200
+
+#registro de encuesta
+@api.route("/survey", methods =["POST"])
+@jwt_required()
+def survey():
 
     body = request.get_json()
 
     if body is None:
-        raise APIException("You need to specify the request body as a json object", status_code=400)
-    if 'email' not in body:
-        raise APIException('You need to specify the username', status_code=400)
-    if 'password' not in body:
-        raise APIException('You need to specify the email', status_code=400)
+        raise APIException("You need to specify the request body as a json object(survey info)", status_code=400)
 
-    # at this point, all data has been validated, we can proceed to inster into the bd
-    newUser = User(email=body['email'], password=body['password'], is_active = True)
-    db.session.add(newUser)
+    newSurvey = Survey(cliente_id = body['id'], email = body['email'], objective = body['objective'], medical = body['medical'], message = body['message'])
+
+    db.session.add(newSurvey)
     db.session.commit()
-    return jsonify("Usuario creado, mensaje del backend"), 200
 
+    return jsonify("Encuesta creada, mensaje del backend"), 200
+
+
+#Recuperar encuesta
+@api.route("/survey/<int:id>", methods =["GET", "PUT"])
+@jwt_required()
+def info_survey(id):
+    
+    if request.method == 'GET':
+        #Recuperamos el usuario
+        user_survey = Survey.query.filter_by(cliente_id = id).first()
+
+
+        if not user_survey:
+            raise APIException("Sin resultados de encuesta para este usuario", status_code=400)
+        #devolvemos el usuario con su metodo serialize
+        return jsonify({
+            "survey": user_survey.serialize(), 
+        })
+    
+    if request.method == 'PUT':
+
+        body = request.get_json()
+
+        #Recuperamos el usuario
+        user_survey = Survey.query.filter_by(cliente_id = id).first()
+
+        #modificamos el campo correspondiente SOLO si viene con datos en el body, si viene vacío se ignora
+        if body["objective"]:
+            user_survey.objective = body["objective"]
+
+        if body["medical"]:
+            user_survey.medical = body["medical"]
+
+        if body["message"]:
+            user_survey.message = body["message"]
+
+        #hacemos commit a la bbdd
+        db.session.commit()
+
+        return jsonify("Registro modificado"), 200
+    
 # login de usuario
 @api.route("/login", methods =["POST"])
 def login():
@@ -50,17 +124,86 @@ def login():
     if 'password' not in body:
         raise APIException('You need to specify the email', status_code=400)
 
-    email = request.json.get("email")
-    password = request.json.get("password")
+    email = body['email']
+    password = body['password']
+    #otra manera de asignar los valores
+    #email = request.json.get("email")
+    #password = request.json.get("password")
 
-    user = User.query.filter_by(email = email, password = password).first()
-    print (user)
+    user = Cliente.query.filter_by(email = email, password = password).first()
+
     if not user:
         return jsonify("Credenciales incorrectas, mensaje del backend"), 401
 
     access_token = create_access_token(identity = email)
 
+
     return jsonify({
-        "email": email,
-        "token": access_token
+        "user": user.serialize(), 
+        "token": access_token,
     })
+
+
+
+
+
+@api.route("/edituser/<int:id>", methods=['PUT'])
+def putuser(id):
+    info_request = request.get_json()
+    user1 = Cliente.query.get(id)
+    if user1 is None:
+        raise APIException('Usuario no encontrado', status_code=404)
+    if "userName" in info_request:
+        user1.userName = info_request["userName"]
+    if "lastName" in info_request:
+        user1.lastName = info_request["lastName"]
+    if "email" in info_request:
+        user1.email = info_request["email"]
+    if "dni" in info_request:
+        user1.dni = info_request["dni"]
+    if "direccion" in info_request:
+        user1.direccion = info_request["direccion"]
+    if "telefono" in info_request:
+        user1.telefono = info_request["telefono"]
+    db.session.commit()
+    return jsonify("User editado")
+
+
+    
+
+@api.route('/stripe_webhooks', methods=['POST'])
+def webhook():
+    event = None
+    payload = request.data
+    sig_header = request.headers['STRIPE_SIGNATURE']
+    endpoint_secret = "whsec_66ZDul5BYF6TNDfQvK3AVAaHN66ZavUM"
+
+    try:
+        event = stripe.Webhook.construct_event(
+            payload, sig_header, endpoint_secret
+        )
+    except ValueError as e:
+        # Invalid payload
+        raise e
+    except stripe.error.SignatureVerificationError as e:
+        # Invalid signature
+        raise e
+
+    # Handle the event
+    if event['type'] == 'charge.succeeded':
+      charge = event['data']['object']
+      ejemplo = charge.billing_details.email
+      cliente = Cliente.query.filter_by(email = ejemplo).first()
+      pago = Pago(cliente_id = cliente.id, monto = charge.amount / 100 )
+      cliente.corrienteDePago = True
+      db.session.add(pago)
+      db.session.commit()
+    #   print(nuevo_pago)
+
+# "whsec_66ZDul5BYF6TNDfQvK3AVAaHN66ZavUM"
+
+    # ... handle other event types
+    else:
+      print('Unhandled event type {}'.format(event['type']))
+
+    return jsonify(success=True)
