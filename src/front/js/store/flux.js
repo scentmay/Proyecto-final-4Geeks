@@ -94,10 +94,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 
-			survey: async (objective, medical, message) => {
+			surveySinDatos: async (objective, medical, message) => {
 
 				const store = getStore();
-
+				console.log("entrando en survey sin datos");
 				const opts = {
 					method: 'POST',
 					headers: {
@@ -113,14 +113,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 				};
 
-			await fetch(process.env.BACKEND_URL + "/api/survey", opts)
-			.then((res) => {
-				if(!res.ok) {
-					console.log("Error en el fecth del survey");
-					return false;
-				}
-				return res.json();
-			})
+			fetch('https://3001-4geeksacade-reactflaskh-egdm5hczo2f.ws-eu64.gitpod.io/api/survey/' + store.user.id, opts)
+			.then(resp => resp.json())
 			.then((data) => {
 				console.log("Encuesta registrada");
 				setStore({survey: data.survey});
@@ -131,10 +125,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			},
 
-			surveyData: async () => {
+			surveyData: () => {
 
 				const store = getStore();
-
+				
 				const opts = {
 					method: 'GET',
 					headers: {
@@ -142,9 +136,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 						"Authorization": "Bearer " + store.user.token		
 					}
 				};
-				fetch (process.env.BACKEND_URL  + "/api/survey/" + store.user.id, opts)
+				fetch ("https://3001-4geeksacade-reactflaskh-egdm5hczo2f.ws-eu64.gitpod.io/api/survey/" + store.user.id, opts)
 				.then(resp => resp.json())
-				.then(data => setStore({survey: data.survey}))
+				.then(data => {
+					console.log("Respuesta del flux surveyData")
+					setStore({survey: data.survey})
+				})
 				.catch(error => console.error ("Ha habido un error al recuperar los datos de la encuesta " + error))
 
 			},
@@ -188,7 +185,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 				  };
 
-				await fetch(process.env.BACKEND_URL + "/api/login", opts)
+				await fetch('https://3001-4geeksacade-reactflaskh-egdm5hczo2f.ws-eu64.gitpod.io/api/login', opts)
 				.then((res) => {
 						if (!res.ok) {
 							alert("Credenciales incorrectas");
@@ -204,6 +201,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						user: data.user,
 					})
 					setStore({logged: true})
+					// localStorage.setItem("token", data.token)
 					return true;
 				})
 				
@@ -234,29 +232,39 @@ const getState = ({ getStore, getActions, setStore }) => {
 					method: 'GET',
 					headers: {
 						"Content-Type": "application/json",
-					},
+						"Authorization": "Bearer " + store.user.token
+					}
 				}
 
-				fetch (process.env.BACKEND_URL  + "/api/query", opts)
+				fetch ("https://3001-4geeksacade-reactflaskh-egdm5hczo2f.ws-eu64.gitpod.io/api/query/", opts)
 				.then(resp => resp.json())
 				.then(data => setStore({query: data}))
 				.catch(error => console.error ("Ha habido un error al recuperar los datos de la encuesta " + error))
 			},
 
-			changeColor: (index, color) => {
-				//get the store
+			deleteMember: (id) => {
+
+				// Traemos la store para poder recuperar el token
 				const store = getStore();
 
-				//we have to loop the entire demo array to look for the respective index
-				//and change its color
-				const demo = store.demo.map((elm, i) => {
-					if (i === index) elm.background = color;
-					return elm;
-				});
+				const opts = {
+					method: 'DELETE',
+					headers: {
+						"Content-Type": "application/json",
+						"Authorization": "Bearer " + store.user.token
+					}
+				}
 
-				//reset the global store
-				setStore({ demo: demo });
+				fetch (process.env.BACKEND_URL + "/api/deleteMember/" + id , opts)
+				.then(resp => resp.json())
+				.then(data => {
+					setStore({message: data});
+					const newQuery = store.query.filter((element)=> element.id !== id )
+					setStore({query: newQuery})
+				})
+				.catch( error => console.error("Error al borrar miembro " + error))
 			}
+
 		}
 	};
 };
