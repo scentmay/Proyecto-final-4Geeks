@@ -1,14 +1,20 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
-
+import injectContext from "./store/appContext";
+import { Header } from "./component/navbar";
+import { Footer } from "./component/footer";
+import { Suscription } from "./component/subscription";
+import { Ubicacion } from "./component/ubicacion";
+import { Usuario } from "./pages/userdashboard";
 import { Home } from "./pages/home";
 import { Demo } from "./pages/demo";
 import { Single } from "./pages/single";
-import injectContext from "./store/appContext";
-
-import { Navbar } from "./component/navbar";
-import { Footer } from "./component/footer";
+import { Contacto } from "./component/contacto";
+import { Login } from "./pages/login";
+import { Signup } from "./pages/signup";
+import { Survey } from "./pages/survey";
+import { Admin } from "./pages/admin";
 
 //create your first component
 const Layout = () => {
@@ -19,14 +25,21 @@ const Layout = () => {
     return (
         <div>
             <BrowserRouter basename={basename}>
-                <ScrollToTop>
-                    <Navbar />
+                <ScrollToTop>   
+                    <Header />           
                     <Routes>
-                        <Route element={<Home />} path="/" />
+                        <Route element={<Home />} path="/" exact />   
+                        <Route element={<Suscription />} path="/suscripcion" />
+                        <Route element={<Contacto />} path="/contacto" />
+                        <Route element={<Usuario />} path="/usuario" />
                         <Route element={<Demo />} path="/demo" />
                         <Route element={<Single />} path="/single/:theid" />
                         <Route element={<h1>Not found!</h1>} />
-                    </Routes>
+                        <Route element={<Login />} path="/login" />
+                        <Route element={<Signup />} path="/signup" />                   
+                        <Route element={<Survey />} path="/survey" /> 
+                        <Route element={<Admin />} path="/admin" />                                    
+                    </Routes>   
                     <Footer />
                 </ScrollToTop>
             </BrowserRouter>

@@ -1,19 +1,39 @@
-import React from "react";
+import React, { useContext }from "react";
 import { Link } from "react-router-dom";
+import Navbar from 'react-bootstrap/Navbar';
+import { Context } from "../store/appContext";
+import "../../img/logo.png"
 
-export const Navbar = () => {
-	return (
-		<nav className="navbar navbar-light bg-light">
-			<div className="container">
-				<Link to="/">
-					<span className="navbar-brand mb-0 h1">React Boilerplate</span>
-				</Link>
-				<div className="ml-auto">
-					<Link to="/demo">
-						<button className="btn btn-primary">Check the Context in action</button>
-					</Link>
-				</div>
-			</div>
-		</nav>
-	);
+export const Header = () => {
+
+	const { store, actions } = useContext(Context);
+	const logOut = () => {
+        actions.cleanStore();
+      }
+
+  return (
+    <>
+      <Navbar bg="dark" variant="dark">
+          <Navbar.Brand href="/">
+		  <img id="logo" src="logo.png" />
+          </Navbar.Brand>
+		  <div className="ms-auto">
+                    {
+                        !store.user.token ?
+                            (
+                                <Link to="/login">
+                                    <button className="btn btn-primary">Login</button>
+                                </Link>
+                            )
+                            :
+                            (
+                                <Link to="/">
+                                    <button className="btn btn-primary" onClick={logOut}>Logout</button>
+                                </Link>
+                            )
+                    }
+                </div>
+      </Navbar>
+    </>
+  );
 };
