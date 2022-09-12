@@ -166,8 +166,6 @@ def putuser(id):
     return jsonify("User editado")
 
 
-    
-
 @api.route('/stripe_webhooks', methods=['POST'])
 def webhook():
     event = None
@@ -199,16 +197,13 @@ def webhook():
 
 # "whsec_66ZDul5BYF6TNDfQvK3AVAaHN66ZavUM"
 
-# ... handle other event types
+    # ... handle other event types
     else:
       print('Unhandled event type {}'.format(event['type']))
 
-    return jsonify(success=True)
+    return jsonify(success=True) 
 
-    client_query = Cliente.query.all()
-    #mapeamos cada una de las filas de la tabla cliente para devolverlo en formato json
-    all_clients = list(map(lambda x: x.serialize() , client_query))
-    return jsonify(all_clients)
+
 
 @api.route('/deleteMember/<int:id>', methods = ['DELETE'] )
 @jwt_required()
