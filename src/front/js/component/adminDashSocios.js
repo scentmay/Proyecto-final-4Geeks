@@ -8,8 +8,6 @@ export const AdminDashSocios = (props) => {
 
 
   let query_data = store.query;
-  let info = store.message;
-
 
   const handleCancelMembership = (id) => {
     actions.deleteMember(id);
@@ -39,10 +37,6 @@ export const AdminDashSocios = (props) => {
   };
 
 
-  useEffect(()=>{
-    render();
-  }, info)
- 
   return (
     <div>
       <div className="card" style={{width:"100%"}}>
@@ -53,7 +47,7 @@ export const AdminDashSocios = (props) => {
               <th>id socio</th>
               <th>{props.col1}</th>
               <th>{props.col2}</th>
-              <th>{props.col3}</th>
+              <th onclick="sortTable(1, 'str')">{props.col3}</th>
               <th>Acción</th>
             </tr>
           </thead>

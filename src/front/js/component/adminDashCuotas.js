@@ -28,7 +28,9 @@ export const AdminDashCuotas = (props) => {
         <th>{client.id}</th>
         <td>{client.userName}</td>
         <td>{client.telefono}</td>
-        <td>{client.corrienteDePago}</td>
+        <td>{
+             client.corrienteDePago ? ("Pagado"):("PENDIENTE")
+        }</td>
         <td><button className="btn" style={{fontSize:".6em"}} onClick={() => {handleMail(client.email, client.userName)}}>mail</button></td>
         </tr>)})}
       </tbody>
