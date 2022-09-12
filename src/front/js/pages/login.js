@@ -46,6 +46,7 @@ export const Login = () => {
                   <Link to={'/usuario'} className="btn btn-primary btn-lg mt-3 ms-3">Usuario</Link>
                   <Link to={'/admin'} className="btn btn-primary btn-lg mt-3 ms-3">ADMIN</Link>
                   <Link to={'/survey'} className="btn btn-primary btn-lg mt-3 ms-3">Realizar encuesta</Link>
+                  <Link to={'/'} className="btn btn-primary btn-lg mt-3 ms-3">Volver a home</Link>
                 </div>
               </div>
             )
