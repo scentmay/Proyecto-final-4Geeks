@@ -47,7 +47,7 @@ export const AdminDashSocios = (props) => {
               <th>id socio</th>
               <th>{props.col1}</th>
               <th>{props.col2}</th>
-              <th onclick="sortTable(1, 'str')">{props.col3}</th>
+              <th>{props.col3}</th>
               <th>Acción</th>
             </tr>
           </thead>
