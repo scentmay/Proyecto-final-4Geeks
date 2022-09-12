@@ -5,6 +5,8 @@ import "../../styles/subs.css";
 import "../../styles/footer.css";
 import { Suscription } from "../component/subscription";
 import { Ubicacion } from "../component/ubicacion";
+import { Header } from "../component/navbar";
+import { Footer } from "../component/footer";
 import { Contacto } from "../component/contacto";
 import fondo from '../../img/signup_img.jpg'
 import { Link } from "react-router-dom";
@@ -15,8 +17,7 @@ export const Home = () => {
 	return (
 	<div>
 		<div className="container-fluid mx-0" id="navbarMenu">
-				<img src="https://image.shutterstock.com/image-vector/fitness-gym-logo-design-vector-260nw-1707162607.jpg" id="logo"/>
-
+				<img/>
 			<div className="titular">
 				<h1>Bienvenido a SyF FIT</h1>
 				<Link to="/login">

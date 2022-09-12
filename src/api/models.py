@@ -31,6 +31,8 @@ class Cliente(db.Model):
     peso = db.Column(db.Float(20), unique=False, nullable=False)
     corrienteDePago = db.Column(db.Boolean, unique=False, nullable=False)
     fechaDeAlta = db.Column(db.DateTime, unique=False, nullable=False)
+    pagos = db.relationship('Pago', backref='cliente', lazy=True)
+    
 
     def serialize(self):
         return {
@@ -94,3 +96,21 @@ class Objectives(db.Model):
     objective = db.Column(db.String(120), unique=True, nullable=False)
 
 
+
+
+
+class Pago(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    cliente_id = db.Column(db.Integer, db.ForeignKey('cliente.id'))
+    fechaPago = db.Column(db.DateTime, default = datetime.now())
+    monto = db.Column(db.Integer, unique=False, nullable=False)
+
+
+    def __repr__(self):
+        return f'<Pago {self.email}>'
+
+    def serialize(self):
+        return {
+            "id": self.id,
+            "cliente_id": self.cliente_id,
+        }

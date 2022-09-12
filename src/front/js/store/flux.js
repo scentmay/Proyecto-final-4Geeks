@@ -60,7 +60,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				//para usar la variable de entorno que tiene la URL del backend, tenemos que poner:
 				//fetch(process.env.BACKEND_URL + "/api/hello")
-				await fetch(process.env.BACKEND_URL  + "/api/signup", opts)
+				await fetch(process.env.BACKEND_URL + "/api/signup", opts)
 
 				.then ((res) => {
 					if (!res.ok) {
@@ -74,6 +74,23 @@ const getState = ({ getStore, getActions, setStore }) => {
 				.catch((error) => {
 					console.error("Ha ocurrido un error " + error);
 				})
+			},
+
+			getUser: () =>{
+
+				const store = getStore();
+
+				const opts = {
+					method: 'GET',
+					headers: {
+						"Content-Type": "application/json",
+					},
+				}
+
+				fetch (process.env.BACKEND_URL  + "/api/query", opts)
+				.then(resp => resp.json())
+				.then(data => setStore({query: data}))
+				.catch(error => console.error ("Ha habido un error al recuperar los datos de la encuesta " + error))
 			},
 
 

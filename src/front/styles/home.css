@@ -28,6 +28,8 @@ a {
     margin-right: 10px;
 }
 
+    /* imagen de fondo de home */
+
 #navbarMenu {
     background-image: url('https://images.ecestaticos.com/cD8ADKVW4yRYrKblwQ2YaMQV9f0=/0x110:2117x1301/1600x900/filters:fill(white):format(jpg)/f.elconfidencial.com%2Foriginal%2Fd5b%2Fc94%2F34a%2Fd5bc9434a152ac07185aa6bf6b976c41.jpg');
     background-repeat: no-repeat;
@@ -37,12 +39,6 @@ a {
 
 #navMenu {
     background-color: black;
-}
-
-#logo {
-    width: 150px;
-    height: 90px;
-
 }
 
 .menu {
@@ -77,11 +73,11 @@ h1 {
     margin-bottom: 50px;
 }
 
-.titular a {
+/* .titular a {
     background: #000;
     color: #dd9933;
     padding: 20px 40px;
-}
+} */
 
      /* Formulario de contacto */
 
@@ -102,3 +98,9 @@ h2 {
    background-position-x: center;
    background-position-y: center;
    }
+
+   /* logo del navbar */
+#logo {
+    width: 80px;
+    height: 50px;
+}

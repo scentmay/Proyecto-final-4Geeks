@@ -2,10 +2,11 @@
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
 from flask import Flask, request, jsonify, url_for, Blueprint
-from api.models import db, User, Cliente, Survey, Objectives
+from api.models import db, User, Cliente, Survey, Objectives, Pago
 from api.utils import generate_sitemap, APIException
 from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity
 import datetime
+import stripe
 
 api = Blueprint('api', __name__)
 
@@ -139,9 +140,70 @@ def login():
         "token": access_token,
     })
 
-@api.route('/query', methods=['GET'])
-@jwt_required()
-def queryExample():
+
+
+
+
+@api.route("/edituser/<int:id>", methods=['PUT'])
+def putuser(id):
+    info_request = request.get_json()
+    user1 = Cliente.query.get(id)
+    if user1 is None:
+        raise APIException('Usuario no encontrado', status_code=404)
+    if "userName" in info_request:
+        user1.userName = info_request["userName"]
+    if "lastName" in info_request:
+        user1.lastName = info_request["lastName"]
+    if "email" in info_request:
+        user1.email = info_request["email"]
+    if "dni" in info_request:
+        user1.dni = info_request["dni"]
+    if "direccion" in info_request:
+        user1.direccion = info_request["direccion"]
+    if "telefono" in info_request:
+        user1.telefono = info_request["telefono"]
+    db.session.commit()
+    return jsonify("User editado")
+
+
+    
+
+@api.route('/stripe_webhooks', methods=['POST'])
+def webhook():
+    event = None
+    payload = request.data
+    sig_header = request.headers['STRIPE_SIGNATURE']
+    endpoint_secret = "whsec_66ZDul5BYF6TNDfQvK3AVAaHN66ZavUM"
+
+    try:
+        event = stripe.Webhook.construct_event(
+            payload, sig_header, endpoint_secret
+        )
+    except ValueError as e:
+        # Invalid payload
+        raise e
+    except stripe.error.SignatureVerificationError as e:
+        # Invalid signature
+        raise e
+
+    # Handle the event
+    if event['type'] == 'charge.succeeded':
+      charge = event['data']['object']
+      ejemplo = charge.billing_details.email
+      cliente = Cliente.query.filter_by(email = ejemplo).first()
+      pago = Pago(cliente_id = cliente.id, monto = charge.amount / 100 )
+      cliente.corrienteDePago = True
+      db.session.add(pago)
+      db.session.commit()
+    #   print(nuevo_pago)
+
+# "whsec_66ZDul5BYF6TNDfQvK3AVAaHN66ZavUM"
+
+# ... handle other event types
+    else:
+      print('Unhandled event type {}'.format(event['type']))
+
+    return jsonify(success=True)
 
     client_query = Cliente.query.all()
     #mapeamos cada una de las filas de la tabla cliente para devolverlo en formato json
