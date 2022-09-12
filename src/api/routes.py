@@ -219,3 +219,14 @@ def eliminateMember(id):
     db.session.commit()
 
     return jsonify("Usuario eliminado, mensaje del backend"), 200
+
+
+@api.route('/query', methods = ['GET'] )
+@jwt_required()
+def queryExample():
+
+    client_query = Cliente.query.all()
+    
+    #mapeamos cada una de las filas de la tabla cliente para devolverlo en formato json
+    all_clients = list(map(lambda x: x.serialize() , client_query))
+    return jsonify(all_clients)
