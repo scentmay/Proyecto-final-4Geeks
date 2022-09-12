@@ -54,26 +54,9 @@ def register():
 
     return jsonify("Usuario creado, mensaje del backend"), 200
 
-#registro de encuesta
-@api.route("/survey", methods =["POST"])
-@jwt_required()
-def survey():
 
-    body = request.get_json()
-
-    if body is None:
-        raise APIException("You need to specify the request body as a json object(survey info)", status_code=400)
-
-    newSurvey = Survey(cliente_id = body['id'], email = body['email'], objective = body['objective'], medical = body['medical'], message = body['message'])
-
-    db.session.add(newSurvey)
-    db.session.commit()
-
-    return jsonify("Encuesta creada, mensaje del backend"), 200
-
-
-#Recuperar encuesta
-@api.route("/survey/<int:id>", methods =["GET", "PUT"])
+#Recuperar encuesta, actualizar, crear
+@api.route("/survey/<int:id>", methods =["GET", "PUT", "POST"])
 @jwt_required()
 def info_survey(id):
     
@@ -111,8 +94,22 @@ def info_survey(id):
 
         return jsonify("Registro modificado"), 200
     
+    if request.method == 'POST':
+        body = request.get_json()
+
+        if body is None:
+            raise APIException("You need to specify the request body as a json object(survey info)", status_code=400)
+
+        newSurvey = Survey(cliente_id = body['id'], email = body['email'], objective = body['objective'], medical = body['medical'], message = body['message'])
+
+        db.session.add(newSurvey)
+        db.session.commit()
+
+        return jsonify("Encuesta creada, mensaje del backend"), 200
+
+
 # login de usuario
-@api.route("/login", methods =["POST"])
+@api.route("/login", methods = ["POST"])
 def login():
     body = request.get_json()
     

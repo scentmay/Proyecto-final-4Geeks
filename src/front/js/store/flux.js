@@ -77,10 +77,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 
-			survey: async (objective, medical, message) => {
+			surveySinDatos: async (objective, medical, message) => {
 
 				const store = getStore();
-
+				console.log("entrando en survey sin datos");
 				const opts = {
 					method: 'POST',
 					headers: {
@@ -96,14 +96,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 				};
 
-			await fetch('https://3001-4geeksacade-reactflaskh-egdm5hczo2f.ws-eu64.gitpod.io/api/survey', opts)
-			.then((res) => {
-				if(!res.ok) {
-					console.log("Error en el fecth del survey");
-					return false;
-				}
-				return res.json();
-			})
+			fetch('https://3001-4geeksacade-reactflaskh-egdm5hczo2f.ws-eu64.gitpod.io/api/survey/' + store.user.id, opts)
+			.then(resp => resp.json())
 			.then((data) => {
 				console.log("Encuesta registrada");
 				setStore({survey: data.survey});
@@ -114,10 +108,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			},
 
-			surveyData: async () => {
+			surveyData: () => {
 
 				const store = getStore();
-
+				
 				const opts = {
 					method: 'GET',
 					headers: {
@@ -125,9 +119,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 						"Authorization": "Bearer " + store.user.token		
 					}
 				};
-				fetch (process.env.BACKEND_URL  + "/api/survey/" + store.user.id, opts)
+				fetch ("https://3001-4geeksacade-reactflaskh-egdm5hczo2f.ws-eu64.gitpod.io/api/survey/" + store.user.id, opts)
 				.then(resp => resp.json())
-				.then(data => setStore({survey: data.survey}))
+				.then(data => {
+					console.log("Respuesta del flux surveyData")
+					setStore({survey: data.survey})
+				})
 				.catch(error => console.error ("Ha habido un error al recuperar los datos de la encuesta " + error))
 
 			},
