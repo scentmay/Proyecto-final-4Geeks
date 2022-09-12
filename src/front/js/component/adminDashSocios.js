@@ -1,16 +1,24 @@
 import Table from "react-bootstrap/Table";
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Context } from "../store/appContext";
 
 export const AdminDashSocios = (props) => {
 
   const { store, actions } = useContext(Context);
 
+
   let query_data = store.query;
+  let info = store.message;
+
+
+  const handleCancelMembership = (id) => {
+    actions.deleteMember(id);
+  }
+
 
   const render = () => {
     //query data tiene datos? entonces devuelve (return) un mapeo de query_data
-    //a su vez, el mapeo pinta una tabla. <tbody> queda estático porque no va a variar, 
+    //a su vez, el mapeo pinta una tabla.La etiqueta <tbody> queda estático porque no va a variar, 
     //por eso queda fuera del mapeo
     //caso de que query_data no tenga datos, devuelve cadena vacía
 
@@ -23,6 +31,7 @@ export const AdminDashSocios = (props) => {
         <td>{client.userName}</td>
         <td>{client.email}</td>
         <td>{client.dni}</td>
+        <td><button className="btn" style={{fontSize:".6em"}} onClick={() => {handleCancelMembership(client.id)}}>Eliminar</button></td>
         </tr>)})}
       </tbody>
     )
@@ -30,6 +39,10 @@ export const AdminDashSocios = (props) => {
   };
 
 
+  useEffect(()=>{
+    render();
+  }, info)
+ 
   return (
     <div>
       <div className="card" style={{width:"100%"}}>
@@ -41,6 +54,7 @@ export const AdminDashSocios = (props) => {
               <th>{props.col1}</th>
               <th>{props.col2}</th>
               <th>{props.col3}</th>
+              <th>Acción</th>
             </tr>
           </thead>
           {/* sólo cambiamos el body de la tabla llamando a la función render,

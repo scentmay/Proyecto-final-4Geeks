@@ -140,10 +140,25 @@ def login():
     })
 
 @api.route('/query', methods=['GET'])
+@jwt_required()
 def queryExample():
 
     client_query = Cliente.query.all()
     #mapeamos cada una de las filas de la tabla cliente para devolverlo en formato json
     all_clients = list(map(lambda x: x.serialize() , client_query))
     return jsonify(all_clients)
+
+@api.route('/deleteMember/<int:id>', methods = ['DELETE'] )
+@jwt_required()
+def eliminateMember(id):
+
+    #Recuperamos el usuario
+    user = Cliente.query.filter_by(id = id).first()
+
+    if not user:
+        raise APIException("Usuario a eliminar incorrecto", status_code=400)
     
+    db.session.delete(user)
+    db.session.commit()
+
+    return jsonify("Usuario eliminado, mensaje del backend"), 200

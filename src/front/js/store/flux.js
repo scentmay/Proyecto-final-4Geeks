@@ -215,7 +215,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 					method: 'GET',
 					headers: {
 						"Content-Type": "application/json",
-					},
+						"Authorization": "Bearer " + store.user.token
+					}
 				}
 
 				fetch (process.env.BACKEND_URL  + "/api/query", opts)
@@ -224,20 +225,29 @@ const getState = ({ getStore, getActions, setStore }) => {
 				.catch(error => console.error ("Ha habido un error al recuperar los datos de la encuesta " + error))
 			},
 
-			changeColor: (index, color) => {
-				//get the store
+			deleteMember: (id) => {
+
+				// Traemos la store para poder recuperar el token
 				const store = getStore();
 
-				//we have to loop the entire demo array to look for the respective index
-				//and change its color
-				const demo = store.demo.map((elm, i) => {
-					if (i === index) elm.background = color;
-					return elm;
-				});
+				const opts = {
+					method: 'DELETE',
+					headers: {
+						"Content-Type": "application/json",
+						"Authorization": "Bearer " + store.user.token
+					}
+				}
 
-				//reset the global store
-				setStore({ demo: demo });
+				fetch (process.env.BACKEND_URL + "/api/deleteMember/" + id , opts)
+				.then(resp => resp.json())
+				.then(data => {
+					setStore({message: data});
+					const newQuery = store.query.filter((element)=> element.id !== id )
+					setStore({query: newQuery})
+				})
+				.catch( error => console.error("Error al borrar miembro " + error))
 			}
+
 		}
 	};
 };

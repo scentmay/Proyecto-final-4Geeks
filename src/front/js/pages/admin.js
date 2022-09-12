@@ -34,8 +34,9 @@ export const Admin = () => {
         {store.user.token &&
         store.user.token != "" &&
         store.user.token != undefined ? (
-          <div class="mainContainer container-fluid">
+          <div className="mainContainer container-fluid">
             <div className="row">
+              {/* primera tabla */}
               <div className="col-md-6">
                 <div className="m-2">
                   <AdminDashSocios
@@ -46,6 +47,8 @@ export const Admin = () => {
                   ></AdminDashSocios>
                 </div>
               </div>
+
+              {/* segunda tabla */}
               <div className="col-md-6">
                 <div className="m-2">
                   <AdminDashCuotas
@@ -56,6 +59,7 @@ export const Admin = () => {
                   ></AdminDashCuotas>
                 </div>
               </div>
+
             </div>
           </div>
         ) : (

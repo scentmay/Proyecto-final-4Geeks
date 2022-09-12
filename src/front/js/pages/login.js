@@ -3,7 +3,6 @@ import { Context } from "../store/appContext";
 import "../../styles/home.css";
 import { useState } from 'react';
 import { Link } from "react-router-dom";
-import { useNavigate } from 'react-router-dom';
 import '../../styles/login.css'
 import fondo from '../../img/signup_img.jpg'
 
@@ -13,7 +12,7 @@ export const Login = () => {
   const { store, actions } = useContext(Context);
   const [email, setEmail] = useState ("");
   const [password, setPassword] = useState ("");
-  let navigate = useNavigate();
+
 
   //Función para limpiar el token del store
   const logOut = () => {
