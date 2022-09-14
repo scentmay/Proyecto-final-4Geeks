@@ -17,6 +17,7 @@ import { Survey } from "./pages/survey";
 import { Admin } from "./pages/admin";
 import { ContactForm } from "./pages/contact_form";
 import { EmailSent } from "./pages/email_sent";
+import { Recover_password } from "./pages/recover_password";
 
 
 //create your first component
@@ -45,6 +46,7 @@ const Layout = () => {
                         <Route element={<ContactForm />} path="/contactform/:email/:name" />                   
                         <Route element={<ContactForm />} path="/contactform" />                   
                         <Route element={<EmailSent />} path="/emailsent" />                   
+                        <Route element={<Recover_password />} path="/recover-password" />                   
                     </Routes>   
                     <Footer />
                 </ScrollToTop>

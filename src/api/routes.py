@@ -232,3 +232,18 @@ def queryExample():
     #mapeamos cada una de las filas de la tabla cliente para devolverlo en formato json
     all_clients = list(map(lambda x: x.serialize() , client_query))
     return jsonify(all_clients)
+
+@api.route('/recover_password', methods = ['POST'] )
+def queryPassword():
+
+    body = request.get_json()
+
+    if body is None:
+        raise APIException("You need to specify the request body as a json object", status_code=400)
+
+    email = body['email']
+    user = Cliente.query.filter_by(email = email).first()
+    if not user:
+        return jsonify("El usuario no existe"), 401
+
+    return jsonify({user.password})
