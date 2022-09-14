@@ -6,14 +6,28 @@ export const EditarPerfil = () => {
 
     const { store, actions } = useContext(Context);
     const [useraux, setUserAux] = useState("");
+    const [userName, setUserName] = useState ("");
+
+    // const perfil_data = store.user
+    
 
     useEffect(() => {
         setUserAux({...store.user})
     }, [store.user]);
 
     const handleClick = () => {
-        actions.signUp(email, password, userName, lastName, dni, direccion, telefono);
+        actions.userUpdate(useraux.email, useraux.userName, useraux.lastName, useraux.dni, useraux.direccion, useraux.telefono);
     }
+
+
+    // const handleClick = (e) => {
+	// 	e.preventDefault();
+	// 	//hay datos, hay que actualizar info
+	// 	if (survey_data != undefined){
+	// 		actions.userUpdate(email, userName, lastName, dni, direccion, telefono);
+	// 		setUserName("");
+	// 	}
+	// }	
 
     return (
         <>
@@ -40,9 +54,9 @@ export const EditarPerfil = () => {
                             type="text"
                             className="form-control"
                             placeholder="Indique sus Apellidos"
-                            value={useraux.lastname}
+                            value={useraux.lastName}
                             onChange={(e) => {
-                                setUserAux({ ...useraux, lastname: e.target.value });
+                                setUserAux({ ...useraux, lastName: e.target.value });
                             }}
                         />
                     </div>
@@ -109,9 +123,7 @@ export const EditarPerfil = () => {
                     </div>
                 </div>
                 <div className="d-grid gap-2">
-                    <button type="submit" className="btn btn-primary" onClick={handleClick}>
-                        Actualizar y guardar
-                    </button>
+                <button className="btn" onClick={handleClick}>Actualizar y Guardar</button>
                 </div>
             </div>
         </>

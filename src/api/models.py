@@ -34,12 +34,15 @@ class Cliente(db.Model):
     pagos = db.relationship('Pago', backref='cliente', lazy=True)
     
 
+    def __repr__(self):
+        return f'<Este es el id del cliente {self.id}>'
+
     def serialize(self):
         return {
             "id": self.id,
             "email": self.email,
             "userName": self.userName,
-            "lastname": self.lastName,
+            "lastName": self.lastName,
             "dni": self.dni,
             "direccion": self.direccion,
             "telefono": self.telefono,

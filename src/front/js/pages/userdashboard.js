@@ -13,6 +13,7 @@ import { Registros } from "../component/registros";
 import { Entrenamiento } from "./entrenamiento";
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { Suscription } from "../component/subscription";
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -23,7 +24,7 @@ export const Usuario = () => {
 
     const { store, actions } = useContext(Context);
     const [useraux, setUserAux] = useState("");
-
+    let navigate = useNavigate();
 
     // useEffect(() => {
     //     actions.signUp(userName);
@@ -90,16 +91,16 @@ export const Usuario = () => {
                                 </div>
                             </nav>
                             <div className="tab-content" id="nav-tabContent">
-                                <div className="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" tabindex="0">
+                                <div className="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" tabIndex="0">
                                     <EditarPerfil />
                                 </div>
-                                <div className="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" tabindex="0">
+                                <div className="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" tabIndex="0">
                                     <Registros />
                                 </div>
-                                <div className="tab-pane fade" id="nav-training" role="tabpanel" aria-labelledby="nav-training-tab" tabindex="0">
+                                <div className="tab-pane fade" id="nav-training" role="tabpanel" aria-labelledby="nav-training-tab" tabIndex="0">
                                     <Entrenamiento />
                                 </div>
-                                <div className="tab-pane fade" id="nav-pago" role="tabpanel" aria-labelledby="nav-pago-tab" tabindex="0">
+                                <div className="tab-pane fade" id="nav-pago" role="tabpanel" aria-labelledby="nav-pago-tab" tabIndex="0">
                                     <Suscription />
                                 </div>
                             </div>
@@ -135,10 +136,10 @@ export const Usuario = () => {
         </div>
     </nav>
     <div className="tab-content" id="nav-tabContent">
-        <div className="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" tabindex="0">
+        <div className="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" tabIndex="0">
             <EditarPerfil />
         </div>
-        <div className="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" tabindex="0">
+        <div className="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" tabIndex="0">
             <Registros />
         </div>
     </div>
@@ -166,12 +167,12 @@ export const Usuario = () => {
 </ul>
 </div>
 <div className="tab-content" id="myTabContent">
-<div className="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
+<div className="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabIndex="0">
 <EditarPerfil />
 </div>
 </div>
 <div className="tab-content" id="myTabContent">
-<div className="tab-pane fade show active" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
+<div className="tab-pane fade show active" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabIndex="0">
 <Registros />
 </div>
 </div> */}
