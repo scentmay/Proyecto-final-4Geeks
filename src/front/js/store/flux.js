@@ -167,7 +167,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						"message": message
 					})
 				}
-				fetch (process.env.BACKEND_URL  + "/api/survey/" + store.user.id, opts)
+				fetch ("https://3001-4geeksacade-reactflaskh-egdm5hczo2f.ws-eu64.gitpod.io/api/survey/" + store.user.id, opts)
 				.then(resp => resp.json())
 				.then(data => console.log(data))
 				.catch(error => console.error ("Ha habido un error al recuperar los datos de la encuesta " + error))

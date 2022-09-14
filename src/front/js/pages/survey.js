@@ -88,10 +88,11 @@ export const Survey = () => {
 							}} />
 
 							<datalist id="objective">
-								<option value="Perder peso" />
-								<option value="Ganar volumen" />
-								<option value="Entrenar resistencia" />
-								<option value="Acondicionamiento general" />
+								<option value="Tren superior" /> {/* 5 ejercicios de tren superior */}
+								<option value="Tren inferior" /> {/* 5 ejercicios de tren inferior */}
+								<option value="Zona media" /> {/* 5 ejercicios zona abdominal */}
+								<option value="Quemagrasas" /> {/* 5 ejercicios de cardio */}
+								<option value="Acondicionamiento general" /> {/* 1 ejercicio de cada tipo, 5 ejercicios */}
 							</datalist>
 						</div>
 

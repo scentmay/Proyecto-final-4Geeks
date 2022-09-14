@@ -20,22 +20,24 @@ export const Registros = () => {
 
 	const handleClick = (e) => {
 		e.preventDefault();
+		//sin datos, se colocan por primera vez
 		if (survey_data == undefined) {
-			console.log("sin datos, se colocan por primera vez")
-			actions.survey(objective, medical, message);
+			actions.surveySinDatos(objective, medical, message);
 			setObjective("");
 			setMedical("");
 			setMessage("");
 			handleShow();
-			return;
 		}
-		//console.log("hay datos, hay que actualizar info")
-		actions.surveyUpdate(objective, medical, message);
-		setObjective("");
-		setMedical("");
-		setMessage("");
-		handleShow();
-	}
+
+		//hay datos, hay que actualizar info - FUNCIONA OK
+		if (survey_data != undefined){
+			actions.surveyUpdate(objective, medical, message);
+			setObjective("");
+			setMedical("");
+			setMessage("");
+			handleShow();
+		}
+	}	
 	
 	const redirigir = () => {
 		// console.log("Entrando aquí...")
