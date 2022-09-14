@@ -8,7 +8,6 @@ import { Registros } from "../component/registros";
 import { Entrenamiento } from "./entrenamiento";
 import { useNavigate } from 'react-router-dom';
 import { Suscription } from "../component/subscription";
-import { useNavigate } from 'react-router-dom';
 
 
 

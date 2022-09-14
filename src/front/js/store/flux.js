@@ -307,7 +307,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 				}
 
-				fetch ("https://3001-4geeksacade-reactflaskh-egdm5hczo2f.ws-eu64.gitpod.io/api/recover_password/", opts)
+				fetch ("https://3001-scentmay-proyectofinal4-k01h3oxtrzh.ws-eu64.gitpod.io/api/recover_password/", opts)
 				.then(resp => resp.json())
 				.then(data => {
 					setStore({email: data.email, password: data.password});
@@ -330,7 +330,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 				}
 
-				fetch ("https://3001-4geeksacade-reactflaskh-egdm5hczo2f.ws-eu64.gitpod.io/api/new_password/", opts)
+				fetch ("https://3001-scentmay-proyectofinal4-k01h3oxtrzh.ws-eu64.gitpod.io/api/new_password/", opts)
 				.then(resp => resp.json())
 				.then(data => {
 					console.log(data);
