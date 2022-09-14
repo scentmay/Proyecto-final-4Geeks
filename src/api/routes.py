@@ -246,4 +246,28 @@ def queryPassword():
     if not user:
         return jsonify("El usuario no existe"), 401
 
-    return jsonify({"usuario": user.password})
+    return jsonify({"email": user.email, "password": user.password})
+
+
+@api.route('/new_password', methods = ['PUT'] )
+def newPassword():
+
+    body = request.get_json()
+
+    if body is None:
+        raise APIException("No ha especificado la nueva contraseña", status_code=400)
+
+    email = body['email']
+    password = body['password']
+
+    user = Cliente.query.filter_by(email = email).first()
+
+    if not user:
+        return jsonify("El usuario no existe"), 401
+
+    user.password = password
+
+    db.session.commit()
+
+    return jsonify("Contraseña modificada"), 200
+    
