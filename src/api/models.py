@@ -104,7 +104,7 @@ class Objectives(db.Model):
 
 class Pago(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    cliente_id = db.Column(db.Integer, db.ForeignKey('cliente.id'))
+    cliente_id = db.Column(db.Integer, db.ForeignKey('cliente.id'), nullable=False)
     fechaPago = db.Column(db.DateTime, default = datetime.now())
     monto = db.Column(db.Integer, unique=False, nullable=False)
 

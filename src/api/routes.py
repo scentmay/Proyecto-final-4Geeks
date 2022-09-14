@@ -232,3 +232,14 @@ def queryExample():
     #mapeamos cada una de las filas de la tabla cliente para devolverlo en formato json
     all_clients = list(map(lambda x: x.serialize() , client_query))
     return jsonify(all_clients)
+
+
+@api.route('/user/<int:id>/payments')
+def getPaymentsByUser(id):
+    userObj = Cliente.query.get(id)
+    print(id)
+
+    if not userObj:
+        raise APIException('Client do not exist', 404) 
+
+    return [pago.serialize() for pago in userObj.pagos], 200
