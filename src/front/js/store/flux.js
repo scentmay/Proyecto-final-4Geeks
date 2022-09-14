@@ -279,7 +279,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				fetch ("https://3001-4geeksacade-reactflaskh-egdm5hczo2f.ws-eu64.gitpod.io/api/recover_password/", opts)
 				.then(resp => resp.json())
-				.then(data => setStore({password: data}))
+				.then(data => setStore({password: data.usuario}))
 				.catch(error => console.error ("Ha habido un error al recuperar la contraseña del usuario " + error))
 
 

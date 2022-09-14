@@ -246,4 +246,4 @@ def queryPassword():
     if not user:
         return jsonify("El usuario no existe"), 401
 
-    return jsonify({user.password})
+    return jsonify({"usuario": user.password})
