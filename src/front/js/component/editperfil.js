@@ -1,36 +1,51 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Context } from "../store/appContext";
+import Modal from 'react-bootstrap/Modal';
 
 
 export const EditarPerfil = () => {
 
     const { store, actions } = useContext(Context);
     const [useraux, setUserAux] = useState("");
-    const [userName, setUserName] = useState ("");
+    const [show, setShow] = useState(false);
 
-    // const perfil_data = store.user
-    
+    const handleShow = () => setShow(true);
+	const handleClose = () => {setShow(false);}
+
 
     useEffect(() => {
-        setUserAux({...store.user})
+        setUserAux({ ...store.user })
     }, [store.user]);
 
     const handleClick = () => {
         actions.userUpdate(useraux.email, useraux.userName, useraux.lastName, useraux.dni, useraux.direccion, useraux.telefono);
+        handleShow();
     }
 
 
     // const handleClick = (e) => {
-	// 	e.preventDefault();
-	// 	//hay datos, hay que actualizar info
-	// 	if (survey_data != undefined){
-	// 		actions.userUpdate(email, userName, lastName, dni, direccion, telefono);
-	// 		setUserName("");
-	// 	}
-	// }	
+    // 	e.preventDefault();
+    // 	//hay datos, hay que actualizar info
+    // 	if (survey_data != undefined){
+    // 		actions.userUpdate(email, userName, lastName, dni, direccion, telefono);
+    // 		setUserName("");
+    // 	}
+    // }	
 
     return (
         <>
+
+            <Modal show={show} onHide={handleClose}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Cambios registrados correctamente</Modal.Title>
+                </Modal.Header>
+
+                <Modal.Body className="d-flex justify-content-center fs-3">Pulse aceptar para continuar</Modal.Body>
+
+                <Modal.Footer>
+                    <button className="btn" onClick={handleClose}>Aceptar</button>
+                </Modal.Footer>
+            </Modal>
             <div className="p-3 border-0">
                 <h3 className="text-center">Mis datos</h3>
                 <div className="d-grid gap-2">
@@ -123,7 +138,7 @@ export const EditarPerfil = () => {
                     </div>
                 </div>
                 <div className="d-grid gap-2">
-                <button className="btn" onClick={handleClick}>Actualizar y Guardar</button>
+                    <button className="btn" onClick={handleClick}>Actualizar y Guardar</button>
                 </div>
             </div>
         </>
