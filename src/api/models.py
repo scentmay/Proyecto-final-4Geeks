@@ -34,12 +34,15 @@ class Cliente(db.Model):
     pagos = db.relationship('Pago', backref='cliente', lazy=True)
     
 
+    def __repr__(self):
+        return f'<Este es el id del cliente {self.id}>'
+
     def serialize(self):
         return {
             "id": self.id,
             "email": self.email,
             "userName": self.userName,
-            "lastname": self.lastName,
+            "lastName": self.lastName,
             "dni": self.dni,
             "direccion": self.direccion,
             "telefono": self.telefono,
@@ -101,7 +104,7 @@ class Objectives(db.Model):
 
 class Pago(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    cliente_id = db.Column(db.Integer, db.ForeignKey('cliente.id'))
+    cliente_id = db.Column(db.Integer, db.ForeignKey('cliente.id'), nullable=False)
     fechaPago = db.Column(db.DateTime, default = datetime.now())
     monto = db.Column(db.Integer, unique=False, nullable=False)
 
