@@ -6,11 +6,9 @@ import { Context } from "../store/appContext";
 import { EditarPerfil } from "../component/editperfil";
 import { Registros } from "../component/registros";
 import { Entrenamiento } from "./entrenamiento";
+import { useNavigate } from 'react-router-dom';
 import { Suscription } from "../component/subscription";
 import { useNavigate } from 'react-router-dom';
-
-
-
 
 
 
@@ -20,20 +18,16 @@ export const Usuario = () => {
     const [useraux, setUserAux] = useState("");
     let navigate = useNavigate();
 
-
-
-    useEffect(() => {
-        setUserAux({ ...store.user })
-    }, [store.user]);
-
-
     const redirigir = () => {
 		// console.log("Entrando aquí...")
 		setTimeout(()=>{
 		  navigate("/login")
 		}, 5000)
 	}
-    
+
+    useEffect(() => {
+        setUserAux({ ...store.user })
+    }, [store.user]);
 
     return (
 

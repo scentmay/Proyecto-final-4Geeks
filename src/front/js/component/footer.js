@@ -2,8 +2,8 @@ import React, { Component } from "react";
 
 export const Footer = () => {
   return (
-    <>
-      <footer className="footer mt-auto text-center">
+    <div style={{minHeight:"80vh", marginTop: "auto"}}>
+      <footer className="footer mt-auto text-center" style={{minHeight:"20vh", marginTop: "auto"}}>
         <div className="footer-dark">
           <footer>
             <div className="container-fluid">
@@ -65,6 +65,6 @@ export const Footer = () => {
           </footer>
         </div>
       </footer>
-    </>
+    </div>
   );
 };

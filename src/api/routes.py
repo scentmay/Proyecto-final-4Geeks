@@ -234,6 +234,45 @@ def queryExample():
     return jsonify(all_clients)
 
 
+@api.route('/recover_password', methods = ['POST'] )
+def queryPassword():
+
+    body = request.get_json()
+
+    if body is None:
+        raise APIException("You need to specify the request body as a json object", status_code=400)
+
+    email = body['email']
+    user = Cliente.query.filter_by(email = email).first()
+    if not user:
+        return jsonify("El usuario no existe"), 401
+
+    return jsonify({"email": user.email, "password": user.password})
+
+
+@api.route('/new_password', methods = ['PUT'] )
+def newPassword():
+
+    body = request.get_json()
+
+    if body is None:
+        raise APIException("No ha especificado la nueva contraseña", status_code=400)
+
+    email = body['email']
+    password = body['password']
+
+    user = Cliente.query.filter_by(email = email).first()
+
+    if not user:
+        return jsonify("El usuario no existe"), 401
+
+    user.password = password
+
+    db.session.commit()
+
+    return jsonify("Contraseña modificada"), 200
+    
+
 @api.route('/user/<int:id>/payments')
 def getPaymentsByUser(id):
     userObj = Cliente.query.get(id)
@@ -243,3 +282,4 @@ def getPaymentsByUser(id):
         raise APIException('Client do not exist', 404) 
 
     return [pago.serialize() for pago in userObj.pagos], 200
+

@@ -88,7 +88,7 @@ export const Login = () => {
 
                 </div>
                 <div>    
-                    <a href="#" className="btn-link">Forgot your password?</a>
+                    <Link to={'/recover-password'} className="btn-link">¿Olvidaste tu contraseña?</Link>
                 </div>
             </div>
            )
