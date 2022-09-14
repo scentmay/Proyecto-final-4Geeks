@@ -1,17 +1,12 @@
 import React, { useContext, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "../../styles/user.css"
-import Container from 'react-bootstrap/Container';
-import Navbar from 'react-bootstrap/Navbar';
 import "../../img/logo.png"
-import Nav from 'react-bootstrap/Nav';
 import { Context } from "../store/appContext";
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
 import { EditarPerfil } from "../component/editperfil";
 import { Registros } from "../component/registros";
 import { Entrenamiento } from "./entrenamiento";
-import NavDropdown from 'react-bootstrap/NavDropdown';
+import { useNavigate } from 'react-router-dom';
 import { Suscription } from "../component/subscription";
 import { useNavigate } from 'react-router-dom';
 
@@ -26,42 +21,16 @@ export const Usuario = () => {
     const [useraux, setUserAux] = useState("");
     let navigate = useNavigate();
 
-    // useEffect(() => {
-    //     actions.signUp(userName);
-    // }, []);
-
-
-    useEffect(() => {
-        setUserAux({ ...store.user })
-    }, [store.user]);
-
-    const handleClick = () => {
-        actions.signUp(userName, lastName);
-    }
-
-
     const redirigir = () => {
 		// console.log("Entrando aquí...")
 		setTimeout(()=>{
 		  navigate("/login")
 		}, 5000)
 	}
-    
-    // const handleClick = () => {
-    //     actions.signUp( userName, lastName);
-    // }
 
-    // const [user, setUser] = useState({});
-    // const [oldUser, setOldUser] = useState({});
-    // useEffect(() => {
-    //     window.document.dispatchEvent(
-    //         new Event("DOMContentLoaded", {
-    //             bubbles: true,
-    //             cancelable: true,
-    //         })
-    //     );
-    //     setOldUser(store.user);
-    // }, [store.user]);
+    useEffect(() => {
+        setUserAux({ ...store.user })
+    }, [store.user]);
 
     return (
 

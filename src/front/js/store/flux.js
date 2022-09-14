@@ -6,6 +6,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			survey: {},
 			query:{},
 			logged: false,
+			password: null,
+			email:null,
 			demo: [
 				{
 					title: "FIRST",
@@ -292,6 +294,48 @@ const getState = ({ getStore, getActions, setStore }) => {
 					setStore({query: newQuery})
 				})
 				.catch( error => console.error("Error al borrar miembro " + error))
+			},
+
+			getPassword: (mail) => {
+				const opts = {
+					method: 'POST',
+					headers: {
+					  "Content-Type": "application/json"
+					},
+					body: JSON.stringify({
+					  "email": mail,
+					})
+				}
+
+				fetch ("https://3001-4geeksacade-reactflaskh-egdm5hczo2f.ws-eu64.gitpod.io/api/recover_password/", opts)
+				.then(resp => resp.json())
+				.then(data => {
+					setStore({email: data.email, password: data.password});
+					
+				})
+				.catch(error => console.error ("Ha habido un error al recuperar la contraseña del usuario " + error))
+			},
+			changePassword: (pass) => {
+
+				const store = getStore();
+
+				const opts = {
+					method: 'PUT',
+					headers: {
+					  "Content-Type": "application/json"
+					},
+					body: JSON.stringify({
+					  "email": store.email,
+					  "password": pass
+					})
+				}
+
+				fetch ("https://3001-4geeksacade-reactflaskh-egdm5hczo2f.ws-eu64.gitpod.io/api/new_password/", opts)
+				.then(resp => resp.json())
+				.then(data => {
+					console.log(data);
+				})
+				.catch(error => console.error ("Ha habido un error al cambiar la contraseña del usuario " + error))
 			}
 
 		}

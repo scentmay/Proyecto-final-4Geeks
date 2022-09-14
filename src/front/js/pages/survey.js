@@ -47,14 +47,6 @@ export const Survey = () => {
 		}, 5000)
 	}
 
-	// const handleQuery = (e) => {
-	// 	//hay que pasar el (e) en el prevent default, si no no funciona
-	// 	e.preventDefault();
-	// 	actions.query();
-	// }
-
-
-
 	useEffect (() => {
 		actions.surveyData();
 	},[objective, medical, message]);
@@ -70,7 +62,7 @@ export const Survey = () => {
 					<Modal.Title>Cambios registrados correctamente</Modal.Title>
 				</Modal.Header>
 
-				<Modal.Body className="d-flex justify-content-center fs-3">pulse aceptar para continuar</Modal.Body>
+				<Modal.Body className="d-flex justify-content-center fs-4">pulse aceptar para continuar</Modal.Body>
 
 				<Modal.Footer>
 					<button className="btn" onClick={handleClose}>Aceptar</button>
