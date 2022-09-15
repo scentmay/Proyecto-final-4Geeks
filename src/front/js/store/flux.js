@@ -5,6 +5,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			user: {},
 			survey: {},
 			query:{},
+			ejercicio: [],
 			logged: false,
 			password: null,
 			email:null,
@@ -240,6 +241,23 @@ const getState = ({ getStore, getActions, setStore }) => {
 						console.error("Ha ocurrido un error " + error);
 						
 				})
+			},
+
+			ejercicios: async () => {
+
+				const options = {
+					method: 'GET',
+					headers: {
+						'X-RapidAPI-Key': '0c48ae9655mshf561cabf67e1634p16ea2fjsnec0e954ce943',
+						'X-RapidAPI-Host': 'exercisedb.p.rapidapi.com'
+					}
+				};
+				
+					fetch('https://exercisedb.p.rapidapi.com/exercises/bodyPart/shoulders', options)
+					.then(response => response.json())
+					.then(response => setStore({ejercicio: response}))
+					.catch(err => console.error(err));
+					console.log(getStore().ejercicio)
 			},
 
 			getMessage: async () => {

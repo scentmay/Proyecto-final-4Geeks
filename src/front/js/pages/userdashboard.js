@@ -25,6 +25,7 @@ export const Usuario = () => {
 	}
 
     useEffect(() => {
+        actions.ejercicios();
         setUserAux({ ...store.user })
     }, [store.user]);
 
