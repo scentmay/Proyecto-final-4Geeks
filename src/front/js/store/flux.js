@@ -43,6 +43,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({survey: {}});
 				setStore({logged: false});
 			},
+			cleanTraining: () => {
+				setStore({entrenoAsignado: []});
+			},
+
 
 			signUp:  async (email, password, name, lastName, dni, address, phone) => {
 				
@@ -244,9 +248,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 				})
 			},
 
-			ejercicios: async (tipoDeEjercicio, objCliente) => {
+			ejercicios: async (tipoDeEjercicio) => {
 
-				console.log(tipoDeEjercicio, objCliente)
 				const store = getStore();
 
 				const options = {
@@ -262,8 +265,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(response => { 
 						setStore({ejercicio: response});						
 						let entreno = [];
-						for (let i = 0; i < 5; i++){
+						if (store.survey.objective !== 'Acondicionamiento general')
+							for (let i = 0; i < 5; i++){
+								const posicion = Math.floor(Math.random() * response.length);
+								entreno.push(response[posicion])
+							}
+						else{
 							const posicion = Math.floor(Math.random() * response.length);
+							entreno = [...store.entrenoAsignado]
 							entreno.push(response[posicion])
 						}
 						setStore({entrenoAsignado: entreno})
