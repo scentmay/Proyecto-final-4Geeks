@@ -6,6 +6,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			survey: {},
 			query:{},
 			ejercicio: [],
+			entrenoAsignado: [],
 			logged: false,
 			password: null,
 			email:null,
@@ -243,7 +244,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 				})
 			},
 
-			ejercicios: async () => {
+			ejercicios: async (tipoDeEjercicio, objCliente) => {
+
+				console.log(tipoDeEjercicio, objCliente)
+				const store = getStore();
 
 				const options = {
 					method: 'GET',
@@ -253,9 +257,19 @@ const getState = ({ getStore, getActions, setStore }) => {
 					}
 				};
 				
-					fetch('https://exercisedb.p.rapidapi.com/exercises/bodyPart/shoulders', options)
+					fetch(`https://exercisedb.p.rapidapi.com/exercises/bodyPart/${tipoDeEjercicio}`, options)
 					.then(response => response.json())
-					.then(response => setStore({ejercicio: response}))
+					.then(response => { 
+						setStore({ejercicio: response});						
+						let entreno = [];
+						for (let i = 0; i < 5; i++){
+							const posicion = Math.floor(Math.random() * response.length);
+							entreno.push(response[posicion])
+						}
+						setStore({entrenoAsignado: entreno})
+
+
+					})
 					.catch(err => console.error(err));
 					console.log(getStore().ejercicio)
 			},
