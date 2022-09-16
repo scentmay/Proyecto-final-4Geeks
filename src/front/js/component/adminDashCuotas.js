@@ -11,7 +11,9 @@ export const AdminDashCuotas = (props) => {
   let navigate = useNavigate();
 
   function handleMail(email, name) {
-    navigate(`/contactform/${email}/${name}`)
+    window.open('https://3000-4geeksacade-reactflaskh-egdm5hczo2f.ws-eu64.gitpod.io/contactform/scentmay@gmail.com/Sergio', '_blank');
+    // window.open('http://ejemplo.com/archivo.pdf', '_blank');
+    // navigate(`/contactform/${email}/${name}`)
   }
 
   const render = () => {

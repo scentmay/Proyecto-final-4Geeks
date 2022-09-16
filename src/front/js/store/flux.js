@@ -203,7 +203,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						user: data.user,
 					})
 					setStore({logged: true})
-					// localStorage.setItem("token", data.token)
+					localStorage.setItem("token", data.token)
 					return true;
 				})
 				

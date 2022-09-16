@@ -8,6 +8,7 @@ import { Context } from "../store/appContext";
 import { useNavigate } from "react-router-dom";
 
 // Cortesía de https://formsubmit.co/
+// el envío de correo se demora unos 15 segundos
 
 export const ContactForm = () => {
   const { email, name } = useParams();
@@ -22,6 +23,8 @@ export const ContactForm = () => {
     }, 5000);
   };
 
+  
+
   return (
     <div
       className="mainContainer d-flex justify-content-center"
@@ -32,9 +35,7 @@ export const ContactForm = () => {
           <u>Formulario de contacto</u>
         </h2>
 
-        {store.user.token &&
-        store.user.token != "" &&
-        store.user.token != undefined ? (
+        {(localStorage.getItem("token")) ? (
           <Form
             className="p-3"
             action={`https://formsubmit.co/${email}`}
