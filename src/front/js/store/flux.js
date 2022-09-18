@@ -68,7 +68,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				//para usar la variable de entorno que tiene la URL del backend, tenemos que poner:
 				//fetch(process.env.BACKEND_URL + "/api/hello")
-				await fetch("https://3001-scentmay-proyectofinal4-k01h3oxtrzh.ws-eu64.gitpod.io/api/signup", opts)
+				await fetch("https://3001-4geeksacade-reactflaskh-egdm5hczo2f.ws-eu64.gitpod.io/api/signup", opts)
 
 				.then ((res) => {
 					if (!res.ok) {
@@ -106,7 +106,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						"telefono": telefono,
 					})
 				}
-				fetch ("https://3001-scentmay-proyectofinal4-k01h3oxtrzh.ws-eu64.gitpod.io/api/edituser/" + store.user.id, opts)
+				fetch ("https://3001-4geeksacade-reactflaskh-egdm5hczo2f.ws-eu64.gitpod.io/api/edituser/" + store.user.id, opts)
 				.then(resp => resp.json())
 				.then(data => console.log(data))
 				.catch(error => console.error ("Ha habido un error al actulizar datos " + error))
@@ -124,7 +124,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					},
 				}
 
-				fetch ("https://3001-scentmay-proyectofinal4-k01h3oxtrzh.ws-eu64.gitpod.io/api/query", opts)
+				fetch ("https://3001-4geeksacade-reactflaskh-egdm5hczo2f.ws-eu64.gitpod.io/api/query", opts)
 				.then(resp => resp.json())
 				.then(data => setStore({query: data}))
 				.catch(error => console.error ("Ha habido un error al recuperar los datos de la encuesta " + error))
@@ -150,7 +150,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 				};
 
-			fetch('https://3001-scentmay-proyectofinal4-k01h3oxtrzh.ws-eu64.gitpod.io/api/survey/' + store.user.id, opts)
+			fetch('https://3001-4geeksacade-reactflaskh-egdm5hczo2f.ws-eu64.gitpod.io/api/survey/' + store.user.id, opts)
 			.then(resp => resp.json())
 			.then((data) => {
 				console.log("Encuesta registrada");
@@ -173,7 +173,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						"Authorization": "Bearer " + store.user.token		
 					}
 				};
-				fetch ("https://3001-scentmay-proyectofinal4-k01h3oxtrzh.ws-eu64.gitpod.io/api/survey/" + store.user.id, opts)
+				fetch ("https://3001-4geeksacade-reactflaskh-egdm5hczo2f.ws-eu64.gitpod.io/api/survey/" + store.user.id, opts)
 				.then(resp => resp.json())
 				.then(data => {
 					console.log("Respuesta del flux surveyData")
@@ -222,7 +222,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 				  };
 
-				await fetch('https://3001-scentmay-proyectofinal4-k01h3oxtrzh.ws-eu64.gitpod.io/api/login', opts)
+				await fetch('https://3001-4geeksacade-reactflaskh-egdm5hczo2f.ws-eu64.gitpod.io/api/login', opts)
 				.then((res) => {
 						if (!res.ok) {
 							alert("Credenciales incorrectas");
@@ -286,7 +286,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			getMessage: async () => {
 				try{
 					// fetching data from the backend
-					const resp = await fetch("https://3001-scentmay-proyectofinal4-k01h3oxtrzh.ws-eu64.gitpod.io/api/hello")
+					const resp = await fetch("https://3001-4geeksacade-reactflaskh-egdm5hczo2f.ws-eu64.gitpod.io/api/hello")
 					const data = await resp.json()
 					setStore({ message: data.message })
 					// don't forget to return something, that is how the async resolves
@@ -308,7 +308,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					}
 				}
 
-				fetch ("https://3001-scentmay-proyectofinal4-k01h3oxtrzh.ws-eu64.gitpod.io/api/query/", opts)
+				fetch ("https://3001-4geeksacade-reactflaskh-egdm5hczo2f.ws-eu64.gitpod.io/api/query/", opts)
 				.then(resp => resp.json())
 				.then(data => setStore({query: data}))
 				.catch(error => console.error ("Ha habido un error al recuperar los datos de la encuesta " + error))
@@ -327,7 +327,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					}
 				}
 
-				fetch ("https://3001-scentmay-proyectofinal4-k01h3oxtrzh.ws-eu64.gitpod.io/api/deleteMember/" + id , opts)
+				fetch ("https://3001-4geeksacade-reactflaskh-egdm5hczo2f.ws-eu64.gitpod.io/api/deleteMember/" + id , opts)
 				.then(resp => resp.json())
 				.then(data => {
 					setStore({message: data});
@@ -348,7 +348,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 				}
 
-				fetch ("https://3001-scentmay-proyectofinal4-k01h3oxtrzh.ws-eu64.gitpod.io/api/recover_password/", opts)
+				fetch ("https://3001-4geeksacade-reactflaskh-egdm5hczo2f.ws-eu64.gitpod.io/api/recover_password/", opts)
 				.then(resp => resp.json())
 				.then(data => {
 					setStore({email: data.email, password: data.password});
@@ -371,7 +371,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 				}
 
-				fetch ("https://3001-scentmay-proyectofinal4-k01h3oxtrzh.ws-eu64.gitpod.io/api/new_password/", opts)
+				fetch ("https://3001-4geeksacade-reactflaskh-egdm5hczo2f.ws-eu64.gitpod.io/api/new_password/", opts)
 				.then(resp => resp.json())
 				.then(data => {
 					console.log(data);
