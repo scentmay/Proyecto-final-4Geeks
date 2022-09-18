@@ -15,13 +15,20 @@ export const Signup = () => {
 	const [dni, setDni] = useState ("");
 	const [address, setAddress] = useState ("");
 	const [phone, setPhone] = useState ("");
+	const [code, setCode] = useState ("");
 	const [show, setShow] = useState(false);
+	const [visible, setVisible] = useState(true);
 	let navigate = useNavigate();
 
 	const handleShow = () => setShow(true);
 	const handleClose = () => {
 		setShow(false);
 		navigate("/login");
+	}
+
+	function handleCheck () {
+		setVisible(!visible); //conmutamos estado
+		console.log(visible);
 	}
 
 	const handleClick = (e) => {
@@ -150,6 +157,25 @@ export const Signup = () => {
 							onChange={(e) => {setPhone(e.target.value)}}
 							/>
 						</div>
+						<div className="position-relative">
+							<input type="checkbox" className="mt-3" onClick={()=>{handleCheck()}}/>
+							<label for="vehicle1" className="ms-1">Código administrador</label>
+						</div>
+
+						{/* ocultamos el campo del código de administrador si no se marca el check */}
+						<div className="field" style={(!visible) ? ({display: ""}) : ({display:"none"})}> 
+							<svg className="input-icon" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+							<path d="M80 192V144C80 64.47 144.5 0 224 0C303.5 0 368 64.47 368 144V192H384C419.3 192 448 220.7 448 256V448C448 483.3 419.3 512 384 512H64C28.65 512 0 483.3 0 448V256C0 220.7 28.65 192 64 192H80zM144 192H304V144C304 99.82 268.2 64 224 64C179.8 64 144 99.82 144 144V192z"></path></svg>
+							<input id="code" 
+							placeholder="introduzca aquí un código si lo tiene..." 
+							className="input-field" 
+							name="logCode" 
+							type="text"
+							value={code}
+							onChange={(e) => {setCode(e.target.value)}}
+							/>
+						</div>
+
 						
 						<div className="buttons">
 								<Link to={'/login'}><button className="btn ms-3">Volver</button></Link>
