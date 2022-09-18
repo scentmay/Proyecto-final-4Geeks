@@ -2,7 +2,7 @@
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
 from flask import Flask, request, jsonify, url_for, Blueprint
-from api.models import db, User, Cliente, Survey, Objectives, Pago
+from api.models import db, User, Cliente, Survey, Objectives, Pago, Code
 from api.utils import generate_sitemap, APIException
 from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity
 import datetime
@@ -48,8 +48,29 @@ def register():
 
     # at this point, all data has been validated, we can proceed to inster into the bbdd
 
-    newClient = Cliente(email=body['email'], password=body['password'], userName=body['name'], lastName=body['lastName'], dni=body['dni'], direccion=body['address'], telefono=body['phone'], peso=85.3, corrienteDePago=True, fechaDeAlta=datetime.datetime.now())
-    
+    # CASO ADMINISTRADOR (body lleva campo "code")
+    if body["code"]:
+
+        # comparamos el código que nos llega con los que tenemos en la base de datos
+        code = Code.query.filter_by(code = body["code"]).first()
+
+        # en el caso de que haya coincidencia, es que se está registrando un nuevo administrador
+        # asignamos user id 1
+        if code:
+            newClient = Cliente(email=body['email'], user_id=1 , password=body['password'], userName=body['name'], lastName=body['lastName'], dni=body['dni'], direccion=body['address'], telefono=body['phone'], peso=85.3, corrienteDePago=True, fechaDeAlta=datetime.datetime.now())
+            db.session.add(newClient)
+            db.session.commit()
+
+            # ahora borramos el código para que no se pueda volver a utilizar
+            db.session.delete(code)
+            db.session.commit()
+
+        else:
+            return jsonify("Código incorrecto, mensaje del backend"), 400
+
+
+    # CASO CLIENTE (body lleva campo "code" vacío, asignamos user id 3)
+    newClient = Cliente(email=body['email'], user_id=3 , password=body['password'], userName=body['name'], lastName=body['lastName'], dni=body['dni'], direccion=body['address'], telefono=body['phone'], peso=85.3, corrienteDePago=True, fechaDeAlta=datetime.datetime.now())
     db.session.add(newClient)
     db.session.commit()
 
@@ -283,3 +304,14 @@ def getPaymentsByUser(id):
 
     return [pago.serialize() for pago in userObj.pagos], 200
 
+@api.route('/code', methods = ['POST'] )
+@jwt_required()
+def setCode():
+    
+    body = request.get_json()
+
+    newCode = Code(email = body['email'], code = body['code'])
+    db.session.add(newCode)
+    db.session.commit()
+
+    return jsonify("Código registrado, mensaje del backend"), 200

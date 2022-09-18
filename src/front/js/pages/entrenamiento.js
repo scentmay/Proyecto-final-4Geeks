@@ -86,20 +86,7 @@ export const Entrenamiento = () => {
           }
           break;
       }
-
     }
-
-
-
-
-
-
-
-
-    // useEffect(() => {
-    //     actions.ejercicios(ejercicioAsignado);
-    // }, []);
-
 
     return (
         <>
@@ -110,12 +97,8 @@ export const Entrenamiento = () => {
                     GENERAR ENTRENO
                 </button> 
             <div className='d-flex'>
-                
-
-
                 {store.entrenoAsignado.map((item, index) => {
                     return (
-
                         <div key={index}>
                             <div className="card m-3" style={{ width: "14rem" }}>
                                 <img className="card-img-top" src={item.gifUrl} alt="Card image cap" />
@@ -128,53 +111,7 @@ export const Entrenamiento = () => {
                         </div>
                     )
                 })}
-
-
-
-
-
             </div>
         </>
     );
 };
-
-
-
-{/* <div key={index}>
-<ul>
-    <li>{item.gifUrl}</li>
-    <li>{item.name}</li>
-    <li>{item.bodyPart}</li>
-</ul>
-
-</div> */}
-
-
-{/* <p>
-El entreno se generará con tu preferencia actual. Actualmente es:{" "}
-{store.survey.objective}{" "}
-</p>
-<p>Si quieres cambiar tu objetivo, puedes hacerlo en la encuesta </p>
-<p>Puedes cabiarlo también aquí:</p>
-<div className="field ">
-<input
-  className="input-field"
-  placeholder="nuevo objetivo"
-  list="objective"
-  value={objective}
-  onChange={(e) => {
-    setObjective(e.target.value);
-  }}
-/>
-<datalist id="objective">
-  <option value="Tren superior" />{" "}
-  {/* 5 ejercicios de tren superior */}
-//   <option value="Tren inferior" />{" "}
-//   {/* 5 ejercicios de tren inferior */}
-//   <option value="Zona media" /> {/* 5 ejercicios zona abdominal */}
-//   <option value="Quemagrasas" /> {/* 5 ejercicios de cardio */}
-//   <option value="Acondicionamiento general" />{" "}
-//   {/* 1 ejercicio de cada tipo, 5 ejercicios */}
-// </datalist>
-// </div>
-

@@ -43,8 +43,10 @@ export const Login = () => {
                   <h4 className="title">Login</h4>
                   <p style={{color: "white"}}>Bienvenido a su zona privada, no olvide acceder a la encuesta para rellenar sus datos</p>
                   <Link to={'/login'} className="btn btn-primary btn-lg mt-3 ms-3" onClick={logOut}>Log out</Link>
-                  <Link to={'/usuario'} className="btn btn-primary btn-lg mt-3 ms-3">Usuario</Link>
-                  <Link to={'/admin'} className="btn btn-primary btn-lg mt-3 ms-3">ADMIN</Link>
+                  
+                  {
+                    (store.user.role == "admin")?(<Link to={'/admin'} className="btn btn-primary btn-lg mt-3 ms-3">ADMIN</Link>):(<Link to={'/usuario'} className="btn btn-primary btn-lg mt-3 ms-3">Usuario</Link>)
+                  }
                   <Link to={'/survey'} className="btn btn-primary btn-lg mt-3 ms-3">Realizar encuesta</Link>
                   <Link to={'/'} className="btn btn-primary btn-lg mt-3 ms-3">Volver a home</Link>
                 </div>

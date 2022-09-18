@@ -5,22 +5,22 @@ db = SQLAlchemy()
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    email = db.Column(db.String(120), unique=True, nullable=False)
-    password = db.Column(db.String(80), unique=False, nullable=False)
-    is_active = db.Column(db.Boolean(), unique=False, nullable=False)
+    name = db.Column(db.String(120), unique=True)
 
+    # con este método conseguimos que en la tabla del backend se represente el "name" y no el "id"
+    # si no lo ponemos, en la tabla cliente veríamos <User 3>
+    # de esta manera, vemos "client" (o lo que proceda)
     def __repr__(self):
-        return f'<User {self.email}>'
+        return self.name
 
     def serialize(self):
         return {
             "id": self.id,
-            "email": self.email,
-            # do not serialize the password, its a security breach
+            "role": self.role
         }
 
 class Cliente(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer,  primary_key=True)
     email = db.Column(db.String(120), unique=True, nullable=False)
     password = db.Column(db.String(120), unique=False, nullable=False)
     userName = db.Column(db.String(120), unique=False, nullable=False)
@@ -32,6 +32,9 @@ class Cliente(db.Model):
     corrienteDePago = db.Column(db.Boolean, unique=False, nullable=False)
     fechaDeAlta = db.Column(db.DateTime, unique=False, nullable=False)
     pagos = db.relationship('Pago', backref='cliente', lazy=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    role = db.relationship("User", backref="cliente", lazy = True)
+
     
 
     def __repr__(self):
@@ -40,6 +43,7 @@ class Cliente(db.Model):
     def serialize(self):
         return {
             "id": self.id,
+            "role": self.role.name,
             "email": self.email,
             "userName": self.userName,
             "lastName": self.lastName,
@@ -99,9 +103,6 @@ class Objectives(db.Model):
     objective = db.Column(db.String(120), unique=True, nullable=False)
 
 
-
-
-
 class Pago(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     cliente_id = db.Column(db.Integer, db.ForeignKey('cliente.id'), nullable=False)
@@ -117,3 +118,8 @@ class Pago(db.Model):
             "id": self.id,
             "cliente_id": self.cliente_id,
         }
+
+class Code(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    email = db.Column(db.String(120), unique=True, nullable=False)
+    code = db.Column(db.String(120), unique=True, nullable=False)
