@@ -9,7 +9,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			entrenoAsignado: [],
 			logged: false,
 			password: null,
-			email:null,
+			email: null,
+			code: null,
 			demo: [
 				{
 					title: "FIRST",
@@ -42,6 +43,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({user: {}});
 				setStore({survey: {}});
 				setStore({logged: false});
+				localStorage.removeItem("token")
+				localStorage.removeItem("code")
 			},
 			cleanTraining: () => {
 				setStore({entrenoAsignado: []});
@@ -377,6 +380,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.log(data);
 				})
 				.catch(error => console.error ("Ha habido un error al cambiar la contraseña del usuario " + error))
+			},
+			setCode: (newCode) => {
+				//console.log(newCode);
+				setStore({code: newCode});
+				localStorage.setItem("code", newCode);
 			}
 
 		}

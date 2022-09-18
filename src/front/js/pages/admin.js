@@ -13,7 +13,6 @@ export const Admin = () => {
   let navigate = useNavigate();
 
   const redirigir = () => {
-    console.log("Entrando aquí...");
     setTimeout(() => {
       navigate("/login");
     }, 5000);

@@ -70,12 +70,27 @@ export const ContactForm = () => {
               controlId="exampleForm.ControlTextarea1"
             >
               <Form.Label style={{ color: "white" }}>Comentarios</Form.Label>
-              <Form.Control
+              
+              {
+                ("code" in localStorage)?
+                (
+                  <Form.Control
+                  as="textarea"
+                  rows={4}
+                  name="comentarios"
+                  value={`Hola ` + name + `, este es tu código para registrarte como administrador: \n`  + (localStorage.getItem("code"))} 
+                   />
+                ):(
+                <Form.Control
                 as="textarea"
                 rows={4}
                 name="comentarios"
                 placeholder="escribe aquí los comentarios..."
               />
+              )
+              }
+
+              
             </Form.Group>
 
             <Link to={"/admin"}>

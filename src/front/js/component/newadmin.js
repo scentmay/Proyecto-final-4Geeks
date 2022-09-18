@@ -1,11 +1,14 @@
 import React, { useContext, useState } from "react";
 import { Context } from "../store/appContext";
 import Table from "react-bootstrap/Table";
+import { v4 as uuidV4 } from 'uuid';
+
 
 export const NewAdmin = (props) => {
   const { store, actions } = useContext(Context);
   const [emailNewUser, setEmailNewUser] = useState("")
   const [nameNewUser, setNameNewUser] = useState("")
+  const [newCodeAdmin, setNewCodeAdmin] = useState("")
 
 
   function handleMail(email, name) {
@@ -14,12 +17,23 @@ export const NewAdmin = (props) => {
     // navigate(`/contactform/${email}/${name}`)
   }
 
+  function generate() {
+    const newCode = uuidV4();
+    setNewCodeAdmin(newCode);
+    actions.setCode(newCode);
+    console.log(newCodeAdmin);
+  }
+
+
   return (
     <div>
       <div className="card" style={{ width: "100%" }}>
-        <h4 className="title">
-          <u>{props.type}</u>
-        </h4>
+            <div className="d-flex justify-content-between align-items-center">
+                <h4 className="title ms-1">
+                <u>{props.type}</u>
+                </h4>
+                <button className="btn" style={{fontSize:".6em"}} onClick={() => {generate()}}>GENERAR CÓDIGO</button>
+            </div>    
         <Table
           striped
           bordered
@@ -65,8 +79,8 @@ export const NewAdmin = (props) => {
                         />
                     </div>
                 </td>
-                <td>código</td>
-                <td><button className="btn" style={{fontSize:".6em"}} onClick={() => {handleMail(emailNewUser, nameNewUser)}}>ENVIAR CÓDIGO</button></td>
+                <td>{newCodeAdmin}</td>
+                <td><button className="btn" style={{fontSize:".6em"}} onClick={() => {handleMail(emailNewUser, nameNewUser,)}}>ENVIAR CÓDIGO</button></td>
             </tr>
           </tbody>
         </Table>
