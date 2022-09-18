@@ -6,6 +6,7 @@ import "../../styles/admin.css";
 import fondo from "../../img/signup_img.jpg";
 import { AdminDashSocios } from "../component/adminDashSocios";
 import { AdminDashCuotas } from "../component/adminDashCuotas";
+import { NewAdmin } from "../component/newadmin";
 
 export const Admin = () => {
   const { store, actions } = useContext(Context);
@@ -57,6 +58,18 @@ export const Admin = () => {
                     col2="teléfono"
                     col3="estado pago"
                   ></AdminDashCuotas>
+                </div>
+              </div>
+
+              {/* módulo para dar de alta nuevos admins */}
+              <div className="col-md-6">
+                <div className="m-2">
+                  <NewAdmin
+                    type="Nuevo administrador"
+                    col1="nombre"
+                    col2="email"
+                    col3="código"
+                  ></NewAdmin>
                 </div>
               </div>
 
