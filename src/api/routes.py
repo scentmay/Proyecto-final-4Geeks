@@ -168,7 +168,7 @@ def putuser(id):
 
     
 
-@api.route('/stripe_webhooks/<int:id>', methods=['POST'])
+@api.route('/stripe_webhooks/', methods=['POST'])
 def webhook():
     event = None
     payload = request.data
@@ -233,6 +233,7 @@ def queryExample():
     all_clients = list(map(lambda x: x.serialize() , client_query))
     return jsonify(all_clients)
 
+
 @api.route('/recover_password', methods = ['POST'] )
 def queryPassword():
 
@@ -271,3 +272,14 @@ def newPassword():
 
     return jsonify("Contraseña modificada"), 200
     
+
+@api.route('/user/<int:id>/payments')
+def getPaymentsByUser(id):
+    userObj = Cliente.query.get(id)
+    print(id)
+
+    if not userObj:
+        raise APIException('Client do not exist', 404) 
+
+    return [pago.serialize() for pago in userObj.pagos], 200
+
