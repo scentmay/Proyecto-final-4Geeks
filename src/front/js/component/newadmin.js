@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { Context } from "../store/appContext";
 import Table from "react-bootstrap/Table";
 import { v4 as uuidV4 } from 'uuid';
+import Modal from 'react-bootstrap/Modal';
 
 
 export const NewAdmin = (props) => {
@@ -9,24 +10,42 @@ export const NewAdmin = (props) => {
   const [emailNewUser, setEmailNewUser] = useState("")
   const [nameNewUser, setNameNewUser] = useState("")
   const [newCodeAdmin, setNewCodeAdmin] = useState("")
+  const [show, setShow] = useState(false);
 
+  const handleShow = () => setShow(true);
+  const handleClose = () => {
+    localStorage.removeItem("code")   
+    setShow(false);
+}
 
   function handleMail(email, name) {
     window.open(`https://3000-4geeksacade-reactflaskh-egdm5hczo2f.ws-eu64.gitpod.io/contactform/${email}/${name}`, '_blank');
-    // window.open('http://ejemplo.com/archivo.pdf', '_blank');
-    // navigate(`/contactform/${email}/${name}`)
+    handleShow();
   }
 
   function generate() {
     const newCode = uuidV4();
     setNewCodeAdmin(newCode);
     actions.setCode(newCode);
-    console.log(newCodeAdmin);
-  }
+ }
 
 
   return (
     <div>
+        	{/* Modal */}
+			<Modal show={show} onHide={handleClose}>
+				<Modal.Header closeButton>
+					<Modal.Title>Cambios registrados correctamente</Modal.Title>
+				</Modal.Header>
+
+				<Modal.Body className="d-flex justify-content-center fs-4">pulse aceptar para continuar</Modal.Body>
+
+				<Modal.Footer>
+					<button className="btn" onClick={handleClose}>Aceptar</button>
+				</Modal.Footer>
+			</Modal>
+			{/* Fin modal */}
+
       <div className="card" style={{ width: "100%" }}>
             <div className="d-flex justify-content-between align-items-center">
                 <h4 className="title ms-1">
