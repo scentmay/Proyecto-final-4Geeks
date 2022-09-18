@@ -28,6 +28,8 @@ export const Header = () => {
                             :
                             (
                                 <Link to="/">
+                                    <Link to={'/login'}><button className="btn ms-3">Ir a login</button></Link>
+                                    <Link to={'/contactform'}><button className="btn ms-3">Mail</button></Link>
                                     <button className="btn btn-primary" onClick={logOut}>Logout</button>
                                 </Link>
                             )
