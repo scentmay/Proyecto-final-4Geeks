@@ -86,20 +86,7 @@ export const Entrenamiento = () => {
           }
           break;
       }
-
     }
-
-
-
-
-
-
-
-
-    // useEffect(() => {
-    //     actions.ejercicios(ejercicioAsignado);
-    // }, []);
-
 
     return (
         <>
@@ -110,12 +97,8 @@ export const Entrenamiento = () => {
                     GENERAR ENTRENO
                 </button> 
             <div className='d-flex'>
-                
-
-
                 {store.entrenoAsignado.map((item, index) => {
                     return (
-
                         <div key={index}>
                             <div className="card m-3" style={{ width: "14rem" }}>
                                 <img className="card-img-top" src={item.gifUrl} alt="Card image cap" />

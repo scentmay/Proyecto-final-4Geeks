@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 6bbd55420a77
+Revision ID: b5f47f6e3f2f
 Revises: 
-Create Date: 2022-09-12 17:18:43.635480
+Create Date: 2022-09-18 11:45:03.962483
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '6bbd55420a77'
+revision = 'b5f47f6e3f2f'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -22,6 +22,12 @@ def upgrade():
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('nombre', sa.String(length=120), nullable=False),
     sa.PrimaryKeyConstraint('id')
+    )
+    op.create_table('user',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('name', sa.String(length=120), nullable=True),
+    sa.PrimaryKeyConstraint('id'),
+    sa.UniqueConstraint('name')
     )
     op.create_table('cliente',
     sa.Column('id', sa.Integer(), nullable=False),
@@ -35,16 +41,10 @@ def upgrade():
     sa.Column('peso', sa.Float(precision=20), nullable=False),
     sa.Column('corrienteDePago', sa.Boolean(), nullable=False),
     sa.Column('fechaDeAlta', sa.DateTime(), nullable=False),
+    sa.Column('user_id', sa.Integer(), nullable=True),
+    sa.ForeignKeyConstraint(['user_id'], ['user.id'], ),
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('dni'),
-    sa.UniqueConstraint('email')
-    )
-    op.create_table('user',
-    sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('email', sa.String(length=120), nullable=False),
-    sa.Column('password', sa.String(length=80), nullable=False),
-    sa.Column('is_active', sa.Boolean(), nullable=False),
-    sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('email')
     )
     op.create_table('ejercicio',
@@ -74,7 +74,7 @@ def upgrade():
     )
     op.create_table('pago',
     sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('cliente_id', sa.Integer(), nullable=True),
+    sa.Column('cliente_id', sa.Integer(), nullable=False),
     sa.Column('fechaPago', sa.DateTime(), nullable=True),
     sa.Column('monto', sa.Integer(), nullable=False),
     sa.ForeignKeyConstraint(['cliente_id'], ['cliente.id'], ),
@@ -113,7 +113,7 @@ def downgrade():
     op.drop_table('objectives')
     op.drop_table('entreno')
     op.drop_table('ejercicio')
-    op.drop_table('user')
     op.drop_table('cliente')
+    op.drop_table('user')
     op.drop_table('categoria')
     # ### end Alembic commands ###

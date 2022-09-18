@@ -48,7 +48,7 @@ def register():
 
     # at this point, all data has been validated, we can proceed to inster into the bbdd
 
-    newClient = Cliente(email=body['email'], password=body['password'], userName=body['name'], lastName=body['lastName'], dni=body['dni'], direccion=body['address'], telefono=body['phone'], peso=85.3, corrienteDePago=True, fechaDeAlta=datetime.datetime.now())
+    newClient = Cliente(email=body['email'], user_id=3 , password=body['password'], userName=body['name'], lastName=body['lastName'], dni=body['dni'], direccion=body['address'], telefono=body['phone'], peso=85.3, corrienteDePago=True, fechaDeAlta=datetime.datetime.now())
     
     db.session.add(newClient)
     db.session.commit()
