@@ -26,7 +26,7 @@ export const NewAdmin = (props) => {
   function generate() {
     const newCode = uuidV4();
     setNewCodeAdmin(newCode);
-    actions.setCode(newCode);
+    actions.setCode(emailNewUser, newCode);
  }
 
 

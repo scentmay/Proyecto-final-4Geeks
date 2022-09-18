@@ -118,3 +118,8 @@ class Pago(db.Model):
             "id": self.id,
             "cliente_id": self.cliente_id,
         }
+
+class Code(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    email = db.Column(db.String(120), unique=True, nullable=False)
+    code = db.Column(db.String(120), unique=True, nullable=False)

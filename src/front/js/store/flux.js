@@ -381,12 +381,34 @@ const getState = ({ getStore, getActions, setStore }) => {
 				})
 				.catch(error => console.error ("Ha habido un error al cambiar la contraseña del usuario " + error))
 			},
-			setCode: (newCode) => {
+			setCode: (email, newCode) => {
 				//console.log(newCode);
 				setStore({code: newCode});
 				localStorage.setItem("code", newCode);
-			}
 
+				// Colocamos ahora el código en backend para poder comparar cuando el admin se registre
+				//posteriormente el código será borrado para que nadie más lo pueda usar
+				const store = getStore();
+
+				const opts = {
+					method: 'POST',
+					headers: {
+					  "Content-Type": "application/json",
+					  "Authorization": "Bearer " + store.user.token
+					},
+					body: JSON.stringify({
+					  "email": email,
+					  "code": store.code
+					})
+				}
+
+				fetch ("https://3001-4geeksacade-reactflaskh-egdm5hczo2f.ws-eu64.gitpod.io/api/code/", opts)
+				.then(resp => resp.json())
+				.then(data => {
+					console.log(data);
+				})
+				.catch(error => console.error ("Ha habido un error al cambiar la contraseña del usuario " + error))
+			}
 		}
 	};
 };

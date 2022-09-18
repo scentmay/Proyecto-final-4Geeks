@@ -2,7 +2,7 @@
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
 from flask import Flask, request, jsonify, url_for, Blueprint
-from api.models import db, User, Cliente, Survey, Objectives, Pago
+from api.models import db, User, Cliente, Survey, Objectives, Pago, Code
 from api.utils import generate_sitemap, APIException
 from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity
 import datetime
@@ -283,3 +283,14 @@ def getPaymentsByUser(id):
 
     return [pago.serialize() for pago in userObj.pagos], 200
 
+@api.route('/code', methods = ['POST'] )
+@jwt_required()
+def setCode():
+    
+    body = request.get_json()
+
+    newCode = Code(email = body['email'], code = body['code'])
+    db.session.add(newCode)
+    db.session.commit()
+
+    return jsonify("Código registrado, mensaje del backend"), 200
