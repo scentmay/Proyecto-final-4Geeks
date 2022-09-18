@@ -48,8 +48,29 @@ def register():
 
     # at this point, all data has been validated, we can proceed to inster into the bbdd
 
+    # CASO ADMINISTRADOR (body lleva campo "code")
+    if body["code"]:
+
+        # comparamos el código que nos llega con los que tenemos en la base de datos
+        code = Code.query.filter_by(code = body["code"]).first()
+
+        # en el caso de que haya coincidencia, es que se está registrando un nuevo administrador
+        # asignamos user id 1
+        if code:
+            newClient = Cliente(email=body['email'], user_id=1 , password=body['password'], userName=body['name'], lastName=body['lastName'], dni=body['dni'], direccion=body['address'], telefono=body['phone'], peso=85.3, corrienteDePago=True, fechaDeAlta=datetime.datetime.now())
+            db.session.add(newClient)
+            db.session.commit()
+
+            # ahora borramos el código para que no se pueda volver a utilizar
+            db.session.delete(code)
+            db.session.commit()
+
+        else:
+            return jsonify("Código incorrecto, mensaje del backend"), 400
+
+
+    # CASO CLIENTE (body lleva campo "code" vacío, asignamos user id 3)
     newClient = Cliente(email=body['email'], user_id=3 , password=body['password'], userName=body['name'], lastName=body['lastName'], dni=body['dni'], direccion=body['address'], telefono=body['phone'], peso=85.3, corrienteDePago=True, fechaDeAlta=datetime.datetime.now())
-    
     db.session.add(newClient)
     db.session.commit()
 

@@ -34,7 +34,7 @@ export const Signup = () => {
 	const handleClick = (e) => {
 		e.preventDefault()
 		//console.log("Entrando en handleclick...")
-		actions.signUp(email, password, name, lastName, dni, address, phone);
+		actions.signUp(email, password, name, lastName, dni, address, phone, code);
 		setEmail("");
 		setPassword("");
 		setName("");
@@ -42,6 +42,7 @@ export const Signup = () => {
 		setDni("");
 		setAddress("");
 		setPhone("");
+		setCode("");
 		//alert("Usuario registrado")
 		handleShow();
 		
@@ -175,8 +176,6 @@ export const Signup = () => {
 							onChange={(e) => {setCode(e.target.value)}}
 							/>
 						</div>
-
-						
 						<div className="buttons">
 								<Link to={'/login'}><button className="btn ms-3">Volver</button></Link>
 								

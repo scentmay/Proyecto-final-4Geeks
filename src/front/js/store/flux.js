@@ -51,7 +51,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 
-			signUp:  async (email, password, name, lastName, dni, address, phone) => {
+			signUp:  async (email, password, name, lastName, dni, address, phone, code) => {
 				
 				const opts = {
 					method: 'POST',
@@ -65,7 +65,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 					  "lastName": lastName,
 					  "dni": dni,
 					  "address": address,
-					  "phone": phone
+					  "phone": phone,
+					  "code": code
 					})
 				  };
 
@@ -80,7 +81,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					return res.json();
 				})
 				.then((data) => {
-					console.log("Usuario creado (mensaje del front) " + data);
+					console.log(data);
 				})
 				.catch((error) => {
 					console.error("Ha ocurrido un error " + error);
