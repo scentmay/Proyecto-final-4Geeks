@@ -5,6 +5,9 @@ import { Context } from "../store/appContext";
 import '../../styles/signup.css'
 import fondo from '../../img/signup_img.jpg'
 import Modal from 'react-bootstrap/Modal';
+import { object, string, number, array, boolean } from "yup";
+// import { Formik, Field, Form, ErrorMessage } from "formik";
+// import { FormGroup, Button, Alert, Row, Col } from "reactstrap";
 
 export const Signup = () => {
 	const { store, actions } = useContext(Context);
@@ -26,13 +29,28 @@ export const Signup = () => {
 		navigate("/login");
 	}
 
+	const  schema = object({
+		logEmail: string()
+			.required("El email es obligatorio")
+			.email("El email no tiene un formato válido")
+	});
+
+
 	function handleCheck () {
 		setVisible(!visible); //conmutamos estado
-		console.log(visible);
+		//console.log(visible);
 	}
 
-	const handleClick = (e) => {
+	const handleClick = async (e) => {
 		e.preventDefault()
+
+		try{
+			await schema.validate(email)
+		}catch (error){
+			console.log(email)
+			console.log("Los datos no han pasado la validación");
+			// return
+		}
 		//console.log("Entrando en handleclick...")
 		actions.signUp(email, password, name, lastName, dni, address, phone, code);
 		setEmail("");
@@ -160,7 +178,7 @@ export const Signup = () => {
 						</div>
 						<div className="position-relative">
 							<input type="checkbox" className="mt-3" onClick={()=>{handleCheck()}}/>
-							<label for="vehicle1" className="ms-1">Código administrador</label>
+							<label className="ms-1">Código administrador</label>
 						</div>
 
 						{/* ocultamos el campo del código de administrador si no se marca el check */}

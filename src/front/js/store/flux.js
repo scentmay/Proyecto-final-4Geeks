@@ -74,12 +74,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				//fetch(process.env.BACKEND_URL + "/api/hello")
 				await fetch("https://3001-4geeksacade-reactflaskh-egdm5hczo2f.ws-eu64.gitpod.io/api/signup", opts)
 
-				.then ((res) => {
-					if (!res.ok) {
-						console.log("Ha ocurrido un error en el primer paso del fetch ");
-					}
-					return res.json();
-				})
+				.then ((res) => {return res.json();})
 				.then((data) => {
 					console.log(data);
 				})
