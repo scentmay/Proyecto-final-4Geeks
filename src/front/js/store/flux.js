@@ -43,7 +43,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({user: {}});
 				setStore({survey: {}});
 				setStore({logged: false});
-				localStorage.removeItem("token")
 				localStorage.removeItem("code")
 			},
 			cleanTraining: () => {
@@ -84,33 +83,33 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 
-			userUpdate: async (email, userName, lastName, dni, direccion, telefono) => {
+			// userUpdate: async (email, userName, lastName, dni, direccion, telefono) => {
 
 				
-				const store = getStore();
+			// 	const store = getStore();
 
-				const opts = {
-					method: 'PUT',
-					headers: {
-						"Content-Type": "application/json",
-						"Authorization": "Bearer " + store.user.token		
-					},
-					body: JSON.stringify({
+			// 	const opts = {
+			// 		method: 'PUT',
+			// 		headers: {
+			// 			"Content-Type": "application/json",
+			// 			"Authorization": "Bearer " + store.user.token		
+			// 		},
+			// 		body: JSON.stringify({
 						
-						"email":email,
-						"userName": userName,
-						"lastName": lastName,
-						"dni": dni,
-						"direccion": direccion,
-						"telefono": telefono,
-					})
-				}
-				fetch ("https://3001-4geeksacade-reactflaskh-egdm5hczo2f.ws-eu64.gitpod.io/api/edituser/" + store.user.id, opts)
-				.then(resp => resp.json())
-				.then(data => console.log(data))
-				.catch(error => console.error ("Ha habido un error al actulizar datos " + error))
+			// 			"email":email,
+			// 			"userName": userName,
+			// 			"lastName": lastName,
+			// 			"dni": dni,
+			// 			"direccion": direccion,
+			// 			"telefono": telefono,
+			// 		})
+			// 	}
+			// 	fetch ("https://3001-4geeksacade-reactflaskh-egdm5hczo2f.ws-eu64.gitpod.io/api/edituser/" + store.user.id, opts)
+			// 	.then(resp => resp.json())
+			// 	.then(data => console.log(data))
+			// 	.catch(error => console.error ("Ha habido un error al actulizar datos " + error))
 
-			},
+			// },
 
 			getUser: () =>{
 
@@ -247,19 +246,20 @@ const getState = ({ getStore, getActions, setStore }) => {
 				})
 			},
 
-			ejercicios: async (tipoDeEjercicio) => {
+			ejercicios: async (ejercicio) => {
 
 				const store = getStore();
+				console.log (ejercicio);
 
 				const options = {
 					method: 'GET',
 					headers: {
-						'X-RapidAPI-Key': '0c48ae9655mshf561cabf67e1634p16ea2fjsnec0e954ce943',
+						'X-RapidAPI-Key': '880c804b00msh47268dc6bef38b2p1117b8jsn5b7e5e43dd0a',
 						'X-RapidAPI-Host': 'exercisedb.p.rapidapi.com'
 					}
 				};
 				
-					fetch(`https://exercisedb.p.rapidapi.com/exercises/bodyPart/${tipoDeEjercicio}`, options)
+					fetch(`https://exercisedb.p.rapidapi.com/exercises/bodyPart/${ejercicio}`, options)
 					.then(response => response.json())
 					.then(response => { 
 						setStore({ejercicio: response});						
