@@ -23,18 +23,15 @@ export const Admin = () => {
   }, []);
 
   return (
-    <div>
-      <div
-        className="mainContainer d-flex flex-column align-items-center"
-        style={{ backgroundImage: `url(${fondo})` }}
-      >
-        <h2 style={{ color: "white" }}>
-          <u>Panel de control</u>
-        </h2>
+    <div className="mainContainer" style={{ backgroundImage: `url(${fondo})` }}>
+      <div className="form d-flex justify-content-center">
         {store.user.token &&
         store.user.token != "" &&
         store.user.token != undefined ? (
           <div className="mainContainer container-fluid">
+            <h2 style={{ color: "white" }}>
+              <u>Panel de control</u>
+            </h2>
             <div className="row">
               {/* primera tabla */}
               <div className="col-md-6">
@@ -71,7 +68,6 @@ export const Admin = () => {
                   ></NewAdmin>
                 </div>
               </div>
-
             </div>
           </div>
         ) : (
@@ -83,7 +79,7 @@ export const Admin = () => {
             <Link to={"/login"}>
               <button className="btn ms-3">Volver</button>
             </Link>
-            {redirigir()}
+            {redirigir()} 
           </div>
         )}
       </div>

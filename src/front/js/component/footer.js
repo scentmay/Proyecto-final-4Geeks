@@ -1,70 +1,56 @@
 import React, { Component } from "react";
+import instaIcon from "../../img/instagram_icon.jpg";
+import faceIcon from "../../img/face_icon.png";
+import twitterIcon from "../../img/twitter_icon.png";
+import tiktokIcon from "../../img/tiktok_icon.png";
 
 export const Footer = () => {
   return (
-    <div style={{minHeight:"80vh", marginTop: "auto"}}>
-      <footer className="footer mt-auto text-center" style={{minHeight:"20vh", marginTop: "auto"}}>
+      <footer className="footer mt-auto text-center">
         <div className="footer-dark">
           <footer>
-            <div className="container-fluid">
+            <div className="container-fluid" style={{padding:"10px"}}>
               <div className="row">
-                <div className="col-sm-6 col-md-3 item">
-                  <h3>Services</h3>
-                  <ul>
+                <div className="col-sm-6 col-md-6 item mt-4">
+                  <h3 style={{color: "#ffeba7"}}>Services</h3>
+                  <ul className="justify-content-center">
                     <li>
-                      <a href="#">Web design</a>
+                      <a href="/">Home S&F FIT</a>
                     </li>
                     <li>
-                      <a href="#">Development</a>
+                      <a href="#">Localización</a>
                     </li>
                     <li>
-                      <a href="#">Hosting</a>
-                    </li>
-                  </ul>
-                </div>
-                <div className="col-sm-6 col-md-3 item">
-                  <h3>About</h3>
-                  <ul>
-                    <li>
-                      <a href="#">Company</a>
-                    </li>
-                    <li>
-                      <a href="#">Team</a>
-                    </li>
-                    <li>
-                      <a href="#">Careers</a>
+                      <a href="#">Quienes somos</a>
                     </li>
                   </ul>
                 </div>
-                <div className="col-md-6 item text">
-                  <h3>Company Name</h3>
+                
+                <div className="col-sm-6 col-md-6 item text mt-4">
+                  <h3 style={{color: "#ffeba7"}}>S&F FIT</h3>
                   <p>
-                    Praesent sed lobortis mi. Suspendisse vel placerat ligula.
-                    Vivamus ac sem lacus. Ut vehicula rhoncus elementum. Etiam
-                    quis tristique lectus. Aliquam in arcu eget velit pulvinar
-                    dictum vel in justo.
+                  <i>"Todo logro empieza con la decisión de intentarlo"</i>
+                  </p>
+                  <p>
+                  <i>"El dolor que sientes hoy es la fuerza que tendrás mañana"</i>
                   </p>
                 </div>
                 <div className="col item social">
-                  <a href="#">
-                    <i className="icon ion-social-facebook"></i>
+                  <a href="#" style={{backgroundImage: `url(${faceIcon})`, backgroundSize: "110%", backgroundRepeat: "no-repeat",backgroundPositionX:"50%", backgroundPositionY:"50%"}}>
                   </a>
-                  <a href="#">
-                    <i className="icon ion-social-twitter"></i>
+                  <a href="#" style={{backgroundImage: `url(${instaIcon})`, backgroundSize: "130%", backgroundRepeat: "no-repeat",backgroundPositionX:"50%", backgroundPositionY:"50%"}}>
                   </a>
-                  <a href="#">
-                    <i className="icon ion-social-snapchat"></i>
+                  <a href="#" style={{backgroundImage: `url(${twitterIcon})`, backgroundSize: "320%", backgroundRepeat: "no-repeat",backgroundPositionX:"50%", backgroundPositionY:"45%"}}>
                   </a>
-                  <a href="#">
-                    <i className="icon ion-social-instagram"></i>
+                  <a href="#" style={{backgroundImage: `url(${tiktokIcon})`, backgroundSize: "120%", backgroundRepeat: "no-repeat",backgroundPositionX:"50%", backgroundPositionY:"50%"}}>
                   </a>
                 </div>
               </div>
-              <p className="copyright">Company Name © 2018</p>
+              <h3 className="pt-2"style={{color: "#ffeba7"}}>S&F FIT © 2022</h3>
             </div>
           </footer>
         </div>
       </footer>
-    </div>
+
   );
 };

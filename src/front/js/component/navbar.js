@@ -13,8 +13,8 @@ export const Header = () => {
 
   return (
     <>
-      <Navbar bg="dark" variant="dark">
-          <Navbar.Brand href="/">
+      <Navbar classname="prueba" bg="dark" variant="dark" style={{position: "fixed", width:"100%"}}>
+          <Navbar.Brand href="/" >
 		  <img id="logo" src="logo.png" />
           </Navbar.Brand>
 		  <div className="ms-auto">

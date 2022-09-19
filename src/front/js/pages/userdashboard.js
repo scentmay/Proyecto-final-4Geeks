@@ -8,7 +8,7 @@ import { Registros } from "../component/registros";
 import { Entrenamiento } from "./entrenamiento";
 import { useNavigate } from 'react-router-dom';
 import { Suscription } from "../component/subscription";
-
+import fondo from '../../img/signup_img.jpg'
 
 
 export const Usuario = () => {
@@ -32,6 +32,8 @@ export const Usuario = () => {
     return (
 
         <>
+            <div className="mainContainer" style={{backgroundImage: `url(${fondo})`}}>
+			    <div className="form d-flex justify-content-center"> 
             {
                 (store.user.token && store.user.token != "" && store.user.token != undefined) ?
                     (<div className="container-fluid p-0">
@@ -80,6 +82,8 @@ export const Usuario = () => {
                         {redirigir()}
                     </div>)
             }
+        </div>    
+    </div>
 
         </>
 
