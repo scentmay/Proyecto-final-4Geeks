@@ -29,12 +29,12 @@ export const Home = () => {
 		<div className="container-fluid">
 			<Suscription />
 		</div>
-		<div className="Ubi">
+		{/* <div className="Ubi">
 			<Ubicacion />
-		</div>
-		<div className="contacto">
+		</div> */}
+		{/* <div className="contacto">
 			<Contacto />
-		</div>
+		</div> */}
 	</div>
 	);
 };
