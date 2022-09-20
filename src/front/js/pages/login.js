@@ -57,25 +57,33 @@ export const Login = () => {
             // Si NO está logado
            (
       	    <div className="card" style={{height: "295px"}}>
-			    	<h4 className="title">Login</h4>
+			    	<h4 className="title" style={{color: "#ffeba7"}}>Login</h4>
 				    	<form id="form">
                   <div className="field ">
+
+                  <span style={{color: "#ffeba7"}}>
+                  <i class="fa-solid fa-at"></i>
+                  </span>
+
                   <input className="input-field" 
                   placeholder="email"
                   type="text"
                   value={email}
-                  //onKeyDown={(e) => {if(e.key == 'Enter') handleClick()}} // detectar pulsación "Enter"
                   onChange={(e) => {
                     setEmail(e.target.value)}}
                   />
                   </div>
 
                 <div className="field ">
+
+                <span style={{color: "#ffeba7"}}>
+                  <i class="fa-solid fa-lock"></i>
+                </span>
+
                   <input className="input-field" 
                   placeholder="password"
                   type="password"
                   value={password}
-                  //onKeyPress={(e) => {if(e.key === 'Enter') handleClick()}} // detectar pulsación "Enter"
                   onChange={(e) => {
                     setPassword(e.target.value)}}
                   />
