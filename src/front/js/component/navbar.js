@@ -13,7 +13,7 @@ export const Header = () => {
 
   return (
     <>
-      <Navbar classname="prueba" bg="dark" variant="dark" style={{position: "fixed", width:"100%"}}>
+      <Navbar className="prueba" bg="dark" variant="dark" style={{position: "fixed", width:"100%"}}>
           <Navbar.Brand href="/" >
 		  <img id="logo" src="logo.png" />
           </Navbar.Brand>
