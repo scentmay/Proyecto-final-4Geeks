@@ -6,7 +6,7 @@ import "../../styles/signup.css";
 import fondo from "../../img/signup_img.jpg";
 import Modal from "react-bootstrap/Modal";
 import { Formik, Field, Form, ErrorMessage } from "formik";
-import person from "../../img/muñecogold.jpg";
+
 
 export const Signup = () => {
 
@@ -49,19 +49,18 @@ export const Signup = () => {
         <div className="card">
           <h4 className="title" style={{color: "#ffeba7"}}>Formulario de registro</h4>
           <Formik 
-		  	initialValues={{
-				logEmail: '',
-				logPass: "",
-				logName: "",
-				logLastName: "",
-				logDni: "",
-				logAddress: "",
-				logPhone: "",
-				logCode: ""
-			}}
+              initialValues={{
+              logEmail: "",
+              logPass: "",
+              logName: "",
+              logLastName: "",
+              logDni: "",
+              logAddress: "",
+              logPhone: "",
+              logCode: ""
+			      }}
 		  	onSubmit={(valores, {resetForm} ) => {
           resetForm();
-				  console.log('Formulario enviado');
           actions.signUp(valores.logEmail, valores.logPass, valores.logName, valores.logLastName, valores.logDni, valores.logAddress, valores.logPhone, valores.logCode);
           handleShow();
 			}}
@@ -104,23 +103,22 @@ export const Signup = () => {
 
         return errores;
       }}
-
 		  >
-            {( {values, errors, touched, handleChange, handleBlur} ) => (
-              <Form className="formulario">
+            {( {errors} ) => (
+              <Form>
 
                 <div className="field">
                   
-                <span style={{color: "#ffeba7"}}>
-                  <i class="fa-solid fa-at"></i>
-                </span>
+                  <span style={{color: "#ffeba7"}}>
+                    <i className="fa-solid fa-at"></i>
+                  </span>
 
                   <Field
-                    id="logEmail"
-                    placeholder="Email"
-                    className="input-field"
-                    name="logEmail"
-                    type="email"
+                      id="logEmail"
+                      placeholder="Email"
+                      className="input-field"
+                      name="logEmail"
+                      type="email"
                   />
                 </div>
                 
@@ -129,7 +127,7 @@ export const Signup = () => {
                 <div className="field">
                   
                 <span style={{color: "#ffeba7"}}>
-                  <i class="fa-solid fa-lock"></i>
+                  <i className="fa-solid fa-lock"></i>
                 </span>
 
                   <Field
@@ -146,7 +144,7 @@ export const Signup = () => {
                 <div className="field">
 
                 <span style={{color: "#ffeba7"}}>
-                  <i class="fa-solid fa-user"></i>
+                  <i className="fa-solid fa-user"></i>
                 </span>
                 
                 <Field
@@ -163,7 +161,7 @@ export const Signup = () => {
                 <div className="field">
 
                   <span style={{color: "#ffeba7"}}>
-                   <i class="fa-regular fa-user"></i>
+                   <i className="fa-regular fa-user"></i>
                   </span>
 
                   <Field
@@ -180,7 +178,7 @@ export const Signup = () => {
                 <div className="field">
                   
                   <span style={{color: "#ffeba7"}}>
-                   <i class="fa-solid fa-id-card"></i>
+                   <i className="fa-solid fa-id-card"></i>
                   </span>
 
 
@@ -198,7 +196,7 @@ export const Signup = () => {
                 <div className="field">
                 
                   <span style={{color: "#ffeba7"}}>
-                    <i class="fa-solid fa-address-book"></i>
+                    <i className="fa-solid fa-address-book"></i>
                   </span>
 
 
@@ -216,7 +214,7 @@ export const Signup = () => {
                 <div className="field">
                  
                   <span style={{color: "#ffeba7"}}>
-                  <i class="fa-solid fa-mobile-screen-button"></i>
+                  <i className="fa-solid fa-mobile-screen-button"></i>
                   </span>
 
 
