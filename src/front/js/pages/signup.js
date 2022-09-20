@@ -6,6 +6,7 @@ import "../../styles/signup.css";
 import fondo from "../../img/signup_img.jpg";
 import Modal from "react-bootstrap/Modal";
 import { Formik, Field, Form, ErrorMessage } from "formik";
+import person from "../../img/muñecogold.jpg";
 
 export const Signup = () => {
 
@@ -147,13 +148,16 @@ export const Signup = () => {
                 <ErrorMessage name="logPass" component={() => (<div className="error">{errors.logPass}</div>)} />
 
                 <div className="field">
-                  <svg
+
+                <svg xmlns="http://www.w3.org/2000/svg" style={{width:"7%"}}viewBox="0 0 448 512"><path d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0S96 57.3 96 128s57.3 128 128 128zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"/></svg>
+
+                  {/* <svg
                     className="input-icon"
                     viewBox="0 0 500 500"
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path d="M80 192V144C80 64.47 144.5 0 224 0C303.5 0 368 64.47 368 144V192H384C419.3 192 448 220.7 448 256V448C448 483.3 419.3 512 384 512H64C28.65 512 0 483.3 0 448V256C0 220.7 28.65 192 64 192H80zM144 192H304V144C304 99.82 268.2 64 224 64C179.8 64 144 99.82 144 144V192z"></path>
-                  </svg>
+                  </svg> */}
 
                   <Field
                     id="logName"
@@ -289,7 +293,7 @@ export const Signup = () => {
                     className="btn"
                     type="reset"
                     value="Reset"
-                    onClick={() => window.location.reload()}
+                    onClick={() => resetForm()}
                   />
 
                   <button type="submit" className="btn">
