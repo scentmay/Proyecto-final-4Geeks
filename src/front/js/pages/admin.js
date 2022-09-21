@@ -28,7 +28,7 @@ export const Admin = () => {
         {store.user.token &&
         store.user.token != "" &&
         store.user.token != undefined ? (
-          <div className="mainContainer container-fluid">
+          <div className="mainContainer container-fluid mt-2">
             <h2 style={{ color: "white" }}>
               <u>Panel de control</u>
             </h2>

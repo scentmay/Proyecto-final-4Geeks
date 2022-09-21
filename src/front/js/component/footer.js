@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import instaIcon from "../../img/instagram_icon.jpg";
 import faceIcon from "../../img/face_icon.png";
 import twitterIcon from "../../img/twitter_icon.png";
@@ -8,7 +8,6 @@ export const Footer = () => {
   return (
       <footer className="footer mt-auto text-center">
         <div className="footer-dark">
-          <footer>
             <div className="container-fluid" style={{padding:"10px"}}>
               <div className="row">
                 <div className="col-sm-6 col-md-6 item mt-4">
@@ -48,7 +47,6 @@ export const Footer = () => {
               </div>
               <h3 className="pt-2"style={{color: "#ffeba7"}}>S&F FIT © 2022</h3>
             </div>
-          </footer>
         </div>
       </footer>
 
