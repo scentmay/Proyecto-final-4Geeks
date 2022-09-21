@@ -25,11 +25,8 @@ export const New_password = () => {
   };
 
   return (
-      <div
-        className="d-flex align-items-center flex-column"
-        style={{ backgroundImage: `url(${fondoWas})` }}
-      >
-        {/* Modal */}
+    <div className="mainContainer">
+      <div className="form d-flex justify-content-center">
         <Modal show={show} onHide={handleClose}>
           <Modal.Header closeButton>
             <Modal.Title>Contraseña cambiada correctamente</Modal.Title>
@@ -71,6 +68,7 @@ export const New_password = () => {
           </div>
         </div>
       </div>
+    </div>
   );
 };
 

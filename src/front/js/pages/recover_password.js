@@ -26,10 +26,8 @@ export const Recover_password = () => {
   };
 
   return (
-      <div
-        className="d-flex align-items-center flex-column"
-        style={{ backgroundImage: `url(${fondoWas})` }}
-      >
+    <div className="mainContainer">
+     <div className="form d-flex justify-content-center">
         {/* Modal */}
         <Modal show={show} onHide={handleClose}>
           <Modal.Header closeButton>
@@ -72,6 +70,7 @@ export const Recover_password = () => {
           </div>
         </div>
       </div>
+    </div>
   );
 };
 

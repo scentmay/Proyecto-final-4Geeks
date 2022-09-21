@@ -3,13 +3,14 @@ import { Link } from "react-router-dom";
 import Navbar from 'react-bootstrap/Navbar';
 import { Context } from "../store/appContext";
 import "../../img/logo.png"
-import { Carusel } from "../pages/carusel";
-import fondo from '../../img/signup_img.jpg'
+
 
 
 export const Header = () => {
 
   const { store, actions } = useContext(Context);
+
+
   const logOut = () => {
     actions.cleanStore();
   }
@@ -35,7 +36,7 @@ export const Header = () => {
                                       (store.user.role == "admin")?(<Link to="/">
                                       <Link to={'/login'}><button className="btn ms-3">Ir a login</button></Link>
                                       <Link to={'/contactform'}><button className="btn ms-3">Mail</button></Link>
-                                      <button className="btn btn-primary" onClick={logOut}>Logout</button>
+                                      <Link to={'/login'} className="btn btn-primary btn-lg mt-3 ms-3" onClick={logOut}>Log out</Link>
                                   </Link>
                                   ):(
                                   <button className="btn btn-primary" onClick={logOut}>Logout</button>

@@ -6,18 +6,48 @@ import { Link } from "react-router-dom";
 import '../../styles/login.css'
 import fondo from '../../img/signup_img.jpg'
 import { Formik, Field, Form, ErrorMessage } from "formik";
+import Modal from "react-bootstrap/Modal";
 
 export const Login = () => {
   const { store, actions } = useContext(Context);
+  const [show, setShow] = useState(false);
+
+  const logged = store.logged;
+
+  const handleShow = () => setShow(true);
+  const handleClose = () => {
+    setShow(false);
+  };
 
   //Función para limpiar el token del store
   const logOut = () => {
     actions.cleanStore();
   }
 
+  
   return (
 		<div className="mainContainer" style={{backgroundImage: `url(${fondo})`}}>
 			<div className="form d-flex justify-content-center"> 
+
+       {/* Modal */}
+       <Modal show={show} onHide={handleClose}>
+          <Modal.Header closeButton>
+            <Modal.Title>Usuario registrado correctamente</Modal.Title>
+          </Modal.Header>
+
+          <Modal.Body className="d-flex justify-content-center fs-3">
+            pulse aceptar para continuar
+          </Modal.Body>
+
+          <Modal.Footer>
+            <button className="btn" onClick={handleClose}>
+              Aceptar
+            </button>
+          </Modal.Footer>
+        </Modal>
+        {/* Fin modal */}
+
+
 
         {
             (store.user.token && store.user.token != "" && store.user.token != undefined) ?
@@ -73,7 +103,9 @@ export const Login = () => {
 
                   onSubmit={(values, {resetForm}) => {
                     resetForm();
-                    actions.login(values.email, values.pass);
+                    let result = actions.login(values.email, values.pass);
+                    result.then ((res) => {console.log(res)})
+                    //quiero mostrar modal si se loga incorrecto, necesito el valor que me devuelve la promise
                   }}
                   >
                   {({errors}) => (
