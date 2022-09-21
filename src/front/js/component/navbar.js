@@ -1,23 +1,27 @@
-import React, { useContext }from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import Navbar from 'react-bootstrap/Navbar';
 import { Context } from "../store/appContext";
 import "../../img/logo.png"
+import { Carusel } from "../pages/carusel";
+import fondo from '../../img/signup_img.jpg'
+
 
 export const Header = () => {
 
-	const { store, actions } = useContext(Context);
-	const logOut = () => {
-        actions.cleanStore();
-      }
+  const { store, actions } = useContext(Context);
+  const logOut = () => {
+    actions.cleanStore();
+  }
 
   return (
     <>
-      <Navbar className="prueba" bg="dark" variant="dark" style={{position: "fixed", width:"100%"}}>
-          <Navbar.Brand href="/" >
-        <img id="logo" src="logo.png" />
+      <div className="container-fluid p-0 m-0">
+          <Navbar className="prueba fixed-top" bg="dark" variant="dark" style={{ position: "fixed", width: "100%" }} >
+            <Navbar.Brand href="/" >
+                <img id="logo" src="logo.png" />
             </Navbar.Brand>
-        <div className="ms-auto">
+                  <div className="ms-auto">
                       {
                           !store.user.token ?
                               (
@@ -39,7 +43,8 @@ export const Header = () => {
                               )
                       }
                   </div>
-      </Navbar>
+          </Navbar>
+        </div>
     </>
   );
-};
+}

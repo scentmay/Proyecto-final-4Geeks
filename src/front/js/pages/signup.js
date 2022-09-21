@@ -5,7 +5,9 @@ import { Context } from "../store/appContext";
 import "../../styles/signup.css";
 import fondo from "../../img/signup_img.jpg";
 import Modal from "react-bootstrap/Modal";
+import { object, string, number, array, boolean } from "yup";
 import { Formik, Field, Form, ErrorMessage } from "formik";
+import { FormGroup, Button, Alert, Row, Col } from "reactstrap";
 
 
 export const Signup = () => {

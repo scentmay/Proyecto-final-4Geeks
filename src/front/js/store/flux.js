@@ -83,33 +83,33 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 
-			// userUpdate: async (email, userName, lastName, dni, direccion, telefono) => {
+			userUpdate: async (email, userName, lastName, dni, direccion, telefono) => {
 
 				
-			// 	const store = getStore();
+				const store = getStore();
 
-			// 	const opts = {
-			// 		method: 'PUT',
-			// 		headers: {
-			// 			"Content-Type": "application/json",
-			// 			"Authorization": "Bearer " + store.user.token		
-			// 		},
-			// 		body: JSON.stringify({
+				const opts = {
+					method: 'PUT',
+					headers: {
+						"Content-Type": "application/json",
+						"Authorization": "Bearer " + store.user.token		
+					},
+					body: JSON.stringify({
 						
-			// 			"email":email,
-			// 			"userName": userName,
-			// 			"lastName": lastName,
-			// 			"dni": dni,
-			// 			"direccion": direccion,
-			// 			"telefono": telefono,
-			// 		})
-			// 	}
-			// 	fetch ("https://3001-4geeksacade-reactflaskh-egdm5hczo2f.ws-eu64.gitpod.io/api/edituser/" + store.user.id, opts)
-			// 	.then(resp => resp.json())
-			// 	.then(data => console.log(data))
-			// 	.catch(error => console.error ("Ha habido un error al actulizar datos " + error))
+						"email":email,
+						"userName": userName,
+						"lastName": lastName,
+						"dni": dni,
+						"direccion": direccion,
+						"telefono": telefono,
+					})
+				}
+				fetch ("https://3001-4geeksacade-reactflaskh-egdm5hczo2f.ws-eu64.gitpod.io/api/edituser/" + store.user.id, opts)
+				.then(resp => resp.json())
+				.then(data => console.log(data))
+				.catch(error => console.error ("Ha habido un error al actulizar datos " + error))
 
-			// },
+			},
 
 			getUser: () =>{
 
