@@ -80,15 +80,15 @@ export const Login = () => {
                     setPassword(e.target.value)}}
                   />
                 </div>
-					    </form>
-
-                <div className="buttons d-flex mt-2">
+                <div className="button d-flex mt-2">
                     <Link to={'/'}><button className="btn ms-3">Volver</button></Link>
                     <button className="btn" onClick={handleClick}>LOGIN</button>
                     <Link to={'/signup'}><button className="btn ms-3">Registro</button></Link>
                     
 
                 </div>
+					    </form>
+
                 <div>    
                     <Link to={'/recover-password'} className="btn-link">¿Olvidaste tu contraseña?</Link>
                 </div>
