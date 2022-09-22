@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 export const Suscription = () => {
   return (
-    <div>
+    <>
       <h2 className="text-center">Nuestras Promociones</h2>
       <div className="row row-cols-2 row-cols-lg-4 g-2 g-lg-4">
         <div className="col px-2">
@@ -76,6 +76,6 @@ export const Suscription = () => {
       </div>
 
       <hr />
-    </div>
+    </>
   );
 };

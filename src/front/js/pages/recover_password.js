@@ -1,5 +1,4 @@
 import React, { useContext, useEffect } from "react";
-import fondoWas from "../../img/fondoWas.jpg";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { Context } from "../store/appContext";
@@ -9,27 +8,39 @@ import { Formik, Field, Form, ErrorMessage } from "formik";
 
 export const Recover_password = () => {
   const { store, actions } = useContext(Context);
-  const [email, setEmail] = useState("");
   const [show, setShow] = useState(false);
-  const handleShow = () => setShow(true);
-  const handleClose = () => {
+  const [show2, setShow2] = useState(false);
+  let navigate = useNavigate();
+
+
+  const handleShow = () => {
+    if (store.pass_recover == true) {
+      setShow(true);
+    }
+    else if(store.pass_recover == false) {
+      setShow2(true);
+    }
+	}
+
+   const handleClose = () => {
     setShow(false);
     navigate("/hide-login");
   };
 
-  const userPass = store.password;
+  const handleClose2 = () => {
+    setShow2(false);
+  };
 
 
-  let navigate = useNavigate();
+  const clean = () => {
+    actions.cleanStore();
+  }
+
 
 
   useEffect(() => {
-    // if (userPass != null || userPass != undefined) alert ("usuario SI existe")
-    // if (userPass == null || userPass == undefined) alert ("usuario NO existe")
-  }, [userPass])
-
-
-
+    handleShow();
+  },[store.pass_recover])
 
   return (
     <div className="mainContainer">
@@ -51,6 +62,25 @@ export const Recover_password = () => {
           </Modal.Footer>
         </Modal>
         {/* Fin modal */}
+
+        {/* Modal 2*/}
+        <Modal show={show2} onHide={handleClose2}>
+          <Modal.Header closeButton>
+            <Modal.Title>Petición recibida</Modal.Title>
+          </Modal.Header>
+
+          <Modal.Body className="d-flex justify-content-center fs-4">
+            Los datos introducidos no son correctos. Revísalo, por favor
+          </Modal.Body>
+
+          <Modal.Footer>
+            <button className="btn" onClick={handleClose2}>
+              Aceptar
+            </button>
+          </Modal.Footer>
+        </Modal>
+        {/* Fin modal 2*/}
+
 
         <div className="card m-5">
           <h2>Recuperación de contraseña</h2>
@@ -84,10 +114,9 @@ export const Recover_password = () => {
               return errors;
             }}
 
-            onSubmit={(values, {resetForm}) => {
+            onSubmit = {(values, {resetForm}) => {
               resetForm();
               actions.getPassword(values.email, values.dni);
-   
             }}
 
           >
@@ -96,7 +125,7 @@ export const Recover_password = () => {
               <Form>
                 <div className="field ">
 
-                 <span style={{color: "#ffeba7"}}>
+                  <span style={{color: "#ffeba7"}}>
                     <i className="fa-solid fa-at"></i>
                   </span>
 
@@ -131,7 +160,7 @@ export const Recover_password = () => {
                 )} />
 
                 <div>
-                  <Link to={'/login'}><button className="btn ms-3">Volver</button></Link>
+                  <Link to={'/login'}><button className="btn ms-3" onClick={clean}>Volver</button></Link>
                   <button type="submit" className="btn">ENVIAR</button>
                 </div>
 

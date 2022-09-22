@@ -179,14 +179,12 @@ export const Login = () => {
                         <Link to={'/signup'}><button className="btn ms-3">Registro</button></Link>
                       </div> */}
                   <div className="buttons">
-                    <Link to={"/login"}>
+                    <Link to={"/"}>
                       <button className="btn ms-3">Volver</button>
                     </Link>
                     <button type="submit" className="btn">LOGIN</button>
 
-                    <button type="submit" className="btn">
-                      REGISTRO
-                    </button>
+                    <Link to={'/signup'}><button className="btn ms-3">Registro</button></Link>
                   </div>
                 </Form>
               )}

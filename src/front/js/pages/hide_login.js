@@ -19,6 +19,10 @@ export const New_password = () => {
 
   let navigate = useNavigate();
 
+  const clean = () => {
+    actions.cleanStore();
+  }
+
   return (
     <div className="mainContainer">
       <div className="form d-flex justify-content-center">
@@ -99,7 +103,7 @@ export const New_password = () => {
                       )} />
                       
                       <div className="buttons d-flex mt-2 justify-content-center">
-                        <Link to={"/recover-password"}><button className="btn ms-3">Volver</button></Link>
+                        <Link to={"/login"}><button className="btn ms-3" onClick={clean}>Volver</button></Link>
                         <button type="submit" className="btn">ENVIAR</button>
                       </div>
                     </Form>
