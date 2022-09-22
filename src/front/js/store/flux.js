@@ -373,7 +373,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				})
 					
 				.then(data => {
-					console.log(data.status);
+					console.log(data);
 					setStore({email: data.email, password: data.password});
 				})
 				.catch(error => console.error ("Ha habido un error al recuperar la contraseña del usuario " + error))

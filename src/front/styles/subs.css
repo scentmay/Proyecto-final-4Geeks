@@ -87,25 +87,10 @@
    /*Columnas*/
    
    .precio-col {
-    display:inline-block;
     background-color:#f3f3f3;
-    width:100%;
-    max-width:500px;
     border-radius:10px;
     margin-bottom:50px;
     box-shadow: 0px 2px 5px #ddd
-   }
-   
-   @media screen and (min-width:768px) {
-    .precio-col {
-    width:32%;
-    float:left;
-    margin-right:2%
-    }
-    
-    .precio-col:last-child {
-    margin-right:0
-    }
    }
    
    /*Headers*/

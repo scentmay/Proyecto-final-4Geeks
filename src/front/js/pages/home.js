@@ -19,7 +19,7 @@ export const Home = () => {
 		<div>			
 				<div className="container-fluid" id="navbarMenu1">
 					<div className="titular">
-						<h1>Bienvenido a SyF FIT</h1>
+						{/* <h1>Bienvenido a SyF FIT</h1> */}
 
 						<Link to="/login">
 							<button className="btn btn-primary">Ingrese a su perfil</button>

@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
 import { Context } from "../store/appContext";
 import "../../styles/home.css";
-import { useState } from 'react';
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import '../../styles/login.css'
-import fondo from '../../img/signup_img.jpg'
+import "../../styles/login.css";
+import fondo from "../../img/signup_img.jpg";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import Modal from "react-bootstrap/Modal";
 
@@ -22,15 +22,13 @@ export const Login = () => {
   //Función para limpiar el token del store
   const logOut = () => {
     actions.cleanStore();
-  }
+  };
 
-  
   return (
-		<div className="mainContainer" style={{backgroundImage: `url(${fondo})`}}>
-			<div className="form d-flex justify-content-center"> 
-
-       {/* Modal */}
-       <Modal show={show} onHide={handleClose}>
+    <div className="mainContainer" style={{ backgroundImage: `url(${fondo})` }}>
+      <div className="form d-flex justify-content-center">
+        {/* Modal */}
+        <Modal show={show} onHide={handleClose}>
           <Modal.Header closeButton>
             <Modal.Title>Usuario registrado correctamente</Modal.Title>
           </Modal.Header>
@@ -47,120 +45,161 @@ export const Login = () => {
         </Modal>
         {/* Fin modal */}
 
+        {store.user.token &&
+        store.user.token != "" &&
+        store.user.token != undefined ? (
+          //Si está logado
+          <div className="">
+            <div className="card">
+              <h4 className="title" style={{ color: "#ffeba7" }}>
+                Zona privada
+              </h4>
+              <p style={{ color: "white" }}>
+                Bienvenido a su zona privada, no olvide acceder a la encuesta
+                para rellenar sus datos
+              </p>
+              <Link
+                to={"/login"}
+                className="btn btn-primary btn-lg mt-3 ms-3"
+                onClick={logOut}
+              >
+                Log out
+              </Link>
 
+              {store.user.role == "admin" ? (
+                <Link
+                  to={"/admin"}
+                  className="btn btn-primary btn-lg mt-3 ms-3"
+                >
+                  ADMIN
+                </Link>
+              ) : (
+                <Link
+                  to={"/usuario"}
+                  className="btn btn-primary btn-lg mt-3 ms-3"
+                >
+                  Usuario
+                </Link>
+              )}
+              <Link to={"/survey"} className="btn btn-primary btn-lg mt-3 ms-3">
+                Realizar encuesta
+              </Link>
+              <Link to={"/"} className="btn btn-primary btn-lg mt-3 ms-3">
+                Volver a home
+              </Link>
+            </div>
+          </div>
+        ) : (
+          // Si NO está logado
+          <div className="card">
+            <h4 className="title" style={{ color: "#ffeba7" }}>
+              Login
+            </h4>
 
-        {
-            (store.user.token && store.user.token != "" && store.user.token != undefined) ?
+            <Formik
+              initialValues={{
+                name: "",
+                pass: "",
+              }}
+              validate={(values) => {
+                let errors = {};
 
-            //Si está logado
-            (
-              <div className="">
-                <div className="card">
-                  <h4 className="title" style={{color: "#ffeba7"}}>Zona privada</h4>
-                  <p style={{color: "white"}}>Bienvenido a su zona privada, no olvide acceder a la encuesta para rellenar sus datos</p>
-                  <Link to={'/login'} className="btn btn-primary btn-lg mt-3 ms-3" onClick={logOut}>Log out</Link>
-                  
-                  {
-                    (store.user.role == "admin")?(<Link to={'/admin'} className="btn btn-primary btn-lg mt-3 ms-3">ADMIN</Link>):(<Link to={'/usuario'} className="btn btn-primary btn-lg mt-3 ms-3">Usuario</Link>)
-                  }
-                  <Link to={'/survey'} className="btn btn-primary btn-lg mt-3 ms-3">Realizar encuesta</Link>
-                  <Link to={'/'} className="btn btn-primary btn-lg mt-3 ms-3">Volver a home</Link>
-                </div>
-              </div>
-            )
+                // validación del input email
+                if (!values.email) {
+                  errors.email = "Por favor ingresa un correo";
+                } else if (
+                  !/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/.test(
+                    values.email
+                  )
+                ) {
+                  errors.email =
+                    "El correo sólo puede contener letras, números, puntos, guiones y el guión bajo ";
+                }
 
-          :
-            // Si NO está logado
-           (
-              <div className="card">
-                <h4 className="title" style={{color: "#ffeba7"}}>Login</h4>
-                  
-                <Formik
-                  initialValues={{
-                    name: "",
-                    pass: ""
-                  }}
+                // validación del input password
+                if (!values.pass) {
+                  errors.pass = "Por favor ingresa una contraseña válida";
+                } else if (
+                  !/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.{4,8})/.test(values.pass)
+                ) {
+                  errors.pass =
+                    "La contraseña debe tener de 4 a 8 caracteres y debe contener números, letras minúsculas y mayúsculas";
+                }
 
-                  validate={(values) => {
-                    let errors = {};
-                    
-                    // validación del input email
-                    if(!values.email){
-                      errors.email = 'Por favor ingresa un correo';
-                    }else if(!/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/.test(values.email)){
-                      errors.email = 'El correo sólo puede contener letras, números, puntos, guiones y el guión bajo '
-                    }
+                return errors;
+              }}
+              onSubmit={(values, { resetForm }) => {
+                resetForm();
+                actions.login(values.email, values.pass);
+              }}
+            >
+              {({ errors }) => (
+                <Form>
+                  <div className="field ">
+                    <span style={{ color: "#ffeba7" }}>
+                      <i className="fa-solid fa-at"></i>
+                    </span>
 
-                    // validación del input password
-                    if(!values.pass){
-                      errors.pass = 'Por favor ingresa una contraseña válida';
-                    }else if (!/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.{4,8})/.test(values.pass)) {
-                      errors.pass = 'La contraseña debe tener de 4 a 8 caracteres y debe contener números, letras minúsculas y mayúsculas'
-                    }
+                    <Field
+                      className="input-field"
+                      placeholder="email"
+                      type="text"
+                      name="email"
+                    />
+                  </div>
 
-                    return errors;
-                  }}
+                  <ErrorMessage
+                    name="email"
+                    component={() => (
+                      <div className="error">{errors.email}</div>
+                    )}
+                  />
 
-                  onSubmit={(values, {resetForm}) => {
-                    resetForm();
-                    actions.login(values.email, values.pass);
-                  }}
-                  >
-                  {({errors}) => (
-                    <Form>
-                      <div className="field ">
+                  <div className="field ">
+                    <span style={{ color: "#ffeba7" }}>
+                      <i className="fa-solid fa-lock"></i>
+                    </span>
 
-                        <span style={{color: "#ffeba7"}}>
-                          <i className="fa-solid fa-at"></i>
-                        </span>
+                    <Field
+                      className="input-field"
+                      placeholder="password"
+                      type="password"
+                      name="pass"
+                    />
+                  </div>
 
-                        <Field 
-                          className="input-field" 
-                          placeholder="email"
-                          type="text"
-                          name="email"
-                        />
-                      </div>
+                  <ErrorMessage
+                    name="pass"
+                    component={() => <div className="error">{errors.pass}</div>}
+                  />
 
-                      <ErrorMessage name="email" component={() => (
-                        <div className="error">{errors.email}</div>
-                      )} />
-
-
-                      <div className="field ">
-
-                        <span style={{color: "#ffeba7"}}>
-                          <i className="fa-solid fa-lock"></i>
-                        </span>
-
-                        <Field
-                          className="input-field" 
-                          placeholder="password"
-                          type="password"
-                          name="pass"
-                        />
-                      </div>
-
-                      <ErrorMessage name="pass" component={() => (
-                        <div className="error">{errors.pass}</div>
-                      )} />
-                      
-                      <div className="buttons d-flex mt-2">
+                  {/* <div className=" d-flex mt-2">
                         <Link to={'/'}><button className="btn ms-3">Volver</button></Link>
                         <button type="submit" className="btn">LOGIN</button>
                         <Link to={'/signup'}><button className="btn ms-3">Registro</button></Link>
-                      </div>
-                    </Form>
-                  )}
-                </Formik>
-                
-                  <div>    
-                      <Link to={'/recover-password'} className="btn-link">¿Olvidaste tu contraseña?</Link>
+                      </div> */}
+                  <div className="buttons">
+                    <Link to={"/login"}>
+                      <button className="btn ms-3">Volver</button>
+                    </Link>
+                    <button type="submit" className="btn">LOGIN</button>
+
+                    <button type="submit" className="btn">
+                      REGISTRO
+                    </button>
                   </div>
-              </div>
-            )
-        }
-			</div>			
-		</div>
-	);
+                </Form>
+              )}
+            </Formik>
+
+            <div>
+              <Link to={"/recover-password"} className="btn-link">
+                ¿Olvidaste tu contraseña?
+              </Link>
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  );
 };
