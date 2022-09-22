@@ -18,6 +18,8 @@ export const Home = () => {
 	return (
 		<div>
 			<div className="row">
+				
+			</div>
 
 				<div className="container-fluid" id="navbarMenu1">
 					<div className="titular">
@@ -41,7 +43,7 @@ export const Home = () => {
 							<Contacto />
 						</div> */}
 			</div>
-		</div>
+		
 	);
 };
 

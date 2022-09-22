@@ -39,7 +39,7 @@ export const Header = () => {
                                       <Link to={'/login'} className="btn btn-primary btn-lg mt-3 ms-3" onClick={logOut}>Log out</Link>
                                   </Link>
                                   ):(
-                                  <button className="btn btn-primary" onClick={logOut}>Logout</button>
+                                    <Link to={'/login'} className="btn btn-primary btn-lg mt-3 ms-3" onClick={logOut}>Log out</Link>
                                   )
                               )
                       }

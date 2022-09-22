@@ -103,8 +103,8 @@ export const Login = () => {
 
                   onSubmit={(values, {resetForm}) => {
                     resetForm();
-                    let result = actions.login(values.email, values.pass);
-                    result.then ((res) => {console.log(res)})
+                    actions.login(values.email, values.pass);
+                    
                     //quiero mostrar modal si se loga incorrecto, necesito el valor que me devuelve la promise
                   }}
                   >
