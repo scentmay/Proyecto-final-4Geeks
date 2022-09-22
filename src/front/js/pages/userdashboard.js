@@ -15,7 +15,10 @@ export const Usuario = () => {
 
     const { store, actions } = useContext(Context);
     const [useraux, setUserAux] = useState("");
+    const [userPago, setUserPago] = useState("");
     let navigate = useNavigate();
+
+
 
     const redirigir = () => {
 		// console.log("Entrando aquí...")
@@ -26,8 +29,10 @@ export const Usuario = () => {
 
     useEffect(() => {
         actions.ejercicios();
+        actions.getPago(store.user.id);
         setUserAux({ ...store.user })
-    }, [store.user]);
+        setUserPago({...store.pago.monto})
+    }, []);
 
     return (
 
@@ -38,7 +43,7 @@ export const Usuario = () => {
                 (store.user.token && store.user.token != "" && store.user.token != undefined) ?
                     (<div className="container-fluid p-0">
                         <div className="Perfil">
-                            <div className="Perfil">
+                            <div className="Perfil pt-5">
                                 <section className="seccion-perfil-usuario mt-5">
                                     <div className="perfil-usuario-body">
                                         <div className="perfil-usuario-bio" style={{ backgroundColor: `#ffeba7` }}>
@@ -69,6 +74,7 @@ export const Usuario = () => {
                                     <Entrenamiento />
                                 </div>
                                 <div className="tab-pane fade" id="nav-pago" role="tabpanel" aria-labelledby="nav-pago-tab" tabIndex="0">
+                                    <h1>Actualmente te has suscripto a la promocion de:{store.pago.monto}€</h1>
                                     <Suscription />
                                 </div>
                             </div>

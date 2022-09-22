@@ -11,6 +11,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			password: null,
 			email: null,
 			code: null,
+			pago: {},  
 			demo: [
 				{
 					title: "FIRST",
@@ -43,6 +44,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({user: {}});
 				setStore({survey: {}});
 				setStore({logged: false});
+				setStore({email: null});
+				setStore({password: null});
 				localStorage.removeItem("code")
 			},
 			cleanTraining: () => {
@@ -126,6 +129,23 @@ const getState = ({ getStore, getActions, setStore }) => {
 				.then(resp => resp.json())
 				.then(data => setStore({query: data}))
 				.catch(error => console.error ("Ha habido un error al recuperar los datos de la encuesta " + error))
+			},
+
+			getPago: async (id) =>{
+
+				const store = getStore();
+
+				const opts = {
+					method: 'GET',
+					headers: {
+						"Content-Type": "application/json",
+					},
+				}
+
+				fetch (`https://3001-4geeksacade-reactflaskh-egdm5hczo2f.ws-eu67.gitpod.io/api/user/${id}/payments`, opts)
+				.then(resp => resp.json())
+				.then(data => setStore({pago: data.operacion}))
+				.catch(error => console.error ("Ha habido un error al recuperar dato del pago " + error))
 			},
 
 
@@ -334,22 +354,27 @@ const getState = ({ getStore, getActions, setStore }) => {
 				.catch( error => console.error("Error al borrar miembro " + error))
 			},
 
-			getPassword: (mail) => {
+			getPassword: (email, dni) => {
+
 				const opts = {
 					method: 'POST',
 					headers: {
 					  "Content-Type": "application/json"
 					},
 					body: JSON.stringify({
-					  "email": mail,
+					  "email": email,
+					  "dni": dni
 					})
 				}
 
 				fetch ("https://3001-4geeksacade-reactflaskh-egdm5hczo2f.ws-eu67.gitpod.io/api/recover_password/", opts)
-				.then(resp => resp.json())
-				.then(data => {
-					setStore({email: data.email, password: data.password});
+				.then(resp => {resp.json();
+					console.log(resp.status);
+				})
 					
+				.then(data => {
+					console.log(data.status);
+					setStore({email: data.email, password: data.password});
 				})
 				.catch(error => console.error ("Ha habido un error al recuperar la contraseña del usuario " + error))
 			},
@@ -372,6 +397,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				.then(resp => resp.json())
 				.then(data => {
 					console.log(data);
+					getActions().cleanStore();
 				})
 				.catch(error => console.error ("Ha habido un error al cambiar la contraseña del usuario " + error))
 			},

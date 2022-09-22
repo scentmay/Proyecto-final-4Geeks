@@ -1,16 +1,17 @@
 import React, { useContext, useRef } from "react";
-import fondoWas from "../../img/fondoWas.jpg";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { Context } from "../store/appContext";
 import Modal from "react-bootstrap/Modal";
 import { useNavigate } from "react-router-dom";
+import { Formik, Field, Form, ErrorMessage } from "formik";
 
 export const New_password = () => {
   const { store, actions } = useContext(Context);
   const [password, setPassword] = useState("");
   const [show, setShow] = useState(false);
   const handleShow = () => setShow(true);
+
   const handleClose = () => {
     setShow(false);
     navigate("/login");
@@ -18,15 +19,11 @@ export const New_password = () => {
 
   let navigate = useNavigate();
 
-  const handleClick = (e) => {
-    e.preventDefault();
-    actions.changePassword(password);
-    handleShow();
-  };
-
   return (
     <div className="mainContainer">
       <div className="form d-flex justify-content-center">
+
+        {/* Modal */}
         <Modal show={show} onHide={handleClose}>
           <Modal.Header closeButton>
             <Modal.Title>Contraseña cambiada correctamente</Modal.Title>
@@ -47,51 +44,72 @@ export const New_password = () => {
         <div className="card m-5">
           <h2>Nueva contraseña</h2>
           <p style={{ color: "white" }}>
-            Nunca le pediremos la contraseña para acceder a su zona privada
+            Nunca te pediremos la contraseña para acceder a tu zona privada
           </p>
-          <div className="field ">
-            <input
-              className="input-field"
-              type="password"
-              placeholder="nueva contraseña..."
-              value={password}
-              onChange={(e) => {
-                setPassword(e.target.value);
-              }}
-            ></input>
-          </div>
-          <div>
-            <Link to={'/recover-password'}><button className="btn ms-3">Volver</button></Link>
-            <Link to={"/hide-login"}>
-              <button className="btn ms-3" onClick={handleClick}>ENVIAR</button>
-            </Link>
+
+          <p style={{ color: "white" }}>
+            Contacta con nostros si necesitas ayuda
+          </p>
+
+          <Formik
+                  initialValues={{
+                    pass: ""
+                  }}
+
+                  validate={(values) => {
+                    let errors = {};
+
+                    // validación del input password
+                    if(!values.pass){
+                      errors.pass = 'Por favor ingresa una contraseña válida';
+                    }else if (!/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.{4,8})/.test(values.pass)) {
+                      errors.pass = 'La contraseña debe tener de 4 a 8 caracteres y debe contener números, letras minúsculas y mayúsculas'
+                    }
+
+                    return errors;
+                  }}
+                  
+                  onSubmit={(values, {resetForm}) => {
+                    resetForm();
+                    actions.changePassword(values.pass);
+                    actions.cleanStore();
+                    handleShow();
+                  }}
+                  >
+                    
+                    {({errors}) => (
+                    <Form>
+
+                      <div className="field ">
+
+                        <span style={{color: "#ffeba7"}}>
+                          <i className="fa-solid fa-lock"></i>
+                        </span>
+
+                        <Field
+                          className="input-field" 
+                          placeholder="password"
+                          type="password"
+                          name="pass"
+                        />
+                      </div>
+
+                      <ErrorMessage name="pass" component={() => (
+                        <div className="error">{errors.pass}</div>
+                      )} />
+                      
+                      <div className="buttons d-flex mt-2 justify-content-center">
+                        <Link to={"/recover-password"}><button className="btn ms-3">Volver</button></Link>
+                        <button type="submit" className="btn">ENVIAR</button>
+                      </div>
+                    </Form>
+                  )}
+
+          </Formik>
           </div>
         </div>
       </div>
-    </div>
   );
 };
 
-// Este es el formulario tipo
-{
-  /* <form id="form">
-  <div class="field">
-    <label for="to_name">to_name</label>
-    <input type="text" name="to_name" id="to_name">
-  </div>
-  <div class="field">
-    <label for="from_name">from_name</label>
-    <input type="text" name="from_name" id="from_name">
-  </div>
-  <div class="field">
-    <label for="message">message</label>
-    <input type="text" name="message" id="message">
-  </div>
-  <div class="field">
-    <label for="reply_to">reply_to</label>
-    <input type="text" name="reply_to" id="reply_to">
-  </div>
 
-  <input type="submit" id="button" value="Send Email" >
-</form> */
-}

@@ -9,6 +9,10 @@ export const AdminDashSocios = (props) => {
   const [confirm, setConfirm] = useState(false);
   const [idToDelete, setIdToDelete] = useState("");
 
+
+  //introducimos 2 estados (id a borrar y confirmación) para manejar 
+  //un modal que nos pida confirmación antes de borrar usuario
+  
   const handleCancelMembership = (id) => {
     setIdToDelete(id);
     setShow(true);

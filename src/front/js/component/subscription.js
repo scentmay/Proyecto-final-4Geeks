@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 export const Suscription = () => {
     return (
         <div>
+                <h2 className="text-center">Nuestras Promociones</h2>
             <div className="content-center d-flex" id="tabla-precios">
-
                 <div className="precio-col">
                     <div className="precio-col-header">
                         <h3>Contrato por 15€/mes</h3>

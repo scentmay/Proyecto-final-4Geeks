@@ -115,8 +115,8 @@ class Pago(db.Model):
 
     def serialize(self):
         return {
-            "id": self.id,
             "cliente_id": self.cliente_id,
+            "monto": self.monto,
         }
 
 class Code(db.Model):

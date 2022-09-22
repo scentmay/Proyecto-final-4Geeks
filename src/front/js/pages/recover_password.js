@@ -1,10 +1,11 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import fondoWas from "../../img/fondoWas.jpg";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { Context } from "../store/appContext";
 import Modal from "react-bootstrap/Modal";
 import { useNavigate } from "react-router-dom";
+import { Formik, Field, Form, ErrorMessage } from "formik";
 
 export const Recover_password = () => {
   const { store, actions } = useContext(Context);
@@ -16,14 +17,19 @@ export const Recover_password = () => {
     navigate("/hide-login");
   };
 
+  const userPass = store.password;
+
 
   let navigate = useNavigate();
 
-  const handleClick = (e) => {
-    e.preventDefault();
-    actions.getPassword(email);
-    handleShow();
-  };
+
+  useEffect(() => {
+    // if (userPass != null || userPass != undefined) alert ("usuario SI existe")
+    // if (userPass == null || userPass == undefined) alert ("usuario NO existe")
+  }, [userPass])
+
+
+
 
   return (
     <div className="mainContainer">
@@ -35,7 +41,7 @@ export const Recover_password = () => {
           </Modal.Header>
 
           <Modal.Body className="d-flex justify-content-center fs-4">
-            Va a ser redirigido a una página para resetear su contraseña
+            Vas a ser redirigido a una página para resetear tu contraseña
           </Modal.Body>
 
           <Modal.Footer>
@@ -49,25 +55,92 @@ export const Recover_password = () => {
         <div className="card m-5">
           <h2>Recuperación de contraseña</h2>
           <p style={{ color: "white" }}>
-          Introduce el e-mail asociado a tu cuenta de S&F FIT y procederemos a resetear la contraseña
+          Introduce los datos asociados a tu cuenta de S&F FIT y procederemos a resetear la contraseña
           </p>
-          <div className="field ">
-            <input
-              className="input-field"
-              type="email"
-              placeholder="email..."
-              value={email}
-              onChange={(e) => {
-                setEmail(e.target.value);
-              }}
-            ></input>
-          </div>
-          <div>
-            <Link to={'/login'}><button className="btn ms-3">Volver</button></Link>
-            <Link to={"/hide-login"}>
-              <button className="btn ms-3" onClick={handleClick}>ENVIAR</button>
-            </Link>
-          </div>
+
+          <Formik 
+            initialValues={{
+              email: "",
+              dni: ""
+            }}
+
+            validate={(values) => {
+              let errors={};
+
+              // validación del input email
+              if(!values.email){
+                errors.email = 'Por favor ingresa un correo';
+              }else if(!/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/.test(values.email)){
+                errors.email = 'El correo sólo puede contener letras, números, puntos, guiones y el guión bajo '
+              }
+
+              // validación del input password
+              if(!values.dni){
+                errors.dni = 'Por favor ingresa un DNI';
+              }else if (!/^[XYZ]?\d{5,8}[A-Z]$/.test(values.dni)) {
+                errors.dni = 'Por favor, ingresa un DNI válido'
+              }
+
+              return errors;
+            }}
+
+            onSubmit={(values, {resetForm}) => {
+              resetForm();
+              actions.getPassword(values.email, values.dni);
+   
+            }}
+
+          >
+
+            {({errors}) => (
+              <Form>
+                <div className="field ">
+
+                 <span style={{color: "#ffeba7"}}>
+                    <i className="fa-solid fa-at"></i>
+                  </span>
+
+                  <Field
+                    className="input-field"
+                    type="email"
+                    name="email"
+                    placeholder="email"
+                   />
+                </div>
+
+                <ErrorMessage name="email" component={() => (
+                  <div className="error">{errors.email}</div>
+                )} />
+
+                <div className="field ">
+
+                  <span style={{color: "#ffeba7"}}>
+                    <i className="fa-solid fa-id-card"></i>
+                  </span>
+
+                  <Field
+                    className="input-field"
+                    type="text"
+                    name="dni"
+                    placeholder="dni"
+                  />
+                </div>
+
+                <ErrorMessage name="dni" component={() => (
+                  <div className="error">{errors.dni}</div>
+                )} />
+
+                <div>
+                  <Link to={'/login'}><button className="btn ms-3">Volver</button></Link>
+                  <button type="submit" className="btn">ENVIAR</button>
+                </div>
+
+              </Form>
+            )}
+          </Formik>
+
+          
+
         </div>
       </div>
     </div>

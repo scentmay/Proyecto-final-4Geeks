@@ -54,7 +54,7 @@ export const Login = () => {
 
             //Si está logado
             (
-              <div>
+              <div className="card">
                 <div className="card">
                   <h4 className="title" style={{color: "#ffeba7"}}>Zona privada</h4>
                   <p style={{color: "white"}}>Bienvenido a su zona privada, no olvide acceder a la encuesta para rellenar sus datos</p>
@@ -82,30 +82,28 @@ export const Login = () => {
                   }}
 
                   validate={(values) => {
-                    let errores = {};
+                    let errors = {};
                     
                     // validación del input email
                     if(!values.email){
-                      errores.email = 'Por favor ingresa un correo';
+                      errors.email = 'Por favor ingresa un correo';
                     }else if(!/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/.test(values.email)){
-                      errores.email = 'El correo sólo puede contener letras, números, puntos, guiones y el guión bajo '
+                      errors.email = 'El correo sólo puede contener letras, números, puntos, guiones y el guión bajo '
                     }
 
                     // validación del input password
                     if(!values.pass){
-                      errores.pass = 'Por favor ingresa una contraseña válida';
+                      errors.pass = 'Por favor ingresa una contraseña válida';
                     }else if (!/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.{4,8})/.test(values.pass)) {
-                      errores.pass = 'La contraseña debe tener de 4 a 8 caracteres y debe contener números, letras minúsculas y mayúsculas'
+                      errors.pass = 'La contraseña debe tener de 4 a 8 caracteres y debe contener números, letras minúsculas y mayúsculas'
                     }
 
-                    return errores;
+                    return errors;
                   }}
 
                   onSubmit={(values, {resetForm}) => {
                     resetForm();
                     actions.login(values.email, values.pass);
-                    
-                    //quiero mostrar modal si se loga incorrecto, necesito el valor que me devuelve la promise
                   }}
                   >
                   {({errors}) => (

@@ -16,11 +16,7 @@ export const Home = () => {
 	const { store, actions } = useContext(Context);
 
 	return (
-		<div>
-			<div className="row">
-				
-			</div>
-
+		<div>			
 				<div className="container-fluid" id="navbarMenu1">
 					<div className="titular">
 						<h1>Bienvenido a SyF FIT</h1>
@@ -29,13 +25,11 @@ export const Home = () => {
 							<button className="btn btn-primary">Ingrese a su perfil</button>
 						</Link>
 					</div>
-				</div>
-
-
-				
+				</div>				
 				<div className="container-fluid">
 					<Suscription />
 				</div>
+			
 				{/* <div className="Ubi">
 							<Ubicacion />
 						</div> */}
