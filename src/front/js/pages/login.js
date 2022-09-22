@@ -54,7 +54,7 @@ export const Login = () => {
 
             //Si está logado
             (
-              <div className="card">
+              <div className="">
                 <div className="card">
                   <h4 className="title" style={{color: "#ffeba7"}}>Zona privada</h4>
                   <p style={{color: "white"}}>Bienvenido a su zona privada, no olvide acceder a la encuesta para rellenar sus datos</p>
