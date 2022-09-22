@@ -8,7 +8,6 @@ import { Formik, Field, Form, ErrorMessage } from "formik";
 
 export const New_password = () => {
   const { store, actions } = useContext(Context);
-  const [password, setPassword] = useState("");
   const [show, setShow] = useState(false);
   const handleShow = () => setShow(true);
 
