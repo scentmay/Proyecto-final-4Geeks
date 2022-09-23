@@ -6,13 +6,11 @@ import { Link } from "react-router-dom";
 import "../../styles/login.css";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import Modal from "react-bootstrap/Modal";
-import { useNavigate } from "react-router-dom";
 
 export const Login = () => {
   const { store, actions } = useContext(Context);
   const [show, setShow] = useState(false);
   const [show2, setShow2] = useState(false);
-  let navigate = useNavigate();
 
   const handleShow = () => {
     if (store.flag_login == true) {
@@ -28,7 +26,6 @@ export const Login = () => {
   };
 
   const handleClose2 = () => {
-    navigate("/login");
     setShow2(false);
     logOut();
   };

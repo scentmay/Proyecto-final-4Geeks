@@ -264,7 +264,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					setStore({
 						user: data.user,
 					})
-					setStore({logged: true})
+					setStore({logged: true, flag_login: null})
 					localStorage.setItem("token", data.token)
 				})
 				
