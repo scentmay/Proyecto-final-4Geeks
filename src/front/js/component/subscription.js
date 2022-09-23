@@ -1,77 +1,53 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "../../styles/subs.css"
 
 export const Suscription = () => {
   return (
-    <>
-      <h2 className="text-center">Nuestras Promociones</h2>
-      <div className="row row-cols-2 row-cols-lg-4 g-2 g-lg-4">
-        <div className="col px-2">
-          <div className="bg-white precio-col">
-            <div className="precio-col-header">
-              <h3>Contrato por 15€/mes</h3>
-              <p>para principiantes</p>
-            </div>
-
-            <div className="precio-col-features">
-              <p>Acceso exclusivo a vestuarios</p>
-              <p>Característi</p>
-              <p>Pulsera magnetide regalo</p>
-            </div>
-
-
+    <>    <div className="text-center pt-5 py-5" style={{ color: "#ffeba7" }}><h3>Conoce nuestras promociones</h3></div>
+      <div className="row row-cols-1 row-cols-md-3 g-4">
+        
+        <div className="col mb-5">
+          <div className="card1" id="card1">
+          <div className="py-3">
+                    <span className="display-1 aling-middle" style={{ color: "#ffeba7" }}>20</span> <span className="h3" style={{ color: "#ffeba7" }}>€/mes</span>
+                  </div>
+              <div className="card-body">
+                <h5 className="card-title">Basico</h5>
+                <p className="card-text">Contratando el servicio basico, podras acceder a las instalaciones, vestuarios y tendras una bonificacion en la inscripcion.</p>
+              </div>
+              <div className="card-footer text-muted py-3">
+                <a href="https://buy.stripe.com/test_fZe6pJ9hndY8c6s3cc" target="_blank" className="btn btn-primary">Suscribirme</a>
+                </div>
           </div>
         </div>
-
-        <div className="col px-2">
-          <div className="bg-white precio-col">
-          <div className="precio-col-header">
-            <h3>Contrato por 20€/mes</h3>
-            <p>para intermedios</p>
-          </div>
-
-          <div className="precio-col-features">
-            <p>Accesos exclusivos</p>
-            <p>Beneficios </p>
-            <p>+ Cosas</p>
-          </div>
-
-
-        </div>
-        </div>
-
-        <div className="col px-2">
-          <div className="bg-white precio-col">
-          <div className="precio-col-header">
-            <h3>Contraro por 30€/mes</h3>
-            <p>para profesionales</p>
-          </div>
-
-          <div className="precio-col-features">
-            <p>Beneficios premiun</p>
-            <p>Descuentos en abonos</p>
-            <p>Mochila + toalla de regalo</p>
-          </div>
-            
-
+        <div className="col mb-5">
+          <div className="card1 " id="card1">
+          <div className="py-3">
+                    <span className="display-1 aling-middle" style={{ color: "#ffeba7" }}>30</span> <span className="h3" style={{ color: "#ffeba7" }}>€/mes</span>
+                  </div>
+              <div className="card-body">
+                <h5 className="card-title">Intermedio</h5>
+                <p className="card-text">Contratando el servicio intemedio, ademas de acceder a las instalaciones, te podes llevar una mochila de regalo.</p>
+              </div>
+              <div className="card-footer text-muted py-3">
+                <a href="https://buy.stripe.com/test_3cs29tgJP8DO1rO28a" target="_blank" className="btn btn-primary">Suscribirme</a>
+                </div>
           </div>
         </div>
-
-        <div className="col px-2">
-          <div className="bg-white precio-col">
-          <div className="precio-col-header">
-            <h3>Contrato por 50€/mes</h3>
-            <p>para intermedios</p>
+        <div className="col mb-5">
+          <div className="card1" id="card1">
+          <div className="py-3">
+                    <span className="display-1 aling-middle" style={{ color: "#ffeba7" }}>50</span> <span className="h3" style={{ color: "#ffeba7" }}>€/mes</span>
+                  </div>
+              <div className="card-body">
+                <h5 className="card-title">Premium</h5>
+                <p className="card-text">Contratando el servicio Premium, podras acceder a instalaciones, te llevaras una mochila de regalo y un mes gratis.</p>
+              </div>
+              <div className="card-footer text-muted py-3">
+                <a href="https://buy.stripe.com/test_fZe9BV3X35rC3zW7sv" target="_blank" className="btn btn-primary">Suscribirme</a>
+                </div>
           </div>
-
-          <div className="precio-col-features">
-            <p>Accesos exclusivos</p>
-            <p>Beneficios </p>
-            <p>+ Cosas</p>
-          </div>
-
-
-        </div>
         </div>
       </div>
 

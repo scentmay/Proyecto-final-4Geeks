@@ -25,7 +25,7 @@ export const Login = () => {
   };
 
   return (
-    <div className="mainContainer" style={{ backgroundImage: `url(${fondo})` }}>
+    <div className="mainContainer" >
       <div className="form d-flex justify-content-center">
         {/* Modal */}
         <Modal show={show} onHide={handleClose}>
@@ -50,7 +50,7 @@ export const Login = () => {
         store.user.token != undefined ? (
           //Si está logado
           <div className="">
-            <div className="card">
+            <div className="card ml-auto">
               <h4 className="title" style={{ color: "#ffeba7" }}>
                 Zona privada
               </h4>

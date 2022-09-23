@@ -1,3 +1,11 @@
+#card1 {
+    text-align: center;
+    background: #2a2b38;
+    border-radius: 0.75rem;
+}
+
+
+
 /* From uiverse.io by @sssynk */
 /* .card {
     width: 340px;
@@ -77,25 +85,25 @@
     transition: box-shadow 0.15s ease-in-out;
    } */
 
-
+/* 
    #tabla-precios {
     display:inline-block;
     width:100%;
     margin-top:50px
    }
-   
+    */
    /*Columnas*/
    
-   .precio-col {
+   /* .precio-col {
     background-color:#f3f3f3;
     border-radius:10px;
     margin-bottom:50px;
     box-shadow: 0px 2px 5px #ddd
-   }
+   } */
    
    /*Headers*/
    
-   .precio-col-header {
+   /* .precio-col-header {
     background-color:#333;
     padding:20px;
     border-top-left-radius:10px;
@@ -123,11 +131,11 @@
     color:#f3f3f3;
     font-size:14px;
     margin-bottom:0
-   }
+   } */
    
    /*Características*/
    
-   .precio-col-features {
+   /* .precio-col-features {
     padding: 0 20px 20px 20px
    }
    
@@ -141,11 +149,11 @@
    .precio-col-features p:first-child,
    .precio-col-features p:last-child {
     border-top:none
-   }
+   } */
    
    /*Comprar*/
    
-   .precio-col-subscripcion {
+   /* .precio-col-subscripcion {
     padding:10px;
     max-width:250px;
     text-align:center;
@@ -172,4 +180,4 @@
    .precio-col-subscripcion:hover a {
     color:#dd9933;
     transition: all 0.3s
-   }
+   } */
