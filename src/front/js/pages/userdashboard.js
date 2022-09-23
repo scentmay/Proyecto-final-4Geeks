@@ -39,7 +39,7 @@ export const Usuario = () => {
             <ul className="nav nav-tabs justify-content-center" id="myTab" role="tablist">
               <li className="nav-item" role="presentation">
                 <button
-                  
+
                   className="nav-link active"
                   id="home-tab"
                   data-bs-toggle="tab"
@@ -109,11 +109,12 @@ export const Usuario = () => {
                 role="tabpanel"
                 aria-labelledby="contact-tab"
                 tabindex="0"
-              ><h3 className="text-center mt-4" style={{ color: "#ffeba7" }}>
+              >
+                <h3 className="text-center mt-4" style={{ color: "#ffeba7" }}>
               Actualmente estas suscripto a la promocion de : 
-              {info_pago == undefined
-                ? "Pendientedte de contratar"
-                : info_pago}
+              {(info_pago == undefined)
+                ? ("Pendiente de contratar")
+                : (info_pago)}
               €
             </h3>
             <Suscription /></div>

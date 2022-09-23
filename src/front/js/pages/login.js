@@ -52,11 +52,11 @@ export const Login = () => {
           <div className="">
             <div className="card">
               <h4 className="title" style={{ color: "#ffeba7" }}>
-                Zona privada
+                Bienvenido {store.user.userName}
               </h4>
               <p style={{ color: "white" }}>
-                Bienvenido a su zona privada, no olvide acceder a la encuesta
-                para rellenar sus datos
+                 Esta es tu zona privada, no olvides acceder a la encuesta
+                para rellenar tus datos
               </p>
               <Link
                 to={"/login"}

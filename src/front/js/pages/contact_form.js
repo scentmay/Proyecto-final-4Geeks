@@ -103,7 +103,7 @@ export const ContactForm = () => {
             <input
               type="hidden"
               name="_next"
-              value="https://3000-4geeksacade-reactflaskh-egdm5hczo2f.ws-eu64.gitpod.io/emailsent"
+              value="https://3000-4geeksacade-reactflaskh-egdm5hczo2f.ws-eu67.gitpod.io/emailsent"
             ></input>
             {/* eliminamos el captcha, comentar esta línea para activarlo */}
             <input type="hidden" name="_captcha" value="false"></input>
