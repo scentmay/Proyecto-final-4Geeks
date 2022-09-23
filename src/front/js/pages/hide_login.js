@@ -1,4 +1,4 @@
-import React, { useContext, useRef } from "react";
+import React, { useContext, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { Context } from "../store/appContext";
@@ -9,18 +9,38 @@ import { Formik, Field, Form, ErrorMessage } from "formik";
 export const New_password = () => {
   const { store, actions } = useContext(Context);
   const [show, setShow] = useState(false);
-  const handleShow = () => setShow(true);
+  const [show2, setShow2] = useState(false);
+
+  let navigate = useNavigate();
+
+  const handleShow = () => {
+    if (store.flag == true) {
+      setShow(true);
+    }
+    else if(store.flag == false) {
+      setShow2(true);
+    }
+  }
 
   const handleClose = () => {
     setShow(false);
+    clean();
     navigate("/login");
   };
 
-  let navigate = useNavigate();
+  const handleClose2 = () => {
+    setShow2(false);
+    clean();
+    navigate("/login");
+  };
 
   const clean = () => {
     actions.cleanStore();
   }
+
+  useEffect(() => {
+    handleShow();
+  }, [store.flag])
 
   return (
     <div className="mainContainer">
@@ -38,6 +58,24 @@ export const New_password = () => {
 
           <Modal.Footer>
             <button className="btn" onClick={handleClose}>
+              Aceptar
+            </button>
+          </Modal.Footer>
+        </Modal>
+        {/* Fin modal */}
+
+         {/* Modal */}
+         <Modal show={show2} onHide={handleClose2}>
+          <Modal.Header closeButton>
+            <Modal.Title>Se ha producido un error</Modal.Title>
+          </Modal.Header>
+
+          <Modal.Body className="d-flex justify-content-center fs-4">
+            Contacte con nosotros SyFFIT@gmail.com
+          </Modal.Body>
+
+          <Modal.Footer>
+            <button className="btn" onClick={handleClose2}>
               Aceptar
             </button>
           </Modal.Footer>
@@ -75,8 +113,6 @@ export const New_password = () => {
                   onSubmit={(values, {resetForm}) => {
                     resetForm();
                     actions.changePassword(values.pass);
-                    actions.cleanStore();
-                    handleShow();
                   }}
                   >
                     

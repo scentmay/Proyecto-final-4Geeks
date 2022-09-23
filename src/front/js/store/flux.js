@@ -9,6 +9,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			entrenoAsignado: [],
 			logged: false,
 			pass_recover: null,
+			flag: null,
 			password: null,
 			email: null,
 			code: null,
@@ -48,6 +49,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({email: null});
 				setStore({password: null});
 				setStore({pass_recover: null});
+				setStore({flag: null});
 				localStorage.removeItem("code")
 			},
 			cleanTraining: () => {
@@ -377,10 +379,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 						setStore({pass_recover: false});
 						return;
 					}
-					return resp.json();
+					else {
+						setStore({pass_recover: true});
+						return resp.json();
+					}
 				})
 				.then(data => {
-					setStore({email: data.email, password: data.password, pass_recover: true});
+					setStore({email: data.email, password: data.password});
 				})
 				.catch(error => console.error ("Ha habido un error al recuperar la contraseña del usuario " + error))
 			},
@@ -400,7 +405,17 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 
 				fetch ("https://3001-4geeksacade-reactflaskh-egdm5hczo2f.ws-eu67.gitpod.io/api/new_password/", opts)
-				.then(resp => resp.json())
+				.then(resp => {
+					if (!resp.ok) {
+						setStore({flag: false});
+						return;
+					}
+					else {
+						setStore({flag: true});
+						return resp.json();
+					}
+				})
+
 				.then(data => {
 					console.log(data);
 					getActions().cleanStore();

@@ -29,14 +29,12 @@ export const Recover_password = () => {
 
   const handleClose2 = () => {
     setShow2(false);
+    clean();
   };
-
 
   const clean = () => {
     actions.cleanStore();
   }
-
-
 
   useEffect(() => {
     handleShow();
