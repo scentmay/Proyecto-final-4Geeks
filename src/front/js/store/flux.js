@@ -137,9 +137,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				.catch(error => console.error ("Ha habido un error al recuperar los datos de la encuesta " + error))
 			},
 
-			getPago: async (id) =>{
-
-				const store = getStore();
+			getPago: (id) =>{
 
 				const opts = {
 					method: 'GET',
@@ -282,7 +280,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const options = {
 					method: 'GET',
 					headers: {
-						'X-RapidAPI-Key': '880c804b00msh47268dc6bef38b2p1117b8jsn5b7e5e43dd0a',
+						'X-RapidAPI-Key': 'f09bb5b433mshc4013c20311c928p18e78fjsn4b1e76b72147',
 						'X-RapidAPI-Host': 'exercisedb.p.rapidapi.com'
 					}
 				};

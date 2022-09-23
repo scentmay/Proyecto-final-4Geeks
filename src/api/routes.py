@@ -300,7 +300,7 @@ def newPassword():
 
 @api.route('/user/<int:id>/payments')
 def getPaymentsByUser(id):
-    userObj = Pago.query.get(id)
+    userObj = Pago.query.filter_by(cliente_id = id).first()
     print(id)
 
     if not userObj:

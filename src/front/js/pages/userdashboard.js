@@ -17,10 +17,7 @@ export const Usuario = () => {
     const [userPago, setUserPago] = useState("");
     let navigate = useNavigate();
 
-
-
     const redirigir = () => {
-		// console.log("Entrando aquí...")
 		setTimeout(()=>{
 		  navigate("/login")
 		}, 5000)
@@ -36,7 +33,7 @@ export const Usuario = () => {
     return (
 
         <>
-            <div className="mainContainer pb-5 mb-3" style={{backgroundImage: `url(${fondo})`}}>
+            <div className="mainContainer pb-5 mb-3">
 			    <div className="form d-flex justify-content-center"> 
             {
                 (store.user.token && store.user.token != "" && store.user.token != undefined) ?

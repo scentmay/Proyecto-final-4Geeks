@@ -111,7 +111,7 @@ class Pago(db.Model):
 
 
     def __repr__(self):
-        return f'<Pago {self.email}>'
+        return f'<Pago {self.monto}>'
 
     def serialize(self):
         return {
