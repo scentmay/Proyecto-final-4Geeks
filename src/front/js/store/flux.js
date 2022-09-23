@@ -10,6 +10,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			logged: false,
 			pass_recover: null,
 			flag: null,
+			flag_login: null,
 			password: null,
 			email: null,
 			code: null,
@@ -50,6 +51,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({password: null});
 				setStore({pass_recover: null});
 				setStore({flag: null});
+				setStore({flag_login: null});
 				localStorage.removeItem("code")
 			},
 			cleanTraining: () => {
@@ -247,12 +249,16 @@ const getState = ({ getStore, getActions, setStore }) => {
 				await fetch('https://3001-4geeksacade-reactflaskh-egdm5hczo2f.ws-eu67.gitpod.io/api/login', opts)
 				.then((res) => {
 						if (!res.ok) {
-							alert("Credenciales incorrectas");
+							setStore({flag_login: false});
+							return;
 						}
-						return res.json();
+						else {
+							setStore({flag_login: true});
+							return res.json();
+						}
 					})
 				.then((data) => {
-					//Añadimos la priopiedad token a data.user y después el objeto es seteado en la store
+					//Añadimos la propiedad token a data.user y después el objeto es seteado en la store
 					//y se compone de todo el serialize + token
 					data.user.token = data.token
 					setStore({

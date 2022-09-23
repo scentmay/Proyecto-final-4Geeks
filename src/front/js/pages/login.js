@@ -1,22 +1,36 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Context } from "../store/appContext";
 import "../../styles/home.css";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import "../../styles/login.css";
-import fondo from "../../img/signup_img.jpg";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import Modal from "react-bootstrap/Modal";
+import { useNavigate } from "react-router-dom";
 
 export const Login = () => {
   const { store, actions } = useContext(Context);
   const [show, setShow] = useState(false);
+  const [show2, setShow2] = useState(false);
+  let navigate = useNavigate();
 
-  const logged = store.logged;
+  const handleShow = () => {
+    if (store.flag_login == true) {
+      setShow(true);
+    }
+    else if(store.flag_login == false) {
+      setShow2(true);
+    }
+  }
 
-  const handleShow = () => setShow(true);
   const handleClose = () => {
     setShow(false);
+  };
+
+  const handleClose2 = () => {
+    navigate("/login");
+    setShow2(false);
+    logOut();
   };
 
   //Función para limpiar el token del store
@@ -24,13 +38,17 @@ export const Login = () => {
     actions.cleanStore();
   };
 
+  useEffect(() => {
+    handleShow();
+  },[store.flag_login])
+
   return (
     <div className="mainContainer" >
       <div className="form d-flex justify-content-center">
         {/* Modal */}
         <Modal show={show} onHide={handleClose}>
           <Modal.Header closeButton>
-            <Modal.Title>Usuario registrado correctamente</Modal.Title>
+            <Modal.Title>Identificación correcta</Modal.Title>
           </Modal.Header>
 
           <Modal.Body className="d-flex justify-content-center fs-3">
@@ -39,6 +57,24 @@ export const Login = () => {
 
           <Modal.Footer>
             <button className="btn" onClick={handleClose}>
+              Aceptar
+            </button>
+          </Modal.Footer>
+        </Modal>
+        {/* Fin modal */}
+
+         {/* Modal */}
+         <Modal show={show2} onHide={handleClose2}>
+          <Modal.Header closeButton>
+            <Modal.Title>Identificación incorrecta</Modal.Title>
+          </Modal.Header>
+
+          <Modal.Body className="d-flex justify-content-center fs-3">
+            Revisa los datos y prueba de nuevo
+          </Modal.Body>
+
+          <Modal.Footer>
+            <button className="btn" onClick={handleClose2}>
               Aceptar
             </button>
           </Modal.Footer>
@@ -98,7 +134,7 @@ export const Login = () => {
 
             <Formik
               initialValues={{
-                name: "",
+                email: "",
                 pass: "",
               }}
               validate={(values) => {
