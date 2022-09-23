@@ -72,7 +72,7 @@ export const AdminDashSocios = (props) => {
 	},[confirm]);
 
   return (
-    <div>
+    <div className="container">
       <div className="card" style={{ width: "100%" }}>
         <h4 className="title" style={{ color: "#ffeba7" }}>
           <u>{props.type}</u>

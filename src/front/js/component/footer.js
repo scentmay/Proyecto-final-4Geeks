@@ -8,7 +8,7 @@ export const Footer = () => {
   return (
     
       <footer className="footer mt-auto text-center">
-        <div className="footer-dark">
+        <div className="footer-dark" style={{marginTop:"250px"}}>
             <div className="container-fluid" style={{padding:"10px"}}>
               <div className="row">
                 <div className="col-sm-6 col-md-6 item mt-4">
@@ -18,10 +18,10 @@ export const Footer = () => {
                       <a href="/">Home S&F FIT</a>
                     </li>
                     <li>
-                      <a href="#">Localización</a>
+                      <a href="#localizacion">Localización</a>
                     </li>
                     <li>
-                      <a href="#">Quienes somos</a>
+                      <a href="#referencia">Quienes somos</a>
                     </li>
                   </ul>
                 </div>
@@ -36,13 +36,13 @@ export const Footer = () => {
                   </p>
                 </div>
                 <div className="col item social">
-                  <a href="#" style={{backgroundImage: `url(${faceIcon})`, backgroundSize: "110%", backgroundRepeat: "no-repeat",backgroundPositionX:"50%", backgroundPositionY:"50%"}}>
+                  <a href="https://es-es.facebook.com/" style={{backgroundImage: `url(${faceIcon})`, backgroundSize: "110%", backgroundRepeat: "no-repeat",backgroundPositionX:"50%", backgroundPositionY:"50%"}}>
                   </a>
-                  <a href="#" style={{backgroundImage: `url(${instaIcon})`, backgroundSize: "130%", backgroundRepeat: "no-repeat",backgroundPositionX:"50%", backgroundPositionY:"50%"}}>
+                  <a href="https://www.instagram.com/" style={{backgroundImage: `url(${instaIcon})`, backgroundSize: "130%", backgroundRepeat: "no-repeat",backgroundPositionX:"50%", backgroundPositionY:"50%"}}>
                   </a>
-                  <a href="#" style={{backgroundImage: `url(${twitterIcon})`, backgroundSize: "320%", backgroundRepeat: "no-repeat",backgroundPositionX:"50%", backgroundPositionY:"45%"}}>
+                  <a href="https://twitter.com/" style={{backgroundImage: `url(${twitterIcon})`, backgroundSize: "320%", backgroundRepeat: "no-repeat",backgroundPositionX:"50%", backgroundPositionY:"45%"}}>
                   </a>
-                  <a href="#" style={{backgroundImage: `url(${tiktokIcon})`, backgroundSize: "120%", backgroundRepeat: "no-repeat",backgroundPositionX:"50%", backgroundPositionY:"50%"}}>
+                  <a href="https://www.tiktok.com/es/" style={{backgroundImage: `url(${tiktokIcon})`, backgroundSize: "120%", backgroundRepeat: "no-repeat",backgroundPositionX:"50%", backgroundPositionY:"50%"}}>
                   </a>
                 </div>
               </div>

@@ -7,7 +7,7 @@ export const Ubicacion = () => {
 
 	return (
 		<>
-		<div className="text-center">
+		<div className="text-center" id="localizacion">
 		<h2 className="py-5"> Donde nos encontramos</h2>
 		</div>
 		<div className="map-responsive">

@@ -28,7 +28,7 @@ export const Signup = () => {
   }
 
   return (
-    <div className="mainContainer" style={{ backgroundImage: `url(${fondo})` }}>
+    <div className="mainContainer">
       <div className="form d-flex justify-content-center">
         {/* Modal */}
         <Modal show={show} onHide={handleClose}>

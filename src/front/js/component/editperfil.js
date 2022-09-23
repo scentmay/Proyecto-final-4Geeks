@@ -46,19 +46,19 @@ export const EditarPerfil = () => {
                     <button className="btn" onClick={handleClose}>Aceptar</button>
                 </Modal.Footer>
             </Modal>
-            <div className="p-3 border-0">
-                <h3 className="text-center">Mis datos</h3>
+            <div className="container p-3 border-0" id="editarPerfil">
+                <h3 className="text-center" style={{ color: "#ffeba7" }}>Mis datos</h3>
                 <div className="d-grid gap-2">
                     <label className="form-label">Nombre</label>
                     <div className="d-grid gap-2">
                         <input
                             type="text"
-                            className="form-control"
+                            className="form-control field"
                             placeholder="Indique su Nombre"
                             value={useraux.userName}
                             onChange={(e) => {
                                 setUserAux({ ...useraux, userName: e.target.value });
-                            }}
+                            }} style={{ color: "#ffeba7" }}
                         />
                     </div>
                 </div>
@@ -67,12 +67,12 @@ export const EditarPerfil = () => {
                     <div className="d-grid gap-2">
                         <input
                             type="text"
-                            className="form-control"
+                            className="form-control field"
                             placeholder="Indique sus Apellidos"
                             value={useraux.lastName}
                             onChange={(e) => {
                                 setUserAux({ ...useraux, lastName: e.target.value });
-                            }}
+                            }} style={{ color: "#ffeba7" }}
                         />
                     </div>
                 </div>
@@ -82,12 +82,12 @@ export const EditarPerfil = () => {
                     <div className="d-grid gap-2">
                         <input
                             type="text"
-                            className="form-control"
+                            className="form-control field"
                             placeholder="Indique su Dni"
                             value={useraux.dni}
                             onChange={(e) => {
                                 setUserAux({ ...useraux, dni: e.target.value });
-                            }}
+                            }} style={{ color: "#ffeba7" }}
                         />
                     </div>
                 </div>
@@ -97,13 +97,13 @@ export const EditarPerfil = () => {
                     <label className="form-label">Direccion</label>
                     <div className="d-grid gap-2">
                         <input
-                            className="form-control"
+                            className="form-control field"
                             type="text"
                             placeholder="Indique su direccion"
                             value={useraux.direccion}
                             onChange={(e) => {
                                 setUserAux({ ...useraux, direccion: e.target.value });
-                            }}
+                            }} style={{ color: "#ffeba7" }}
                         />
                     </div>
                 </div>
@@ -113,12 +113,12 @@ export const EditarPerfil = () => {
                     <div className="d-grid gap-2">
                         <input
                             type="tel"
-                            className="form-control"
+                            className="form-control field"
                             placeholder="Escriba su número telefónico"
                             value={useraux.telefono}
                             onChange={(e) => {
                                 setUserAux({ ...useraux, telefono: e.target.value });
-                            }}
+                            }} style={{ color: "#ffeba7" }}
                         />
                     </div>
                 </div>
@@ -128,18 +128,18 @@ export const EditarPerfil = () => {
                     <div className="d-grid gap-2">
                         <input
                             type="email"
-                            className="form-control"
+                            className="form-control field"
                             placeholder="Escriba su correo electrónico"
                             value={useraux.email}
                             onChange={(e) => {
                                 setUserAux({ ...useraux, email: e.target.value });
-                            }}
+                            }} style={{ color: "#ffeba7" }}
                         />
                     </div>
                 </div>
                 <div className="d-grid gap-2">
                     <button className="btn" onClick={handleClick}>Actualizar y Guardar</button>
-                </div>
+                </div> 
             </div>
         </>
     );

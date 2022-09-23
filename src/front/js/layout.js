@@ -50,8 +50,8 @@ const Layout = () => {
                         <Route element={<Recover_password />} path="/recover-password" />                   
                         <Route element={<New_password />} path="/hide-login" />                   
                     </Routes>   
-                </ScrollToTop>
                     <Footer />
+                </ScrollToTop>
             </BrowserRouter>
         </div>
     );

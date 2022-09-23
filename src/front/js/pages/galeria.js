@@ -3,7 +3,7 @@ import React from 'react'
 export const Galeria = () => {
     return (
         <>
-            <div className='py-5'>
+            <div className='py-5' id="galeria">
                 <h2> Galeria de imagenes</h2>
             </div>
 

@@ -1,96 +1,149 @@
 import React, { useContext, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import "../../styles/user.css"
-import "../../img/logo.png"
+import "../../styles/user.css";
+import "../../img/logo.png";
 import { Context } from "../store/appContext";
 import { EditarPerfil } from "../component/editperfil";
 import { Registros } from "../component/registros";
 import { Entrenamiento } from "./entrenamiento";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import { Suscription } from "../component/subscription";
 
-
 export const Usuario = () => {
+  const { store, actions } = useContext(Context);
+  const [useraux, setUserAux] = useState("");
+  const [userPago, setUserPago] = useState("");
+  let navigate = useNavigate();
 
-    const { store, actions } = useContext(Context);
-    const [useraux, setUserAux] = useState("");
-    const [userPago, setUserPago] = useState("");
-    let navigate = useNavigate();
+  const redirigir = () => {
+    setTimeout(() => {
+      navigate("/login");
+    }, 5000);
+  };
 
-    const redirigir = () => {
-		setTimeout(()=>{
-		  navigate("/login")
-		}, 5000)
-	}
+  let info_pago = store.pago.monto;
 
-    useEffect(() => {
-        actions.ejercicios();
-        actions.getPago(store.user.id);
-        setUserAux({ ...store.user })
-        setUserPago({...store.pago.monto})
-    }, []);
+  useEffect(() => {
+    actions.ejercicios();
+    actions.getPago(store.user.id);
+    setUserAux({ ...store.user });
+  }, []);
 
-    return (
-
-        <>
-            <div className="mainContainer pb-5 mb-3">
-			    <div className="form d-flex justify-content-center"> 
-            {
-                (store.user.token && store.user.token != "" && store.user.token != undefined) ?
-                    (<div className="container-fluid p-0">
-                        <div className="Perfil">
-                            <div className="Perfil pt-5">
-                                <section className="seccion-perfil-usuario mt-5">
-                                    <div className="perfil-usuario-body">
-                                        <div className="perfil-usuario-bio" style={{ backgroundColor: `#ffeba7` }}>
-                                            <h3 className="titulo">Hola,{useraux.userName}!</h3>
-                                            <p className="text">Este es tu Perfil de Usuario, donde podras ver tus datos, progresos y actividades</p>
-                                        </div>
-                                    </div>
-                                </section>
-                            </div>
-                        </div>
-                        <div className="justify-content-center">
-                            <nav>
-                                <div className="nav nav-tabs justify-content-center" id="nav-tab" role="tablist">
-                                    <button className="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">EDITARPERFIL</button>
-                                    <button className="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">MISREGISTROS</button>
-                                    <button className="nav-link" id="nav-training-tab" data-bs-toggle="tab" data-bs-target="#nav-training" type="button" role="tab" aria-controls="nav-training" aria-selected="false">Entrenamienos</button>
-                                    <button className="nav-link" id="nav-pago-tab" data-bs-toggle="tab" data-bs-target="#nav-pago" type="button" role="tab" aria-controls="nav-pago" aria-selected="false">Mis Suscripciones</button>
-                                </div>
-                            </nav>
-                            <div className="tab-content" id="nav-tabContent">
-                                <div className="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" tabIndex="0">
-                                    <EditarPerfil />
-                                </div>
-                                <div className="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" tabIndex="0">
-                                    <Registros />
-                                </div>
-                                <div className="tab-pane fade" id="nav-training" role="tabpanel" aria-labelledby="nav-training-tab" tabIndex="0">
-                                    <Entrenamiento />
-                                </div>
-                                <div className="tab-pane fade" id="nav-pago" role="tabpanel" aria-labelledby="nav-pago-tab" tabIndex="0">
-                                    <h1>Actualmente te has suscripto a la promocion de:{store.pago.monto}€</h1>
-                                    <Suscription />
-                                </div>
-                            </div>
-                        </div>
-                    </div >)
-                    :
-                    (<div className="card">
-                        <h4 className="title">Usuario no registrado</h4>
-                        <p style={{ color: "white" }}>Será redirigido a la página de login en 5 segundos</p>
-                        <Link to={'/login'}><button className="btn ms-3">Volver</button></Link>
-                        {redirigir()}
-                    </div>)
-            }
-        </div>    
-    </div>
-
-        </>
-
-
-
-
-    );
+  return (
+    <>
+      {store.user.token &&
+      store.user.token != "" &&
+      store.user.token != undefined ? (
+        <div className="minav ">
+          <div className="">
+            <ul className="nav nav-tabs justify-content-center" id="myTab" role="tablist">
+              <li className="nav-item" role="presentation">
+                <button
+                  
+                  className="nav-link active"
+                  id="home-tab"
+                  data-bs-toggle="tab"
+                  data-bs-target="#home-tab-pane"
+                  type="button"
+                  role="tab"
+                  aria-controls="home-tab-pane"
+                  aria-selected="true" style={{ color: "#ffeba7" }}
+                >
+                  Editar Perfil
+                </button>
+              </li>
+              <li className="nav-item" role="presentation">
+                <button
+                  className="nav-link"
+                  id="profile-tab"
+                  data-bs-toggle="tab"
+                  data-bs-target="#profile-tab-pane"
+                  type="button"
+                  role="tab"
+                  aria-controls="profile-tab-pane"
+                  aria-selected="false" style={{ color: "#ffeba7" }}
+                > 
+                  Entrenos / Registros
+                </button>
+              </li>
+              <li className="nav-item" role="presentation">
+                <button
+                  className="nav-link"
+                  id="contact-tab"
+                  data-bs-toggle="tab"
+                  data-bs-target="#contact-tab-pane"
+                  type="button"
+                  role="tab"
+                  aria-controls="contact-tab-pane"
+                  aria-selected="false"
+                  style={{ color: "#ffeba7" }}
+                >
+                  Suscripciones
+                </button>
+              </li>
+            </ul>
+            <div className="tab-content" id="myTabContent">
+              <div
+                className="tab-pane fade show active"
+                id="home-tab-pane"
+                role="tabpanel"
+                aria-labelledby="home-tab"
+                tabindex="0"
+              >
+                {" "}
+                <EditarPerfil />
+              </div>
+              <div
+                className="tab-pane fade"
+                id="profile-tab-pane"
+                role="tabpanel"
+                aria-labelledby="profile-tab"
+                tabindex="0"
+              >
+                <Registros />
+                <Entrenamiento />
+              </div>
+              <div
+                className="tab-pane fade"
+                id="contact-tab-pane"
+                role="tabpanel"
+                aria-labelledby="contact-tab"
+                tabindex="0"
+              ><h3 className="text-center mt-4" style={{ color: "#ffeba7" }}>
+              Actualmente estas suscripto a la promocion de : 
+              {info_pago == undefined
+                ? "Pendientedte de contratar"
+                : info_pago}
+              €
+            </h3>
+            <Suscription /></div>
+              <div
+                className="tab-pane fade"
+                id="disabled-tab-pane"
+                role="tabpanel"
+                aria-labelledby="disabled-tab"
+                tabindex="0"
+              ></div>
+            </div>
+          </div>
+        </div>
+      ) : (
+        <div className="card " id="cardF">
+          <h4 className="title">Usuario no registrado</h4>
+          <p style={{ color: "white" }}>
+            Será redirigido a la página de login en 5 segundos
+          </p>
+          <Link to={"/login"}>
+            <button className="btn ms-3">Volver</button>
+          </Link>
+          {redirigir()}
+        </div>
+      )}
+    </>
+  );
 };
+
+// <div className="perfil-usuario-bio" style={{ backgroundColor: `#ffeba7` }}>
+//     <h3 className="titulo">Hola,{useraux.userName}!</h3>
+//     <p className="text">Este es tu Perfil de Usuario, donde podras ver tus datos, progresos y actividades</p>
+// </div>

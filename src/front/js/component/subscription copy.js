@@ -2,9 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "../../styles/subs.css"
 
-export const Suscription = () => {
+export const SuscriptionCopy = () => {
   return (
-    <>    <div className="text-center pt-5 py-5" style={{ color: "#ffeba7" }}><h3></h3></div>
+    <>    <div className="text-center pt-5 py-5" style={{ color: "#ffeba7" }}><h3>Conoce nuestras promociones</h3></div>
       <div className="row row-cols-1 row-cols-md-3 g-4">
         
         <div className="col mb-5">
@@ -17,7 +17,7 @@ export const Suscription = () => {
                 <p className="card-text">Contratando el servicio basico, podras acceder a las instalaciones, vestuarios y tendras una bonificacion en la inscripcion.</p>
               </div>
               <div className="card-footer text-muted py-3">
-                <a href="https://buy.stripe.com/test_fZe6pJ9hndY8c6s3cc" target="_blank" className="btn btn-primary">Suscribirme</a>
+                <a href="/login" target="_blank" className="btn btn-primary">Suscribirme</a>
                 </div>
           </div>
         </div>
@@ -31,7 +31,7 @@ export const Suscription = () => {
                 <p className="card-text">Contratando el servicio intemedio, ademas de acceder a las instalaciones, te podes llevar una mochila de regalo.</p>
               </div>
               <div className="card-footer text-muted py-3">
-                <a href="https://buy.stripe.com/test_3cs29tgJP8DO1rO28a" target="_blank" className="btn btn-primary">Suscribirme</a>
+                <a href="/login" target="_blank" className="btn btn-primary">Suscribirme</a>
                 </div>
           </div>
         </div>
@@ -45,7 +45,7 @@ export const Suscription = () => {
                 <p className="card-text">Contratando el servicio Premium, podras acceder a instalaciones, te llevaras una mochila de regalo y un mes gratis.</p>
               </div>
               <div className="card-footer text-muted py-3">
-                <a href="https://buy.stripe.com/test_fZe9BV3X35rC3zW7sv" target="_blank" className="btn btn-primary">Suscribirme</a>
+                <a href="/login" target="_blank" className="btn btn-primary">Suscribirme</a>
                 </div>
           </div>
         </div>

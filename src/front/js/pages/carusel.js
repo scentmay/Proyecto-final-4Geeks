@@ -15,7 +15,7 @@ export const Carusel = () => {
       <div className="carousel-item active">
         {/* <svg className="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg> */}
 
-        <div className="container">
+        <div className="container" id="referencia">
           <div className="carousel-caption text-start">
             <h2 className='font-weight'>Bienvenidos a S&F Fit</h2>
             <br></br>
@@ -24,7 +24,7 @@ export const Carusel = () => {
         Somos un gimnasio, con un concepto premium, que encabeza una rama de servicios especializada en el equipamiento e instalación de gimnasios de alta competitividad</p>
             <p> 
 
-            <a className="btn btn-lg btn-primary" href="#">Sign up today</a></p>
+            <a className="btn btn-lg btn-primary" href="/login">Accede a tu espacio</a></p>
           </div>
         </div>
       </div>
@@ -37,7 +37,7 @@ export const Carusel = () => {
             <br></br>
             <br></br>
             <p>Puedes encontrarlas en nuestro home o bien una vez ya registrado y logueado.</p>
-            <p><a className="btn btn-lg btn-primary" href="#">Learn more</a></p>
+            <p><a className="btn btn-lg btn-primary" href="#galeria">Motívate</a></p>
           </div>
         </div>
       </div>
@@ -49,7 +49,7 @@ export const Carusel = () => {
             <h2 className='font-weight'>¿Que estas esperando? Sumate!</h2>
             <br></br>
             <br></br>
-            <p><a className="btn btn-lg btn-primary" href="#">Browse gallery</a></p>
+            <p><a className="btn btn-lg btn-primary" href="/signup">Únete a nosotros</a></p>
           </div>
         </div>
       </div>

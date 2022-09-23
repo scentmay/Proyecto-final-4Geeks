@@ -12,6 +12,7 @@ import { Link } from "react-router-dom";
 import { Carusel } from "./carusel";
 import { Depo } from "../../img/depo.jpg";
 import { Galeria } from "./galeria";
+import { SuscriptionCopy } from "../component/subscription copy";
 
 export const Home = () => {
   const { store, actions } = useContext(Context);
@@ -21,7 +22,7 @@ export const Home = () => {
       <Carusel />
       <Galeria />
       <div className="container-fluid">
-        <Suscription />
+        <SuscriptionCopy />
       </div>
       <div className="container justify-content-center">
         <Ubicacion />

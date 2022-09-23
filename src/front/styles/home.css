@@ -17,6 +17,18 @@ body {
     height: 100vh;
 
 }
+
+
+#editarPerfil {
+    background: #2a2b38;
+    border-radius: 0.99rem;
+    margin-top: 100px;
+    margin-bottom: 200px;
+
+}
+ 
+
+
 /* .container {
     /* width: 90%;
     min-height: 1280px;

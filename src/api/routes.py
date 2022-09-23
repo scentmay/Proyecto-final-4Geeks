@@ -212,6 +212,8 @@ def webhook():
       charge = event['data']['object']
       ejemplo = charge.billing_details.email
       cliente = Cliente.query.filter_by(email = ejemplo).first()
+      pago_a_borrar = Pago.query.filter_by(cliente_id = cliente.id).first()
+      db.session.delete(pago_a_borrar)
       pago = Pago(cliente_id = cliente.id, monto = charge.amount / 100 )
       cliente.corrienteDePago = True
       db.session.add(pago)
@@ -301,7 +303,6 @@ def newPassword():
 @api.route('/user/<int:id>/payments')
 def getPaymentsByUser(id):
     userObj = Pago.query.filter_by(cliente_id = id).first()
-    print(id)
 
     if not userObj:
         raise APIException('Client do not exist', 404) 

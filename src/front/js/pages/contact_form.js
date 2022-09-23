@@ -28,7 +28,6 @@ export const ContactForm = () => {
   return (
     <div
       className="mainContainer d-flex justify-content-center"
-      style={{ backgroundImage: `url(${fondoWas})` }}
     >
       <div className="card align-items-center" style={{ width: "500px" }}>
         <h2>

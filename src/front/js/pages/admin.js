@@ -23,8 +23,10 @@ export const Admin = () => {
   }, []);
 
   return (
-    <div className="mainContainer" style={{ backgroundImage: `url(${fondo})` }}>
-      <div className="form d-flex justify-content-center">
+    <div className="row" id="mainID">
+      <div className="container">
+
+        <div className="form d-flex justify-content-center">
         {store.user.token &&
         store.user.token != "" &&
         store.user.token != undefined ? (
@@ -41,7 +43,7 @@ export const Admin = () => {
                     col1="nombre"
                     col2="correo"
                     col3="dni"
-                  ></AdminDashSocios>
+                    ></AdminDashSocios>
                 </div>
               </div>
 
@@ -53,23 +55,25 @@ export const Admin = () => {
                     col1="nombre"
                     col2="teléfono"
                     col3="estado pago"
-                  ></AdminDashCuotas>
+                    ></AdminDashCuotas>
                 </div>
               </div>
 
+              
+
               {/* módulo para dar de alta nuevos admins */}
-              <div className="col-md-6">
-                <div className="m-2">
-                  <NewAdmin
+                    <div className="col-md-6" id="Newadm">
+                    <NewAdmin
                     type="Nuevo administrador"
                     col1="nombre"
                     col2="email"
                     col3="código"
-                  ></NewAdmin>
+                    ></NewAdmin>
                 </div>
+              
               </div>
             </div>
-          </div>
+          
         ) : (
           <div className="card">
             <h4 className="title">Usuario no registrado</h4>
@@ -82,6 +86,7 @@ export const Admin = () => {
             {redirigir()} 
           </div>
         )}
+        </div>
       </div>
     </div>
   );
