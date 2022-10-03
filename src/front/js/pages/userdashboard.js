@@ -21,10 +21,9 @@ export const Usuario = () => {
     }, 5000);
   };
 
-  //let info_pago = store.pago.monto;
 
   useEffect(() => {
-    //actions.ejercicios();
+    //actions.ejercicios(); //ACTIVAR CUANDO QUERAMOS DEMOSTRAR FUNCIONAMIENTO
     actions.getPago(store.user.id);
   }, []);
 

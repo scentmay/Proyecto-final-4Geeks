@@ -306,10 +306,6 @@ def getPaymentsByUser(id):
 
     if not userObj:
         raise APIException('Client do not exist', 404) 
-    # print([pago.serialize() for pago in userObj.pagos])
-
-    # return [pago.serialize() for pago in userObj.pagos], 200
-
 
     return jsonify({
         "operacion":userObj.serialize(), 
