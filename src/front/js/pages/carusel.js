@@ -17,14 +17,14 @@ export const Carusel = () => {
 
         <div className="container" id="referencia">
           <div className="carousel-caption text-start">
-            <h2 className='font-weight'>Bienvenidos a S&F Fit</h2>
+            <h2 className='font-weight' style={{ color: "#ffeba7" }}>Bienvenídos a S&F Fit</h2>
             <br></br>
             <br></br>
             <p>
         Somos un gimnasio, con un concepto premium, que encabeza una rama de servicios especializada en el equipamiento e instalación de gimnasios de alta competitividad</p>
             <p> 
 
-            <a className="btn btn-lg btn-primary" href="/login">Accede a tu espacio</a></p>
+            <a className="btn btn-lg btn-primary" href="/login">Accedé a tu espacio</a></p>
           </div>
         </div>
       </div>
@@ -33,7 +33,7 @@ export const Carusel = () => {
 
         <div className="container">
           <div className="carousel-caption">
-            <h2 className='font-weight'>Tenemos increibles promociones</h2>
+            <h2 className='font-weight'style={{ color: "#ffeba7" }}>Tenemos increíbles promociones</h2>
             <br></br>
             <br></br>
             <p>Puedes encontrarlas en nuestro home o bien una vez ya registrado y logueado.</p>
@@ -46,7 +46,7 @@ export const Carusel = () => {
 
         <div className="container">
           <div className="carousel-caption text-end">
-            <h2 className='font-weight'>¿Que estas esperando? Sumate!</h2>
+            <h2 className='font-weight'style={{ color: "#ffeba7" }}>¿Qué estas esperando? Sumate!</h2>
             <br></br>
             <br></br>
             <p><a className="btn btn-lg btn-primary" href="/signup">Únete a nosotros</a></p>

@@ -4,7 +4,7 @@ export const Galeria = () => {
     return (
         <>
             <div className='py-5' id="galeria">
-                <h2> Galeria de imagenes</h2>
+                <h2 style={{ color: "#ffeba7" }}> Galería de imágenes</h2>
             </div>
 
             <div className="row row-cols-1 row-cols-md-3 g-4">

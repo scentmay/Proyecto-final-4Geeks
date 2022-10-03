@@ -275,7 +275,7 @@ export const Signup = () => {
                     className="btn"
                     type="reset"
                     value="Reset"
-                    onClick={() => resetForm()}
+                    // onClick={() => resetForm()}
                   />
 
                   <button type="submit" className="btn">
