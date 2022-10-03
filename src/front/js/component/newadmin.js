@@ -19,7 +19,7 @@ export const NewAdmin = (props) => {
 }
 
   function handleMail(email, name) {
-    window.open(`https://3000-4geeksacade-reactflaskh-egdm5hczo2f.ws-eu64.gitpod.io/contactform/${email}/${name}`, '_blank');
+    window.open(`https://3000-4geeksacade-reactflaskh-egdm5hczo2f.ws-eu67.gitpod.io/contactform/${email}/${name}`, '_blank');
     handleShow();
   }
 
@@ -45,9 +45,9 @@ export const NewAdmin = (props) => {
 				</Modal.Footer>
 			</Modal>
 			{/* Fin modal */}
-
-      <div className="card" style={{ width: "100%" }}>
-            <div className="d-flex justify-content-between align-items-center">
+ 
+      <div className="card justify-content-center" style={{ width: "40pc" }} id="footer-zone">
+            <div className="d-flex align-items-center">
                 <h4 className="title ms-1">
                 <u>{props.type}</u>
                 </h4>

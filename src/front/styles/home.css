@@ -5,18 +5,39 @@
     one more css for each page that will contain the selected used 
     on that page only (the ones not reused in other pages).
 */
+* {
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}
+
 
 body {
     margin: 0;
     padding: 0;
+    background-image: url('https://images.unsplash.com/photo-1593079831268-3381b0db4a77?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1469&q=80');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: 100vh;
+
 }
 
-.container {
-    width: 90%;
+
+#editarPerfil {
+    background: #2a2b38;
+    border-radius: 0.99rem;
+    margin-top: 100px;
+    margin-bottom: 200px;
+
+}
+ 
+
+
+/* .container {
+    /* width: 90%;
     min-height: 1280px;
-    margin: auto;
+    margin: auto; */
 
-}
+
 
 li {
     list-style: none;
@@ -30,12 +51,33 @@ a {
 
     /* imagen de fondo de home */
 
-#navbarMenu {
-    background-image: url('https://images.ecestaticos.com/cD8ADKVW4yRYrKblwQ2YaMQV9f0=/0x110:2117x1301/1600x900/filters:fill(white):format(jpg)/f.elconfidencial.com%2Foriginal%2Fd5b%2Fc94%2F34a%2Fd5bc9434a152ac07185aa6bf6b976c41.jpg');
-    background-repeat: no-repeat;
-    height: 100vh;
+/* #imagenHome {
+    /* height: calc(100vh );     */
+    /* background-repeat: no-repeat; */
+    /* background-size: cover; */
+    /* width: 100%;
+    height: 100%; */
+    
 
+#navbarMenu1 {
+    /* height: calc(100vh );     */
+    /* background-image: url('https://img.freepik.com/foto-gratis/pesos-ejercicio-pesas-fuerte-atletica_1139-709.jpg?w=2000'); */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: 100vh;
 }
+
+
+/* @media (max-width: 952px){
+    #navbarMenu1{
+        padding-left: 20px;
+    }
+} */
+
+
+
+
 
 #navMenu {
     background-color: black;
@@ -70,7 +112,7 @@ h1 {
     font-style: italic;
     width: 80%;
     margin: auto;
-    margin-bottom: 50px;
+    /* margin-bottom: 50px; */
 }
 
 /* .titular a {
@@ -84,7 +126,7 @@ h1 {
 
 h2 {
   text-align: center;
-  color: #dd9933;
+  color: #eeeeee
 }
 
 #botonForm {
@@ -104,3 +146,61 @@ h2 {
     width: 80px;
     height: 50px;
 }
+
+
+/* #caruselImg {
+    width: 100%;
+    height: 100%;
+} */
+
+.carousel {
+    margin-bottom: 4rem;
+  }
+  /* Since positioning the image, we need to help out the caption */
+  .carousel-caption {
+    bottom: 0rem;
+    z-index: 10;
+  }
+  
+  /* Declare heights because of positioning of img element */
+  .carousel-item {
+    height: 32rem;
+  }
+
+
+
+
+ /* MAPA */
+
+
+
+ 
+
+ .map-responsive{
+
+    overflow:hidden;
+
+    padding-bottom:56.25%;
+
+    position:relative;
+
+    height:0;
+
+}
+
+.map-responsive iframe{
+
+    left:0;
+
+    top:0;
+
+    right: 0;
+
+    height:100%;
+
+    width:100%;
+
+    position:absolute;
+
+}
+ 

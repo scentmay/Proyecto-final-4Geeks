@@ -8,9 +8,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 			ejercicio: [],
 			entrenoAsignado: [],
 			logged: false,
+			pass_recover: null,
+			flag: null,
+			flag_login: null,
 			password: null,
 			email: null,
 			code: null,
+			pago: {},  
 			demo: [
 				{
 					title: "FIRST",
@@ -43,7 +47,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({user: {}});
 				setStore({survey: {}});
 				setStore({logged: false});
-				localStorage.removeItem("token")
+				setStore({email: null});
+				setStore({password: null});
+				setStore({pass_recover: null});
+				setStore({flag: null});
+				setStore({flag_login: null});
 				localStorage.removeItem("code")
 			},
 			cleanTraining: () => {
@@ -72,14 +80,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				//para usar la variable de entorno que tiene la URL del backend, tenemos que poner:
 				//fetch(process.env.BACKEND_URL + "/api/hello")
-				await fetch("https://3001-4geeksacade-reactflaskh-egdm5hczo2f.ws-eu64.gitpod.io/api/signup", opts)
+				await fetch(process.env.BACKEND_URL + '/api/signup', opts)
 
-				.then ((res) => {
-					if (!res.ok) {
-						console.log("Ha ocurrido un error en el primer paso del fetch ");
-					}
-					return res.json();
-				})
+				.then ((res) => {return res.json();})
 				.then((data) => {
 					console.log(data);
 				})
@@ -110,7 +113,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						"telefono": telefono,
 					})
 				}
-				fetch ("https://3001-4geeksacade-reactflaskh-egdm5hczo2f.ws-eu64.gitpod.io/api/edituser/" + store.user.id, opts)
+				fetch (process.env.BACKEND_URL + '/api/edituser/' + store.user.id, opts)
 				.then(resp => resp.json())
 				.then(data => console.log(data))
 				.catch(error => console.error ("Ha habido un error al actulizar datos " + error))
@@ -128,15 +131,30 @@ const getState = ({ getStore, getActions, setStore }) => {
 					},
 				}
 
-				fetch ("https://3001-4geeksacade-reactflaskh-egdm5hczo2f.ws-eu64.gitpod.io/api/query", opts)
+				fetch (process.env.BACKEND_URL + '/api/query', opts)
 				.then(resp => resp.json())
 				.then(data => setStore({query: data}))
 				.catch(error => console.error ("Ha habido un error al recuperar los datos de la encuesta " + error))
 			},
 
+			getPago: (id) =>{
+
+				const opts = {
+					method: 'GET',
+					headers: {
+						"Content-Type": "application/json",
+					},
+				}
+
+				fetch (`https://3001-4geeksacade-reactflaskh-egdm5hczo2f.ws-eu67.gitpod.io/api/user/${id}/payments`, opts)
+				.then(resp => resp.json())
+				.then(data => setStore({pago: data.operacion}))
+				.catch(error => console.error ("Ha habido un error al recuperar dato del pago " + error))
+			},
+
 
 			surveySinDatos: async (objective, medical, message) => {
-
+				x
 				const store = getStore();
 				console.log("entrando en survey sin datos");
 				const opts = {
@@ -154,7 +172,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 				};
 
-			fetch('https://3001-4geeksacade-reactflaskh-egdm5hczo2f.ws-eu64.gitpod.io/api/survey/' + store.user.id, opts)
+			fetch(process.env.BACKEND_URL + '/api/survey/' + store.user.id, opts)
 			.then(resp => resp.json())
 			.then((data) => {
 				console.log("Encuesta registrada");
@@ -177,7 +195,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						"Authorization": "Bearer " + store.user.token		
 					}
 				};
-				fetch ("https://3001-4geeksacade-reactflaskh-egdm5hczo2f.ws-eu64.gitpod.io/api/survey/" + store.user.id, opts)
+				fetch (process.env.BACKEND_URL + '/api/survey/' + store.user.id, opts)
 				.then(resp => resp.json())
 				.then(data => {
 					console.log("Respuesta del flux surveyData")
@@ -206,7 +224,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						"message": message
 					})
 				}
-				fetch ("https://3001-4geeksacade-reactflaskh-egdm5hczo2f.ws-eu64.gitpod.io/api/survey/" + store.user.id, opts)
+				fetch (process.env.BACKEND_URL + '/api/survey/' + store.user.id, opts)
 				.then(resp => resp.json())
 				.then(data => console.log(data))
 				.catch(error => console.error ("Ha habido un error al recuperar los datos de la encuesta " + error))
@@ -226,24 +244,26 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 				  };
 
-				await fetch('https://3001-4geeksacade-reactflaskh-egdm5hczo2f.ws-eu64.gitpod.io/api/login', opts)
+				await fetch(process.env.BACKEND_URL + '/api/login', opts)
 				.then((res) => {
 						if (!res.ok) {
-							alert("Credenciales incorrectas");
-							return false;
+							setStore({flag_login: false});
+							return;
 						}
-						return res.json();
+						else {
+							setStore({flag_login: true});
+							return res.json();
+						}
 					})
 				.then((data) => {
-					//Añadimos la priopiedad token a data.user y después el objeto es seteado en la store
+					//Añadimos la propiedad token a data.user y después el objeto es seteado en la store
 					//y se compone de todo el serialize + token
 					data.user.token = data.token
 					setStore({
 						user: data.user,
 					})
-					setStore({logged: true})
+					setStore({logged: true, flag_login: null})
 					localStorage.setItem("token", data.token)
-					return true;
 				})
 				
 				.catch((error) => {
@@ -252,19 +272,20 @@ const getState = ({ getStore, getActions, setStore }) => {
 				})
 			},
 
-			ejercicios: async (tipoDeEjercicio) => {
+			ejercicios: async (ejercicio) => {
 
 				const store = getStore();
+				console.log (ejercicio);
 
 				const options = {
 					method: 'GET',
 					headers: {
-						'X-RapidAPI-Key': '0c48ae9655mshf561cabf67e1634p16ea2fjsnec0e954ce943',
+						'X-RapidAPI-Key': '3f3fb32f2bmsh244b58c094eba84p14e6ecjsn14051a9d65ab',
 						'X-RapidAPI-Host': 'exercisedb.p.rapidapi.com'
 					}
 				};
 				
-					fetch(`https://exercisedb.p.rapidapi.com/exercises/bodyPart/${tipoDeEjercicio}`, options)
+					fetch(`https://exercisedb.p.rapidapi.com/exercises/bodyPart/${ejercicio}`, options)
 					.then(response => response.json())
 					.then(response => { 
 						setStore({ejercicio: response});						
@@ -290,7 +311,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			getMessage: async () => {
 				try{
 					// fetching data from the backend
-					const resp = await fetch("https://3001-4geeksacade-reactflaskh-egdm5hczo2f.ws-eu64.gitpod.io/api/hello")
+					const resp = await fetch(process.env.BACKEND_URL + '/api/hello')
 					const data = await resp.json()
 					setStore({ message: data.message })
 					// don't forget to return something, that is how the async resolves
@@ -312,7 +333,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					}
 				}
 
-				fetch ("https://3001-4geeksacade-reactflaskh-egdm5hczo2f.ws-eu64.gitpod.io/api/query/", opts)
+				fetch (process.env.BACKEND_URL + '/api/query/', opts)
 				.then(resp => resp.json())
 				.then(data => setStore({query: data}))
 				.catch(error => console.error ("Ha habido un error al recuperar los datos de la encuesta " + error))
@@ -331,7 +352,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					}
 				}
 
-				fetch ("https://3001-4geeksacade-reactflaskh-egdm5hczo2f.ws-eu64.gitpod.io/api/deleteMember/" + id , opts)
+				fetch (process.env.BACKEND_URL + 'api/deleteMember/' + id , opts)
 				.then(resp => resp.json())
 				.then(data => {
 					setStore({message: data});
@@ -341,22 +362,34 @@ const getState = ({ getStore, getActions, setStore }) => {
 				.catch( error => console.error("Error al borrar miembro " + error))
 			},
 
-			getPassword: (mail) => {
+			getPassword: (email, dni) => {
+
+				const store = getStore();
+
 				const opts = {
 					method: 'POST',
 					headers: {
 					  "Content-Type": "application/json"
 					},
 					body: JSON.stringify({
-					  "email": mail,
+					  "email": email,
+					  "dni": dni
 					})
 				}
 
-				fetch ("https://3001-4geeksacade-reactflaskh-egdm5hczo2f.ws-eu64.gitpod.io/api/recover_password/", opts)
-				.then(resp => resp.json())
+				fetch (process.env.BACKEND_URL + '/api/recover_password/', opts)
+				.then(resp => {
+					if (!resp.ok) {
+						setStore({pass_recover: false});
+						return;
+					}
+					else {
+						setStore({pass_recover: true});
+						return resp.json();
+					}
+				})
 				.then(data => {
 					setStore({email: data.email, password: data.password});
-					
 				})
 				.catch(error => console.error ("Ha habido un error al recuperar la contraseña del usuario " + error))
 			},
@@ -375,10 +408,21 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 				}
 
-				fetch ("https://3001-4geeksacade-reactflaskh-egdm5hczo2f.ws-eu64.gitpod.io/api/new_password/", opts)
-				.then(resp => resp.json())
+				fetch (process.env.BACKEND_URL + '/api/new_password/', opts)
+				.then(resp => {
+					if (!resp.ok) {
+						setStore({flag: false});
+						return;
+					}
+					else {
+						setStore({flag: true});
+						return resp.json();
+					}
+				})
+
 				.then(data => {
 					console.log(data);
+					getActions().cleanStore();
 				})
 				.catch(error => console.error ("Ha habido un error al cambiar la contraseña del usuario " + error))
 			},
@@ -403,7 +447,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 				}
 
-				fetch ("https://3001-4geeksacade-reactflaskh-egdm5hczo2f.ws-eu64.gitpod.io/api/code/", opts)
+				fetch (process.env.BACKEND_URL + '/api/code/', opts)
 				.then(resp => resp.json())
 				.then(data => {
 					console.log(data);

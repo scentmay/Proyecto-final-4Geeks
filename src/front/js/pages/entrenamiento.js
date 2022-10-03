@@ -90,22 +90,26 @@ export const Entrenamiento = () => {
 
     return (
         <>
+        <div className="d-flex justify-content-center">
+
                 <button className="btn" onClick={deleteTraining}>
                     Limpiar entreno
                 </button> 
-                <button className="btn" onClick={handleClick}>
+                <button className="btn " onClick={handleClick}>
                     GENERAR ENTRENO
                 </button> 
-            <div className='d-flex'>
+        </div>
+            <div className="row row-cols-1 row-cols-md-2 g-4 text-center mt-5 d-flex">
                 {store.entrenoAsignado.map((item, index) => {
                     return (
                         <div key={index}>
-                            <div className="card m-3" style={{ width: "14rem" }}>
+                            <div className="card m-3 m-auto" >
                                 <img className="card-img-top" src={item.gifUrl} alt="Card image cap" />
                                 <div className="card-body">
                                     <h5 className="card-title">{item.name}</h5>
                                     <p className="card-text">{item.bodyPart}</p>
-                                    <a href="#" className="btn btn-primary">Go somewhere</a>
+                                    <input className="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault"/>
+                                    <label className="form-check-label" for="flexSwitchCheckDefault"></label>
                                 </div>
                             </div>
                         </div>

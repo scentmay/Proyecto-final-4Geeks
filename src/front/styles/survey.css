@@ -5,6 +5,9 @@
    background-position-y: center;
    }
 
+
+
+
 .card {
     width: 400px;
     padding: 1.9rem 1.2rem;
@@ -12,6 +15,7 @@
     background: #2a2b38;
     border-radius: 0.75rem;
    }
+
    
    /*Inputs*/
    .field {
@@ -96,5 +100,3 @@
     align-items: center;
     
    }
-
- 

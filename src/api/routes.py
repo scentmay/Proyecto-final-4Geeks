@@ -212,6 +212,8 @@ def webhook():
       charge = event['data']['object']
       ejemplo = charge.billing_details.email
       cliente = Cliente.query.filter_by(email = ejemplo).first()
+      pago_a_borrar = Pago.query.filter_by(cliente_id = cliente.id).first()
+      db.session.delete(pago_a_borrar)
       pago = Pago(cliente_id = cliente.id, monto = charge.amount / 100 )
       cliente.corrienteDePago = True
       db.session.add(pago)
@@ -264,11 +266,15 @@ def queryPassword():
         raise APIException("You need to specify the request body as a json object", status_code=400)
 
     email = body['email']
-    user = Cliente.query.filter_by(email = email).first()
+    dni = body['dni']
+
+    user = Cliente.query.filter_by(email = email, dni = dni).first()
+    
     if not user:
         return jsonify("El usuario no existe"), 401
 
-    return jsonify({"email": user.email, "password": user.password})
+    if user:
+        return jsonify({"email": user.email, "password": user.password}), 200
 
 
 @api.route('/new_password', methods = ['PUT'] )
@@ -296,13 +302,18 @@ def newPassword():
 
 @api.route('/user/<int:id>/payments')
 def getPaymentsByUser(id):
-    userObj = Cliente.query.get(id)
-    print(id)
+    userObj = Pago.query.filter_by(cliente_id = id).first()
 
     if not userObj:
         raise APIException('Client do not exist', 404) 
+    # print([pago.serialize() for pago in userObj.pagos])
 
-    return [pago.serialize() for pago in userObj.pagos], 200
+    # return [pago.serialize() for pago in userObj.pagos], 200
+
+
+    return jsonify({
+        "operacion":userObj.serialize(), 
+    })
 
 @api.route('/code', methods = ['POST'] )
 @jwt_required()

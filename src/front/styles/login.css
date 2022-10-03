@@ -3,16 +3,17 @@
    background-size: cover;
    background-position-x: center;
    background-position-y: center;
+   margin-bottom: 0;
    }
 
-.card {
-    width: 400px;
+/* .card {
+    width: 300px;
     padding: 1.9rem 1.2rem;
     text-align: center;
     background: #2a2b38;
     border-radius: 0.75rem;
    }
-   
+    */
    /*Inputs*/
    .field {
     margin-top: .5rem;
