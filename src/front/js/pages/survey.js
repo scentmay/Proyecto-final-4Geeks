@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
 import { Context } from "../store/appContext";
 import '../../styles/signup.css'
-import fondo from '../../img/signup_img.jpg'
 import Modal from 'react-bootstrap/Modal';
 
 export const Survey = () => {
@@ -53,7 +52,7 @@ export const Survey = () => {
 
 
 	return (
-		<div className="mainContainer" style={{backgroundImage: `url(${fondo})`}}>
+		<div className="mainContainer">
 			<div className="form d-flex justify-content-center"> 
 
 			{/* Modal */}

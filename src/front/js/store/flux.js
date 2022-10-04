@@ -80,7 +80,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				//para usar la variable de entorno que tiene la URL del backend, tenemos que poner:
 				//fetch(process.env.BACKEND_URL + "/api/hello")
-				await fetch(process.env.BACKEND_URL + 'api/signup', opts)
+				await fetch('https://proyecto-final-sffit.herokuapp.com/api/signup', opts)
 
 				.then ((res) => {return res.json();})
 				.then((data) => {
@@ -113,7 +113,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						"telefono": telefono,
 					})
 				}
-				fetch (process.env.BACKEND_URL + 'api/edituser/' + store.user.id, opts)
+				fetch ('https://proyecto-final-sffit.herokuapp.com/api/edituser/' + store.user.id, opts)
 				.then(resp => resp.json())
 				.then(data => console.log(data))
 				.catch(error => console.error ("Ha habido un error al actulizar datos " + error))
@@ -131,7 +131,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					},
 				}
 
-				fetch (process.env.BACKEND_URL + 'api/query', opts)
+				fetch ('https://proyecto-final-sffit.herokuapp.com/api/query', opts)
 				.then(resp => resp.json())
 				.then(data => setStore({query: data}))
 				.catch(error => console.error ("Ha habido un error al recuperar los datos de la encuesta " + error))
@@ -146,7 +146,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					},
 				}
 
-				fetch (`https://3001-scentmay-proyectofinal4-tp1jjd7eb1q.ws-eu67.gitpod.io/api/user/${id}/payments`, opts)
+				fetch (`https://proyecto-final-sffit.herokuapp.com/api/user/${id}/payments`, opts)
 				.then(resp => resp.json())
 				.then(data => setStore({pago: data.operacion}))
 				.catch(error => console.error ("Ha habido un error al recuperar dato del pago " + error))
@@ -171,7 +171,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 				};
 
-			fetch(process.env.BACKEND_URL + 'api/survey/' + store.user.id, opts)
+			fetch('https://proyecto-final-sffit.herokuapp.com/api/survey/' + store.user.id, opts)
 			.then(resp => resp.json())
 			.then((data) => {
 				console.log("Encuesta registrada");
@@ -194,7 +194,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						"Authorization": "Bearer " + store.user.token		
 					}
 				};
-				fetch (process.env.BACKEND_URL + 'api/survey/' + store.user.id, opts)
+				fetch ('https://proyecto-final-sffit.herokuapp.com/api/survey/' + store.user.id, opts)
 				.then(resp => resp.json())
 				.then(data => {
 					console.log("Respuesta del flux surveyData")
@@ -223,7 +223,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						"message": message
 					})
 				}
-				fetch (process.env.BACKEND_URL + 'api/survey/' + store.user.id, opts)
+				fetch ('https://proyecto-final-sffit.herokuapp.com/api/survey/' + store.user.id, opts)
 				.then(resp => resp.json())
 				.then(data => console.log(data))
 				.catch(error => console.error ("Ha habido un error al recuperar los datos de la encuesta " + error))
@@ -243,7 +243,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 				  };
 
-				await fetch(process.env.BACKEND_URL + 'api/login', opts)
+				await fetch('https://proyecto-final-sffit.herokuapp.com/api/login', opts)
 				.then((res) => {
 						if (!res.ok) {
 							setStore({flag_login: false});
@@ -332,7 +332,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					}
 				}
 
-				fetch (process.env.BACKEND_URL + 'api/query/', opts)
+				fetch ('https://proyecto-final-sffit.herokuapp.com/api/query/', opts)
 				.then(resp => resp.json())
 				.then(data => setStore({query: data}))
 				.catch(error => console.error ("Ha habido un error al recuperar los datos de la encuesta " + error))
@@ -351,7 +351,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					}
 				}
 
-				fetch (process.env.BACKEND_URL + 'api/deleteMember/' + id , opts)
+				fetch ('https://proyecto-final-sffit.herokuapp.com/api/deleteMember/' + id , opts)
 				.then(resp => resp.json())
 				.then(data => {
 					setStore({message: data});
@@ -376,7 +376,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 				}
 
-				fetch (process.env.BACKEND_URL + 'api/recover_password/', opts)
+				fetch ('https://proyecto-final-sffit.herokuapp.com/api/recover_password/', opts)
 				.then(resp => {
 					if (!resp.ok) {
 						setStore({pass_recover: false});
@@ -407,7 +407,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 				}
 
-				fetch (process.env.BACKEND_URL + 'api/new_password/', opts)
+				fetch ('https://proyecto-final-sffit.herokuapp.com/api/new_password/', opts)
 				.then(resp => {
 					if (!resp.ok) {
 						setStore({flag: false});
@@ -446,7 +446,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 				}
 
-				fetch (process.env.BACKEND_URL + 'api/code/', opts)
+				fetch ('https://proyecto-final-sffit.herokuapp.com/api/code/', opts)
 				.then(resp => resp.json())
 				.then(data => {
 					console.log(data);
