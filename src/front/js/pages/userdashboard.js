@@ -21,12 +21,10 @@ export const Usuario = () => {
     }, 5000);
   };
 
-  let info_pago = store.pago.monto;
 
   useEffect(() => {
-    actions.ejercicios();
+    //actions.ejercicios(); //ACTIVAR CUANDO QUERAMOS DEMOSTRAR FUNCIONAMIENTO
     actions.getPago(store.user.id);
-    setUserAux({ ...store.user });
   }, []);
 
   return (
@@ -88,7 +86,7 @@ export const Usuario = () => {
                 id="home-tab-pane"
                 role="tabpanel"
                 aria-labelledby="home-tab"
-                tabindex="0"
+                tabIndex="0"
               >
                 {" "}
                 <EditarPerfil />
@@ -98,7 +96,7 @@ export const Usuario = () => {
                 id="profile-tab-pane"
                 role="tabpanel"
                 aria-labelledby="profile-tab"
-                tabindex="0"
+                tabIndex="0"
               >
                 <Registros />
                 <Entrenamiento />
@@ -108,14 +106,13 @@ export const Usuario = () => {
                 id="contact-tab-pane"
                 role="tabpanel"
                 aria-labelledby="contact-tab"
-                tabindex="0"
+                tabIndex="0"
               >
                 <h3 className="text-center mt-4" style={{ color: "#ffeba7" }}>
-              Actualmente estas suscripto a la promocion de : 
-              {(info_pago == undefined)
-                ? ("Pendiente de contratar")
-                : (info_pago)}
-              €
+              Actualmente estas suscrito a la promocion de: 
+              {(store.pago == undefined || store.pago == null)
+                ? (" Pendiente de contratar ")
+                : (" " + store.pago.monto + " €")}
             </h3>
             <Suscription /></div>
               <div
@@ -123,7 +120,7 @@ export const Usuario = () => {
                 id="disabled-tab-pane"
                 role="tabpanel"
                 aria-labelledby="disabled-tab"
-                tabindex="0"
+                tabIndex="0"
               ></div>
             </div>
           </div>

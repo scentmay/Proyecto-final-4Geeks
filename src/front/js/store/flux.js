@@ -154,7 +154,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 
 			surveySinDatos: async (objective, medical, message) => {
-				x
 				const store = getStore();
 				console.log("entrando en survey sin datos");
 				const opts = {

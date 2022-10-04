@@ -213,7 +213,10 @@ def webhook():
       ejemplo = charge.billing_details.email
       cliente = Cliente.query.filter_by(email = ejemplo).first()
       pago_a_borrar = Pago.query.filter_by(cliente_id = cliente.id).first()
-      db.session.delete(pago_a_borrar)
+      
+      if pago_a_borrar:
+        db.session.delete(pago_a_borrar)
+        
       pago = Pago(cliente_id = cliente.id, monto = charge.amount / 100 )
       cliente.corrienteDePago = True
       db.session.add(pago)
@@ -306,10 +309,6 @@ def getPaymentsByUser(id):
 
     if not userObj:
         raise APIException('Client do not exist', 404) 
-    # print([pago.serialize() for pago in userObj.pagos])
-
-    # return [pago.serialize() for pago in userObj.pagos], 200
-
 
     return jsonify({
         "operacion":userObj.serialize(), 

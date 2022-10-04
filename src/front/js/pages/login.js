@@ -4,7 +4,6 @@ import "../../styles/home.css";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import "../../styles/login.css";
-import fondo from "../../img/signup_img.jpg";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import Modal from "react-bootstrap/Modal";
 
