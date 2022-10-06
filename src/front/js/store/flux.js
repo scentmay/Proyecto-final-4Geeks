@@ -300,8 +300,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 							entreno.push(response[posicion])
 						}
 						setStore({entrenoAsignado: entreno})
-
-
 					})
 					.catch(err => console.error(err));
 					console.log(getStore().ejercicio)
