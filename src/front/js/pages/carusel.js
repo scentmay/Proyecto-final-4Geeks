@@ -62,8 +62,8 @@ export const Carusel = () => {
               <h2 className="font-weight" style={{ color: "#ffeba7" }}>
                 Tenemos increíbles promociones
               </h2>
-              <br></br>
-              <br></br>
+              <br/>
+              <br/>
               <p>
                 Puedes encontrarlas en nuestro home o bien una vez ya registrado
                 y logueado.
