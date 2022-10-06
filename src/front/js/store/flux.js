@@ -171,7 +171,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 				};
 
-			fetch('https://proyecto-final-sffit.herokuapp.com//api/survey/' + store.user.id, opts)
+			fetch('https://proyecto-final-sffit.herokuapp.com/api/survey/' + store.user.id, opts)
 			.then(resp => resp.json())
 			.then((data) => {
 				console.log("Encuesta registrada");
@@ -197,7 +197,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				fetch ('https://proyecto-final-sffit.herokuapp.com/api/survey/' + store.user.id, opts)
 				.then(resp => resp.json())
 				.then(data => {
-					console.log("Respuesta del flux surveyData")
+					//console.log("Respuesta del flux surveyData")
 					setStore({survey: data.survey})
 				})
 				.catch(error => console.error ("Ha habido un error al recuperar los datos de la encuesta " + error))
