@@ -165,9 +165,6 @@ export const Recover_password = () => {
               </Form>
             )}
           </Formik>
-
-          
-
         </div>
       </div>
     </div>

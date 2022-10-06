@@ -266,7 +266,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				})
 				
 				.catch((error) => {
-						console.error("Ha ocurrido un error " + error);
+						console.error("Credenciales incorrectas " + error);
 						
 				})
 			},
@@ -362,8 +362,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 			getPassword: (email, dni) => {
-
-				const store = getStore();
 
 				const opts = {
 					method: 'POST',

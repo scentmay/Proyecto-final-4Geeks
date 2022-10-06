@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Context } from "../store/appContext";
 import "../../styles/home.css";
 import { useState } from "react";
@@ -11,11 +11,14 @@ export const Login = () => {
   const { store, actions } = useContext(Context);
   const [show, setShow] = useState(false);
 
-  const logged = store.logged;
-
-  const handleShow = () => setShow(true);
+  const handleShow = () => {
+    if (store.flag_login == false) {
+      setShow(true);
+    }
+  }
   const handleClose = () => {
     setShow(false);
+    window.location.reload()
   };
 
   //Función para limpiar el token del store
@@ -23,13 +26,18 @@ export const Login = () => {
     actions.cleanStore();
   };
 
+  useEffect(() => {
+    handleShow();
+  }, [store.flag_login])
+
   return (
     <div className="mainContainer">
       <div className="form d-flex justify-content-center">
+   
         {/* Modal */}
         <Modal show={show} onHide={handleClose}>
           <Modal.Header closeButton>
-            <Modal.Title>Usuario registrado correctamente</Modal.Title>
+            <Modal.Title>Credenciales incorrectas</Modal.Title>
           </Modal.Header>
 
           <Modal.Body className="d-flex justify-content-center fs-3">
@@ -172,11 +180,6 @@ export const Login = () => {
                     component={() => <div className="error">{errors.pass}</div>}
                   />
 
-                  {/* <div className=" d-flex mt-2">
-                        <Link to={'/'}><button className="btn ms-3">Volver</button></Link>
-                        <button type="submit" className="btn">LOGIN</button>
-                        <Link to={'/signup'}><button className="btn ms-3">Registro</button></Link>
-                      </div> */}
                   <div className="buttons">
                     <Link to={"/"}>
                       <button className="btn ms-3">Volver</button>
@@ -188,7 +191,6 @@ export const Login = () => {
                 </Form>
               )}
             </Formik>
-
             <div>
               <Link to={"/recover-password"} className="btn-link">
                 ¿Olvidaste tu contraseña?
