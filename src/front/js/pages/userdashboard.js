@@ -8,11 +8,10 @@ import { Registros } from "../component/registros";
 import { Entrenamiento } from "./entrenamiento";
 import { useNavigate } from "react-router-dom";
 import { Suscription } from "../component/subscription";
+import { Cronometro } from "./cronometro";
 
 export const Usuario = () => {
   const { store, actions } = useContext(Context);
-  const [useraux, setUserAux] = useState("");
-  const [userPago, setUserPago] = useState("");
   let navigate = useNavigate();
 
   const redirigir = () => {
@@ -21,12 +20,8 @@ export const Usuario = () => {
     }, 5000);
   };
 
-  // let info_pago = store.pago.monto;
-
   useEffect(() => {
-    // actions.ejercicios();
     actions.getPago(store.user.id);
-    // setUserAux({ ...store.user });
   }, []);
 
   return (
@@ -36,10 +31,13 @@ export const Usuario = () => {
       store.user.token != undefined ? (
         <div className="minav ">
           <div className="">
-            <ul className="nav nav-tabs justify-content-center" id="myTab" role="tablist">
+            <ul
+              className="nav nav-tabs justify-content-center"
+              id="myTab"
+              role="tablist"
+            >
               <li className="nav-item" role="presentation">
                 <button
-
                   className="nav-link active"
                   id="home-tab"
                   data-bs-toggle="tab"
@@ -47,7 +45,8 @@ export const Usuario = () => {
                   type="button"
                   role="tab"
                   aria-controls="home-tab-pane"
-                  aria-selected="true" style={{ color: "#ffeba7" }}
+                  aria-selected="true"
+                  style={{ color: "#ffeba7" }}
                 >
                   Editar Perfil
                 </button>
@@ -61,8 +60,9 @@ export const Usuario = () => {
                   type="button"
                   role="tab"
                   aria-controls="profile-tab-pane"
-                  aria-selected="false" style={{ color: "#ffeba7" }}
-                > 
+                  aria-selected="false"
+                  style={{ color: "#ffeba7" }}
+                >
                   Entrenos / Registros
                 </button>
               </li>
@@ -90,7 +90,6 @@ export const Usuario = () => {
                 aria-labelledby="home-tab"
                 tabIndex="0"
               >
-                {" "}
                 <EditarPerfil />
               </div>
               <div
@@ -102,6 +101,7 @@ export const Usuario = () => {
               >
                 <Registros />
                 <Entrenamiento />
+                {/* <Cronometro /> */}
               </div>
               <div
                 className="tab-pane fade"
@@ -111,12 +111,13 @@ export const Usuario = () => {
                 tabIndex="0"
               >
                 <h3 className="text-center mt-4" style={{ color: "#ffeba7" }}>
-              Actualmente estas suscripto a la promocion de: 
-              {(store.pago == undefined || store.pago == null)
-                ? (" Pendiente de contratar ")
-                : (" " + store.pago.monto + " €")}
-            </h3>
-            <Suscription /></div>
+                  Actualmente estás suscrito a la promoción de:
+                  {store.pago == undefined || store.pago == null
+                    ? " Pendiente de contratar "
+                    : " " + store.pago.monto + " €"}
+                </h3>
+                <Suscription />
+              </div>
               <div
                 className="tab-pane fade"
                 id="disabled-tab-pane"
@@ -142,8 +143,3 @@ export const Usuario = () => {
     </>
   );
 };
-
-// <div className="perfil-usuario-bio" style={{ backgroundColor: `#ffeba7` }}>
-//     <h3 className="titulo">Hola,{useraux.userName}!</h3>
-//     <p className="text">Este es tu Perfil de Usuario, donde podras ver tus datos, progresos y actividades</p>
-// </div>
