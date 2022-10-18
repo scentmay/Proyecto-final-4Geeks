@@ -75,7 +75,7 @@ export const Signup = () => {
           errores.logEmail = 'El correo sólo puede contener letras, números, puntos, guiones y el guión bajo '
         }
 
-        if(!valores.logPass){
+        if(!valores.logPass){1
           errores.logPass = 'Por favor ingresa una contraseña válida';
         }else if (!/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.{4,8})/.test(valores.logPass)) {
           errores.logPass = 'La contraseña debe tener de 4 a 8 caracteres y debe contener números, letras minúsculas y mayúsculas'

@@ -44,6 +44,9 @@ export const EditarPerfil = () => {
                     <button className="btn" onClick={handleClose}>Aceptar</button>
                 </Modal.Footer>
             </Modal>
+
+
+            
             <div className="container p-3 border-0" id="editarPerfil">
                 <h3 className="text-center" style={{ color: "#ffeba7" }}>Mis datos</h3>
                 <div className="d-grid gap-2">
