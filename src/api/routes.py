@@ -161,10 +161,6 @@ def login():
         "token": access_token,
     })
 
-
-
-
-
 @api.route("/edituser/<int:id>", methods=['PUT'])
 def putuser(id):
     info_request = request.get_json()
@@ -184,10 +180,10 @@ def putuser(id):
     if "telefono" in info_request:
         user1.telefono = info_request["telefono"]
     db.session.commit()
-    return jsonify("User editado")
 
-
-    
+    return jsonify({
+            "userUpdate": user1.serialize()
+        })  
 
 @api.route('/stripe_webhooks/', methods=['POST'])
 def webhook():
