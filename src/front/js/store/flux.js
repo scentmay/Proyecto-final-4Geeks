@@ -131,7 +131,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					},
 				}
 
-				fetch (process.env.BACKEND_URL + '/api/query', opts)
+				fetch ('https://proyecto-final-sffit.herokuapp.com/api/query', opts)
 				.then(resp => resp.json())
 				.then(data => setStore({query: data}))
 				.catch(error => console.error ("Ha habido un error al recuperar los datos de la encuesta " + error))

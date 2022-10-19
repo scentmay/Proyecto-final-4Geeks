@@ -17,7 +17,7 @@ export const Header = () => {
 
   return (
     <>
-            <Navbar className="prueba fixed-top background-color: transparent ! important;" style={{ position: "fixed", width: "100%" }} >
+      <Navbar className="nav background-color: transparent ! important;" style={{ width: "100%" }} >
         <Navbar.Brand href="/" >
           <img id="logo" src="logo.png" />
         </Navbar.Brand>
@@ -25,9 +25,9 @@ export const Header = () => {
           {
             !store.user.token ?
               (
-                						<Link to="/login">
-							<button className="btn btn-primary">Login</button>
-						</Link>
+                <Link to="/login">
+                  <button className="btn btn-primary"><i class="fa-solid fa-user"></i></button>
+                </Link>
               )
               :
               (
@@ -35,12 +35,12 @@ export const Header = () => {
                 (store.user.role == "admin") ? (<Link to="/">
                   <Link to={'/login'}><button className="btn ms-3">Ir a login</button></Link>
                   <Link to={'/contactform'}><button className="btn ms-3">Mail</button></Link>
-                  <Link to={'/login'} className="btn btn-primary btn-lg mt-3 ms-3" onClick={logOut}>Log out</Link>
+                  <Link to={'/login'} className="btn btn-primary btn-lg mt-3 ms-3" onClick={logOut}><i class="fa-solid fa-right-from-bracket"></i></Link>
                 </Link>
                 ) : (
                   <>
-                    <Link to={'/login'} className="btn btn-primary btn-lg mt-3 ms-3">Mi Perfil</Link>
-                    <Link to={'/login'} className="btn btn-primary btn-lg mt-3 ms-3" onClick={logOut}>Log out</Link>
+                    <Link to={'/login'} className="btn btn-primary btn-lg mt-3 ms-3"><i class="fa-solid fa-user"></i></Link>
+                    <Link to={'/login'} className="btn btn-primary btn-lg mt-3 ms-3" onClick={logOut}><i class="fa-solid fa-right-from-bracket"></i></Link>
                   </>
                 )
               )
