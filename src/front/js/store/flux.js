@@ -115,7 +115,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 				fetch ('https://proyecto-final-sffit.herokuapp.com/api/edituser/' + store.user.id, opts)
 				.then(resp => resp.json())
-				.then(data => console.log(data))
+				.then(data => {
+					console.log(data);
+					data.userUpdate.token = store.user.token;
+					setStore({
+						user: data.userUpdate
+					})	
+				})
 				.catch(error => console.error ("Ha habido un error al actulizar datos " + error))
 
 			},
