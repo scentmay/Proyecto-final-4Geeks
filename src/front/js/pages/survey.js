@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
 import { Context } from "../store/appContext";
 import '../../styles/signup.css'
-import fondo from '../../img/signup_img.jpg'
 import Modal from 'react-bootstrap/Modal';
 
 export const Survey = () => {
@@ -13,7 +12,6 @@ export const Survey = () => {
 	const [message, setMessage] = useState ("");
 	const [show, setShow] = useState(false);
 
-	const survey_data = store.survey
 	let navigate = useNavigate();
 	
 	const handleShow = () => setShow(true);
@@ -22,7 +20,7 @@ export const Survey = () => {
 	const handleClick = (e) => {
 		e.preventDefault();
 		//sin datos, se colocan por primera vez
-		if (survey_data == undefined) {
+		if (store.survey == undefined) {
 			actions.surveySinDatos(objective, medical, message);
 			setObjective("");
 			setMedical("");
@@ -31,7 +29,7 @@ export const Survey = () => {
 		}
 
 		//hay datos, hay que actualizar info - FUNCIONA OK
-		if (survey_data != undefined){
+		if (store.survey != undefined){
 			actions.surveyUpdate(objective, medical, message);
 			setObjective("");
 			setMedical("");
@@ -127,7 +125,7 @@ export const Survey = () => {
 							<h6><strong><u>Información actual</u></strong></h6>
 							<p><u>Objetivo:</u>  <i>
 							{
-							 (survey_data != "" && survey_data != undefined) ? 
+							 (store.survey != "" && store.survey != undefined) ? 
 							 (store.survey.objective)
 							 :
 							 ("Pendiente de información")
@@ -135,7 +133,7 @@ export const Survey = () => {
 							</i></p>
 							<p><u>Atención en:</u>  <i>
 							{
-							 (survey_data != "" && survey_data != undefined) ? 
+							 (store.survey != "" && store.survey != undefined) ? 
 							 (store.survey.medical)
 							 :
 							 ("Pendiente de información")
@@ -143,7 +141,7 @@ export const Survey = () => {
 							</i></p>
 							<p><u>Información adicional:</u>  <i>
 							{
-							 (survey_data != "" && survey_data != undefined) ? 
+							 (store.survey != "" && store.survey != undefined) ? 
 							 (store.survey.message)
 							 :
 							 ("Pendiente de información")

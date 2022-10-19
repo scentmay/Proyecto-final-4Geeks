@@ -127,7 +127,7 @@ export const New_password = () => {
 
                         <Field
                           className="input-field" 
-                          placeholder="password"
+                          placeholder="new password..."
                           type="password"
                           name="pass"
                         />

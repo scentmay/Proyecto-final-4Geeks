@@ -1,16 +1,11 @@
 import React, { useContext, useState, useEffect } from "react";
 // import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
 import { Context } from "../store/appContext";
-
-
-
 
 export const Entrenamiento = () => {
 
 
     const { store, actions } = useContext(Context);
-    const [objective, setObjective] = useState("");
 
     const tipoDeEjercicio = ["back",
         "cardio",
@@ -21,17 +16,6 @@ export const Entrenamiento = () => {
         "upper arms",
         "upper legs",
         "waist"]
-
-    // const ejerciciosEnCurso = ["back",
-    //     "cardio",
-    //     "chest",
-    //     "lower arms",
-    //     "lower legs",
-    //     "shoulders",
-    //     "upper arms",
-    //     "upper legs",
-    //     "waist"]
-
 
     const deleteTraining = () => {
         actions.cleanTraining()
@@ -91,7 +75,6 @@ export const Entrenamiento = () => {
     return (
         <>
         <div className="d-flex justify-content-center">
-
                 <button className="btn" onClick={deleteTraining}>
                     Limpiar entreno
                 </button> 
