@@ -26,21 +26,21 @@ export const Header = () => {
             !store.user.token ?
               (
                 <Link to="/login">
-                  <button className="btn btn-primary"><i class="fa-solid fa-user"></i></button>
+                  <button className="btn btn-primary"><i class="fa-solid fa-user fa-xl"></i></button>
                 </Link>
               )
               :
               (
 
                 (store.user.role == "admin") ? (<Link to="/">
-                  <Link to={'/login'}><button className="btn ms-3">Ir a login</button></Link>
-                  <Link to={'/contactform'}><button className="btn ms-3">Mail</button></Link>
-                  <Link to={'/login'} className="btn btn-primary btn-lg mt-3 ms-3" onClick={logOut}><i class="fa-solid fa-right-from-bracket"></i></Link>
+                  <Link to={'/login'} className="btn btn-primary btn-lg mt-3 ms-3"><i class="fa-solid fa-user fa-xl"></i></Link>
+                  <Link to={'/contactform'}><button className="btn ms-3"><i class="fa-solid fa-envelope fa-xl"></i></button></Link>
+                  <Link to={'/login'} className="btn btn-primary btn-lg mt-3 ms-3" onClick={logOut}><i class="fa-solid fa-right-from-bracket fa-xl"></i></Link>
                 </Link>
                 ) : (
                   <>
-                    <Link to={'/login'} className="btn btn-primary btn-lg mt-3 ms-3"><i class="fa-solid fa-user"></i></Link>
-                    <Link to={'/login'} className="btn btn-primary btn-lg mt-3 ms-3" onClick={logOut}><i class="fa-solid fa-right-from-bracket"></i></Link>
+                    <Link to={'/login'} className="btn btn-primary btn-lg mt-3 ms-3"><i class="fa-solid fa-user fa-xl"></i></Link>
+                    <Link to={'/login'} className="btn btn-primary btn-lg mt-3 ms-3" onClick={logOut}><i class="fa-solid fa-right-from-bracket fa-xl"></i></Link>
                   </>
                 )
               )
