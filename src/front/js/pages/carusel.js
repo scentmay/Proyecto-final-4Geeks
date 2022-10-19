@@ -82,7 +82,7 @@ export const Carusel = () => {
           <div className="container">
             <div className="carousel-caption text-end">
               <h2 className="font-weight" style={{ color: "#ffeba7" }}>
-                ¿Qué estas esperando? Sumate!
+                ¿Qué estas esperando? Súmate!
               </h2>
               <br></br>
               <br></br>

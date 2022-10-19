@@ -94,13 +94,13 @@ export const Login = () => {
               <Link to={"/"} className="btn btn-primary btn-lg mt-3 ms-3">
                 Volver a home
               </Link>
-              <Link
+              {/* <Link
                 to={"/login"}
                 className="btn btn-primary btn-lg mt-3 ms-3"
                 onClick={logOut}
               >
                 Log out
-              </Link>
+              </Link> */}
             </div>
           </div>
         ) : (
