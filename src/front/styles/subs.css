@@ -2,6 +2,13 @@
     text-align: center;
     background: #2a2b38;
     border-radius: 0.75rem;
+    border-style: double;
+    border-color: #ffeba7;
+    border-radius: 0.75rem
+}
+
+.card-img-top {
+    border-radius: 10px;
 }
 
 

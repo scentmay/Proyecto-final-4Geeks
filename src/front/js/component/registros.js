@@ -59,8 +59,9 @@ export const Registros = () => {
   }, [objective, medical, message]);
 
   return (
-    <div className="mainContainer">
-      <div className="form d-flex justify-content-center">
+
+    <>
+
         {/* Modal */}
         <Modal show={show} onHide={handleClose}>
           <Modal.Header closeButton>
@@ -82,8 +83,8 @@ export const Registros = () => {
         {store.user.token &&
         store.user.token != "" &&
         store.user.token != undefined ? (
-          <div className="card">
-            <h5 style={{ color: "white" }}>Actualizar objetivos</h5>
+          <div className="container p-3 border-0" id="editarPerfil1">
+            <h5 className="text-center" style={{ color: "white" }}>Actualizar objetivos</h5>
             <form id="form">
               <div className="field ">
                 <input
@@ -144,9 +145,9 @@ export const Registros = () => {
               ></textarea>
 
               <div className="actualData mt-1" style={{ color: "white" }}>
-                <h6>
+                <h6 className="text-center">
                   <strong>
-                    <u>Información actual</u>
+                    <u >Información actual</u>
                   </strong>
                 </h6>
                 <p>
@@ -184,9 +185,12 @@ export const Registros = () => {
 									setMessage("");	
 								}}
 								/> */}
+
+                <div className="d-grid gap-2">
                 <button className="btn" onClick={handleClick}>
                   Actualizar y Guardar
                 </button>
+                </div>
               </div>
             </form>
           </div>
@@ -198,7 +202,6 @@ export const Registros = () => {
 					{redirigir()}  */}
           </div>
         )}
-      </div>
-    </div>
+  </>
   );
 };

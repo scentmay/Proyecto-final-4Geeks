@@ -5,7 +5,22 @@
    background-position-y: center;
    }
 
-.card {
+
+
+
+
+#editarPerfil1 {
+    background: #2a2b38;
+    border-radius: 0.99rem;
+    margin-bottom: 25px;
+    margin-top: 90px;
+}
+
+h5 {
+    margin-bottom: 15px;
+}
+
+   .card {
     width: 400px;
     padding: 1.9rem 1.2rem;
     text-align: center;

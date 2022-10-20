@@ -278,7 +278,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				const options = {
 					method: 'GET',
-					headers: {
+					headers: {		
 						'X-RapidAPI-Key': '3f3fb32f2bmsh244b58c094eba84p14e6ecjsn14051a9d65ab',
 						'X-RapidAPI-Host': 'exercisedb.p.rapidapi.com'
 					}
@@ -290,7 +290,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						setStore({ejercicio: response});						
 						let entreno = [];
 						if (store.survey.objective !== 'Acondicionamiento general')
-							for (let i = 0; i < 5; i++){
+							for (let i = 0; i < 6; i++){
 								const posicion = Math.floor(Math.random() * response.length);
 								entreno.push(response[posicion])
 							}

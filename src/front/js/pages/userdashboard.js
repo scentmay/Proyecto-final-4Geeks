@@ -161,7 +161,7 @@ export const Usuario = () => {
                 tabIndex="0"
               >
                 <Registros />
-                {/* <Entrenamiento /> */}
+                <Entrenamiento />
        </div>
               <div
                 className="tab-pane fade"
