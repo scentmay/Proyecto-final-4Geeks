@@ -81,14 +81,19 @@ export const Entrenamiento = () => {
 
     return (
         <>
-            <div className="d-flex justify-content-center">
+            <div className="d-flex">
+                <div className="perfil-usuario-bio justify-content-center">
+                    <p className="texto justify-content-center">Para generar nuevos entrenamientos, cambia tus objetivos en la tabla, luego limpia el entreno y vuelve el generar uno nuevo.</p>
 
-                <button className="btn" onClick={deleteTraining}>
-                    Limpiar entreno
-                </button>
-                <button className="btn " onClick={handleClick}>
-                    GENERAR ENTRENO
-                </button>
+                    <button className="btn" onClick={handleClick}>
+                         <i class="fa-solid fa-dumbbell"></i>  GENERAR ENTRENO
+                    </button>
+
+                    <button className="btn" onClick={deleteTraining}>
+                    <i class="fa-solid fa-eraser"></i>   LIMPIAR ENTRENO
+                    </button>
+                </div>
+
             </div>
 
             <div className="row row-cols-1 row-cols-md-3 g-4 mt-4">
@@ -96,14 +101,14 @@ export const Entrenamiento = () => {
                     return (
                         <div key={index}>
                             <div className="col mb-5">
-                            <div className="card2" id="card2">
-                                <img className="card-img-top" src={item.gifUrl} alt="Card image cap" />
-                                <div className="card-body">
-                                    <p className="card-text" style={{ color: "#ffeba7" }}>{item.bodyPart}</p>
-                                    <input className="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" />
-                                    <label className="form-check-label" for="flexSwitchCheckDefault"></label>
+                                <div className="card2" id="card2">
+                                    <img className="card-img-top" src={item.gifUrl} alt="Card image cap" />
+                                    <div className="card-body">
+                                        <p className="card-text" style={{ color: "#ffeba7" }}>{item.bodyPart}</p>
+                                        <input className="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" />
+                                        <label className="form-check-label" for="flexSwitchCheckDefault"></label>
+                                    </div>
                                 </div>
-                             </div>
                             </div>
                         </div>
                     )
@@ -130,3 +135,11 @@ export const Entrenamiento = () => {
         )
     })}
 </div> */}
+
+
+
+// <button className="cssbuttons-io-button"onClick={handleClick} > GENERAR ENTRENO
+// <div className="icon">
+//     <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"></path><path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z" fill="currentColor"></path></svg>
+// </div>
+// </button>
