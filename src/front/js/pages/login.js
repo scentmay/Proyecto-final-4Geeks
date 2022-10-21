@@ -65,17 +65,10 @@ export const Login = () => {
                  Esta es tu zona privada, no olvides acceder a la encuesta
                 para rellenar tus datos
               </p>
-              {/* <Link
-                to={"/login"}
-                className="btn btn-primary btn-lg mt-3 ms-3"
-                onClick={logOut}
-              >
-                Log out
-              </Link> */}
 
               {store.user.role == "admin" ? (
                 <Link
-                  to={"/admin"}
+                  to={"/admin-home"}
                   className="btn btn-primary btn-lg mt-3 ms-3"
                 >
                   ADMIN
@@ -94,13 +87,6 @@ export const Login = () => {
               <Link to={"/"} className="btn btn-primary btn-lg mt-3 ms-3">
                 Volver a home
               </Link>
-              {/* <Link
-                to={"/login"}
-                className="btn btn-primary btn-lg mt-3 ms-3"
-                onClick={logOut}
-              >
-                Log out
-              </Link> */}
             </div>
           </div>
         ) : (

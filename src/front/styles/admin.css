@@ -1,4 +1,4 @@
-#mainID {
+/* #mainID {
     margin-top: 250px;
 }
 
@@ -7,4 +7,8 @@
     margin-left: auto;
     margin-right: auto; 
     padding-top: 50px;
+} */
+
+.flex {
+    display: flex;
 }

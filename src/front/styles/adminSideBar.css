@@ -1,0 +1,15 @@
+.sidebar {
+    width: 14rem;
+    border-right: 1px solid #ffeba7;
+    height: 100vh;
+ 
+}
+
+ul {
+    padding: 1rem 2rem;
+    list-style: none;
+}
+
+li {
+    margin-bottom: 1rem;
+}
