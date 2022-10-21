@@ -14,7 +14,9 @@ import { Contacto } from "./component/contacto";
 import { Login } from "./pages/login";
 import { Signup } from "./pages/signup";
 import { Survey } from "./pages/survey";
-import { Admin } from "./pages/admin";
+import { AdminHome } from "./pages/admin-home";
+import { AdminCuotas } from "./pages/admin-cuotas";
+import { AdminNewAdmin } from "./pages/admin-newadmin";
 import { ContactForm } from "./pages/contact_form";
 import { EmailSent } from "./pages/email_sent";
 import { Recover_password } from "./pages/recover_password";
@@ -43,7 +45,9 @@ const Layout = () => {
                         <Route element={<Login />} path="/login" />
                         <Route element={<Signup />} path="/signup" />                   
                         <Route element={<Survey />} path="/survey" /> 
-                        <Route element={<Admin />} path="/admin" />                                    
+                        <Route element={<AdminHome />} path="/admin-home" />                                    
+                        <Route element={<AdminCuotas />} path="/admin-cuotas" />                                    
+                        <Route element={<AdminNewAdmin />} path="/admin-newadmin" />                                    
                         <Route element={<ContactForm />} path="/contactform/:email/:name" />                   
                         <Route element={<ContactForm />} path="/contactform" />                   
                         <Route element={<EmailSent />} path="/emailsent" />                   

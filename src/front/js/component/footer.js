@@ -8,7 +8,7 @@ export const Footer = () => {
   return (
     
       <footer className="footer mt-auto text-center">
-        <div className="footer-dark" style={{marginTop:"250px"}}>
+        <div className="footer-dark">
             <div className="container-fluid" style={{padding:"10px"}}>
               <div className="row">
                 <div className="col-sm-6 col-md-6 item mt-4">
