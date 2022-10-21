@@ -3,9 +3,7 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { Context } from "../store/appContext";
 import "../../styles/admin.css";
-// import { AdminDashSocios } from "../component/adminDashSocios";
-// import { AdminDashCuotas } from "../component/adminDashCuotas";
-// import { NewAdmin } from "../component/newadmin";
+import { NewAdmin } from "../component/newadmin";
 import Sidebar from "../component/adminSideBar";
 
 export const AdminNewAdmin = () => {
@@ -31,8 +29,8 @@ export const AdminNewAdmin = () => {
             <div>
               <Sidebar />
             </div>
-            <div className="content">
-              <h1>ESTE ES EL CONTENIDO DE ADMIN-NEWADMIN</h1>
+            <div className="content ms-5 mt-5">
+              <NewAdmin />
             </div>
           </div>
           

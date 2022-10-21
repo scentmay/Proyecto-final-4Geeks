@@ -46,10 +46,10 @@ export const NewAdmin = (props) => {
 			</Modal>
 			{/* Fin modal */}
  
-      <div className="card justify-content-center" style={{ width: "40pc" }} id="footer-zone">
+      <div className="card justify-content-center" style={{ width: "100%" }} id="footer-zone">
             <div className="d-flex align-items-center">
                 <h4 className="title ms-1">
-                <u>{props.type}</u>
+                <u>Nuevo administrador</u>
                 </h4>
                 <button className="btn" style={{fontSize:".6em"}} onClick={() => {generate()}}>GENERAR CÓDIGO</button>
             </div>    
@@ -64,9 +64,9 @@ export const NewAdmin = (props) => {
         >
           <thead>
             <tr>
-              <th>{props.col1}</th>
-              <th>{props.col2}</th>
-              <th>{props.col3}</th>
+              <th>Nombre</th>
+              <th>Email</th>
+              <th>Código</th>
               <th>Acción</th>
             </tr>
           </thead>

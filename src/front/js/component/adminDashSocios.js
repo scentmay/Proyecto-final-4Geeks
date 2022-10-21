@@ -72,10 +72,10 @@ export const AdminDashSocios = (props) => {
 	},[confirm]);
 
   return (
-    <div className="container">
+    <div className="container-fluid">
       <div className="card" style={{ width: "100%" }}>
         <h4 className="title" style={{ color: "#ffeba7" }}>
-          <u>{props.type}</u>
+          <u>Lista de socios</u>
         </h4>
 
         {/* Modal */}
@@ -111,9 +111,9 @@ export const AdminDashSocios = (props) => {
           <thead>
             <tr>
               <th>id socio</th>
-              <th>{props.col1}</th>
-              <th>{props.col2}</th>
-              <th>{props.col3}</th>
+              <th>Nombre</th>
+              <th>Correo</th>
+              <th>DNI</th>
               <th>Acción</th>
             </tr>
           </thead>
