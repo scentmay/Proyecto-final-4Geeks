@@ -45,65 +45,67 @@ export const NewAdmin = (props) => {
 				</Modal.Footer>
 			</Modal>
 			{/* Fin modal */}
- 
-      <div className="card justify-content-center" style={{ width: "100%" }} id="footer-zone">
-            <div className="d-flex align-items-center">
-                <h4 className="title ms-1">
-                <u>Nuevo administrador</u>
-                </h4>
-                <button className="btn" style={{fontSize:".6em"}} onClick={() => {generate()}}>GENERAR CÓDIGO</button>
-            </div>    
-        <Table
-          striped
-          bordered
-          hover
-          variant="dark"
-          size="sm"
-          responsive
-          style={{ borderColor: "#ffeba7" }}
-        >
-          <thead>
-            <tr>
-              <th>Nombre</th>
-              <th>Email</th>
-              <th>Código</th>
-              <th>Acción</th>
-            </tr>
-          </thead>
-          {/* sólo cambiamos el body de la tabla llamando a la función render,
-           las cabeceras quedan estáticas */}
-          <tbody>
-            <tr>
-                <td>
-                    <div className="field ">
-                        <input className="input-field" 
-                            placeholder="nombre"
-                            type="text"
-                            onChange={(e) => {
-                                setNameNewUser(e.target.value)
-                                }
-                            }
-                        />
-                    </div>
-                </td>
-                <td>
-                    <div className="field ">
-                        <input className="input-field" 
-                            placeholder="email"
-                            type="text"
-                            onChange={(e) => {
-                                setEmailNewUser(e.target.value)
-                                }
-                            }
-                        />
-                    </div>
-                </td>
-                <td>{newCodeAdmin}</td>
-                <td><button className="btn" style={{fontSize:".6em"}} onClick={() => {handleMail(emailNewUser, nameNewUser,)}}>ENVIAR CÓDIGO</button></td>
-            </tr>
-          </tbody>
-        </Table>
+      <div className="container">
+        <div className="card justify-content-center justify-content-between" style={{ borderColor: "#ffeba7", width: "90%" }}>
+              <div className="d-flex align-items-center justify-content-between">
+                  <h4 className="title ms-1" style={{ color: "#ffeba7" }}>
+                  <u>Nuevo administrador</u>
+                  </h4>
+                  <button className="btn" style={{fontSize:".8em"}} onClick={() => {generate()}}>GENERAR CÓDIGO</button>
+              </div>    
+          <Table
+            striped
+            bordered
+            hover
+            variant="dark"
+            size="sm"
+            responsive
+            style={{ borderColor: "#ffeba7" }}
+          >
+            <thead>
+              <tr>
+                <th>Nombre</th>
+                <th>Email</th>
+                <th>Código</th>
+                <th>Acción</th>
+              </tr>
+            </thead>
+            {/* sólo cambiamos el body de la tabla llamando a la función render,
+            las cabeceras quedan estáticas */}
+            <tbody>
+              <tr>
+                  <td>
+                      <div className="field ">
+                          <input className="input-field" 
+                              placeholder="nombre"
+                              type="text"
+                              onChange={(e) => {
+                                  setNameNewUser(e.target.value)
+                                  }
+                              }
+                          />
+                      </div>
+                  </td>
+                  <td>
+                      <div className="field ">
+                          <input className="input-field" 
+                              placeholder="email"
+                              type="text"
+                              onChange={(e) => {
+                                  setEmailNewUser(e.target.value)
+                                  }
+                              }
+                          />
+                      </div>
+                  </td>
+                  <td>{newCodeAdmin}</td>
+                  <td><button className="btn" style={{fontSize:".8em"}} onClick={() => {handleMail(emailNewUser, nameNewUser,)}}>ENVIAR CÓDIGO</button></td>
+              </tr>
+            </tbody>
+          </Table>
+        </div>
       </div>
+
     </div>
   );
 };

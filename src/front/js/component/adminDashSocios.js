@@ -73,11 +73,11 @@ export const AdminDashSocios = (props) => {
 
   return (
     <div className="container-fluid">
-      <div className="card" style={{ width: "100%" }}>
+      <div className="card" style={{ borderColor: "#ffeba7", width: "100%" }}>
         <h4 className="title" style={{ color: "#ffeba7" }}>
           <u>Lista de socios</u>
         </h4>
-
+ 
         {/* Modal */}
         <Modal show={show} onHide={handleCloseCancel}>
           <Modal.Header closeButton>

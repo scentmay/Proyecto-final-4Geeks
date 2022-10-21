@@ -29,7 +29,7 @@ export const AdminHome = () => {
             <div>
               <Sidebar />
             </div>
-            <div className="content ms-5">
+            <div className="content ms-5" style={{ width: "100%" }}>
               <AdminDashSocios />
             </div>
           </div>

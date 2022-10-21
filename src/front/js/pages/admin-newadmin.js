@@ -29,7 +29,7 @@ export const AdminNewAdmin = () => {
             <div>
               <Sidebar />
             </div>
-            <div className="content ms-5 mt-5">
+            <div className="d-flex justify-content-center content mt-5" style={{ width: "100%" }}>
               <NewAdmin />
             </div>
           </div>
