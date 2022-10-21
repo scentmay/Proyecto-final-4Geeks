@@ -70,7 +70,8 @@ export const Login = () => {
                 <Link
                   to={"/admin-home"}
                   className="btn btn-primary btn-lg mt-3 ms-3"
-                >
+                > 
+                <i class="fa-solid fa-toolbox fa-xl me-3"></i>
                   ADMIN
                 </Link>
               ) : (
@@ -78,13 +79,16 @@ export const Login = () => {
                   to={"/usuario"}
                   className="btn btn-primary btn-lg mt-3 ms-3"
                 >
+                  <i class="fa-solid fa-dumbbell fa-xl me-3"></i>
                   Zona Usuario
                 </Link>
               )}
               <Link to={"/survey"} className="btn btn-primary btn-lg mt-3 ms-3">
+                <i class="fa-solid fa-square-poll-vertical fa-xl me-3"></i>
                 Realizar encuesta
               </Link>
               <Link to={"/"} className="btn btn-primary btn-lg mt-3 ms-3">
+                <i class="fa-solid fa-house fa-xl me-3"></i>
                 Volver a home
               </Link>
             </div>

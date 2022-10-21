@@ -31,7 +31,7 @@ export const AdminDashCuotas = (props) => {
         <td>{client.userName}</td>
         <td>{client.telefono}</td>
         <td>{
-             client.corrienteDePago ? ("Pagado"):("PENDIENTE")
+             client.corrienteDePago ? ("Pagada"):("PENDIENTE")
         }</td>
         <td><button className="btn" style={{fontSize:".6em"}} onClick={() => {handleMail(client.email, client.userName)}}>mail</button></td>
         </tr>)})}
@@ -42,16 +42,16 @@ export const AdminDashCuotas = (props) => {
 
 
   return (
-    <div>
-      <div className="card" style={{width:"100%"}} id="cardS">
-        <h4 className="title" style={{color:"#ffeba7"}}><u>{props.type}</u></h4>
-        <Table striped bordered hover variant="dark" size="sm" responsive style={{borderColor:"#ffeba7"}}>
+    <div className="container-fluid">
+      <div className="card" style={{ borderColor: "#ffeba7", width: "100%" }}>
+        <h4 className="title" style={{color:"#ffeba7"}}><u>Cuotas</u></h4>
+        <Table striped bordered hover variant="dark"  responsive style={{borderColor:"#ffeba7"}}>
           <thead>
             <tr>
               <th>id socio</th>
-              <th>{props.col1}</th>
-              <th>{props.col2}</th>
-              <th>{props.col3}</th>
+              <th>Nombre</th>
+              <th>Teléfono</th>
+              <th>Cuota</th>
               <th>Acción</th>
             </tr>
           </thead>

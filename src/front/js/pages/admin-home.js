@@ -3,9 +3,7 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { Context } from "../store/appContext";
 import "../../styles/admin.css";
-// import { AdminDashSocios } from "../component/adminDashSocios";
-// import { AdminDashCuotas } from "../component/adminDashCuotas";
-// import { NewAdmin } from "../component/newadmin";
+import { AdminDashSocios } from "../component/adminDashSocios";
 import Sidebar from "../component/adminSideBar";
 
 export const AdminHome = () => {
@@ -31,8 +29,8 @@ export const AdminHome = () => {
             <div>
               <Sidebar />
             </div>
-            <div className="content">
-              <h1>ESTE ES EL CONTENIDO DE ADMIN-HOME</h1>
+            <div className="content ms-5" style={{ width: "100%" }}>
+              <AdminDashSocios />
             </div>
           </div>
           
