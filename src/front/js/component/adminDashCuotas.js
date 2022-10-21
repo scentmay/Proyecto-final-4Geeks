@@ -45,7 +45,7 @@ export const AdminDashCuotas = (props) => {
     <div className="container-fluid">
       <div className="card" style={{ borderColor: "#ffeba7", width: "100%" }}>
         <h4 className="title" style={{color:"#ffeba7"}}><u>Cuotas</u></h4>
-        <Table striped bordered hover variant="dark" size="sm" responsive style={{borderColor:"#ffeba7"}}>
+        <Table striped bordered hover variant="dark"  responsive style={{borderColor:"#ffeba7"}}>
           <thead>
             <tr>
               <th>id socio</th>
