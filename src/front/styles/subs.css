@@ -2,6 +2,18 @@
     text-align: center;
     background: #2a2b38;
     border-radius: 0.75rem;
+    border-style: double;
+    border-color: #ffeba7;
+    border-radius: 0.75rem
+}
+
+.card1:hover {
+    opacity: 1.2;
+    transform: scale(1.10);
+   }
+
+.card-img-top {
+    border-radius: 10px;
 }
 
 

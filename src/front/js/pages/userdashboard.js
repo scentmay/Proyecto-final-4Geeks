@@ -8,7 +8,7 @@ import { Registros } from "../component/registros";
 import { Entrenamiento } from "./entrenamiento";
 import { useNavigate } from "react-router-dom";
 import { Suscription } from "../component/subscription";
-import { Cronometro } from "./cronometro";
+// import { Cronometro } from "./cronometro";
 import Modal from "react-bootstrap/Modal";
 
 export const Usuario = () => {
@@ -79,8 +79,10 @@ export const Usuario = () => {
                   alt="img-avatar"
                 />
                 <button type="button" className="boton-avatar">
+                
                   <i className="far fa-image"></i>
                 </button>
+                
               </div>
             </div>
 
@@ -103,104 +105,110 @@ export const Usuario = () => {
               </div>
 
               <div className="">
-                <ul
-                  className="nav nav-tabs justify-content-center"
-                  id="myTab"
-                  role="tablist"
+              <ul
+              className="nav nav-tabs justify-content-center"
+              id="myTab"
+              role="tablist"
+            >
+              <li className="nav-item" role="presentation">
+                <button
+                  className="nav-link active"
+                  id="home-tab"
+                  data-bs-toggle="tab"
+                  data-bs-target="#home-tab-pane"
+                  type="button"
+                  role="tab"
+                  aria-controls="home-tab-pane"
+                  aria-selected="true"
+                  style={{ color: "#5e6681" }}
                 >
-                  <li className="nav-item" role="presentation">
-                    <button
-                      className="nav-link active"
-                      id="home-tab"
-                      data-bs-toggle="tab"
-                      data-bs-target="#home-tab-pane"
-                      type="button"
-                      role="tab"
-                      aria-controls="home-tab-pane"
-                      aria-selected="true"
-                      style={{ color: "#5e6681" }}
-                    >
-                      Editar Perfil
-                    </button>
-                  </li>
-                  <li className="nav-item" role="presentation">
-                    <button
-                      className="nav-link"
-                      id="profile-tab"
-                      data-bs-toggle="tab"
-                      data-bs-target="#profile-tab-pane"
-                      type="button"
-                      role="tab"
-                      aria-controls="profile-tab-pane"
-                      aria-selected="false"
-                      style={{ color: "#5e6681" }}
-                    >
-                      Entrenos / Registros
-                    </button>
-                  </li>
-                  <li className="nav-item" role="presentation">
-                    <button
-                      className="nav-link"
-                      id="contact-tab"
-                      data-bs-toggle="tab"
-                      data-bs-target="#contact-tab-pane"
-                      type="button"
-                      role="tab"
-                      aria-controls="contact-tab-pane"
-                      aria-selected="false"
-                      style={{ color: "#5e6681" }}
-                    >
-                      Suscripciones
-                    </button>
-                  </li>
-                </ul>
-                <div className="tab-content" id="myTabContent">
-                  <div
-                    className="tab-pane fade show active"
-                    id="home-tab-pane"
-                    role="tabpanel"
-                    aria-labelledby="home-tab"
-                    tabIndex="0"
-                  >
-                    <EditarPerfil />
-                  </div>
-                  <div
-                    className="tab-pane fade"
-                    id="profile-tab-pane"
-                    role="tabpanel"
-                    aria-labelledby="profile-tab"
-                    tabIndex="0"
-                  >
-                    <Registros />
-                    {/* <Entrenamiento /> */}
-                  </div>
-                  <div
-                    className="tab-pane fade"
-                    id="contact-tab-pane"
-                    role="tabpanel"
-                    aria-labelledby="contact-tab"
-                    tabIndex="0"
-                  >
-                    <h3
-                      className="text-center mt-4"
-                      style={{ color: "#ffeba7" }}
-                    >
-                      Actualmente estás suscrito a la promoción de:
-                      {store.pago == undefined || store.pago == null
-                        ? " Pendiente de contratar "
-                        : " " + store.pago.monto + " €"}
-                    </h3>
-                    <Suscription />
-                  </div>
-                  <div
-                    className="tab-pane fade"
-                    id="disabled-tab-pane"
-                    role="tabpanel"
-                    aria-labelledby="disabled-tab"
-                    tabIndex="0"
-                  ></div>
-                </div>
+                  Editar Perfil
+                </button>
+              </li>
+              <li className="nav-item" role="presentation">
+                <button
+                  className="nav-link"
+                  id="profile-tab"
+                  data-bs-toggle="tab"
+                  data-bs-target="#profile-tab-pane"
+                  type="button"
+                  role="tab"
+                  aria-controls="profile-tab-pane"
+                  aria-selected="false"
+                  style={{ color: "#5e6681" }}
+                >
+                  Entrenos / Registros
+                </button>
+              </li>
+              <li className="nav-item" role="presentation">
+                <button
+                  className="nav-link"
+                  id="contact-tab"
+                  data-bs-toggle="tab"
+                  data-bs-target="#contact-tab-pane"
+                  type="button"
+                  role="tab"
+                  aria-controls="contact-tab-pane"
+                  aria-selected="false"
+                  style={{ color: "#5e6681" }}
+                >
+                  Suscripciones
+                </button>
+              </li>
+            </ul>
+            <div className="tab-content" id="myTabContent">
+              <div
+                className="tab-pane fade show active"
+                id="home-tab-pane"
+                role="tabpanel"
+                aria-labelledby="home-tab"
+                tabIndex="0"
+              >
+                <EditarPerfil />
               </div>
+              <div
+                className="tab-pane fade"
+                id="profile-tab-pane"
+                role="tabpanel"
+                aria-labelledby="profile-tab"
+                tabIndex="0"
+              >
+                <Registros />
+                <Entrenamiento />
+       </div>
+              <div
+                className="tab-pane fade"
+                id="contact-tab-pane"
+                role="tabpanel"
+                aria-labelledby="contact-tab"
+                tabIndex="0"
+              ><div className="perfil-usuario-bio justify-content-center mt-4">
+                <h3 className="text-center mt-4">
+                  Actualmente estás suscrito a la promoción de:
+
+                </h3>
+                <h3 className="text-center mt-4 ml-3" style={{ color: "#ffeba7"}}>
+                  {store.pago == undefined || store.pago == null
+                    ? " Pendiente de €"
+                    : " " + store.pago.monto + "€"}</h3>
+                </div>
+                <Suscription />
+              </div>
+              <div
+                className="tab-pane fade"
+                id="disabled-tab-pane"
+                role="tabpanel"
+                aria-labelledby="disabled-tab"
+                tabIndex="0"
+              ></div>
+            </div>
+          </div>
+
+
+              
+
+              
+
             </div>
           </section>
         </div>

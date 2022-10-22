@@ -14,6 +14,9 @@ body {
     margin-top: 100px;
 } */
 
+
+
+
 /* ///////////////////////////////////////////SOLO DEL DASH///////////  */
 
 .seccion-perfil-usuario .perfil-usuario-body,
@@ -218,6 +221,12 @@ body {
 
 /* ///////////////////////////////////////////solo del dash////////////  */
 
+/* #card2{
+    border-style: solid;
+    border-color: green;
+} */
+
+
 .card{
     margin-bottom: 100px;
 }
@@ -247,3 +256,108 @@ body {
     border-radius: 1rem;
 }
 
+#entreno1 {
+    width: 300px;
+    padding: 1.9rem 1.2rem;
+    text-align: center;
+    background: #2a2b38;
+    border-radius: 3.3rem;
+}
+
+
+#card2 {
+    text-align: center;
+    background: #2a2b38;
+    border-radius: 0.75rem;
+    border-style: dashed; 
+    border-color: #ffeba7;
+    border-radius: 0.75rem;
+    opacity: 0.8;
+}
+
+.card2:hover {
+    opacity: 1.2;
+    transform: scale(1.10);
+   }
+
+   
+.card-img-top {
+    border-radius: 10px;
+}
+
+
+/* From uiverse.io by @adamgiebl */
+.cssbuttons-io-button {
+ background: #ffeba7;
+ color: #2a2b38;
+ font-family: inherit;
+ padding: 0.35em;
+ padding-left: 1.2em;
+ font-size: 17px;
+ font-weight: 500;
+ border-radius: 0.9em;
+ border: none;
+ letter-spacing: 0.05em;
+ display: flex;
+ align-items: center;
+ box-shadow: inset 0 0 1.6em -0.6em #5e6681;
+ overflow: hidden;
+ position: relative;
+ height: 2.8em;
+ padding-right: 3.3em;
+}
+
+.cssbuttons-io-button .icon {
+ background: white;
+ margin-left: 1em;
+ position: absolute;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ height: 2.2em;
+ width: 2.2em;
+ border-radius: 0.7em;
+ box-shadow: 0.1em 0.1em 0.6em 0.2em #5e6681;
+ right: 0.3em;
+ transition: all 0.3s;
+}
+
+.cssbuttons-io-button:hover .icon {
+ width: calc(100% - 0.6em);
+}
+
+.cssbuttons-io-button .icon svg {
+ width: 1.1em;
+ transition: transform 0.3s;
+ color: #7b52b9;
+}
+
+.cssbuttons-io-button:hover .icon svg {
+ transform: translateX(0.1em);
+}
+
+.cssbuttons-io-button:active .icon {
+ transform: scale(0.95);
+}
+
+
+
+
+
+
+/* .dropzone {
+    height: 8rem;
+    margin: 1rem;
+    padding: 1rem;
+    border: 2px dashed salmon;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .active {
+    border: 2px solid rebeccapurple;
+  } */

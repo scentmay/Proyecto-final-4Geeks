@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import "../../styles/login.css";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import Modal from "react-bootstrap/Modal";
+import { Cronometro } from "./cronometro";
 
 export const Login = () => {
   const { store, actions } = useContext(Context);
@@ -60,6 +61,7 @@ export const Login = () => {
             <div className="card">
               <h4 className="title" style={{ color: "#ffeba7" }}>
                 Bienvenido {store.user.userName}
+                
               </h4>
               <p style={{ color: "white" }}>
                  Esta es tu zona privada, no olvides acceder a la encuesta
@@ -185,6 +187,7 @@ export const Login = () => {
 
                     <Link to={'/signup'}><button className="btn ms-3">Registro</button></Link>
                   </div>
+                  <Cronometro />
                 </Form>
               )}
             </Formik>

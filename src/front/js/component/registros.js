@@ -158,7 +158,10 @@ export const Registros = () => {
 									setMessage("");	
 								}}
 								/>
+
+                <div className="d-grid gap-2">
 								<button className="btn" onClick={handleClick}>ENVIAR</button>
+                </div>
 						</div>
 						</form>
 					</div>
