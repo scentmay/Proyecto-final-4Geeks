@@ -8,7 +8,7 @@ import { Registros } from "../component/registros";
 import { Entrenamiento } from "./entrenamiento";
 import { useNavigate } from "react-router-dom";
 import { Suscription } from "../component/subscription";
-import { Cronometro } from "./cronometro";
+// import { Cronometro } from "./cronometro";
 import Modal from 'react-bootstrap/Modal';
 
 
@@ -75,8 +75,10 @@ export const Usuario = () => {
               <div className="perfil-usuario-avatar">
                 <img src="https://cdn.icon-icons.com/icons2/3551/PNG/512/trainer_man_people_avatar_person_icon_224850.png" alt="img-avatar" />
                 <button type="button" className="boton-avatar">
+                
                   <i className="far fa-image"></i>
                 </button>
+                
               </div>
             </div>
 
@@ -169,13 +171,16 @@ export const Usuario = () => {
                 role="tabpanel"
                 aria-labelledby="contact-tab"
                 tabIndex="0"
-              >
-                <h3 className="text-center mt-4" style={{ color: "#ffeba7" }}>
+              ><div className="perfil-usuario-bio justify-content-center mt-4">
+                <h3 className="text-center mt-4">
                   Actualmente estás suscrito a la promoción de:
-                  {store.pago == undefined || store.pago == null
-                    ? " Pendiente de contratar "
-                    : " " + store.pago.monto + " €"}
+
                 </h3>
+                <h3 className="text-center mt-4 ml-3" style={{ color: "#ffeba7"}}>
+                  {store.pago == undefined || store.pago == null
+                    ? " Pendiente de €"
+                    : " " + store.pago.monto + "€"}</h3>
+                </div>
                 <Suscription />
               </div>
               <div

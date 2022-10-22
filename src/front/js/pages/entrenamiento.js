@@ -90,7 +90,7 @@ export const Entrenamiento = () => {
                     </button>
 
                     <button className="btn" onClick={deleteTraining}>
-                    <i class="fa-solid fa-eraser"></i>   LIMPIAR ENTRENO
+                    <i class="fa-solid fa-eraser"></i>   BORRAR ENTRENO
                     </button>
                 </div>
 

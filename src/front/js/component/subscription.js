@@ -43,7 +43,7 @@ export const Suscription = () => {
             </div>
             <div className="card-body">
               <h5 className="card-title">Premium</h5>
-              <p className="card-text">Contratando el servicio Premium, podras acceder a instalaciones, te llevaras una mochila de regalo y un mes gratis.</p>
+              <p className="card-text">Contratando el servicio Premium,tambien podras acceder a instalaciones, te llevaras una mochila de regalo y un mes gratis.</p>
             </div>
             <div className="card-footer text-muted py-3">
               <a href="https://buy.stripe.com/test_fZe9BV3X35rC3zW7sv" target="_blank" className="btn btn-primary">Suscribirme</a>
