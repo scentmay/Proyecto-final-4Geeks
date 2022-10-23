@@ -7,7 +7,8 @@ import tiktokIcon from "../../img/tiktok_icon.png";
 export const Footer = () => {
   return (
     
-      <footer className="footer mt-auto text-center">
+      
+      <footer className="container-fluid footer mt-auto text-center px-0" style={{width:"100%"}}>
         <div className="footer-dark">
             <div className="container-fluid" style={{padding:"10px"}}>
               <div className="row">
