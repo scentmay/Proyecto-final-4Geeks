@@ -188,7 +188,6 @@ export const Login = () => {
 
                     <Link to={'/signup'}><button className="btn ms-3">Registro</button></Link>
                   </div>
-                  <Cronometro />
                 </Form>
               )}
             </Formik>

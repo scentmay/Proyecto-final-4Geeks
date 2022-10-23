@@ -10,6 +10,8 @@ import { useNavigate } from "react-router-dom";
 import { Suscription } from "../component/subscription";
 // import { Cronometro } from "./cronometro";
 import Modal from 'react-bootstrap/Modal';
+import { Cronometro } from "./cronometro";
+
 
 
 export const Usuario = () => {
@@ -84,6 +86,8 @@ export const Usuario = () => {
 
             <div className="perfil-usuario-body">
               <div className="perfil-usuario-bio">
+                {/* <Cronometro /> */}
+                
                 <h3 className="titulo" style={{ color: "#ffeba7" }}>              <p className="text-2xl text-L-Gray-med dark:text-D-Gray-med pt-3 px-3">
                   Hola,{" "}
                   <span className="text-L-Gray-dark dark:text-D-Gray-light">
