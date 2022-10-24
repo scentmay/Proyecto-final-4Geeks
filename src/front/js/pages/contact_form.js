@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import fondoWas from "../../img/fondoWas.jpg";
 import "../../styles/contact_form.css";
 import { Link, useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
@@ -103,7 +102,7 @@ export const ContactForm = () => {
             <input
               type="hidden"
               name="_next"
-              value="https://3000-4geeksacade-reactflaskh-egdm5hczo2f.ws-eu67.gitpod.io/emailsent"
+              value="https://proyecto-final-sffit.herokuapp.com/emailsent"
             ></input>
             {/* eliminamos el captcha, comentar esta línea para activarlo */}
             <input type="hidden" name="_captcha" value="false"></input>
