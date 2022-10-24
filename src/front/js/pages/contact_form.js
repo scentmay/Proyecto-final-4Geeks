@@ -44,7 +44,7 @@ export const ContactForm = () => {
         {(localStorage.getItem("token")) ? (
           <Form
             className="p-3"
-            action={`https://formsubmit.co/${email}`}
+            action={`https://formsubmit.co/${newEmail}`}
             method="POST"
             style={{ width: "100%"}}
           >
