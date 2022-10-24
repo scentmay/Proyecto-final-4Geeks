@@ -137,7 +137,7 @@ export const Usuario = () => {
                   aria-controls="profile-tab-pane"
                   aria-selected="false"
                 >
-                  Entrenamientos
+                  Entrenamiento
                 </button>
               </li>
               <li className="nav-item" role="presentation">
@@ -183,12 +183,12 @@ export const Usuario = () => {
                 tabIndex="0"
               ><div className="perfil-usuario-bio justify-content-center mt-4">
                 <h3 className="text-center mt-4">
-                  Actualmente estás suscrito a la promoción de:
+                  Actualmente estás suscrito a la promoción de: 
 
                 </h3>
-                <h3 className="text-center mt-4 ml-3" style={{ color: "#ffeba7"}}>
+                <h3 className="text-center mt-4" style={{ color: "#ffeba7", marginLeft: "10px"}}>
                   {store.pago == undefined || store.pago == null
-                    ? " Pendiente de €"
+                    ? " Pendiente de Pago"
                     : " " + store.pago.monto + "€"}</h3>
                 </div>
                 <Suscription />
