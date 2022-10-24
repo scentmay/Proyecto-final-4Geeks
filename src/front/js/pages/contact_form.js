@@ -58,6 +58,7 @@ export const ContactForm = () => {
                 onChange={(e) => {
                   setNewEmail(e.target.value)
                 }}
+                value={newEmail}
               />
               {/* <Form.Text className="text-muted">
             We'll never share your email with anyone else.
@@ -74,6 +75,7 @@ export const ContactForm = () => {
                 onChange={(e) => {
                   setNewName(e.target.value)
                 }}
+                value={newName}
               />
             </Form.Group>
 
