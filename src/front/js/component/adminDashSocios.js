@@ -99,7 +99,8 @@ export const AdminDashSocios = (props) => {
         </Modal>
         {/* Fin modal */}
 
-        <Table
+        <div className="table-responsive">
+           <Table
           striped
           bordered
           hover
@@ -121,6 +122,9 @@ export const AdminDashSocios = (props) => {
            las cabeceras quedan estáticas */}
           {render()}
         </Table>
+        </div>
+       
+
       </div>
     </div>
   );

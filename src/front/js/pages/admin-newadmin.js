@@ -5,9 +5,12 @@ import { Context } from "../store/appContext";
 import "../../styles/admin.css";
 import { NewAdmin } from "../component/newadmin";
 import Sidebar from "../component/adminSideBar";
+import { useMediaQuery } from "react-responsive";
 
 export const AdminNewAdmin = () => {
   const { store, actions } = useContext(Context);
+  const isBigScreen = useMediaQuery({ query: "(min-width: 800px)" });
+
   let navigate = useNavigate();
 
   const redirigir = () => {
@@ -21,76 +24,63 @@ export const AdminNewAdmin = () => {
   }, []);
 
   return (
-      <>
-        {store.user.token &&
-        store.user.token != "" &&
-        store.user.token != undefined ? (
+    <>
+      {store.user.token &&
+      store.user.token != "" &&
+      store.user.token != undefined ? (
+        isBigScreen ? (
           <div className="flex">
             <div>
               <Sidebar />
             </div>
-            <div className="d-flex justify-content-center content mt-5" style={{ width: "100%" }}>
+            <div className="content ms-5" style={{ width: "100%" }}>
               <NewAdmin />
             </div>
           </div>
-          
         ) : (
-          <div className="form d-flex justify-content-center">
-              <div className="card">
-                <h4 className="title">Usuario no registrado</h4>
-                <p style={{ color: "white" }}>
-                  Será redirigido a la página de login en 5 segundos
-                </p>
-                <Link to={"/login"}>
-                  <button className="btn ms-3">Volver</button>
-                </Link>
-                {redirigir()} 
+          <div>
+            <div className="container">
+              <div className="row">
+                <div className="col-sm-4" style={{ display: "flex", justifyContent: "center" }}>
+                  <Link to="/admin-home">
+                    <button className="btn" style={{ width: "110px" }}>
+                      Socios
+                    </button>
+                  </Link>
+                </div>
+                <div className="col-sm-4" style={{ display: "flex", justifyContent: "center" }}>
+                  <Link to="/admin-cuotas">
+                    <button className="btn" style={{ width: "110px" }}>
+                      Cuotas
+                    </button>
+                  </Link>
+                </div>
+                <div className="col-sm-4" style={{ display: "flex", justifyContent: "center" }}>
+                  <Link to="/admin-newadmin">
+                    <button className="btn" style={{ width: "110px" }}>
+                      New Admin
+                    </button>
+                  </Link>
+                </div>
               </div>
             </div>
-        )}
-      </>
+            <NewAdmin />
+          </div>
+        )
+      ) : (
+        <div className="form d-flex justify-content-center">
+          <div className="card">
+            <h4 className="title">Usuario no registrado</h4>
+            <p style={{ color: "white" }}>
+              Será redirigido a la página de login en 5 segundos
+            </p>
+            <Link to={"/login"}>
+              <button className="btn ms-3">Volver</button>
+            </Link>
+            {redirigir()}
+          </div>
+        </div>
+      )}
+    </>
   );
 };
-
-
-
-
-{/* <div className="mainContainer container-fluid mt-2">
-            <h2 style={{ color: "white" }}>
-              <u>Panel de control</u>
-            </h2>
-            <div className="row">
-              {/* primera tabla */}
-          //     <div className="col-md-6">
-          //       <div className="m-2">
-          //         <AdminDashSocios
-          //           type="socios"
-          //           col1="nombre"
-          //           col2="correo"
-          //           col3="dni"
-          //           ></AdminDashSocios>
-          //       </div>
-          //     </div>
-
-          //     {/* segunda tabla */}
-          //     <div className="col-md-6">
-          //       <div className="m-2">
-          //         <AdminDashCuotas
-          //           type="cuotas"
-          //           col1="nombre"
-          //           col2="teléfono"
-          //           col3="estado pago"
-          //           ></AdminDashCuotas>
-          //       </div>
-          //     </div>
-          //     {/* módulo para dar de alta nuevos admins */}
-          //       <div className="col-md-6" id="Newadm">
-          //           <NewAdmin
-          //           type="Nuevo administrador"
-          //           col1="nombre"
-          //           col2="email"
-          //           col3="código"
-          //           ></NewAdmin>
-          //       </div>
-          //   </div>
-          // </div> */}
