@@ -51,8 +51,8 @@ export const Registros = () => {
 
 
 	return (
-		<div className="mainContainer">
-			<div className="form d-flex justify-content-center"> 
+    <div className="container p-3 border-0" id="editarPerfil1">
+			
 
 			{/* Modal */}
 			<Modal show={show} onHide={handleClose}>
@@ -71,9 +71,9 @@ export const Registros = () => {
 			{
 				(store.user.token && store.user.token != "" && store.user.token != undefined)?
 
-				(	<div className="card">
-						<h4 className="title">Cuéntanos un poco más de tí</h4>
-						<h5 style={{color: "white"}}>Actualiza esta sección cuando sea necesario</h5>
+				(	<div className="card5">
+						{/* <h4 className="title">Cuéntanos un poco más de tí</h4> */}
+						<h5 style={{color: "white"}}>ACTUALIZA TUS OBJETIVOS</h5>
 						<form id="form">
 						<div className="field ">
 							<input className="input-field" 
@@ -150,17 +150,17 @@ export const Registros = () => {
 						</div>
 
 						<div className="buttons">
-								<Link to={'/login'}><button className="btn ms-3">Volver</button></Link>
+								{/* <Link to={'/login'}><button className="btn ms-3">Volver</button></Link>
 								
 								<input className="btn" type="reset" value="Reset" onClick={() => {
 									setObjective("");
 									setMedical("");
 									setMessage("");	
 								}}
-								/>
+								/> */}
 
                 <div className="d-grid gap-2">
-								<button className="btn" onClick={handleClick}>ENVIAR</button>
+								<button className="btn" onClick={handleClick}>ACTUALIZAR</button>
                 </div>
 						</div>
 						</form>
@@ -175,7 +175,7 @@ export const Registros = () => {
 				  </div>
 				)
 			}
-			</div>			
-		</div>
+					
+    </div>
 	);
 };

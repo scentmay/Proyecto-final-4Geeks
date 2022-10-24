@@ -33,17 +33,13 @@ export const SubiendoImagenes = (props) => {
   return(
         <div>
         <Container >
-          <h1>
-            SubiendoImagenes
-          </h1>
           <FormGroup >
             <Input
                   type="file"
                   name="file"
-                  placeholder="Sube aqui tu imagen"
                   onChange={uploadImage}
              />
-             {loading ? (<h3>Cargando imagenes...</h3>) : (<img src={image} style={{width: "200px"}}/>)}
+             {loading ? (<h3></h3>) : (<img src={image} style={{width: "200px"}}/>)}
           </FormGroup>
           </Container>
         </div>

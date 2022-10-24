@@ -1,9 +1,8 @@
-.mainContainer {
-    /* url imagen: https://ossfitness.com/fotos/2021/07/strong-man-training-in-gym-1024x683.jpg */
+/* .mainContainer {
    background-size: cover;
    background-position-x: center;
    background-position-y: center;
-   }
+   } */
 
 
 
@@ -12,8 +11,8 @@
 #editarPerfil1 {
     background: #2a2b38;
     border-radius: 0.99rem;
-    margin-bottom: 25px;
-    margin-top: 90px;
+    margin-top: 70px;
+    margin-bottom: 85px
 }
 
 h5 {
@@ -21,11 +20,11 @@ h5 {
 }
 
    .card {
-    width: 400px;
     padding: 1.9rem 1.2rem;
     text-align: center;
     background: #2a2b38;
     border-radius: 0.75rem;
+    width: 400px;
    }
    
    /*Inputs*/
@@ -112,4 +111,10 @@ h5 {
     
    }
 
- 
+
+
+.card5 {
+    text-align: center;
+    background: #2a2b38;
+    border-radius: 0.75rem;
+   }
