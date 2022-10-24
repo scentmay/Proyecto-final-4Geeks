@@ -11,7 +11,7 @@ export const AdminDashCuotas = (props) => {
   let navigate = useNavigate();
 
   function handleMail(email, name) {
-    window.open(`https://proyecto-final-sffit.herokuapp.com/contactform/contactform/${email}/${name}`, '_blank');
+    window.open(`https://proyecto-final-sffit.herokuapp.com/contactform/${email}/${name}`, '_blank');
     // window.open('http://ejemplo.com/archivo.pdf', '_blank');
     // navigate(`/contactform/${email}/${name}`)
   }
