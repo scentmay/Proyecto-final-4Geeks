@@ -9,7 +9,7 @@ export const Cronometro = () => {
   
   return (
     <div>
-      
+      <SubiendoImagenes />
   </div>
   )
 };

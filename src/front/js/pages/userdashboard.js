@@ -11,6 +11,7 @@ import { Suscription } from "../component/subscription";
 // import { Cronometro } from "./cronometro";
 import Modal from "react-bootstrap/Modal";
 import "../../styles/login.css";
+import { Cronometro } from "./cronometro";
 
 
 export const Usuario = () => {
@@ -76,6 +77,7 @@ export const Usuario = () => {
           <section className="seccion-perfil-usuario">
             <div className="perfil-usuario-portada">
               <div className="perfil-usuario-avatar">
+              {/* <Cronometro /> */}
                 <img
                   src="https://cdn.icon-icons.com/icons2/3551/PNG/512/trainer_man_people_avatar_person_icon_224850.png"
                   alt="img-avatar"

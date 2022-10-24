@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import "../../styles/login.css";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import Modal from "react-bootstrap/Modal";
-import { Cronometro } from "./cronometro";
+
 
 export const Login = () => {
   const { store, actions } = useContext(Context);
@@ -187,7 +187,7 @@ export const Login = () => {
 
                     <Link to={'/signup'}><button className="btn ms-3">Registro</button></Link>
                   </div>
-                  <Cronometro />
+                  
                 </Form>
               )}
             </Formik>
