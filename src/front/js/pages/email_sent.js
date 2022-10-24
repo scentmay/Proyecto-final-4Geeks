@@ -9,7 +9,7 @@ const close = () => {
 
 export const EmailSent = () => {
     return(
-        <div className="d-flex align-items-center flex-column">
+        <div className="d-flex align-items-center flex-column" style={{marginBottom: "210px"}}>
             <h2>Correo enviado correctamente</h2>
             <img src={emailSent} className="align-items-center p-3" width="200" height="200"></img>
             <button className="btn" onClick={close}>CERRAR</button>
