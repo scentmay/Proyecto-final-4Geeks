@@ -12,6 +12,9 @@ import { useNavigate } from "react-router-dom";
 export const ContactForm = () => {
   const { email, name } = useParams();
   const { store, actions } = useContext(Context);
+  const [newEmail, setNewEmail] = useState (email);
+  const [newName, setNewName] = useState (name);
+
   let navigate = useNavigate();
 
 
@@ -51,6 +54,9 @@ export const ContactForm = () => {
                 placeholder=""
                 defaultValue={email}
                 name="email"
+                onChange={(e) => {
+                  setNewEmail(e.target.value)
+                }}
               />
               {/* <Form.Text className="text-muted">
             We'll never share your email with anyone else.
@@ -64,6 +70,9 @@ export const ContactForm = () => {
                 placeholder=""
                 defaultValue={name}
                 name="name"
+                onChange={(e) => {
+                  setNewName(e.target.value)
+                }}
               />
             </Form.Group>
 
