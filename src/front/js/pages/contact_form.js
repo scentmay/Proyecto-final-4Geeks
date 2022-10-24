@@ -22,6 +22,10 @@ export const ContactForm = () => {
     }, 5000);
   };
 
+  const close = () => {
+    window.close()
+  }
+
   
 
   return (
@@ -30,7 +34,7 @@ export const ContactForm = () => {
     >
       <div className="card align-items-center" style={{ width: "500px" }}>
         <h2>
-          <u>Formulario de contacto</u>
+          <u style={{ color: "#ffeba7" }}>Formulario de contacto</u>
         </h2>
 
         {(localStorage.getItem("token")) ? (
@@ -41,7 +45,7 @@ export const ContactForm = () => {
             style={{ width: "100%"}}
           >
             <Form.Group className="mb-3" controlId="formBasicEmail">
-              <Form.Label style={{ color: "white" }}>Email address</Form.Label>
+              <Form.Label style={{ color: "white" }}>Correo electrónico</Form.Label>
               <Form.Control
                 type="email"
                 placeholder=""
@@ -87,14 +91,10 @@ export const ContactForm = () => {
               />
               )
               }
-
-              
             </Form.Group>
 
-            <Link to={"/admin"}>
-              <button className="btn ms-3">Volver</button>
-            </Link>
-            <Button variant="primary" type="submit">
+              <button className="btn ms-3" onClick={close}>Cerrar</button>
+              <Button variant="primary" type="submit">
               Enviar
             </Button>
 
