@@ -49,6 +49,8 @@ a {
     margin-right: 10px;
 }
 
+
+
     /* imagen de fondo de home */
 
 /* #imagenHome {
@@ -150,20 +152,22 @@ h2 {
 #fondoHome {
     background-color: #2a2b38;
     border-radius: 0.75rem;
-    padding: 5px;
+    padding: 8px;
     border-style: double;
     border-color: #ffeba7;
-    opacity: 0.7;
-    margin-bottom: -20px;
+    opacity: 0.8;
+    margin-bottom: 30px;
+    padding-top: 50px;
+    padding-bottom: 30px;
 }
 
 #phome {
     background-color: #2a2b38;
     border-radius: 0.75rem;
-    padding: 10px;
+    padding: 8px;
     border-style: double;
     border-color: #ffeba7;
-    opacity: 0.7
+    opacity: 0.8
 }
 
 /* #caruselImg {
@@ -172,7 +176,7 @@ h2 {
 } */
 
 .carousel {
-    margin-bottom: 4rem;
+    margin-bottom: 6rem;
     text-align: center;
     margin-top: -80px;
   }
@@ -190,6 +194,10 @@ h2 {
     
   }
 
+
+  #inner {
+    margin-top: 15px;
+  }
 
 
 
