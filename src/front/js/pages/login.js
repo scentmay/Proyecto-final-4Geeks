@@ -58,25 +58,39 @@ export const Login = () => {
         store.user.token != undefined ? (
           //Si está logado
           <div className="">
-            <div className="card">
+            {store.user.role == "admin" ? (            <div className="card">
               <h4 className="title" style={{ color: "#ffeba7" }}>
                 Bienvenido {store.user.userName}
                 
               </h4>
+              
               <p style={{ color: "white" }}>
-                 Esta es tu zona privada, no olvides acceder a la encuesta
-                para rellenar tus datos
-              </p>
+              Estas logueado como Administrador
+           </p>
+                             <Link
+                             to={"/admin-home"}
+                             className="btn btn-primary btn-lg mt-3 ms-3"
+                           > 
+                           <i className="fa-solid fa-toolbox fa-xl me-3"></i>
+                             Administrador
+                           </Link>
+                                         <Link to={"/"} className="btn btn-primary btn-lg mt-3 ms-3">
+                                         <i className="fa-solid fa-house fa-xl me-3"></i>
+                                         Volver a home
+                                       </Link>
+            </div>) : (            <div className="card">
+              <h4 className="title" style={{ color: "#ffeba7" }}>
+                Bienvenido {store.user.userName}
+                
+              </h4>
+              
+                <p style={{ color: "white" }}>
+                Esta es tu zona privada, no olvides acceder a la encuesta
+               para rellenar tus datos
+             </p>
+              
 
-              {store.user.role == "admin" ? (
-                <Link
-                  to={"/admin-home"}
-                  className="btn btn-primary btn-lg mt-3 ms-3"
-                > 
-                <i className="fa-solid fa-toolbox fa-xl me-3"></i>
-                  ADMIN
-                </Link>
-              ) : (
+  
                 <Link
                   to={"/usuario"}
                   className="btn btn-primary btn-lg mt-3 ms-3"
@@ -84,16 +98,21 @@ export const Login = () => {
                   <i className="fa-solid fa-dumbbell fa-xl me-3"></i>
                   Zona Usuario
                 </Link>
-              )}
-              <Link to={"/survey"} className="btn btn-primary btn-lg mt-3 ms-3">
+                <Link to={"/survey"} className="btn btn-primary btn-lg mt-3 ms-3">
                 <i className="fa-solid fa-square-poll-vertical fa-xl me-3"></i>
                 Realizar encuesta
               </Link>
+              
               <Link to={"/"} className="btn btn-primary btn-lg mt-3 ms-3">
                 <i className="fa-solid fa-house fa-xl me-3"></i>
                 Volver a home
               </Link>
-            </div>
+            </div>)}
+
+
+
+
+
           </div>
         ) : (
           // Si NO está logado

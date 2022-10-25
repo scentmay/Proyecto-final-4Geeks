@@ -3,12 +3,12 @@ import React from 'react'
 export const Galeria = () => {
     return (
         <>
-            <div className='py-5' id="galeria">
+            <div className="container my-5" id="galeria">
                 <h2 style={{ color: "#ffeba7" }}> Galería de imágenes</h2>
             </div>
 
             <div className="row row-cols-1 row-cols-md-3 g-4">
-                <div className="col-lg-4 col-md-12 mb-4 mb-lg-0">
+                <div className="col-lg-4 mb-4 mb-lg-0">
                     <img
                         src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
                         className="w-100 shadow-1-strong rounded mb-4"

@@ -148,6 +148,24 @@ h2 {
     height: 50px;
 }
 
+#fondoHome {
+    background-color: #2a2b38;
+    border-radius: 0.75rem;
+    padding: 5px;
+    border-style: double;
+    border-color: #ffeba7;
+    opacity: 0.7;
+    margin-bottom: -20px;
+}
+
+#phome {
+    background-color: #2a2b38;
+    border-radius: 0.75rem;
+    padding: 10px;
+    border-style: double;
+    border-color: #ffeba7;
+    opacity: 0.7
+}
 
 /* #caruselImg {
     width: 100%;
@@ -156,16 +174,20 @@ h2 {
 
 .carousel {
     margin-bottom: 4rem;
+    text-align: center;
+    margin-top: -80px;
   }
   /* Since positioning the image, we need to help out the caption */
   .carousel-caption {
-    bottom: 0rem;
     z-index: 10;
+    bottom: 2rem;
+    /* margin-bottom: 100px */
   }
   
   /* Declare heights because of positioning of img element */
   .carousel-item {
     height: 32rem;
+    
   }
 
 
