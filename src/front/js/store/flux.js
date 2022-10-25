@@ -86,16 +86,18 @@ const getState = ({ getStore, getActions, setStore }) => {
 				//fetch(process.env.BACKEND_URL + "/api/hello")
 				await fetch("https://proyecto-final-sffit.herokuapp.com/api/signup", opts)
 
-				.then ((res) => {return res.json();})
-				.then(resp => {
-					if (!resp.ok) {
+				.then ((res) => {
+						if (!res.ok) {
 						setStore({flag_signup: false});
 						return;
-					}
-					if (resp.ok) {
-						setStore({flag_signup: true});
-						return resp.json();
-					}
+						}
+						else {
+							setStore({flag_signup: true});
+							return res.json();
+						}
+					})
+				.then(data => {
+						console.log(data);
 					})
 				.catch((error) => {
 					console.error("Ha ocurrido un error " + error);
