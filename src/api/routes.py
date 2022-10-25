@@ -231,17 +231,21 @@ def webhook():
 
 
 
-@api.route('/delMember/<int:id>', methods = ['DELETE'] )
+@api.route('/deleteMember/<int:id>', methods = ['DELETE'] )
 @jwt_required()
 def eliminateMember(id):
 
-    #Recuperamos el usuario
-    user = Cliente.query.filter_by(id = id).first()
+    #Recuperamos el usuario y borramos sus datos de todas las tablas relacionadas
+    user_pago = Pago.query.filter_by(id = id).first()
+    user_survey = Survey.query.filter_by(id = id).first()
+    user_cliente = Cliente.query.filter_by(id = id).first()
 
     if not user:
         raise APIException("Usuario a eliminar incorrecto", status_code=400)
     
-    db.session.delete(user)
+    db.session.delete(user_pago)
+    db.session.delete(user_survey)
+    db.session.delete(user_cliente)
     db.session.commit()
 
     return jsonify("Usuario eliminado, mensaje del backend"), 200
