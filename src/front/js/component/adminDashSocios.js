@@ -106,7 +106,6 @@ export const AdminDashSocios = (props) => {
           bordered
           hover
           variant="dark"
-          
           responsive
           style={{ borderColor: "#ffeba7" }}
         >

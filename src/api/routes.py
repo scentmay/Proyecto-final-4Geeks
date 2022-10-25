@@ -231,7 +231,7 @@ def webhook():
 
 
 
-@api.route('/deleteMember/<int:id>', methods = ['DELETE'] )
+@api.route('/delMember/<int:id>', methods = ['DELETE'] )
 @jwt_required()
 def eliminateMember(id):
 

@@ -368,7 +368,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					}
 				}
 
-				fetch ('https://proyecto-final-sffit.herokuapp.com/api/deleteMember/' + id , opts)
+				fetch ('https://proyecto-final-sffit.herokuapp.com/api/delMember/' + id , opts)
 				.then(resp => resp.json())
 				.then(data => {
 					setStore({message: data});
