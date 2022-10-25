@@ -37,6 +37,11 @@ export const Signup = () => {
     setVisible(!visible); //conmutamos estado
   }
 
+  useEffect(() => {
+    handleShow();
+  },[store.flag_signup])
+
+  
   return (
     <div className="mainContainer">
       <div className="form d-flex justify-content-center">
@@ -92,7 +97,6 @@ export const Signup = () => {
 		  	onSubmit={(valores, {resetForm} ) => {
           resetForm();
           actions.signUp(valores.logEmail, valores.logPass, valores.logName, valores.logLastName, valores.logDni, valores.logAddress, valores.logPhone, valores.logCode);
-          handleShow();
 			}}
 
       validate={(valores) => {
