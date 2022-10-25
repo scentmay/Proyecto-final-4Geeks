@@ -11,6 +11,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			pass_recover: null,
 			flag: null,
 			flag_login: null,
+			flag_admin: null,
+			flag_code: null,
 			password: null,
 			email: null,
 			code: null,
@@ -52,6 +54,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({pass_recover: null});
 				setStore({flag: null});
 				setStore({flag_login: null});
+				setStore({flag_signup: null});
+				setStore({flag_code: null});
 				localStorage.removeItem("code")
 			},
 			cleanTraining: () => {
@@ -83,9 +87,16 @@ const getState = ({ getStore, getActions, setStore }) => {
 				await fetch("https://proyecto-final-sffit.herokuapp.com/api/signup", opts)
 
 				.then ((res) => {return res.json();})
-				.then((data) => {
-					console.log(data);
-				})
+				.then(resp => {
+					if (!resp.ok) {
+						setStore({flag_signup: false});
+						return;
+					}
+					else {
+						setStore({flag_signup: true});
+						return resp.json();
+					}
+					})
 				.catch((error) => {
 					console.error("Ha ocurrido un error " + error);
 				})
@@ -449,7 +460,16 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 
 				fetch ('https://proyecto-final-sffit.herokuapp.com/api/code/', opts)
-				.then(resp => resp.json())
+				.then(resp => {
+					if (!resp.ok) {
+						setStore({flag_code: false});
+						return;
+					}
+					else {
+						setStore({flag_code: true});
+						return resp.json();
+					}
+					})
 				.then(data => {
 					console.log(data);
 				})

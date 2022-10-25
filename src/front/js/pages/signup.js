@@ -10,13 +10,26 @@ import { Formik, Field, Form, ErrorMessage } from "formik";
 export const Signup = () => {
 
   const [show, setShow] = useState(false);
+  const [show2, setShow2] = useState(false);
   const [visible, setVisible] = useState(true);
   const { store, actions } = useContext(Context);
   let navigate = useNavigate();
 
-  const handleShow = () => setShow(true);
+  const handleShow = () => {
+      if (store.flag_signup == true) {
+        setShow(true);
+      }
+      if (store.flag_signup == false) {
+        setShow2(true);
+      }
+  }
   const handleClose = () => {
     setShow(false);
+    navigate("/login");
+  };
+
+  const handleClose2 = () => {
+    setShow2(false);
     navigate("/login");
   };
 
@@ -27,7 +40,7 @@ export const Signup = () => {
   return (
     <div className="mainContainer">
       <div className="form d-flex justify-content-center">
-        {/* Modal */}
+        {/* Modal 1 */}
         <Modal show={show} onHide={handleClose}>
           <Modal.Header closeButton>
             <Modal.Title>Usuario registrado correctamente</Modal.Title>
@@ -43,7 +56,25 @@ export const Signup = () => {
             </button>
           </Modal.Footer>
         </Modal>
-        {/* Fin modal */}
+        {/* Fin modal 1 */}
+
+        {/* Modal 2 */}
+        <Modal show={show2} onHide={handleClose2}>
+          <Modal.Header closeButton>
+            <Modal.Title>Credenciales incorrectas</Modal.Title>
+          </Modal.Header>
+
+          <Modal.Body className="d-flex justify-content-center fs-3">
+            pulse aceptar para continuar
+          </Modal.Body>
+
+          <Modal.Footer>
+            <button className="btn" onClick={handleClose2}>
+              Aceptar
+            </button>
+          </Modal.Footer>
+        </Modal>
+        {/* Fin modal 2 */}
 
         <div className="card">
           <h4 className="title" style={{color: "#ffeba7"}}>Formulario de registro</h4>
