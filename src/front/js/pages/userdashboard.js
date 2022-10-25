@@ -95,9 +95,9 @@ export const Usuario = () => {
                 <h3 className="titulo" style={{ color: "#ffeba7" }}>
                   {" "}
                   <p className="text-2xl text-L-Gray-med dark:text-D-Gray-med pt-3 px-3">
-                    Hola,{" "}
+                    Hola{" "}
                     <span className="text-L-Gray-dark dark:text-D-Gray-light">
-                      {store.user.userName}
+                      {store.user.userName}!
                     </span>
                   </p>
                 </h3>
@@ -185,7 +185,7 @@ export const Usuario = () => {
                 tabIndex="0"
               ><div className="perfil-usuario-bio justify-content-center mt-4">
                 <h3 className="text-center mt-4">
-                  Actualmente estás suscrito a la promoción de: 
+                  Actualmente te has suscrito a la promoción de: 
 
                 </h3>
                 <h3 className="text-center mt-4" style={{ color: "#ffeba7", marginLeft: "10px"}}>

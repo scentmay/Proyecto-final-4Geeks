@@ -16,34 +16,35 @@ export const Carusel = () => {
           className="active"
           aria-current="true"
           aria-label="Slide 1"
+          data-interval="5000"
         ></button>
         <button
           type="button"
           data-bs-target="#myCarousel"
           data-bs-slide-to="1"
           aria-label="Slide 2"
+          data-interval="5000"
         ></button>
         <button
           type="button"
           data-bs-target="#myCarousel"
           data-bs-slide-to="2"
           aria-label="Slide 3"
+          data-interval="5000"
         ></button>
       </div>
       <div className="carousel-inner">
         <div className="carousel-item active">
-          {/* <svg className="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg> */}
-
           <div className="container" id="referencia">
             <div className="carousel-caption text-start">
-              <h2 className="font-weight" style={{ color: "#ffeba7" }}>
+              <h2 className="font-weight" style={{ color: "#ffeba7" }} id="fondoHome">
                 Bienvenidos a S&F Fit
               </h2>
               <br></br>
               <br></br>
-              <p>
+              <p id="phome">
                 Somos un gimnasio con un concepto premium, que encabeza una rama
-                de servicios especializada en el equipamiento e instalación de
+                de servicios especializada en el equipamiento de
                 gimnasios de alta competitividad
               </p>
               <p>
@@ -59,12 +60,12 @@ export const Carusel = () => {
 
           <div className="container">
             <div className="carousel-caption">
-              <h2 className="font-weight" style={{ color: "#ffeba7" }}>
+              <h2 className="font-weight" style={{ color: "#ffeba7" }} id="fondoHome">
                 Tenemos increíbles promociones
               </h2>
               <br/>
               <br/>
-              <p>
+              <p id="phome">
                 Puedes encontrarlas en nuestro home o bien una vez ya registrado
                 y logueado.
               </p>
@@ -81,7 +82,7 @@ export const Carusel = () => {
 
           <div className="container">
             <div className="carousel-caption text-end">
-              <h2 className="font-weight" style={{ color: "#ffeba7" }}>
+              <h2 className="font-weight" style={{ color: "#ffeba7" }} id="fondoHome">
                 ¿Qué estas esperando? Súmate!
               </h2>
               <br></br>
@@ -101,8 +102,8 @@ export const Carusel = () => {
         data-bs-target="#myCarousel"
         data-bs-slide="prev"
       >
-        <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span className="visually-hidden">Previous</span>
+        {/* <span className="carousel-control-prev-icon" aria-hidden="false"></span>
+        <span className="visually-hidden">Previous</span> */}
       </button>
       <button
         className="carousel-control-next"
@@ -110,8 +111,8 @@ export const Carusel = () => {
         data-bs-target="#myCarousel"
         data-bs-slide="next"
       >
-        <span className="carousel-control-next-icon" aria-hidden="true"></span>
-        <span className="visually-hidden">Next</span>
+        {/* <span className="carousel-control-next-icon" aria-hidden="false"></span> */}
+        {/* <span className="visually-hidden">Next</span> */}
       </button>
     </div>
   );
