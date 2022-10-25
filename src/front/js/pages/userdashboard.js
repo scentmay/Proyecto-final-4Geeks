@@ -102,7 +102,7 @@ export const Usuario = () => {
                   </p>
                 </h3>
                 <p className="texto">
-                  Este es tu perfil de usuario, donde podras actualizar tus
+                  Este es tu perfil de usuario, donde podrás actualizar tus
                   datos personales, generar entrenos y modificar tus
                   suscripciones.
                 </p>

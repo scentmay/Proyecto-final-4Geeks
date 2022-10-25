@@ -13,8 +13,8 @@ export const SuscriptionCopy = () => {
                     <span className="display-1 aling-middle" style={{ color: "#ffeba7" }}>20</span> <span className="h3" style={{ color: "#ffeba7" }}>€/mes</span>
                   </div>
               <div className="card-body">
-                <h5 className="card-title"style={{ color: "#ffeba7" }}>Basico</h5>
-                <p className="card-text">Contratando el servicio basico, podras acceder a las instalaciones, vestuarios y tendras una bonificacion en la inscripcion.</p>
+                <h5 className="card-title"style={{ color: "#ffeba7" }}>Básico</h5>
+                <p className="card-text">Contratando el servicio básico, podrás acceder a las instalaciones, vestuarios y tendrás una bonificación en la inscripción.</p>
               </div>
               <div className="card-footer text-muted py-3">
                 <a href="/login" target="_blank" className="btn btn-primary">Suscribirme</a>
@@ -28,7 +28,7 @@ export const SuscriptionCopy = () => {
                   </div>
               <div className="card-body">
                 <h5 className="card-title"style={{ color: "#ffeba7" }}>Intermedio</h5>
-                <p className="card-text">Contratando el servicio intemedio, ademas de acceder a las instalaciones, te podes llevar una mochila de regalo.</p>
+                <p className="card-text">Contratando el servicio intemedio, además de acceder a las instalaciones, te puedes llevar una mochila de regalo.</p>
               </div>
               <div className="card-footer text-muted py-3">
                 <a href="/login" target="_blank" className="btn btn-primary">Suscribirme</a>
@@ -42,7 +42,7 @@ export const SuscriptionCopy = () => {
                   </div>
               <div className="card-body">
                 <h5 className="card-title"style={{ color: "#ffeba7" }}>Premium</h5>
-                <p className="card-text">Contratando el servicio Premium, podras acceder a instalaciones, te llevaras una mochila de regalo y un mes gratis.</p>
+                <p className="card-text">Contratando el servicio Premium, podrás acceder a instalaciones, te llevaras una mochila de regalo y un mes gratis.</p>
               </div>
               <div className="card-footer text-muted py-3">
                 <a href="/login" target="_blank" className="btn btn-primary">Suscribirme</a>

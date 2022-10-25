@@ -101,7 +101,7 @@ export const EditarPerfil = () => {
 
                 <div
                     className="d-grid gap-2">
-                    <label className="form-label">Direccion</label>
+                    <label className="form-label">Dirección</label>
                     <div className="d-grid gap-2">
                     <div className="field">
                         <input
@@ -118,7 +118,7 @@ export const EditarPerfil = () => {
                 </div>
 
                 <div className="d-grid gap-2">
-                    <label className="form-label">Número telefónico</label>
+                    <label className="form-label">Teléfono</label>
                     <div className="d-grid gap-2">
                     <div className="field">
                         <input
@@ -135,7 +135,7 @@ export const EditarPerfil = () => {
                 </div>
 
                 <div className="d-grid gap-2">
-                    <label className="form-label">Correo Electrónico</label>
+                    <label className="form-label">Correo electrónico</label>
                     <div className="d-grid gap-2">
                     <div className="field">
                         <input
