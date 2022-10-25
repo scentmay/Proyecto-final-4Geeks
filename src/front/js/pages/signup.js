@@ -25,6 +25,7 @@ export const Signup = () => {
   }
   const handleClose = () => {
     setShow(false);
+    clean();
     navigate("/login");
   };
 
