@@ -96,7 +96,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 							return res.json();
 						}
 					})
-				.then(data => {
+				.then((data) => {
 						console.log(data);
 					})
 				.catch((error) => {

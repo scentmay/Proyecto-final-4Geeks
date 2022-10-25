@@ -57,7 +57,7 @@ export const Signup = () => {
           </Modal.Header>
 
           <Modal.Body className="d-flex justify-content-center fs-3">
-            pulse aceptar para continuar
+            pulsa aceptar para continuar
           </Modal.Body>
 
           <Modal.Footer>
@@ -71,11 +71,11 @@ export const Signup = () => {
         {/* Modal 2 */}
         <Modal show={show2} onHide={handleClose2}>
           <Modal.Header closeButton>
-            <Modal.Title>Credenciales incorrectas. Revise la información</Modal.Title>
+            <Modal.Title>Credenciales incorrectas. Revisa la información</Modal.Title>
           </Modal.Header>
 
           <Modal.Body className="d-flex justify-content-center fs-3">
-            pulse aceptar para continuar
+            pulsa aceptar para continuar
           </Modal.Body>
 
           <Modal.Footer>
