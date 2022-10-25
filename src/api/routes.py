@@ -236,11 +236,11 @@ def webhook():
 def eliminateMember(id):
 
     #Recuperamos el usuario y borramos sus datos de todas las tablas relacionadas
-    user_pago = Pago.query.filter_by(id = id).first()
-    user_survey = Survey.query.filter_by(id = id).first()
+    user_pago = Pago.query.filter_by(cliente_id = id).first()
+    user_survey = Survey.query.filter_by(cliente_id = id).first()
     user_cliente = Cliente.query.filter_by(id = id).first()
 
-    if not user:
+    if not user_cliente:
         raise APIException("Usuario a eliminar incorrecto", status_code=400)
     
     db.session.delete(user_pago)
