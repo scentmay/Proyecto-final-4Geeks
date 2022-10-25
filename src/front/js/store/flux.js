@@ -11,7 +11,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			pass_recover: null,
 			flag: null,
 			flag_login: null,
-			flag_admin: null,
+			flag_signup: null,
 			flag_code: null,
 			password: null,
 			email: null,
@@ -88,8 +88,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				.then ((res) => {
 						if (!res.ok) {
-						setStore({flag_signup: false});
-						return;
+							setStore({flag_signup: false});
+							return;
 						}
 						else {
 							setStore({flag_signup: true});

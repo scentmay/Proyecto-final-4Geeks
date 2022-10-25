@@ -64,6 +64,8 @@ def register():
             # ahora borramos el código para que no se pueda volver a utilizar
             db.session.delete(code)
             db.session.commit()
+            
+            return jsonify("Usuario creado, mensaje del backend"), 200
 
         else:
             return jsonify("Código incorrecto, mensaje del backend"), 400
