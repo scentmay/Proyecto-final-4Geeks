@@ -440,6 +440,27 @@ const getState = ({ getStore, getActions, setStore }) => {
 				})
 				.catch(error => console.error ("Ha habido un error al cambiar la contraseña del usuario " + error))
 			},
+
+			cancelarPago: ()=> {
+
+				const store = getStore();
+
+				const opts = {
+					method: 'DELETE',
+					headers: {
+						"Content-Type": "application/json",
+						"Authorization": "Bearer " + store.user.token
+					}
+				}
+
+				fetch ('https://proyecto-final-sffit.herokuapp.com/api/deletePay/' + store.user.id , opts)
+				.then(resp => resp.json())
+				.then(data => {
+					console.log("suscripción eliminada")
+				})
+				.catch( error => console.error("Error al borrar suscripción " + error))
+			},
+
 			setCode: (email, newCode) => {
 				//console.log(newCode);
 				setStore({code: newCode});

@@ -40,6 +40,11 @@ export const Usuario = () => {
     setUserAux({ ...store.user });
   }, [store.user]);
 
+
+  const cancelarPago = () => {
+    actions.cancelarPago();
+  }
+
   const handleClick = () => {
     actions.userUpdate(
       useraux.email,
@@ -193,6 +198,7 @@ export const Usuario = () => {
                     ? " Pendiente de Pago"
                     : " " + store.pago.monto + "€"}</h3>
                 </div>
+                    <button className="btn" onClick={cancelarPago}>Cancelar suscripción</button>
                 <Suscription />
               </div>
               <div

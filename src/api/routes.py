@@ -230,6 +230,20 @@ def webhook():
     return jsonify(success=True) 
 
 
+@api.route('/deletePay/<int:id>', methods = ['DELETE'] )
+@jwt_required()
+def eliminatePay(id):
+
+    user_pago = Pago.query.filter_by(cliente_id = id).first()
+
+    if not user_pago:
+        raise APIException("Usuario no tiene suscripción activa", status_code=400)
+
+    db.session.delete(user_pago)
+    db.session.commit()
+
+    return jsonify("Suscripción eliminada, mensaje del backend"), 200
+
 
 @api.route('/deleteMember/<int:id>', methods = ['DELETE'] )
 @jwt_required()
