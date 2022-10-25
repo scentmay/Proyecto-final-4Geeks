@@ -30,11 +30,16 @@ export const Signup = () => {
 
   const handleClose2 = () => {
     setShow2(false);
+    clean();
     navigate("/login");
   };
 
   function handleCheck() {
     setVisible(!visible); //conmutamos estado
+  }
+
+  const clean = () => {
+    actions.cleanStore();
   }
 
   useEffect(() => {
@@ -66,7 +71,7 @@ export const Signup = () => {
         {/* Modal 2 */}
         <Modal show={show2} onHide={handleClose2}>
           <Modal.Header closeButton>
-            <Modal.Title>Credenciales incorrectas</Modal.Title>
+            <Modal.Title>Credenciales incorrectas. Revise la información</Modal.Title>
           </Modal.Header>
 
           <Modal.Body className="d-flex justify-content-center fs-3">
