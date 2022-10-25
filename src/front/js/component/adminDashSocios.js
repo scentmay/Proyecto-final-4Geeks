@@ -44,6 +44,7 @@ export const AdminDashSocios = (props) => {
           return (
             <tr>
               <th>{client.id}</th>
+              <th>{client.role}</th>
               <td>{client.userName}</td>
               <td>{client.email}</td>
               <td>{client.dni}</td>
@@ -112,6 +113,7 @@ export const AdminDashSocios = (props) => {
           <thead>
             <tr>
               <th>id socio</th>
+              <th>Rol</th>
               <th>Nombre</th>
               <th>Correo</th>
               <th>DNI</th>
