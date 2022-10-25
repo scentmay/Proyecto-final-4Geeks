@@ -19,7 +19,7 @@ export const NewAdmin = (props) => {
 }
 
   function handleMail(email, name) {
-    window.open(`https://3000-4geeksacade-reactflaskh-egdm5hczo2f.ws-eu67.gitpod.io/contactform/${email}/${name}`, '_blank');
+    window.open(`https://proyecto-final-sffit.herokuapp.com/contactform/${email}/${name}`, '_blank');
     handleShow();
   }
 
