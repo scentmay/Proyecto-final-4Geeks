@@ -92,7 +92,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						setStore({flag_signup: false});
 						return;
 					}
-					else {
+					if (resp.ok) {
 						setStore({flag_signup: true});
 						return resp.json();
 					}
