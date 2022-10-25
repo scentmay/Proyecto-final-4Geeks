@@ -8,7 +8,7 @@ export const Footer = () => {
   return (
     
       
-      <footer className="container-fluid footer mt-auto text-center px-0" style={{overflowX: "hidden"}}>
+      <footer className="container-fluid footer mt-auto text-center px-0">
         <div className="footer-dark">
             <div className="container-fluid">
               <div className="row">
