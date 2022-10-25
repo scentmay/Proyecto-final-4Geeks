@@ -240,13 +240,20 @@ def eliminateMember(id):
     user_survey = Survey.query.filter_by(cliente_id = id).first()
     user_cliente = Cliente.query.filter_by(id = id).first()
 
+    if  user_pago:
+        db.session.delete(user_pago)
+        db.session.commit()
+    
+    if  user_survey:
+        db.session.delete(user_survey)
+        db.session.commit()
+
+    if  user_cliente:
+        db.session.delete(user_cliente)
+        db.session.commit()
+        
     if not user_cliente:
         raise APIException("Usuario a eliminar incorrecto", status_code=400)
-    
-    db.session.delete(user_pago)
-    db.session.delete(user_survey)
-    db.session.delete(user_cliente)
-    db.session.commit()
 
     return jsonify("Usuario eliminado, mensaje del backend"), 200
 
