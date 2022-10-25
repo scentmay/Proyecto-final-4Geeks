@@ -20,7 +20,7 @@ export const NewAdmin = (props) => {
 
   function handleMail(email, name) {
     window.open(`https://proyecto-final-sffit.herokuapp.com/contactform/${email}/${name}`, '_blank');
-    handleShow();
+    // handleShow();
   }
 
   function generate() {
