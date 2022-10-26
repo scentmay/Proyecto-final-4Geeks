@@ -218,7 +218,7 @@ export const Usuario = () => {
           </section>
         </div>
       ) : (
-        <div className="card " id="cardF">
+        <div className="card" id="cardF">
           <h4 className="title">Usuario no registrado</h4>
           <p style={{ color: "white" }}>
             Será redirigido a la página de login en 5 segundos
