@@ -298,7 +298,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const options = {
 					method: 'GET',
 					headers: {		
-						'X-RapidAPI-Key': '3f3fb32f2bmsh244b58c094eba84p14e6ecjsn14051a9d65ab',
+						'X-RapidAPI-Key': '0c48ae9655mshf561cabf67e1634p16ea2fjsnec0e954ce943',
 						'X-RapidAPI-Host': 'exercisedb.p.rapidapi.com'
 					}
 				};
