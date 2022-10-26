@@ -22,8 +22,11 @@ export const Header = () => {
   return (
     <>
       <Navbar className="nav background-color: transparent ! important;" style={{ width: "100%" }} >
-        <Navbar.Brand href="/" >
-          <img id="logo" src="logo.png" />
+        <Navbar.Brand>
+        <Link to={"/"}>
+        <img id="logo" src="https://res.cloudinary.com/dndyj4wwf/image/upload/v1666792260/logo_1_qwxrsl.png" />
+          </Link>
+          
         </Navbar.Brand>
         <div className="ms-auto">
           {

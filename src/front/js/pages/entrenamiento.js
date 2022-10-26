@@ -80,11 +80,11 @@ export const Entrenamiento = () => {
                     <p className="texto justify-content-center">Para generar nuevos entrenamientos, cambia tus objetivos en la tabla, luego limpia el entreno y vuelve el generar uno nuevo.</p>
 
                     <button className="btn" onClick={handleClick}>
-                         <i class="fa-solid fa-dumbbell"></i>  GENERAR ENTRENO
+                         <i className="fa-solid fa-dumbbell"></i>  GENERAR ENTRENO
                     </button>
 
                     <button className="btn" onClick={deleteTraining}>
-                    <i class="fa-solid fa-eraser"></i>   BORRAR ENTRENO
+                    <i className="fa-solid fa-eraser"></i>   BORRAR ENTRENO
                     </button>
                 </div>
 

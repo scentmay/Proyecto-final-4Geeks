@@ -76,7 +76,7 @@ export const Login = () => {
                            </Link>
                                          <Link to={"/"} className="btn btn-primary btn-lg mt-3 ms-3">
                                          <i className="fa-solid fa-house fa-xl me-3"></i>
-                                         Volver a home
+                                         Volver a inicio
                                        </Link>
             </div>) : (            <div className="card">
               <h4 className="title" style={{ color: "#ffeba7" }}>
@@ -105,7 +105,7 @@ export const Login = () => {
               
               <Link to={"/"} className="btn btn-primary btn-lg mt-3 ms-3">
                 <i className="fa-solid fa-house fa-xl me-3"></i>
-                Volver a home
+                Volver a inicio
               </Link>
             </div>)}
 
@@ -118,7 +118,7 @@ export const Login = () => {
           // Si NO está logado
           <div className="card">
             <h4 className="title" style={{ color: "#ffeba7" }}>
-              Login
+              Ingreso
             </h4>
 
             <Formik
@@ -202,7 +202,7 @@ export const Login = () => {
                     <Link to={"/"}>
                       <button className="btn ms-3">Volver</button>
                     </Link>
-                    <button type="submit" className="btn">LOGIN</button>
+                    <button type="submit" className="btn">Ingresar</button>
 
                     <Link to={'/signup'}><button className="btn ms-3">Registro</button></Link>
                   </div>

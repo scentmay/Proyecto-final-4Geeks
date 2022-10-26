@@ -5,7 +5,7 @@ export const Carusel = () => {
   return (
     <div
       id="myCarousel"
-      className="carousel slide py-5"
+      className="carousel slide py-5 mt-1"
       data-bs-ride="carousel"
     >
       <div className="carousel-indicators">
