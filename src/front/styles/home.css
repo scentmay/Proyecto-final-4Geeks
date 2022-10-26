@@ -156,7 +156,7 @@ h2 {
     border-style: double;
     border-color: #ffeba7;
     opacity: 0.8;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
     padding-top: 50px;
     padding-bottom: 30px;
 }
@@ -176,7 +176,7 @@ h2 {
 } */
 
 .carousel {
-    margin-bottom: 6rem;
+    margin-bottom: 8rem;
     text-align: center;
     margin-top: -80px;
   }

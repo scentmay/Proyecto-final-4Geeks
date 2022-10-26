@@ -226,7 +226,11 @@ body {
     border-style: solid;
     border-color: green;
 } */
-
+#titulito {
+    background-color: #2a2b38;
+    opacity: 0.9;
+    padding: 10px;
+}
 
 .card{
     margin-bottom: 100px;

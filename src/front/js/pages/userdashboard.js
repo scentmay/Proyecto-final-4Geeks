@@ -12,6 +12,7 @@ import { Suscription } from "../component/subscription";
 import Modal from "react-bootstrap/Modal";
 import "../../styles/login.css";
 import { Cronometro } from "./cronometro";
+import "../../img/ImgperfiI.png";
 
 
 export const Usuario = () => {
@@ -83,15 +84,12 @@ export const Usuario = () => {
             <div className="perfil-usuario-portada">
               <div className="perfil-usuario-avatar">
               {/* <Cronometro /> */}
-                <img
-                  src="https://cdn.icon-icons.com/icons2/3551/PNG/512/trainer_man_people_avatar_person_icon_224850.png"
-                  alt="img-avatar"
-                />
-                <button type="button" className="boton-avatar">
+                <img src="ImgperfiI.png" alt="img-avatar" />
+                {/* <button type="button" className="boton-avatar">
                 
                   <i className="far fa-image"></i>
                 </button>
-                
+                 */}
               </div>
             </div>
 
@@ -198,7 +196,7 @@ export const Usuario = () => {
                     ? " Pendiente de Pago"
                     : " " + store.pago.monto + "€"}</h3>
                 </div>
-                    <button className="btn" onClick={cancelarPago}>Cancelar suscripción</button>
+                    {/* <button className="btn" onClick={cancelarPago}>Cancelar suscripción</button> */}
                 <Suscription />
               </div>
               <div

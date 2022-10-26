@@ -16,12 +16,17 @@
     border-radius: 10px;
 }
 
+#titulito {
+    background-color: #2a2b38;
+    opacity: 0.9;
+    padding: 10px;
+}
 
 
-#suscrip {
+/* #suscri {
     margin-left: 0;
     margin-right: 0;
-}
+} */
 
 
 /* From uiverse.io by @sssynk */
