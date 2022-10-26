@@ -89,7 +89,6 @@ export const Carusel = () => {
             </div>
           </div>
         </div>
-      </div>
       <button
         className="carousel-control-prev"
         type="button"
@@ -108,6 +107,7 @@ export const Carusel = () => {
         {/* <span className="carousel-control-next-icon" aria-hidden="false"></span> */}
         {/* <span className="visually-hidden">Next</span> */}
       </button>
+      </div>
     </div>
   );
 };
