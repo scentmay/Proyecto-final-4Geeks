@@ -1,10 +1,12 @@
 import React from 'react'
+import "../../styles/login.css";
+import "../../styles/user.css";
 
 export const Galeria = () => {
     return (
         <>
-            <div className="container my-5" id="galeria">
-                <h2 style={{ color: "#ffeba7" }}> Galería de imágenes</h2>
+            <div className="container-fluid my-5" id="galeria">
+                <h2 style={{ color: "#ffeba7"}}></h2>
             </div>
 
             <div className="row row-cols-1 row-cols-md-3 g-4">

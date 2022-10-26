@@ -5,7 +5,7 @@ import "../../styles/subs.css"
 export const Suscription = () => {
   return (
     <>
-      <div className="container-fluid" style={{ color: "#ffeba7" }}><h3></h3></div>
+      <div className="container" style={{ color: "#ffeba7" }}><h3></h3></div>
       <div className="row row-cols-1 row-cols-md-3 g-4" id="suscri">
 
         <div className="col mb-5">

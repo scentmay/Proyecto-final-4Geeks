@@ -1,5 +1,5 @@
 import React from "react";
-
+import "../../styles/subs.css"
 
 
 export const Ubicacion = () => {
@@ -7,8 +7,8 @@ export const Ubicacion = () => {
 
 	return (
 		<>
-		<div className="text-center" id="localizacion">
-		<h2 className="py-5"style={{ color: "#ffeba7" }}> Nuestra ubicación</h2>
+		<div className="text-center" id="titulito" style={{marginBottom: "20px", marginTop: "70px"}}>
+		<h2 className=""style={{ color: "#ffeba7", textDecoration: "underline"}}> Nuestra ubicación</h2>
 		</div>
 		<div className="map-responsive">
 			
