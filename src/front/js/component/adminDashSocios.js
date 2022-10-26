@@ -116,6 +116,7 @@ export const AdminDashSocios = (props) => {
               <th>Rol</th>
               <th>Nombre</th>
               <th>Correo</th>
+              <th>TLF</th>
               <th>DNI</th>
               <th>Acción</th>
             </tr>
