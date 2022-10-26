@@ -13,6 +13,7 @@ export const Suscription = () => {
 
   const cancelarPago = () => {
     actions.cancelarPago();
+    setShow(true);
   }
 
   const handleClose = () => {
@@ -23,11 +24,11 @@ export const Suscription = () => {
     <>
           <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Suscrpcion eliminada correctamente</Modal.Title>
+          <Modal.Title>Suscripción eliminada correctamente</Modal.Title>
         </Modal.Header>
 
         <Modal.Body className="d-flex justify-content-center fs-3">
-          Veras tus cambios actulizados en el proximo ingreso
+          Verás tus cambios actualizados en el próximo ingreso
         </Modal.Body>
 
         <Modal.Footer>
@@ -86,9 +87,7 @@ export const Suscription = () => {
 
       <div className="perfil-usuario-bio justify-content-center mt-4">
                 <h3 className="text-center mt-4">
-                  Aqui puedes cancelar tu suscripción, lo veras en tu próximo ingreso
-
-
+                  Aqui puedes cancelar tu suscripción
                 </h3>
                 <button className="btn" onClick={cancelarPago}>Cancelar suscripción</button>
                 </div>

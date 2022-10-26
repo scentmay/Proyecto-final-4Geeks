@@ -457,6 +457,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				.then(resp => resp.json())
 				.then(data => {
 					console.log("suscripción eliminada")
+					// alert("suscripción eliminada")
 				})
 				.catch( error => console.error("Error al borrar suscripción " + error))
 			},
