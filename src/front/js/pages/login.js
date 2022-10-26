@@ -138,12 +138,12 @@ export const Login = () => {
                   )
                 ) {
                   errors.email =
-                    "El correo sólo puede contener letras, números, puntos, guiones y el guión bajo ";
+                    "El correo sólo puede contener letras, números, puntos, guiones y el guión bajo";
                 }
 
                 // validación del input password
                 if (!values.pass) {
-                  errors.pass = "Por favor ingresa una contraseña válida";
+                  errors.pass = "La contraseña debe tener de 4 a 8 caracteres y debe contener números, letras minúsculas y mayúsculas";
                 } else if (
                   !/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.{4,8})/.test(values.pass)
                 ) {

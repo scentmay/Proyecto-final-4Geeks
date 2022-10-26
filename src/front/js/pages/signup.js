@@ -130,7 +130,7 @@ export const Signup = () => {
         if(!valores.logDni){
           errores.logDni = 'Por favor ingresa un DNI válido';
         }else if(!/^[XYZ]?\d{5,8}[A-Z]$/.test(valores.logDni)){
-          errores.logDni = 'Introduzca un nº válido de DNI'
+          errores.logDni = 'El DNI debe tener entre 5 y 8 caracteres y empezar o acabar en una letra mayúscula'
         }
 
         if(!valores.logAddress){
