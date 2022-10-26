@@ -47,6 +47,7 @@ export const AdminDashSocios = (props) => {
               <th>{client.role}</th>
               <td>{client.userName}</td>
               <td>{client.email}</td>
+              <td>{client.telefono}</td>
               <td>{client.dni}</td>
               <td>
                 <button
