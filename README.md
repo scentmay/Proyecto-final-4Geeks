@@ -1,99 +1,57 @@
-# WebApp boilerplate with React JS and Flask API
-
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io#https://github.com/4GeeksAcademy/react-flask-hello.git)
-
-> Documentation: https://start.4geeksacademy.com/
-
 <p align="center">
-<a href="https://www.loom.com/share/f37c6838b3f1496c95111e515e83dd9b"><img src="https://github.com/4GeeksAcademy/flask-rest-hello/blob/main/docs/assets/how-to.png?raw=true?raw=true" /></a>
+    <h1>S&F FIT</h1>
 </p>
 
-- React.js front end and python/flask backend for your web application.
-- Extensive documentation [here](https://start.4geeksacademy.com/).
-- Integrated with Pipenv for package managing.
-- Fast deloyment to heroku [in just a few steps here](https://start.4geeksacademy.com/backend/deploy-heroku-posgres).
-- Use of .env file.
-- SQLAlchemy integration for database abstraction.
+APLICACIÓN PARA LA GESTIÓN DE INSTALACIONES DEPORTIVAS
+------------------------------------------------------------------------
+Se trata de una aplicación en la que se puede ver la gestión del dueño de las instalaciones así como la experiencia de uso de un usuario cliente que utiliza un smartphone para seguimiento de su rutina de entrenamiento.
 
-### Styles
+Autores: Sergio Centenera Mayoral 🤝
+         Franco Piedrabuena
+         
+Tenemos multitud de ideas para la evolución de la aplicación proyectando una importante mejora en la zona de administración, con la realización de consultas para toma de decisiones.
 
-You can update the `styles/index.scss` or create new `.scss` files inside `styles/` and import them into your current scss or js files depending on your needs.
+La parte de usuario incorporará un histórico de ejercicios así como la consulta de un feedback al cliente tras la realización de la rutina de entrenamiento. Estos datos proporcionarán la información complementaria a la aplicación para tener en cuenta en la próxima rotación de ejercicios que se le presente al cliente. Esta rotación también tendrá en cuenta las posibles lesiones o indicaciones médicas del cliente.
 
-### Components
+Incorporación de un cronómetro, integración con redes sociales para publicar los logros obtenidos en los entrenamientos, integración con servicios musicales para uso durante la sesión....las posibilidades son infinitas.
 
-Add more files into your `./src/js/components` or styles folder as you need them and import them into your current files as needed.
+Agradecer a todos los profesores, mentores y compañeros de 4Geeks Academy, gracias a todo@s vosotros esto ha sido posible.
+       
+Por supuesto, estamos abiertos a cualquier sugerencia en los correos:
 
-💡Note: There is an example using the Context API inside `views/demo.js`;
+📧 scentmay@gmail.com
 
-### Views (Components)
+📧 franconpiedrabuena@gmail.com
+ 
+Muestras de la aplicación 📌
+------------------------------------------------------------------------
+![Screenshot](screenshot_mainview.jpg) 
 
-Add more files into your `./src/js/views` and import them in `./src/js/layout.jsx`.
+Página Home de la aplicación 💪
 
-### Context
+![Screenshot](screenshot_home_expanded.jpg)
 
-This boilerplate comes with a centralized general Context API. The file `./src/js/store/flux.js` has a base structure for the store, we encourage you to change it and adapt it to your needs.
+La aplicación cuenta con formularios protegidos con la tecnología de Formik ⬇🔐
 
-React Context [docs](https://reactjs.org/docs/context.html)
-BreathCode Lesson [view](https://content.breatheco.de/lesson/react-hooks-explained)
+![Screenshot](screenshot_protectedforms.jpg)
 
-The `Provider` is already set. You can consume from any component using the useContext hook to get the `store` and `actions` from the Context. Check `/views/demo.js` to see a demo.
+Zona usuario para su propia administración 🫵
 
-```jsx
-import { Context } from "../store/appContext";
-const MyComponentSuper = () => {
-    //here you use useContext to get store and actions
-    const { store, actions } = useContext(Context);
-    return <div>{/* you can use your actions or store inside the html */}</div>;
-};
-```
+![Screenshot](screenshot_personal_data.jpg)
 
-### Back-End Manual Installation:
+Entrenamientos a medida en su propio terminal 🏋️📱
 
-It is recomended to install the backend first, make sure you have Python 3.8, Pipenv and a database engine (Posgress recomended)
+![Screenshot](screenshot_training_cards.jpg)
 
-1. Install the python packages: `$ pipenv install`
-2. Create a .env file based on the .env.example: `$ cp .env.example .env`
-3. Install your database engine and create your database, depending on your database you have to create a DATABASE_URL variable with one of the possible values, make sure yo replace the valudes with your database information:
+Posibilidad de cambiar de suscripción en cualquier momento 💶💶
 
-| Engine    | DATABASE_URL                                        |
-| --------- | --------------------------------------------------- |
-| SQLite    | sqlite:////test.db                                  |
-| MySQL     | mysql://username:password@localhost:port/example    |
-| Postgress | postgres://username:password@localhost:5432/example |
+![Screenshot](screenshot_usersuscription.jpg)
 
-4. Migrate the migrations: `$ pipenv run migrate` (skip if you have not made changes to the models on the `./src/api/models.py`)
-5. Run the migrations: `$ pipenv run upgrade`
-6. Run the application: `$ pipenv run start`
+Útiles paneles de administración para el administrador de las instalaciones 📊🗓️
 
-### Backend Populate Table Users
+![Screenshot](screenshot_clients_dashboard.jpg)
 
-To insert test users in the database execute the following command:
 
-```sh
-$ flask insert-test-users 5
-```
 
-And you will see the following message:
 
-```
-  Creating test users
-  test_user1@test.com created.
-  test_user2@test.com created.
-  test_user3@test.com created.
-  test_user4@test.com created.
-  test_user5@test.com created.
-  Users created successfully!
-```
 
-To update with all yours tables you can edit the file app.py and go to the line 80 to insert the code to populate others tables
-
-### Front-End Manual Installation:
-
--   Make sure you are using node version 14+ and that you have already successfully installed and runned the backend.
-
-1. Install the packages: `$ npm install`
-2. Start coding! start the webpack dev server `$ npm run start`
-
-## Publish your website!
-
-This boilerplate it's 100% integrated with Herkou, [follow this tutorial](https://start.4geeksacademy.com/backend/deploy-heroku-posgres) and just by pushing your changes to the heroku repository will deploy the website afterwards.
